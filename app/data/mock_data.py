@@ -1,0 +1,64 @@
+"""
+用途：
+- 本地最小可运行假数据
+- 后续可替换成 PostgreSQL / Typesense
+"""
+
+MOCK_CONCLUSIONS = [
+    {
+        "id": "I001",
+        "title": "均值不等式的基本结论",
+        "module": "不等式",
+        "difficulty": 2,
+        "tags": ["高频", "必考"],
+        "statement_clean": "若 a,b>0，则 a+b≥2√ab。",
+        "statement": "若 a,b>0，则 a+b≥2\\sqrt{ab}。",
+        "explanation": "这是均值不等式的基础形式。",
+        "proof": "由 (\\sqrt{a}-\\sqrt{b})^2 \\ge 0 可得。",
+        "examples": ["求最小值", "求参数范围"],
+        "traps": ["忽略 a,b>0 的条件"],
+        "summary": "均值不等式常用于求最值。",
+        "pdf_url": "https://example.com/pdf/I001.pdf",
+    },
+    {
+        "id": "C016",
+        "title": "双曲线焦点三角形面积结论",
+        "module": "圆锥曲线",
+        "difficulty": 4,
+        "tags": ["压轴", "高频"],
+        "statement_clean": "双曲线焦点三角形面积可转化为底乘高。",
+        "statement": "双曲线相关面积问题可通过焦点坐标与点到直线距离求解。",
+        "explanation": "本质是坐标化与面积公式联用。",
+        "proof": "结合双曲线定义与坐标法推导。",
+        "examples": ["焦点弦问题", "面积最值问题"],
+        "traps": ["误把椭圆公式套到双曲线"],
+        "summary": "焦点、弦、面积三者常联动考查。",
+        "pdf_url": "https://example.com/pdf/C016.pdf",
+    },
+    {
+        "id": "F008",
+        "title": "导数判断单调性的标准套路",
+        "module": "函数与导数",
+        "difficulty": 3,
+        "tags": ["高频", "秒杀型"],
+        "statement_clean": "通过 f'(x) 的符号判断函数单调性。",
+        "statement": "若在区间上 f'(x)>0，则函数递增；若 f'(x)<0，则函数递减。",
+        "explanation": "导数的符号决定单调性。",
+        "proof": "由导数与函数增减性的关系可得。",
+        "examples": ["求单调区间", "证明不等式"],
+        "traps": ["漏写定义域和区间"],
+        "summary": "导数是函数题核心工具。",
+        "pdf_url": "https://example.com/pdf/F008.pdf",
+    },
+]
+
+MOCK_USERS = {
+    "mock_code_123": {
+        "user_id": "u1001",
+        "nickname": "远锋用户",
+        "token": "mock-token-u1001",
+    }
+}
+
+# 简化：内存收藏
+MOCK_FAVORITES = {"u1001": {"I001", "C016"}}
