@@ -29,6 +29,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 class StrictBaseModel(BaseModel):
     """
     所有模型统一基类。
+    所有 schema 都从这里继承，核心目的是拦住脏字段混入，并统一赋值时校验行为。
 
     约束:
     - extra="forbid": 禁止未声明字段，避免脏数据 silently 混入
@@ -49,14 +50,18 @@ class StrictBaseModel(BaseModel):
 
 
 class TextToken(StrictBaseModel):
-    """普通文本 token。"""
+    """普通文本 token。
+    `type` 固定为 `text`，`text` 必填（`...`）且至少 1 个字符。
+    """
 
     type: Literal["text"] = Field(default="text", description="Token 类型：普通文本")
     text: str = Field(..., min_length=1, description="普通文本内容")
 
 
 class MathInlineToken(StrictBaseModel):
-    """行内公式 token。"""
+    """行内公式 token。
+    `type` 固定为 `math_inline`，`latex` 必填（`...`），放行内 LaTeX。
+    """
 
     type: Literal["math_inline"] = Field(
         default="math_inline", description="Token 类型：行内公式"
@@ -65,7 +70,9 @@ class MathInlineToken(StrictBaseModel):
 
 
 class MathDisplayToken(StrictBaseModel):
-    """展示型公式 token。通常用于少量特殊内联场景；大段公式更建议用 math_block。"""
+    """展示型公式 token。通常用于少量特殊内联场景；大段公式更建议用 math_block。
+    `type` 固定为 `math_display`，`latex` 必填（`...`），表示一段展示型公式。
+    """
 
     type: Literal["math_display"] = Field(
         default="math_display", description="Token 类型：展示型公式"
@@ -76,7 +83,9 @@ class MathDisplayToken(StrictBaseModel):
 
 
 class LineBreakToken(StrictBaseModel):
-    """换行 token。"""
+    """换行 token。
+    只有 `type`，并且固定为 `line_break`，不需要额外内容字段。
+    """
 
     type: Literal["line_break"] = Field(
         default="line_break", description="Token 类型：换行"
@@ -84,7 +93,9 @@ class LineBreakToken(StrictBaseModel):
 
 
 class RefToken(StrictBaseModel):
-    """内容内引用 token，例如引用另一条结论。"""
+    """内容内引用 token，例如引用另一条结论。
+    `type` 固定为 `ref`，`target_id` 和 `text` 都必填（`...`）。
+    """
 
     type: Literal["ref"] = Field(default="ref", description="Token 类型：内部引用")
     target_id: str = Field(..., min_length=1, description="被引用内容的稳定 ID")
@@ -110,7 +121,9 @@ InlineToken = Annotated[
 
 
 class InlineContent(StrictBaseModel):
-    """由多个 inline token 组成的一段混排内容。"""
+    """由多个 inline token 组成的一段混排内容。
+    `tokens` 必填（`...`），是由多个 `InlineToken` 组成的列表，至少 1 项。
+    """
 
     tokens: List[InlineToken] = Field(
         ...,
@@ -126,7 +139,9 @@ class InlineContent(StrictBaseModel):
 
 
 class ParagraphBlock(StrictBaseModel):
-    """正文段落块。支持文本与行内公式混排。"""
+    """正文段落块。支持文本与行内公式混排。
+    `id` 和 `tokens` 必填（`...`），`type` 必须是 `paragraph`。
+    """
 
     id: str = Field(..., min_length=1, description="块 ID，建议在同一条内容内唯一")
     type: Literal["paragraph"] = Field(
@@ -136,7 +151,9 @@ class ParagraphBlock(StrictBaseModel):
 
 
 class MathBlock(StrictBaseModel):
-    """独立公式块。"""
+    """独立公式块。
+    `id` 和 `latex` 必填（`...`），`type` 固定为 `math_block`，`align` 默认 `center`。
+    """
 
     id: str = Field(..., min_length=1, description="块 ID")
     type: Literal["math_block"] = Field(
@@ -149,14 +166,18 @@ class MathBlock(StrictBaseModel):
 
 
 class DividerBlock(StrictBaseModel):
-    """分隔线块。"""
+    """分隔线块。
+    只负责切分内容，`id` 必填（`...`），`type` 固定为 `divider`。
+    """
 
     id: str = Field(..., min_length=1, description="块 ID")
     type: Literal["divider"] = Field(default="divider", description="块类型：分隔线")
 
 
 class BulletListItem(StrictBaseModel):
-    """无序列表单项。"""
+    """无序列表单项。
+    `tokens` 必填（`...`），每一项都是可混排的 `InlineToken` 列表。
+    """
 
     tokens: List[InlineToken] = Field(
         ..., min_length=1, description="列表项内容，支持混排"
@@ -164,7 +185,9 @@ class BulletListItem(StrictBaseModel):
 
 
 class BulletListBlock(StrictBaseModel):
-    """要点列表块。"""
+    """要点列表块。
+    `id` 和 `items` 必填（`...`），`type` 固定为 `bullet_list`，`items` 是多个列表项。
+    """
 
     id: str = Field(..., min_length=1, description="块 ID")
     type: Literal["bullet_list"] = Field(
@@ -174,7 +197,9 @@ class BulletListBlock(StrictBaseModel):
 
 
 class TheoremItem(StrictBaseModel):
-    """定理/结论组中的单项。"""
+    """定理/结论组中的单项。
+    `title` 和 `formula_latex` 必填（`...`），`desc_tokens` 可选，用来放补充说明。
+    """
 
     title: str = Field(
         ..., min_length=1, description="单项标题，如：结论一（原始形式）"
@@ -186,7 +211,9 @@ class TheoremItem(StrictBaseModel):
 
 
 class TheoremGroupBlock(StrictBaseModel):
-    """定理组 / 等价形式组。对应你当前的 theorem-list。"""
+    """定理组 / 等价形式组。对应你当前的 theorem-list。
+    `id` 和 `items` 必填（`...`），`type` 固定为 `theorem_group`，是多个 `TheoremItem` 的容器。
+    """
 
     id: str = Field(..., min_length=1, description="块 ID")
     type: Literal["theorem_group"] = Field(
@@ -196,7 +223,9 @@ class TheoremGroupBlock(StrictBaseModel):
 
 
 class StepContentParagraph(StrictBaseModel):
-    """证明步骤内部的段落块。"""
+    """证明步骤内部的段落块。
+    `type` 固定为 `paragraph`，`tokens` 必填（`...`），用于步骤内正文混排。
+    """
 
     type: Literal["paragraph"] = Field(
         default="paragraph", description="步骤内容子块类型：段落"
@@ -207,7 +236,9 @@ class StepContentParagraph(StrictBaseModel):
 
 
 class StepContentMath(StrictBaseModel):
-    """证明步骤内部的公式块。"""
+    """证明步骤内部的公式块。
+    `type` 固定为 `math_block`，`latex` 必填（`...`），`align` 默认 `center`。
+    """
 
     type: Literal["math_block"] = Field(
         default="math_block", description="步骤内容子块类型：公式"
@@ -219,7 +250,9 @@ class StepContentMath(StrictBaseModel):
 
 
 class StepContentBulletList(StrictBaseModel):
-    """证明步骤内部的列表块。"""
+    """证明步骤内部的列表块。
+    `type` 固定为 `bullet_list`，`items` 必填（`...`），是步骤里的列表项数组。
+    """
 
     type: Literal["bullet_list"] = Field(
         default="bullet_list", description="步骤内容子块类型：列表"
@@ -238,7 +271,9 @@ StepContentBlock = Annotated[
 
 
 class ProofStep(StrictBaseModel):
-    """证明中的单步。"""
+    """证明中的单步。
+    `title` 和 `content` 必填（`...`），`content` 是由多个步骤子块组成的列表。
+    """
 
     title: str = Field(
         ..., min_length=1, description="步骤标题，如：步骤一（乘积形式）"
@@ -249,7 +284,9 @@ class ProofStep(StrictBaseModel):
 
 
 class ProofStepsBlock(StrictBaseModel):
-    """证明步骤组。"""
+    """证明步骤组。
+    `id` 和 `steps` 必填（`...`），`type` 固定为 `proof_steps`，`steps` 装多步证明。
+    """
 
     id: str = Field(..., min_length=1, description="块 ID")
     type: Literal["proof_steps"] = Field(
@@ -259,7 +296,9 @@ class ProofStepsBlock(StrictBaseModel):
 
 
 class WarningBlock(StrictBaseModel):
-    """警告/易错提醒块。"""
+    """警告/易错提醒块。
+    `id`、`title`、`content` 必填（`...`），`type` 固定为 `warning`，`level` 默认 `warning`。
+    """
 
     id: str = Field(..., min_length=1, description="块 ID")
     type: Literal["warning"] = Field(default="warning", description="块类型：警告/提示")
@@ -271,7 +310,9 @@ class WarningBlock(StrictBaseModel):
 
 
 class SummaryBoxBlock(StrictBaseModel):
-    """总结框块。"""
+    """总结框块。
+    `id`、`title`、`content` 必填（`...`），`type` 固定为 `summary_box`。
+    """
 
     id: str = Field(..., min_length=1, description="块 ID")
     type: Literal["summary_box"] = Field(
@@ -282,7 +323,9 @@ class SummaryBoxBlock(StrictBaseModel):
 
 
 class ExampleBlock(StrictBaseModel):
-    """例题块。"""
+    """例题块。
+    `id`、`title`、`problem`、`solution` 必填（`...`），`type` 固定为 `example`，`answer` 可选。
+    """
 
     id: str = Field(..., min_length=1, description="块 ID")
     type: Literal["example"] = Field(default="example", description="块类型：例题")
@@ -320,6 +363,7 @@ ContentBlock = Annotated[
 class ContentSection(StrictBaseModel):
     """
     详情页中的一个主分区。
+    这是 section 容器：`key/title/block_type/blocks` 都必填（`...`），`blocks` 是多个 `ContentBlock` 的列表。
 
     说明:
     - key 为稳定业务键，便于前端识别与排序
@@ -354,7 +398,9 @@ class ContentSection(StrictBaseModel):
 
 
 class VariableDef(StrictBaseModel):
-    """变量定义。"""
+    """变量定义。
+    `name`、`latex`、`description` 都必填（`...`），`required` 默认是 `True`。
+    """
 
     name: str = Field(
         ..., min_length=1, description="变量名的人类可读表示，如 M / N / f(x)"
@@ -365,7 +411,9 @@ class VariableDef(StrictBaseModel):
 
 
 class ConditionItem(StrictBaseModel):
-    """适用条件项。"""
+    """适用条件项。
+    `id`、`title`、`content` 必填（`...`），`required` 默认 `True`，`scope` 可选。
+    """
 
     id: str = Field(..., min_length=1, description="条件项 ID")
     title: str = Field(..., min_length=1, description="条件标题")
@@ -379,7 +427,9 @@ class ConditionItem(StrictBaseModel):
 
 
 class ConclusionItem(StrictBaseModel):
-    """结论项。"""
+    """结论项。
+    `id`、`title`、`content` 必填（`...`），`content` 是由多个 `InlineToken` 组成的列表。
+    """
 
     id: str = Field(..., min_length=1, description="结论项 ID")
     title: str = Field(..., min_length=1, description="结论标题")
@@ -391,6 +441,7 @@ class ConclusionItem(StrictBaseModel):
 class PlainContent(StrictBaseModel):
     """
     纯文本兜底层。
+    这里的 `statement/explanation/proof/examples/traps/summary` 都是可选字段，主要给降级展示、搜索和调试用。
 
     用途:
     - 搜索摘要
@@ -413,8 +464,8 @@ class PlainContent(StrictBaseModel):
 class ContentBodyV2(StrictBaseModel):
     """
     content 主体。
-
-    这是整个 schema v2 的核心层。
+    这是整个 schema v2 的核心层：`render_schema_version` 固定为 `2`，`sections` 是主展示源，`plain` 是兜底层。
+    `sections` 和 `plain` 不能同时为空，至少要有一种可用内容源（由下方校验器保证）。
     """
 
     render_schema_version: Literal[2] = Field(
@@ -462,7 +513,9 @@ class ContentBodyV2(StrictBaseModel):
 
 
 class IdentityInfo(StrictBaseModel):
-    """身份与稳定定位字段。"""
+    """身份与稳定定位字段。
+    `module` 必填（`...`）；`slug`、`knowledge_node` 可选；`alt_nodes` 是可选知识节点列表。
+    """
 
     slug: Optional[str] = Field(
         default=None, description="稳定 slug，可用于 URL / SEO / 前端路由"
@@ -477,7 +530,9 @@ class IdentityInfo(StrictBaseModel):
 
 
 class MetaInfo(StrictBaseModel):
-    """业务元数据层。"""
+    """业务元数据层。
+    `title` 必填（`...`）；`aliases/tags` 默认空列表；`difficulty` 可选且范围 0~10。
+    """
 
     title: str = Field(..., min_length=1, description="内容标题")
     aliases: List[str] = Field(default_factory=list, description="别名列表")
@@ -494,7 +549,9 @@ class MetaInfo(StrictBaseModel):
 
 
 class ExtraAsset(StrictBaseModel):
-    """扩展资源引用。"""
+    """扩展资源引用。
+    `kind` 和 `url` 必填（`...`），`meta` 默认空字典，放资源附加信息。
+    """
 
     kind: str = Field(
         ...,
@@ -506,7 +563,9 @@ class ExtraAsset(StrictBaseModel):
 
 
 class AssetInfo(StrictBaseModel):
-    """静态资源层。"""
+    """静态资源层。
+    `cover/svg/png/pdf/mp4` 都可选，`extra` 是扩展资源列表，默认空列表。
+    """
 
     cover: Optional[str] = Field(default=None, description="封面资源")
     svg: Optional[str] = Field(default=None, description="SVG 资源路径")
@@ -517,14 +576,18 @@ class AssetInfo(StrictBaseModel):
 
 
 class ShareExt(StrictBaseModel):
-    """分享扩展信息。"""
+    """分享扩展信息。
+    只放分享文案，`title` 和 `desc` 都是可选字段。
+    """
 
     title: Optional[str] = Field(default=None, description="分享标题")
     desc: Optional[str] = Field(default=None, description="分享描述")
 
 
 class RelationsExt(StrictBaseModel):
-    """关联关系扩展信息。"""
+    """关联关系扩展信息。
+    `prerequisites`、`related_ids` 默认空列表，`similar` 可选。
+    """
 
     prerequisites: List[str] = Field(default_factory=list, description="前置知识列表")
     related_ids: List[str] = Field(default_factory=list, description="相关内容 ID 列表")
@@ -532,7 +595,9 @@ class RelationsExt(StrictBaseModel):
 
 
 class ExamExt(StrictBaseModel):
-    """考试维度扩展信息。"""
+    """考试维度扩展信息。
+    `frequency` 和 `score` 都可选，但给了值就必须 >= 0。
+    """
 
     frequency: Optional[float] = Field(
         default=None, ge=0, description="考试出现频率，可按你自己的尺度定义"
@@ -543,6 +608,7 @@ class ExamExt(StrictBaseModel):
 class ExtInfo(StrictBaseModel):
     """
     扩展信息层。
+    `share/relations/exam` 都可选，`extra` 默认空字典，专门装暂未结构化的扩展数据。
 
     说明:
     - 放非核心但常用的扩展字段
@@ -565,8 +631,8 @@ class ExtInfo(StrictBaseModel):
 class ConclusionRecordV2(StrictBaseModel):
     """
     高中数学二级结论内容的顶层记录模型。
-
-    顶层只保留 1 份 canonical record。
+    顶层只保留 1 份 canonical record：`schema_version` 固定为 `2`，`type` 固定为 `conclusion`。
+    核心由 `identity / meta / content / assets / ext` 组成，其中 `id`、`identity`、`meta`、`content` 必填（`...`）。
     """
 
     id: str = Field(
