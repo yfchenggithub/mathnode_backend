@@ -1,7 +1,10 @@
-from fastapi import APIRouter, Header, Query
+﻿from fastapi import APIRouter, Depends, Header, Query
+from sqlalchemy.orm import Session
 
+from app.api.deps import get_db
 from app.core.response import success_response
 from app.services.favorite_service import FavoriteService
+from app.services.recent_search_service import RecentSearchService
 from app.services.search_service import SearchService
 
 router = APIRouter()
@@ -16,11 +19,15 @@ def search(
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=10, ge=1, le=50),
     x_token: str | None = Header(default=None),
+    db: Session = Depends(get_db),
 ):
     user_id = "u1001" if x_token == "mock-token-u1001" else None
-    favorite_ids = FavoriteService.get_favorite_ids(user_id) if user_id else set()
+    favorite_ids = (
+        FavoriteService.get_favorite_ids(db=db, user_id=user_id) if user_id else set()
+    )
 
     data = SearchService.search(
+        db=db,
         q=q,
         module=module,
         difficulty=difficulty,
@@ -29,4 +36,8 @@ def search(
         page_size=page_size,
         favorite_ids=favorite_ids,
     )
+
+    if user_id and q.strip():
+        RecentSearchService.add_keyword(db=db, user_id=user_id, keyword=q.strip())
+
     return success_response(data=data)

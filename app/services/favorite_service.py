@@ -1,39 +1,44 @@
+from sqlalchemy.orm import Session
+
+from app.repositories.conclusion_repo import ConclusionRepository
+from app.repositories.favorite_repo import FavoriteRepository
 from app.core.exceptions import BizException
-from app.data.mock_data import MOCK_CONCLUSIONS, MOCK_FAVORITES
 
 
 class FavoriteService:
     @staticmethod
-    def add_favorite(user_id: str, conclusion_id: str) -> None:
-        exists = any(item["id"] == conclusion_id for item in MOCK_CONCLUSIONS)
-        if not exists:
+    def add_favorite(db: Session, user_id: str, conclusion_id: str) -> None:
+        row = ConclusionRepository.get_by_id(db, conclusion_id)
+        if not row:
             raise BizException(code=4040, message="结论不存在")
 
-        if user_id not in MOCK_FAVORITES:
-            MOCK_FAVORITES[user_id] = set()
-
-        MOCK_FAVORITES[user_id].add(conclusion_id)
-
-    @staticmethod
-    def remove_favorite(user_id: str, conclusion_id: str) -> None:
-        if user_id not in MOCK_FAVORITES:
+        if FavoriteRepository.exists(db, user_id, conclusion_id):
             return
-        MOCK_FAVORITES[user_id].discard(conclusion_id)
+
+        FavoriteRepository.create(db, user_id, conclusion_id)
 
     @staticmethod
-    def list_favorites(user_id: str) -> dict:
-        ids = MOCK_FAVORITES.get(user_id, set())
+    def remove_favorite(db: Session, user_id: str, conclusion_id: str) -> None:
+        FavoriteRepository.delete(db, user_id, conclusion_id)
+
+    @staticmethod
+    def list_favorites(db: Session, user_id: str) -> dict:
+        favorite_ids = FavoriteRepository.list_ids(db, user_id)
         items = []
 
-        for item in MOCK_CONCLUSIONS:
-            if item["id"] in ids:
-                items.append(
-                    {
-                        "conclusion_id": item["id"],
-                        "title": item["title"],
-                        "module": item["module"],
-                    }
-                )
+        for conclusion_id in favorite_ids:
+            row = ConclusionRepository.get_by_id(db, conclusion_id)
+            if not row:
+                continue
+            items.append(
+                {
+                    "conclusion_id": row.id,
+                    "title": row.title,
+                    "module": row.module,
+                }
+            )
+
+        items.sort(key=lambda x: x["conclusion_id"])
 
         return {
             "total": len(items),
@@ -41,5 +46,5 @@ class FavoriteService:
         }
 
     @staticmethod
-    def get_favorite_ids(user_id: str) -> set[str]:
-        return MOCK_FAVORITES.get(user_id, set())
+    def get_favorite_ids(db: Session, user_id: str) -> set[str]:
+        return FavoriteRepository.list_ids(db, user_id)

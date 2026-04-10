@@ -1,26 +1,17 @@
-"""
-用途：
-- FastAPI 应用主入口
-- 注册全局异常处理
-- 挂载总路由
-
-设计：
-- main.py 只做应用装配，不写业务逻辑
-"""
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.router import api_router
 from app.core.config import settings
 from app.core.exceptions import register_exception_handlers
+from app.db.init_db import init_db
 
 
 def create_app() -> FastAPI:
     app = FastAPI(
         title=settings.APP_NAME,
         version=settings.APP_VERSION,
-        description="高中数学二级结论搜索系统后端 API（最小可运行骨架）",
+        description="高中数学二级结论搜索系统后端 API（FastAPI + SQLite）",
     )
 
     app.add_middleware(
@@ -33,6 +24,10 @@ def create_app() -> FastAPI:
 
     register_exception_handlers(app)
     app.include_router(api_router, prefix=settings.API_PREFIX)
+
+    @app.on_event("startup")
+    def on_startup():
+        init_db()
 
     return app
 

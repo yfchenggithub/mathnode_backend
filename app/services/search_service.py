@@ -1,11 +1,14 @@
 from collections import Counter
 
-from app.data.mock_data import MOCK_CONCLUSIONS
+from sqlalchemy.orm import Session
+
+from app.repositories.conclusion_repo import ConclusionRepository
 
 
 class SearchService:
     @staticmethod
     def search(
+        db: Session,
         q: str,
         module: str | None,
         difficulty: int | None,
@@ -16,55 +19,54 @@ class SearchService:
     ) -> dict:
         favorite_ids = favorite_ids or set()
 
-        results = []
-        keyword = q.strip().lower()
+        rows, total = ConclusionRepository.search(
+            db=db,
+            q=q,
+            module=module,
+            difficulty=difficulty,
+            tag=tag,
+            page=page,
+            page_size=page_size,
+        )
 
-        for item in MOCK_CONCLUSIONS:
-            if module and item["module"] != module:
-                continue
-            if difficulty and item["difficulty"] != difficulty:
-                continue
-            if tag and tag not in item["tags"]:
-                continue
+        facet_rows = ConclusionRepository.list_all_for_facets(
+            db=db,
+            q=q,
+            module=module,
+            difficulty=difficulty,
+            tag=tag,
+        )
 
-            haystack = " ".join(
-                [
-                    item["title"],
-                    item["module"],
-                    item["statement_clean"],
-                    " ".join(item["tags"]),
-                ]
-            ).lower()
+        items = []
+        for row in rows:
+            tags = [x.strip() for x in row.tags.split(",") if x.strip()]
+            items.append(
+                {
+                    "id": row.id,
+                    "title": row.title,
+                    "module": row.module,
+                    "difficulty": row.difficulty,
+                    "tags": tags,
+                    "statement_clean": row.statement_clean,
+                    "is_favorited": row.id in favorite_ids,
+                }
+            )
 
-            if keyword and keyword not in haystack:
-                continue
-
-            result = {
-                "id": item["id"],
-                "title": item["title"],
-                "module": item["module"],
-                "difficulty": item["difficulty"],
-                "tags": item["tags"],
-                "statement_clean": item["statement_clean"],
-                "is_favorited": item["id"] in favorite_ids,
-            }
-            results.append(result)
-
-        total = len(results)
-        start = (page - 1) * page_size
-        end = start + page_size
-        paged_items = results[start:end]
-
-        module_counter = Counter(x["module"] for x in results)
-        difficulty_counter = Counter(x["difficulty"] for x in results)
-        tags_counter = Counter(tag for x in results for tag in x["tags"])
+        module_counter = Counter(x.module for x in facet_rows)
+        difficulty_counter = Counter(x.difficulty for x in facet_rows)
+        tags_counter = Counter(
+            tag_name.strip()
+            for x in facet_rows
+            for tag_name in x.tags.split(",")
+            if tag_name.strip()
+        )
 
         return {
             "query": q,
             "total": total,
             "page": page,
             "page_size": page_size,
-            "items": paged_items,
+            "items": items,
             "facets": {
                 "module": [{"value": k, "count": v} for k, v in module_counter.items()],
                 "difficulty": [
@@ -75,17 +77,19 @@ class SearchService:
         }
 
     @staticmethod
-    def suggest(q: str) -> dict:
-        query = q.strip().lower()
-        if not query:
+    def suggest(db: Session, q: str) -> dict:
+        keyword = q.strip()
+        if not keyword:
             return {"items": []}
 
-        candidates = []
-        for item in MOCK_CONCLUSIONS:
-            if (
-                query in item["title"].lower()
-                or query in item["statement_clean"].lower()
-            ):
-                candidates.append(item["title"])
+        rows, _ = ConclusionRepository.search(
+            db=db,
+            q=keyword,
+            module=None,
+            difficulty=None,
+            tag=None,
+            page=1,
+            page_size=8,
+        )
 
-        return {"items": list(dict.fromkeys(candidates))[:8]}
+        return {"items": [row.title for row in rows[:8]]}
