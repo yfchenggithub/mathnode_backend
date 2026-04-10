@@ -1,3 +1,11 @@
+"""
+用途：
+- Conclusion 数据访问层
+职责：
+- 当前保留历史查询方法（兼容）
+- 新增 list_all 供启动期 loader 导入使用
+"""
+
 from sqlalchemy import or_, select
 from sqlalchemy.orm import Session
 
@@ -5,6 +13,11 @@ from app.models.conclusion import Conclusion
 
 
 class ConclusionRepository:
+    @staticmethod
+    def list_all(db: Session) -> list[Conclusion]:
+        stmt = select(Conclusion).order_by(Conclusion.id.asc())
+        return list(db.execute(stmt).scalars().all())
+
     @staticmethod
     def get_by_id(db: Session, conclusion_id: str) -> Conclusion | None:
         stmt = select(Conclusion).where(Conclusion.id == conclusion_id)

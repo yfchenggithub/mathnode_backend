@@ -7,6 +7,7 @@ from app.api.v1.health import router as health_router
 from app.api.v1.recent_searches import router as recent_searches_router
 from app.api.v1.search import router as search_router
 from app.api.v1.suggest import router as suggest_router
+from app.core.config import settings
 
 api_router = APIRouter()
 
@@ -17,3 +18,8 @@ api_router.include_router(conclusions_router, tags=["conclusions"])
 api_router.include_router(auth_router, tags=["auth"])
 api_router.include_router(favorites_router, tags=["favorites"])
 api_router.include_router(recent_searches_router, tags=["recent_searches"])
+
+if settings.ENABLE_DEBUG_ENDPOINTS:
+    from app.api.debug import router as debug_router
+
+    api_router.include_router(debug_router, tags=["debug"])

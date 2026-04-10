@@ -1,11 +1,13 @@
-﻿from fastapi import APIRouter, Depends, Header, Query
+from fastapi import APIRouter, Depends, Header, Query
 from sqlalchemy.orm import Session
 
+from app.api.dependencies import get_index_store
 from app.api.deps import get_db
 from app.core.response import success_response
 from app.services.favorite_service import FavoriteService
 from app.services.recent_search_service import RecentSearchService
 from app.services.search_service import SearchService
+from app.stores.interfaces import IndexStore
 
 router = APIRouter()
 
@@ -20,6 +22,7 @@ def search(
     page_size: int = Query(default=10, ge=1, le=50),
     x_token: str | None = Header(default=None),
     db: Session = Depends(get_db),
+    index_store: IndexStore = Depends(get_index_store),
 ):
     user_id = "u1001" if x_token == "mock-token-u1001" else None
     favorite_ids = (
@@ -27,7 +30,7 @@ def search(
     )
 
     data = SearchService.search(
-        db=db,
+        index_store=index_store,
         q=q,
         module=module,
         difficulty=difficulty,

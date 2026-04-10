@@ -4,14 +4,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.router import api_router
 from app.core.config import settings
 from app.core.exceptions import register_exception_handlers
-from app.db.init_db import init_db
+from app.core.lifespan import app_lifespan
 
 
 def create_app() -> FastAPI:
     app = FastAPI(
         title=settings.APP_NAME,
         version=settings.APP_VERSION,
-        description="高中数学二级结论搜索系统后端 API（FastAPI + SQLite）",
+        description="Math conclusion search backend API (FastAPI + SQLite)",
+        lifespan=app_lifespan,
     )
 
     app.add_middleware(
@@ -24,10 +25,6 @@ def create_app() -> FastAPI:
 
     register_exception_handlers(app)
     app.include_router(api_router, prefix=settings.API_PREFIX)
-
-    @app.on_event("startup")
-    def on_startup():
-        init_db()
 
     return app
 
