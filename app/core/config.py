@@ -50,6 +50,10 @@ class Settings(BaseModel):
     BOOTSTRAP_LOG_VERBOSE: bool = Field(
         default_factory=lambda: _env_bool("BOOTSTRAP_LOG_VERBOSE", True)
     )
+    # PDF 文件根目录：可由环境变量覆盖，默认使用项目内目录。
+    PDF_ROOT_DIR: str = Field(
+        default_factory=lambda: _env_str("PDF_ROOT_DIR", "app/data/pdfs")
+    )
 
 
 settings = Settings()
