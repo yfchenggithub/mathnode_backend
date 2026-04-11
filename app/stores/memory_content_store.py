@@ -16,7 +16,7 @@ from app.stores.interfaces import ContentDocument, ContentSummary
 
 
 class MemoryContentStore:
-    def __init__(self, documents: list[ContentDocument], source: str = "sqlite") -> None:
+    def __init__(self, documents: list[ContentDocument], source: str = "content_loader") -> None:
         self._source = source
         self._by_id: dict[str, ContentDocument] = {
             doc["id"]: self._clone_document(doc) for doc in documents

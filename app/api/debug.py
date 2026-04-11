@@ -20,6 +20,7 @@ def get_store_status(request: Request):
 
     data = {
         "app_env": status.get("app_env"),
+        "content_json_path": status.get("content_json_path"),
         "content_store": status.get("content_store"),
         "index_store": status.get("index_store"),
         "content_count": status.get("content_count", 0),

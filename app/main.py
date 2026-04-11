@@ -11,7 +11,7 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title=settings.APP_NAME,
         version=settings.APP_VERSION,
-        description="Math conclusion search backend API (FastAPI + SQLite)",
+        description="Math conclusion search backend API (FastAPI + canonical JSON content)",
         lifespan=app_lifespan,
     )
 

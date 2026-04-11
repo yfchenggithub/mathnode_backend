@@ -1,4 +1,4 @@
-进入 backend/ 目录后执行：
+﻿进入 backend 目录后执行：
 
 cd d:\mathnode_backend
 pip install -r requirements.txt
@@ -6,6 +6,7 @@ $env:APP_ENV="dev"
 $env:CONTENT_BACKEND="memory"
 $env:INDEX_BACKEND="memory"
 $env:BIZ_BACKEND="sqlite"
+$env:CONTENT_JSON_PATH="app/data/canonical_content_v2.json"
 $env:ENABLE_DEBUG_ENDPOINTS="true"
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
@@ -13,4 +14,7 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 http://127.0.0.1:8000/docs
 
-你会直接看到 Swagger 调试页面。FastAPI 会自动生成 OpenAPI 文档和交互式文档，这也是它很适合你这种接口型项目的重要原因
+
+应用构建自检
+命令：python -c "from app.main import create_app; app=create_app(); print(app.title, app.version)"
+输出：Math Search API 0.1.0

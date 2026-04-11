@@ -1,7 +1,7 @@
-"""
+﻿"""
 用途：
-- 统一项目配置入口
-- 兼容当前纯代码配置，同时支持通过环境变量覆盖关键开关
+- 统一项目配置入口。
+- 兼容当前纯代码配置，同时支持通过环境变量覆盖关键开关与路径。
 """
 
 import os
@@ -33,6 +33,12 @@ class Settings(BaseModel):
     APP_ENV: str = Field(default_factory=lambda: _env_str("APP_ENV", "dev"))
     CONTENT_BACKEND: str = Field(
         default_factory=lambda: _env_str("CONTENT_BACKEND", "memory")
+    )
+    CONTENT_JSON_PATH: str = Field(
+        default_factory=lambda: _env_str(
+            "CONTENT_JSON_PATH",
+            "app/data/canonical_content_v2.json",
+        )
     )
     INDEX_BACKEND: str = Field(
         default_factory=lambda: _env_str("INDEX_BACKEND", "memory")

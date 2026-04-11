@@ -1,12 +1,12 @@
-"""
+﻿"""
 用途：
-- 应用启动/关闭生命周期管理
+- 应用启动/关闭生命周期管理。
 职责：
-- 初始化数据库
-- 启动期加载 content 与 search index 到内存
-- 将 store 与 bootstrap 状态挂载到 app.state
+- 初始化业务数据库（收藏、最近搜索等）。
+- 启动期加载 canonical JSON 内容并构建内存索引。
+- 将 store 与 bootstrap 状态挂载到 app.state。
 设计：
-- 以最小改造接入 FastAPI lifespan，替代 on_event("startup")
+- 以最小改造接入 FastAPI lifespan，替代 on_event("startup")。
 """
 
 from __future__ import annotations
@@ -14,13 +14,14 @@ from __future__ import annotations
 import logging
 import time
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
 
 from app.core.config import settings
 from app.db.init_db import init_db
-from app.db.session import DATABASE_PATH, SessionLocal
-from app.loaders.content_loader import load_content_from_sqlite
+from app.db.session import DATABASE_PATH
+from app.loaders.content_loader import load_content
 from app.loaders.index_loader import build_index_records_from_content
 from app.stores.memory_content_store import MemoryContentStore
 from app.stores.memory_index_store import MemoryIndexStore
@@ -28,13 +29,30 @@ from app.stores.memory_index_store import MemoryIndexStore
 LOGGER = logging.getLogger(__name__)
 
 
+def _resolve_content_json_path(raw_path: str) -> Path:
+    path = Path(raw_path).expanduser()
+    if path.is_absolute():
+        return path
+
+    project_root = Path(__file__).resolve().parents[2]
+    return (project_root / path).resolve()
+
+
 @asynccontextmanager
 async def app_lifespan(app: FastAPI):
     started_at = time.perf_counter()
 
+    content_json_path = _resolve_content_json_path(settings.CONTENT_JSON_PATH)
+
     LOGGER.info("Bootstrap start")
     LOGGER.info("SQLite path: %s", DATABASE_PATH)
-    LOGGER.info("Configured backends: content=%s index=%s biz=%s", settings.CONTENT_BACKEND, settings.INDEX_BACKEND, settings.BIZ_BACKEND)
+    LOGGER.info("Content JSON path: %s", content_json_path)
+    LOGGER.info(
+        "Configured backends: content=%s index=%s biz=%s",
+        settings.CONTENT_BACKEND,
+        settings.INDEX_BACKEND,
+        settings.BIZ_BACKEND,
+    )
 
     if settings.BIZ_BACKEND != "sqlite":
         raise RuntimeError(f"Unsupported BIZ_BACKEND: {settings.BIZ_BACKEND}")
@@ -44,12 +62,7 @@ async def app_lifespan(app: FastAPI):
         raise RuntimeError(f"Unsupported INDEX_BACKEND: {settings.INDEX_BACKEND}")
 
     init_db()
-
-    db = SessionLocal()
-    try:
-        content_result = load_content_from_sqlite(db)
-    finally:
-        db.close()
+    content_result = load_content(json_path=content_json_path)
 
     content_store = MemoryContentStore(
         documents=content_result.records,
@@ -67,6 +80,7 @@ async def app_lifespan(app: FastAPI):
     bootstrap_status = {
         "app_env": settings.APP_ENV,
         "sqlite_path": str(DATABASE_PATH),
+        "content_json_path": str(content_json_path),
         "content_backend": settings.CONTENT_BACKEND,
         "index_backend": settings.INDEX_BACKEND,
         "biz_backend": settings.BIZ_BACKEND,

@@ -1,0 +1,4 @@
+真实数据加载自检
+命令：python -c "from app.loaders.content_loader import load_content_from_json; r=load_content_from_json('app/data/canonical_content_v2.json'); print(r.total_rows, len(r.records), r.duplicate_id_count, r.missing_key_field_count, r.source)"
+输出：42 42 0 0 json:D:/mathnode_backend/app/data/canonical_content_v2.json
+
