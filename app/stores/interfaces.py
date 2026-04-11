@@ -8,6 +8,8 @@ from __future__ import annotations
 
 from typing import Any, Protocol, TypedDict
 
+ContentRawRecord = dict[str, Any]
+
 
 class ContentDocument(TypedDict):
     id: str
@@ -33,6 +35,9 @@ class ContentSummary(TypedDict):
 
 class ContentStore(Protocol):
     def get_by_id(self, conclusion_id: str) -> ContentDocument | None:
+        ...
+
+    def get_raw_by_id(self, conclusion_id: str) -> ContentRawRecord | None:
         ...
 
     def exists(self, conclusion_id: str) -> bool:

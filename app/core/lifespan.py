@@ -71,6 +71,7 @@ async def app_lifespan(app: FastAPI):
     content_store = MemoryContentStore(
         documents=content_result.records,
         source=content_result.source,
+        raw_records_by_id=content_result.raw_records_by_id,
     )
 
     index_result = load_index_records(index_file_path=index_json_path)

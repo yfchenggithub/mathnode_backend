@@ -14,11 +14,12 @@ from __future__ import annotations
 import json
 import logging
 import re
+from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from app.stores.interfaces import ContentDocument
+from app.stores.interfaces import ContentDocument, ContentRawRecord
 
 LOGGER = logging.getLogger(__name__)
 
@@ -28,6 +29,7 @@ DEFAULT_CONTENT_JSON_PATH = Path("app/data/canonical_content_v2.json")
 @dataclass
 class ContentLoadResult:
     records: list[ContentDocument]
+    raw_records_by_id: dict[str, ContentRawRecord]
     source: str
     total_rows: int
     duplicate_id_count: int
@@ -449,6 +451,7 @@ def load_content_from_json(json_path: str | Path) -> ContentLoadResult:
     raw_items = _load_json_file(path)
 
     records: list[ContentDocument] = []
+    raw_records_by_id: dict[str, ContentRawRecord] = {}
     seen_ids: set[str] = set()
     duplicate_id_count = 0
     missing_key_field_count = 0
@@ -465,6 +468,11 @@ def load_content_from_json(json_path: str | Path) -> ContentLoadResult:
             continue
         seen_ids.add(conclusion_id)
 
+        raw_record = deepcopy(item)
+        if not _safe_str(raw_record.get("id")).strip():
+            raw_record["id"] = conclusion_id
+        raw_records_by_id[conclusion_id] = raw_record
+
         if not _safe_str(doc["id"]).strip():
             missing_key_field_count += 1
         if not _safe_str(doc["title"]).strip():
@@ -478,6 +486,7 @@ def load_content_from_json(json_path: str | Path) -> ContentLoadResult:
 
     result = ContentLoadResult(
         records=records,
+        raw_records_by_id=raw_records_by_id,
         source=f"json:{path.as_posix()}",
         total_rows=len(raw_items),
         duplicate_id_count=duplicate_id_count,
