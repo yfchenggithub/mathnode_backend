@@ -1,13 +1,10 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class SearchItem(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
     id: str
-    title: str
-    module: str
-    difficulty: int
-    tags: list[str]
-    statement_clean: str
     is_favorited: bool = False
 
 

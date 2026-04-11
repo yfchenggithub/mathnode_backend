@@ -11,6 +11,7 @@
 from __future__ import annotations
 
 from collections import Counter
+from copy import deepcopy
 from typing import Any
 
 
@@ -20,6 +21,7 @@ class MemoryIndexStore:
         self._records: list[dict[str, Any]] = []
 
         for item in sorted(records, key=lambda x: x["id"]):
+            doc_payload = self._build_doc_payload(item)
             tags: list[str] = [str(x).strip() for x in item.get("tags", []) if str(x).strip()]
             tags_text = ",".join(tags)
             normalized = {
@@ -30,12 +32,34 @@ class MemoryIndexStore:
                 "tags": tags,
                 "tags_text": tags_text,
                 "statement_clean": str(item.get("statement_clean", "")),
+                "doc_payload": doc_payload,
             }
             normalized["_title_lower"] = normalized["title"].lower()
             normalized["_module_lower"] = normalized["module"].lower()
             normalized["_statement_clean_lower"] = normalized["statement_clean"].lower()
             normalized["_tags_text_lower"] = normalized["tags_text"].lower()
             self._records.append(normalized)
+
+    @staticmethod
+    def _build_doc_payload(item: dict[str, Any]) -> dict[str, Any]:
+        raw_payload = item.get("doc_payload")
+        if isinstance(raw_payload, dict):
+            payload = deepcopy(raw_payload)
+        else:
+            # 兼容旧记录格式：若没有 doc_payload，则退回旧搜索字段。
+            payload = {
+                "id": str(item.get("id", "")),
+                "title": str(item.get("title", "")),
+                "module": str(item.get("module", "")),
+                "difficulty": int(item.get("difficulty", 1)),
+                "tags": [str(x).strip() for x in item.get("tags", []) if str(x).strip()],
+                "statement_clean": str(item.get("statement_clean", "")),
+            }
+
+        if not str(payload.get("id", "")).strip():
+            payload["id"] = str(item.get("id", ""))
+
+        return payload
 
     def _filter_records(
         self,
@@ -96,18 +120,11 @@ class MemoryIndexStore:
         end = start + page_size
         page_rows = matched_rows[start:end]
 
-        items = [
-            {
-                "id": row["id"],
-                "title": row["title"],
-                "module": row["module"],
-                "difficulty": row["difficulty"],
-                "tags": list(row["tags"]),
-                "statement_clean": row["statement_clean"],
-                "is_favorited": row["id"] in favorite_ids,
-            }
-            for row in page_rows
-        ]
+        items: list[dict[str, Any]] = []
+        for row in page_rows:
+            item_payload = deepcopy(row["doc_payload"])
+            item_payload["is_favorited"] = row["id"] in favorite_ids
+            items.append(item_payload)
 
         module_counter = Counter(row["module"] for row in matched_rows)
         difficulty_counter = Counter(row["difficulty"] for row in matched_rows)

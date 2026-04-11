@@ -14,6 +14,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Sequence
@@ -202,6 +203,11 @@ def _convert_doc_to_record(doc_key: str, doc: dict[str, object]) -> tuple[dict[s
     # 为保证下游索引记录可排序与查询，id 为空时使用 docs key 兜底。
     record_id = raw_id or doc_key
 
+    # 保留 docs 原始字段用于 API 透传，避免搜索接口返回时发生字段漂移。
+    doc_payload = deepcopy(doc)
+    if not _safe_str(doc_payload.get("id")).strip():
+        doc_payload["id"] = record_id
+
     record: dict[str, Any] = {
         "id": record_id,
         "title": title,
@@ -218,6 +224,7 @@ def _convert_doc_to_record(doc_key: str, doc: dict[str, object]) -> tuple[dict[s
         "hot_score": _safe_float(doc.get("hotScore"), default=0.0),
         "exam_frequency": _safe_float(doc.get("examFrequency"), default=0.0),
         "exam_score": _safe_float(doc.get("examScore"), default=0.0),
+        "doc_payload": doc_payload,
     }
 
     missing_count = _count_missing_fields(
