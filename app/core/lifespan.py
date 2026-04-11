@@ -1,12 +1,13 @@
-﻿"""
+"""
 用途：
 - 应用启动/关闭生命周期管理。
 职责：
 - 初始化业务数据库（收藏、最近搜索等）。
-- 启动期加载 canonical JSON 内容并构建内存索引。
+- 启动期加载 canonical JSON 内容并加载离线检索索引。
 - 将 store 与 bootstrap 状态挂载到 app.state。
-设计：
+设计说明：
 - 以最小改造接入 FastAPI lifespan，替代 on_event("startup")。
+- content loader 与 index loader 解耦，便于索引源后续切换到其他后端。
 """
 
 from __future__ import annotations
@@ -22,14 +23,15 @@ from app.core.config import settings
 from app.db.init_db import init_db
 from app.db.session import DATABASE_PATH
 from app.loaders.content_loader import load_content
-from app.loaders.index_loader import build_index_records_from_content
+from app.loaders.index_loader import load_index_records
 from app.stores.memory_content_store import MemoryContentStore
 from app.stores.memory_index_store import MemoryIndexStore
 
 LOGGER = logging.getLogger(__name__)
 
 
-def _resolve_content_json_path(raw_path: str) -> Path:
+def _resolve_project_path(raw_path: str) -> Path:
+    """将配置路径规范为绝对路径（支持相对项目根目录）。"""
     path = Path(raw_path).expanduser()
     if path.is_absolute():
         return path
@@ -42,11 +44,13 @@ def _resolve_content_json_path(raw_path: str) -> Path:
 async def app_lifespan(app: FastAPI):
     started_at = time.perf_counter()
 
-    content_json_path = _resolve_content_json_path(settings.CONTENT_JSON_PATH)
+    content_json_path = _resolve_project_path(settings.CONTENT_JSON_PATH)
+    index_json_path = _resolve_project_path(settings.INDEX_JSON_PATH)
 
     LOGGER.info("Bootstrap start")
     LOGGER.info("SQLite path: %s", DATABASE_PATH)
     LOGGER.info("Content JSON path: %s", content_json_path)
+    LOGGER.info("Index JSON path: %s", index_json_path)
     LOGGER.info(
         "Configured backends: content=%s index=%s biz=%s",
         settings.CONTENT_BACKEND,
@@ -69,7 +73,7 @@ async def app_lifespan(app: FastAPI):
         source=content_result.source,
     )
 
-    index_result = build_index_records_from_content(content_result.records)
+    index_result = load_index_records(index_file_path=index_json_path)
     index_store = MemoryIndexStore(
         records=index_result.records,
         source=index_result.source,
@@ -81,6 +85,7 @@ async def app_lifespan(app: FastAPI):
         "app_env": settings.APP_ENV,
         "sqlite_path": str(DATABASE_PATH),
         "content_json_path": str(content_json_path),
+        "index_json_path": str(index_json_path),
         "content_backend": settings.CONTENT_BACKEND,
         "index_backend": settings.INDEX_BACKEND,
         "biz_backend": settings.BIZ_BACKEND,

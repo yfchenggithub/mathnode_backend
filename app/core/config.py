@@ -1,7 +1,11 @@
-﻿"""
+"""
 用途：
 - 统一项目配置入口。
 - 兼容当前纯代码配置，同时支持通过环境变量覆盖关键开关与路径。
+职责：
+- 对外提供 Settings 单例，供 FastAPI 启动链路与服务层共享配置。
+设计说明：
+- 保持“环境变量优先，代码默认值兜底”的统一策略，避免路径和开关散落到各模块。
 """
 
 import os
@@ -42,6 +46,12 @@ class Settings(BaseModel):
     )
     INDEX_BACKEND: str = Field(
         default_factory=lambda: _env_str("INDEX_BACKEND", "memory")
+    )
+    INDEX_JSON_PATH: str = Field(
+        default_factory=lambda: _env_str(
+            "INDEX_JSON_PATH",
+            "app/data/backend_search_index.json",
+        )
     )
     BIZ_BACKEND: str = Field(default_factory=lambda: _env_str("BIZ_BACKEND", "sqlite"))
     ENABLE_DEBUG_ENDPOINTS: bool = Field(
