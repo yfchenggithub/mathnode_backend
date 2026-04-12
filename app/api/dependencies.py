@@ -12,7 +12,7 @@ from typing import cast
 from fastapi import Request
 
 from app.core.exceptions import BizException
-from app.stores.interfaces import ContentStore, IndexStore
+from app.stores.interfaces import ContentStore, IndexStore, PdfMappingStore
 
 
 def get_content_store(request: Request) -> ContentStore:
@@ -27,3 +27,10 @@ def get_index_store(request: Request) -> IndexStore:
     if store is None:
         raise BizException(code=5002, message="index store not initialized")
     return cast(IndexStore, store)
+
+
+def get_pdf_mapping_store(request: Request) -> PdfMappingStore:
+    store = getattr(request.app.state, "pdf_mapping_store", None)
+    if store is None:
+        raise BizException(code=5003, message="pdf mapping store not initialized")
+    return cast(PdfMappingStore, store)

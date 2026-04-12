@@ -24,8 +24,10 @@ from app.db.init_db import init_db
 from app.db.session import DATABASE_PATH
 from app.loaders.content_loader import load_content
 from app.loaders.index_loader import load_index_records
+from app.loaders.pdf_mapping_loader import load_pdf_mapping
 from app.stores.memory_content_store import MemoryContentStore
 from app.stores.memory_index_store import MemoryIndexStore
+from app.stores.memory_pdf_mapping_store import MemoryPdfMappingStore
 
 LOGGER = logging.getLogger(__name__)
 
@@ -46,11 +48,13 @@ async def app_lifespan(app: FastAPI):
 
     content_json_path = _resolve_project_path(settings.CONTENT_JSON_PATH)
     index_json_path = _resolve_project_path(settings.INDEX_JSON_PATH)
+    pdf_mapping_json_path = _resolve_project_path(settings.CONCLUSION_PDF_MAP_PATH)
 
     LOGGER.info("Bootstrap start")
     LOGGER.info("SQLite path: %s", DATABASE_PATH)
     LOGGER.info("Content JSON path: %s", content_json_path)
     LOGGER.info("Index JSON path: %s", index_json_path)
+    LOGGER.info("PDF mapping JSON path: %s", pdf_mapping_json_path)
     LOGGER.info(
         "Configured backends: content=%s index=%s biz=%s",
         settings.CONTENT_BACKEND,
@@ -79,6 +83,15 @@ async def app_lifespan(app: FastAPI):
         records=index_result.records,
         source=index_result.source,
     )
+    pdf_mapping_result = load_pdf_mapping(
+        mapping_json_path=pdf_mapping_json_path,
+        pdf_root_dir=settings.PDF_ROOT_DIR,
+        strict=settings.PDF_MAPPING_STRICT,
+    )
+    pdf_mapping_store = MemoryPdfMappingStore(
+        mapping=pdf_mapping_result.mapping,
+        source=pdf_mapping_result.source,
+    )
 
     bootstrap_time_ms = int((time.perf_counter() - started_at) * 1000)
 
@@ -87,18 +100,27 @@ async def app_lifespan(app: FastAPI):
         "sqlite_path": str(DATABASE_PATH),
         "content_json_path": str(content_json_path),
         "index_json_path": str(index_json_path),
+        "pdf_mapping_json_path": str(pdf_mapping_json_path),
         "content_backend": settings.CONTENT_BACKEND,
         "index_backend": settings.INDEX_BACKEND,
         "biz_backend": settings.BIZ_BACKEND,
+        "pdf_mapping_strict": settings.PDF_MAPPING_STRICT,
         "content_source": content_result.source,
         "index_source": index_result.source,
+        "pdf_mapping_source": pdf_mapping_result.source,
         "content_store": content_store.__class__.__name__,
         "index_store": index_store.__class__.__name__,
+        "pdf_mapping_store": pdf_mapping_store.__class__.__name__,
         "content_count": content_store.count(),
         "index_count": index_store.count(),
+        "pdf_mapping_count": pdf_mapping_store.count(),
         "duplicate_id_count": content_result.duplicate_id_count,
         "content_missing_key_field_count": content_result.missing_key_field_count,
         "index_missing_key_field_count": index_result.missing_key_field_count,
+        "pdf_mapping_total_rows": pdf_mapping_result.total_rows,
+        "pdf_mapping_valid_rows": pdf_mapping_result.valid_rows,
+        "pdf_mapping_invalid_row_count": pdf_mapping_result.invalid_row_count,
+        "pdf_mapping_duplicate_id_count": pdf_mapping_result.duplicate_id_count,
         "bootstrap_time_ms": bootstrap_time_ms,
         "memory_mode_enabled": (
             settings.CONTENT_BACKEND == "memory"
@@ -108,15 +130,18 @@ async def app_lifespan(app: FastAPI):
 
     app.state.content_store = content_store
     app.state.index_store = index_store
+    app.state.pdf_mapping_store = pdf_mapping_store
     app.state.bootstrap_status = bootstrap_status
 
     LOGGER.info("content_source=%s", bootstrap_status["content_source"])
     LOGGER.info("index_source=%s", bootstrap_status["index_source"])
     LOGGER.info("content_count=%s", bootstrap_status["content_count"])
     LOGGER.info("index_count=%s", bootstrap_status["index_count"])
+    LOGGER.info("pdf_mapping_count=%s", bootstrap_status["pdf_mapping_count"])
     LOGGER.info("bootstrap_time_ms=%s", bootstrap_status["bootstrap_time_ms"])
     LOGGER.info("content_store=%s", bootstrap_status["content_store"])
     LOGGER.info("index_store=%s", bootstrap_status["index_store"])
+    LOGGER.info("pdf_mapping_store=%s", bootstrap_status["pdf_mapping_store"])
     LOGGER.info("duplicate_id_count=%s", bootstrap_status["duplicate_id_count"])
     LOGGER.info(
         "content_missing_key_field_count=%s",
@@ -125,6 +150,10 @@ async def app_lifespan(app: FastAPI):
     LOGGER.info(
         "index_missing_key_field_count=%s",
         bootstrap_status["index_missing_key_field_count"],
+    )
+    LOGGER.info(
+        "pdf_mapping_invalid_row_count=%s",
+        bootstrap_status["pdf_mapping_invalid_row_count"],
     )
     LOGGER.info("memory_mode_enabled=%s", bootstrap_status["memory_mode_enabled"])
 

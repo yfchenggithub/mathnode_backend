@@ -74,3 +74,14 @@ class IndexStore(Protocol):
 
     def stats(self) -> dict[str, Any]:
         ...
+
+
+class PdfMappingStore(Protocol):
+    def get_pdf_filename(self, conclusion_id: str) -> str | None:
+        ...
+
+    def count(self) -> int:
+        ...
+
+    def stats(self) -> dict[str, Any]:
+        ...

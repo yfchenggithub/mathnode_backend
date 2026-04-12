@@ -1,14 +1,4 @@
-"""
-用途：
-- 统一项目配置入口。
-- 兼容当前纯代码配置，同时支持通过环境变量覆盖关键开关与路径。
-职责：
-- 对外提供 Settings 单例，供 FastAPI 启动链路与服务层共享配置。
-设计说明：
-- 保持“环境变量优先，代码默认值兜底”的统一策略，避免路径和开关散落到各模块。
-"""
-
-import os
+﻿import os
 
 from pydantic import BaseModel, Field
 
@@ -60,9 +50,17 @@ class Settings(BaseModel):
     BOOTSTRAP_LOG_VERBOSE: bool = Field(
         default_factory=lambda: _env_bool("BOOTSTRAP_LOG_VERBOSE", True)
     )
-    # PDF 文件根目录：可由环境变量覆盖，默认使用项目内目录。
     PDF_ROOT_DIR: str = Field(
         default_factory=lambda: _env_str("PDF_ROOT_DIR", "app/data/pdfs")
+    )
+    CONCLUSION_PDF_MAP_PATH: str = Field(
+        default_factory=lambda: _env_str(
+            "CONCLUSION_PDF_MAP_PATH",
+            "app/data/conclusion_pdf_map.json",
+        )
+    )
+    PDF_MAPPING_STRICT: bool = Field(
+        default_factory=lambda: _env_bool("PDF_MAPPING_STRICT", False)
     )
 
 

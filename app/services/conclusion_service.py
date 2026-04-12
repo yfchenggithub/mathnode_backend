@@ -1,16 +1,14 @@
 from urllib.parse import quote
 
 from app.core.exceptions import BizException
-from app.stores.interfaces import ContentStore
+from app.stores.interfaces import ContentStore, PdfMappingStore
 
 
-_CONCLUSION_PDF_FILENAME_MAP: dict[str, str] = {
-    "I040": "demo.pdf",
-}
-
-
-def _derive_pdf_meta(conclusion_id: str) -> dict[str, str | bool | None]:
-    pdf_filename = _CONCLUSION_PDF_FILENAME_MAP.get(conclusion_id)
+def _derive_pdf_meta(
+    conclusion_id: str,
+    pdf_mapping_store: PdfMappingStore,
+) -> dict[str, str | bool | None]:
+    pdf_filename = pdf_mapping_store.get_pdf_filename(conclusion_id)
     if not pdf_filename:
         return {
             "pdf_url": None,
@@ -29,6 +27,7 @@ class ConclusionService:
     @staticmethod
     def get_by_id(
         content_store: ContentStore,
+        pdf_mapping_store: PdfMappingStore,
         conclusion_id: str,
         favorite_ids: set[str] | None = None,
     ) -> dict:
@@ -43,5 +42,5 @@ class ConclusionService:
         record_id = raw_id if isinstance(raw_id, str) and raw_id.strip() else conclusion_id
 
         response_data["is_favorited"] = record_id in favorite_ids
-        response_data.update(_derive_pdf_meta(record_id))
+        response_data.update(_derive_pdf_meta(record_id, pdf_mapping_store))
         return response_data
