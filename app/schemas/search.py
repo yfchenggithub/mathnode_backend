@@ -28,8 +28,26 @@ class SearchResponseData(BaseModel):
     facets: SearchFacets
 
 
+class SuggestItem(BaseModel):
+    id: str
+    title: str
+    subtitle: str
+    route: str
+    module: str
+    difficulty: int
+    tags: list[str] = Field(default_factory=list)
+    match_type: str
+    match_field: str
+    matched_text: str
+    score: float
+    badge: str = ""
+
+
 class SuggestResponseData(BaseModel):
-    items: list[str] = []
+    query: str = ""
+    total: int = 0
+    empty_hint: str = ""
+    items: list[SuggestItem] = Field(default_factory=list)
 
 
 class SearchQueryParams(BaseModel):
