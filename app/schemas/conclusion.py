@@ -14,4 +14,6 @@ class ConclusionDetail(BaseModel):
     traps: list[str]
     summary: str
     pdf_url: str | None = None
+    pdf_filename: str | None = None
+    pdf_available: bool = False
     is_favorited: bool = False

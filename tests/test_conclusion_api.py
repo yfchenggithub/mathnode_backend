@@ -4,7 +4,6 @@ import json
 import unittest
 from copy import deepcopy
 from pathlib import Path
-from urllib.parse import quote
 
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
@@ -17,6 +16,10 @@ from app.stores.memory_content_store import MemoryContentStore
 
 
 class ConclusionApiRawRecordTests(unittest.TestCase):
+    _pdf_filename_map: dict[str, str] = {
+        "I040": "demo.pdf",
+    }
+
     @classmethod
     def setUpClass(cls) -> None:
         canonical_path = Path("app/data/canonical_content_v2.json")
@@ -47,23 +50,20 @@ class ConclusionApiRawRecordTests(unittest.TestCase):
         self.client.close()
 
     @staticmethod
-    def _expected_pdf_url(raw_record: dict[str, object]) -> str | None:
-        assets = raw_record.get("assets")
-        if not isinstance(assets, dict):
-            return None
+    def _expected_pdf_meta(conclusion_id: str) -> dict[str, str | bool | None]:
+        pdf_filename = ConclusionApiRawRecordTests._pdf_filename_map.get(conclusion_id)
+        if not pdf_filename:
+            return {
+                "pdf_url": None,
+                "pdf_filename": None,
+                "pdf_available": False,
+            }
 
-        raw_pdf = assets.get("pdf")
-        if not isinstance(raw_pdf, str):
-            return None
-
-        pdf_name = raw_pdf.strip()
-        if not pdf_name:
-            return None
-
-        if pdf_name.startswith(("http://", "https://", "/")):
-            return pdf_name
-
-        return f"/api/v1/pdfs/{quote(pdf_name)}"
+        return {
+            "pdf_url": f"/api/v1/pdfs/{pdf_filename}",
+            "pdf_filename": pdf_filename,
+            "pdf_available": True,
+        }
 
     def test_get_i040_returns_raw_record_plus_derived_fields(self) -> None:
         response = self.client.get("/api/v1/conclusions/I040")
@@ -74,7 +74,20 @@ class ConclusionApiRawRecordTests(unittest.TestCase):
 
         expected = deepcopy(self._canonical_payload["I040"])
         expected["is_favorited"] = False
-        expected["pdf_url"] = self._expected_pdf_url(expected)
+        expected.update(self._expected_pdf_meta("I040"))
+
+        self.assertEqual(payload["data"], expected)
+
+    def test_get_i041_returns_no_pdf(self) -> None:
+        response = self.client.get("/api/v1/conclusions/I041")
+
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertEqual(payload["code"], 0)
+
+        expected = deepcopy(self._canonical_payload["I041"])
+        expected["is_favorited"] = False
+        expected.update(self._expected_pdf_meta("I041"))
 
         self.assertEqual(payload["data"], expected)
 

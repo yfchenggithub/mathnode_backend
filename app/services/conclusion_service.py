@@ -4,23 +4,25 @@ from app.core.exceptions import BizException
 from app.stores.interfaces import ContentStore
 
 
-def _derive_pdf_url(raw_record: dict[str, object]) -> str | None:
-    assets = raw_record.get("assets")
-    if not isinstance(assets, dict):
-        return None
+_CONCLUSION_PDF_FILENAME_MAP: dict[str, str] = {
+    "I040": "demo.pdf",
+}
 
-    raw_pdf = assets.get("pdf")
-    if not isinstance(raw_pdf, str):
-        return None
 
-    pdf_name = raw_pdf.strip()
-    if not pdf_name:
-        return None
+def _derive_pdf_meta(conclusion_id: str) -> dict[str, str | bool | None]:
+    pdf_filename = _CONCLUSION_PDF_FILENAME_MAP.get(conclusion_id)
+    if not pdf_filename:
+        return {
+            "pdf_url": None,
+            "pdf_filename": None,
+            "pdf_available": False,
+        }
 
-    if pdf_name.startswith(("http://", "https://", "/")):
-        return pdf_name
-
-    return f"/api/v1/pdfs/{quote(pdf_name)}"
+    return {
+        "pdf_url": f"/api/v1/pdfs/{quote(pdf_filename)}",
+        "pdf_filename": pdf_filename,
+        "pdf_available": True,
+    }
 
 
 class ConclusionService:
@@ -41,5 +43,5 @@ class ConclusionService:
         record_id = raw_id if isinstance(raw_id, str) and raw_id.strip() else conclusion_id
 
         response_data["is_favorited"] = record_id in favorite_ids
-        response_data["pdf_url"] = _derive_pdf_url(raw_row)
+        response_data.update(_derive_pdf_meta(record_id))
         return response_data
