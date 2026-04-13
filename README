@@ -8,6 +8,10 @@ $env:INDEX_BACKEND="memory"
 $env:BIZ_BACKEND="sqlite"
 $env:CONTENT_JSON_PATH="app/data/canonical_content_v2.json"
 $env:ENABLE_DEBUG_ENDPOINTS="true"
+$env:WECHAT_MINIAPP_APPID="你的微信appid"
+$env:WECHAT_MINIAPP_SECRET="你的微信secret"
+$env:JWT_SECRET="请替换为高强度随机密钥"
+$env:JWT_EXPIRE_SECONDS="86400"
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 启动后打开：

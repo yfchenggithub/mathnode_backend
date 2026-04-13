@@ -1,8 +1,8 @@
-from fastapi import APIRouter, Depends, Header, Query
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.api.dependencies import get_index_store
-from app.api.deps import get_db
+from app.api.deps import get_db, get_optional_user_id
 from app.core.response import success_response
 from app.services.favorite_service import FavoriteService
 from app.services.recent_search_service import RecentSearchService
@@ -20,11 +20,10 @@ def search(
     tag: str | None = Query(default=None),
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=10, ge=1, le=50),
-    x_token: str | None = Header(default=None),
+    user_id: str | None = Depends(get_optional_user_id),
     db: Session = Depends(get_db),
     index_store: IndexStore = Depends(get_index_store),
 ):
-    user_id = "u1001" if x_token == "mock-token-u1001" else None
     favorite_ids = (
         FavoriteService.get_favorite_ids(db=db, user_id=user_id) if user_id else set()
     )

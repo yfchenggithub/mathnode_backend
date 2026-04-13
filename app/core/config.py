@@ -18,6 +18,19 @@ def _env_bool(name: str, default: bool) -> bool:
     return value.strip().lower() in {"1", "true", "yes", "on"}
 
 
+def _env_int(name: str, default: int) -> int:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    value = value.strip()
+    if not value:
+        return default
+    try:
+        return int(value)
+    except ValueError:
+        return default
+
+
 class Settings(BaseModel):
     APP_NAME: str = "Math Search API"
     APP_VERSION: str = "0.1.0"
@@ -61,6 +74,16 @@ class Settings(BaseModel):
     )
     PDF_MAPPING_STRICT: bool = Field(
         default_factory=lambda: _env_bool("PDF_MAPPING_STRICT", False)
+    )
+    WECHAT_MINIAPP_APPID: str = Field(
+        default_factory=lambda: _env_str("WECHAT_MINIAPP_APPID", "")
+    )
+    WECHAT_MINIAPP_SECRET: str = Field(
+        default_factory=lambda: _env_str("WECHAT_MINIAPP_SECRET", "")
+    )
+    JWT_SECRET: str = Field(default_factory=lambda: _env_str("JWT_SECRET", ""))
+    JWT_EXPIRE_SECONDS: int = Field(
+        default_factory=lambda: _env_int("JWT_EXPIRE_SECONDS", 86400)
     )
 
 
