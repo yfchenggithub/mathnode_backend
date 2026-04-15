@@ -1,0 +1,27 @@
+{
+  "A": {
+    "id": "DUP001",
+    "identity": {
+      "module": ""
+    },
+    "meta": {
+      "title": "",
+      "summary": ""
+    },
+    "content": {
+      "sections": []
+    }
+  },
+  "B": {
+    "id": "DUP001",
+    "identity": {
+      "module": "algebra"
+    },
+    "meta": {
+      "title": "标题"
+    },
+    "content": {
+      "sections": []
+    }
+  }
+}

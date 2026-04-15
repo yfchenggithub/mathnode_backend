@@ -1,4 +1,4 @@
-﻿import os
+import os
 
 from pydantic import BaseModel, Field
 
@@ -31,13 +31,72 @@ def _env_int(name: str, default: int) -> int:
         return default
 
 
+def _env_app_env(default: str = "dev") -> str:
+    value = _env_str("APP_ENV", default).lower()
+    if value in {"dev", "test", "prod"}:
+        return value
+    return default
+
+
+def _default_log_format() -> str:
+    app_env = _env_app_env()
+    return "detailed" if app_env in {"dev", "test"} else "standard"
+
+
+def _default_log_level() -> str:
+    app_env = _env_app_env()
+    if app_env == "test":
+        return "WARNING"
+    return "INFO"
+
+
+def _default_app_log_level() -> str:
+    app_env = _env_app_env()
+    return "DEBUG" if app_env == "dev" else "INFO"
+
+
+def _default_request_log_enabled() -> bool:
+    app_env = _env_app_env()
+    return app_env != "test"
+
+
 class Settings(BaseModel):
     APP_NAME: str = "Math Search API"
     APP_VERSION: str = "0.1.0"
     API_PREFIX: str = "/api/v1"
     CORS_ORIGINS: list[str] = ["*"]
 
-    APP_ENV: str = Field(default_factory=lambda: _env_str("APP_ENV", "dev"))
+    APP_ENV: str = Field(default_factory=_env_app_env)
+    LOG_ENABLED: bool = Field(default_factory=lambda: _env_bool("LOG_ENABLED", True))
+    LOG_FORMAT: str = Field(
+        default_factory=lambda: _env_str("LOG_FORMAT", _default_log_format())
+    )
+    LOG_LEVEL: str = Field(
+        default_factory=lambda: _env_str("LOG_LEVEL", _default_log_level())
+    )
+    APP_LOG_LEVEL: str = Field(
+        default_factory=lambda: _env_str("APP_LOG_LEVEL", _default_app_log_level())
+    )
+    THIRD_PARTY_LOG_LEVEL: str = Field(
+        default_factory=lambda: _env_str("THIRD_PARTY_LOG_LEVEL", "WARNING")
+    )
+    UVICORN_LOG_LEVEL: str = Field(
+        default_factory=lambda: _env_str("UVICORN_LOG_LEVEL", "INFO")
+    )
+    UVICORN_ACCESS_LOG: bool = Field(
+        default_factory=lambda: _env_bool("UVICORN_ACCESS_LOG", False)
+    )
+    REQUEST_LOG_ENABLED: bool = Field(
+        default_factory=lambda: _env_bool(
+            "REQUEST_LOG_ENABLED", _default_request_log_enabled()
+        )
+    )
+    REQUEST_LOG_LEVEL: str = Field(
+        default_factory=lambda: _env_str("REQUEST_LOG_LEVEL", "INFO")
+    )
+    HTTP_CLIENT_DEBUG: bool = Field(
+        default_factory=lambda: _env_bool("HTTP_CLIENT_DEBUG", False)
+    )
     CONTENT_BACKEND: str = Field(
         default_factory=lambda: _env_str("CONTENT_BACKEND", "memory")
     )

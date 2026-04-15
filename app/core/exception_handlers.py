@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import logging
 
@@ -97,6 +97,16 @@ async def http_exception_handler(
 
     if status_code >= 500:
         LOGGER.error(
+            log_message,
+            request_id,
+            request.method,
+            request.url.path,
+            status_code,
+            code,
+            message,
+        )
+    elif status_code == 404:
+        LOGGER.info(
             log_message,
             request_id,
             request.method,

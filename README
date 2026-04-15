@@ -1,8 +1,18 @@
-﻿进入 backend 目录后执行：
+进入 backend 目录后执行：
 
 cd d:\mathnode_backend
 pip install -r requirements.txt
 $env:APP_ENV="dev"
+$env:LOG_ENABLED="true"
+$env:LOG_FORMAT="detailed"
+$env:LOG_LEVEL="INFO"
+$env:APP_LOG_LEVEL="DEBUG"
+$env:THIRD_PARTY_LOG_LEVEL="WARNING"
+$env:UVICORN_LOG_LEVEL="INFO"
+$env:UVICORN_ACCESS_LOG="false"
+$env:REQUEST_LOG_ENABLED="true"
+$env:REQUEST_LOG_LEVEL="INFO"
+$env:HTTP_CLIENT_DEBUG="false"
 $env:CONTENT_BACKEND="memory"
 $env:INDEX_BACKEND="memory"
 $env:BIZ_BACKEND="sqlite"
@@ -22,3 +32,19 @@ http://127.0.0.1:8000/docs
 应用构建自检
 命令：python -c "from app.main import create_app; app=create_app(); print(app.title, app.version)"
 输出：Math Search API 0.1.0
+
+
+systemd Environment 示例（生产建议）：
+Environment=PYTHONUNBUFFERED=1
+Environment=APP_ENV=prod
+Environment=LOG_ENABLED=true
+Environment=LOG_FORMAT=standard
+Environment=LOG_LEVEL=INFO
+Environment=APP_LOG_LEVEL=INFO
+Environment=THIRD_PARTY_LOG_LEVEL=WARNING
+Environment=UVICORN_LOG_LEVEL=INFO
+Environment=UVICORN_ACCESS_LOG=false
+Environment=REQUEST_LOG_ENABLED=true
+Environment=REQUEST_LOG_LEVEL=INFO
+Environment=HTTP_CLIENT_DEBUG=false
+Environment=BOOTSTRAP_LOG_VERBOSE=false
