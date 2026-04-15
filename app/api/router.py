@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+﻿from fastapi import APIRouter
 
 from app.api.v1.auth import router as auth_router
 from app.api.v1.conclusions import router as conclusions_router
@@ -19,7 +19,6 @@ api_router.include_router(conclusions_router, tags=["conclusions"])
 api_router.include_router(auth_router, tags=["auth"])
 api_router.include_router(favorites_router, tags=["favorites"])
 api_router.include_router(recent_searches_router, tags=["recent_searches"])
-# PDF 文件访问接口（预览/下载）。
 api_router.include_router(pdfs_router, tags=["pdfs"])
 
 if settings.ENABLE_DEBUG_ENDPOINTS:

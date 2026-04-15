@@ -1,34 +1,18 @@
-"""
-文件作用：
-- 提供 PDF 文件定位与安全校验能力，供 API 路由复用。
+﻿from __future__ import annotations
 
-设计思路：
-- 将路径解析、路径合法性校验、文件类型校验集中在 service 层。
-- 路由层只负责 HTTP 协议行为（状态码、响应体、响应头），避免安全逻辑分散。
-
-主要功能：
-- 解析 PDF 根目录（支持相对路径与绝对路径，兼容 Windows/Linux）。
-- 防止路径穿越与绝对路径逃逸。
-- 限制只允许访问 .pdf/.PDF 文件。
-- 返回可直接用于 FileResponse 的绝对路径与文件名。
-
-为什么这样设计：
-- 在 MVP 阶段遵循最小改动原则，不改变现有架构主干。
-- 通过单点校验保证安全和可维护性，后续扩展下载鉴权或对象存储时可平滑演进。
-"""
-
-from __future__ import annotations
-
+import logging
 from dataclasses import dataclass
 from pathlib import Path
 
+LOGGER = logging.getLogger(__name__)
+
 
 class PdfPathValidationError(ValueError):
-    """PDF 请求路径非法。"""
+    """PDF request path is invalid."""
 
 
 class PdfFileNotFoundError(FileNotFoundError):
-    """PDF 文件不存在。"""
+    """PDF file does not exist."""
 
 
 @dataclass(frozen=True)
@@ -44,11 +28,15 @@ class PdfService:
         if not root_path.is_absolute():
             project_root = Path(__file__).resolve().parents[2]
             root_path = project_root / root_path
-        return root_path.resolve()
+        resolved_root = root_path.resolve()
+        LOGGER.debug("pdf root resolved | raw_root_dir=%s resolved=%s", raw_root_dir, resolved_root)
+        return resolved_root
 
     @staticmethod
     def resolve_pdf_file(file_path: str, raw_root_dir: str) -> PdfFile:
         normalized_input = file_path.strip()
+        LOGGER.debug("pdf resolve start | file_path=%s", normalized_input)
+
         if not normalized_input:
             raise PdfPathValidationError("文件路径不能为空")
         if "\x00" in normalized_input:
@@ -56,11 +44,9 @@ class PdfService:
 
         requested_path = Path(normalized_input)
 
-        # 禁止绝对路径（含 Windows 盘符）直接访问。
         if requested_path.is_absolute() or requested_path.drive:
-            raise PdfPathValidationError("不允许使用绝对路径访问文件")
+            raise PdfPathValidationError("文件路径不合法")
 
-        # 禁止目录穿越片段，避免通过 ../ 逃逸根目录。
         if any(part in {"..", "."} for part in requested_path.parts):
             raise PdfPathValidationError("文件路径不合法")
 
@@ -78,6 +64,11 @@ class PdfService:
         if not absolute_path.is_file():
             raise PdfFileNotFoundError("PDF 文件不存在")
 
+        LOGGER.debug(
+            "pdf resolve success | file_path=%s absolute_path=%s",
+            normalized_input,
+            absolute_path,
+        )
         return PdfFile(
             absolute_path=absolute_path,
             filename=absolute_path.name,

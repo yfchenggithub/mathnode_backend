@@ -1,0 +1,11 @@
+看日志
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000 --log-level debug --access-log
+
+run_dev.py+vscode打断点
+
+临时硬核调试：直接下 breakpoint()
+你在任意函数里都可以这样：
+@router.get("/search")
+def search(q: str = ""):
+    breakpoint()
+    return {"q": q}

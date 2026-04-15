@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+import time
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -38,6 +39,8 @@ def _resolve_mapping_json_path(mapping_json_path: str | Path) -> Path:
 
 
 def _load_mapping_root(path: Path) -> dict[str, object]:
+    started_at = time.perf_counter()
+    LOGGER.debug("pdf mapping read start | path=%s exists=%s", path, path.exists())
     if not path.exists():
         raise FileNotFoundError(f"PDF mapping JSON file not found: {path}")
     if not path.is_file():
@@ -64,6 +67,13 @@ def _load_mapping_root(path: Path) -> dict[str, object]:
     normalized: dict[str, object] = {}
     for raw_key, raw_value in parsed.items():
         normalized[str(raw_key)] = raw_value
+    LOGGER.debug(
+        "pdf mapping read done | path=%s bytes=%s rows=%s elapsed_ms=%.2f",
+        path,
+        len(raw_text),
+        len(normalized),
+        (time.perf_counter() - started_at) * 1000,
+    )
     return normalized
 
 
@@ -73,6 +83,7 @@ def load_pdf_mapping(
     pdf_root_dir: str,
     strict: bool = False,
 ) -> PdfMappingLoadResult:
+    started_at = time.perf_counter()
     path = _resolve_mapping_json_path(mapping_json_path)
     mapping_root = _load_mapping_root(path)
 
@@ -133,5 +144,12 @@ def load_pdf_mapping(
         result.valid_rows,
         result.invalid_row_count,
         result.duplicate_id_count,
+    )
+    LOGGER.debug(
+        "pdf mapping load elapsed | path=%s elapsed_ms=%.2f pdf_root_dir=%s strict=%s",
+        path,
+        (time.perf_counter() - started_at) * 1000,
+        pdf_root_dir,
+        strict,
     )
     return result

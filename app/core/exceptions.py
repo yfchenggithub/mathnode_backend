@@ -1,32 +1,56 @@
+﻿"""Application-level exception classes.
+
+`exceptions.py` is intentionally focused on exception definitions only.
+FastAPI exception handlers live in `app/core/exception_handlers.py`.
 """
-用途：
-- 统一异常类与异常处理
-"""
 
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from __future__ import annotations
 
-from app.core.response import error_response
+from typing import Any
 
 
-class BizException(Exception):
-    def __init__(self, code: int = 4000, message: str = "业务异常") -> None:
+class AppError(Exception):
+    """Base exception for expected application/business errors."""
+
+    def __init__(
+        self,
+        code: int = 4000,
+        message: str = "business error",
+        *,
+        status_code: int = 400,
+        extra: dict[str, Any] | None = None,
+    ) -> None:
         self.code = code
         self.message = message
+        self.status_code = status_code
+        self.extra = extra or {}
         super().__init__(message)
 
 
-def register_exception_handlers(app: FastAPI) -> None:
-    @app.exception_handler(BizException)
-    async def biz_exception_handler(request: Request, exc: BizException):
-        return JSONResponse(
-            status_code=400,
-            content=error_response(code=exc.code, message=exc.message),
+class BizException(AppError):
+    """Backwards-compatible business exception used across services."""
+
+    def __init__(
+        self,
+        code: int = 4000,
+        message: str = "business error",
+        *,
+        status_code: int = 400,
+        extra: dict[str, Any] | None = None,
+    ) -> None:
+        super().__init__(
+            code=code,
+            message=message,
+            status_code=status_code,
+            extra=extra,
         )
 
-    @app.exception_handler(Exception)
-    async def global_exception_handler(request: Request, exc: Exception):
-        return JSONResponse(
-            status_code=500,
-            content=error_response(code=5000, message="服务器内部错误"),
-        )
+
+class NotFoundError(AppError):
+    def __init__(self, message: str = "resource not found", code: int = 4040) -> None:
+        super().__init__(code=code, message=message, status_code=404)
+
+
+class AuthError(AppError):
+    def __init__(self, message: str = "unauthorized", code: int = 4011) -> None:
+        super().__init__(code=code, message=message, status_code=401)

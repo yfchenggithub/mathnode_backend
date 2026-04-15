@@ -1,8 +1,12 @@
+import logging
+
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.api.dependencies import get_index_store
 from app.api.deps import get_db, get_optional_user_id
+from app.core.logging_helpers import mask_sensitive, summarize_text
+from app.core.request_context import get_request_id
 from app.core.response import success_response
 from app.services.favorite_service import FavoriteService
 from app.services.recent_search_service import RecentSearchService
@@ -10,6 +14,7 @@ from app.services.search_service import SearchService
 from app.stores.interfaces import IndexStore
 
 router = APIRouter()
+LOGGER = logging.getLogger(__name__)
 
 
 @router.get("/search")
@@ -24,6 +29,22 @@ def search(
     db: Session = Depends(get_db),
     index_store: IndexStore = Depends(get_index_store),
 ):
+    normalized_q = q.strip()
+    LOGGER.info(
+        (
+            "search api received | request_id=%s user_id=%s q=%r module=%s "
+            "difficulty=%s tag=%s page=%s page_size=%s"
+        ),
+        get_request_id(),
+        mask_sensitive(user_id, left=2, right=2) if user_id else "-",
+        summarize_text(normalized_q, max_length=80),
+        module,
+        difficulty,
+        summarize_text(tag or "", max_length=60),
+        page,
+        page_size,
+    )
+
     favorite_ids = (
         FavoriteService.get_favorite_ids(db=db, user_id=user_id) if user_id else set()
     )
@@ -41,5 +62,19 @@ def search(
 
     if user_id and q.strip():
         RecentSearchService.add_keyword(db=db, user_id=user_id, keyword=q.strip())
+        LOGGER.debug(
+            "search api recent keyword saved | request_id=%s user_id=%s keyword=%r",
+            get_request_id(),
+            mask_sensitive(user_id, left=2, right=2),
+            summarize_text(normalized_q, max_length=80),
+        )
+
+    LOGGER.info(
+        "search api success | request_id=%s q=%r total=%s returned=%s",
+        get_request_id(),
+        summarize_text(normalized_q, max_length=80),
+        data.get("total"),
+        len(data.get("items", [])) if isinstance(data.get("items"), list) else 0,
+    )
 
     return success_response(data=data)

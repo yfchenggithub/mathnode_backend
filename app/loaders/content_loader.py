@@ -14,6 +14,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+import time
 from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
@@ -71,6 +72,12 @@ def _normalize_text(raw_text: str) -> str:
 
 
 def _load_json_file(json_path: Path) -> dict[str, object]:
+    started_at = time.perf_counter()
+    LOGGER.debug(
+        "content json read start | path=%s exists=%s",
+        json_path,
+        json_path.exists(),
+    )
     try:
         content = json_path.read_text(encoding="utf-8")
     except OSError as exc:
@@ -91,6 +98,15 @@ def _load_json_file(json_path: Path) -> dict[str, object]:
     normalized: dict[str, object] = {}
     for raw_key, raw_item in parsed.items():
         normalized[str(raw_key)] = raw_item
+
+    elapsed_ms = (time.perf_counter() - started_at) * 1000
+    LOGGER.debug(
+        "content json read done | path=%s bytes=%s rows=%s elapsed_ms=%.2f",
+        json_path,
+        len(content),
+        len(normalized),
+        elapsed_ms,
+    )
     return normalized
 
 
@@ -444,6 +460,7 @@ def _convert_item_to_content_document(raw_key: str, item: dict[str, object]) -> 
 
 
 def load_content_from_json(json_path: str | Path) -> ContentLoadResult:
+    started_at = time.perf_counter()
     path = Path(json_path)
     if not path.is_absolute():
         path = path.resolve()
@@ -503,6 +520,11 @@ def load_content_from_json(json_path: str | Path) -> ContentLoadResult:
         len(result.records),
         result.duplicate_id_count,
         result.missing_key_field_count,
+    )
+    LOGGER.debug(
+        "content load elapsed | path=%s elapsed_ms=%.2f",
+        path,
+        (time.perf_counter() - started_at) * 1000,
     )
 
     return result

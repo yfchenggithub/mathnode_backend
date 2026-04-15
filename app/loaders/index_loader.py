@@ -14,6 +14,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+import time
 from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
@@ -115,6 +116,9 @@ def _load_index_root(path: Path) -> dict[str, object]:
 
     出错时抛出可读异常，方便 FastAPI 启动期快速定位。
     """
+    started_at = time.perf_counter()
+    LOGGER.debug("index json read start | path=%s exists=%s", path, path.exists())
+
     if not path.exists():
         raise FileNotFoundError(f"Index JSON file not found: {path}")
     if not path.is_file():
@@ -137,6 +141,12 @@ def _load_index_root(path: Path) -> dict[str, object]:
             "Index JSON top-level value must be an object/dict, "
             f"got: {type(parsed).__name__}"
         )
+    LOGGER.debug(
+        "index json read done | path=%s bytes=%s elapsed_ms=%.2f",
+        path,
+        len(raw_text),
+        (time.perf_counter() - started_at) * 1000,
+    )
     return parsed
 
 
@@ -247,6 +257,7 @@ def load_index_records(
     输出：
     - IndexLoadResult(records/source/missing_key_field_count)。
     """
+    started_at = time.perf_counter()
     path = _resolve_index_json_path(index_file_path)
     index_root = _load_index_root(path)
     docs = _extract_docs_node(index_root=index_root, path=path)
@@ -273,6 +284,11 @@ def load_index_records(
         len(docs),
         len(result.records),
         result.missing_key_field_count,
+    )
+    LOGGER.debug(
+        "index records load elapsed | path=%s elapsed_ms=%.2f",
+        path,
+        (time.perf_counter() - started_at) * 1000,
     )
     return result
 

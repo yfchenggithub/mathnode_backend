@@ -76,10 +76,12 @@ class Settings(BaseModel):
         default_factory=lambda: _env_bool("PDF_MAPPING_STRICT", False)
     )
     WECHAT_MINIAPP_APPID: str = Field(
-        default_factory=lambda: _env_str("WECHAT_MINIAPP_APPID", "")
+        default_factory=lambda: _env_str("WECHAT_MINIAPP_APPID", "wx283419118cbfff52")
     )
     WECHAT_MINIAPP_SECRET: str = Field(
-        default_factory=lambda: _env_str("WECHAT_MINIAPP_SECRET", "")
+        default_factory=lambda: _env_str(
+            "WECHAT_MINIAPP_SECRET", "e69fc3bf3e9b170707711daa03f5cba7"
+        )
     )
     JWT_SECRET: str = Field(default_factory=lambda: _env_str("JWT_SECRET", ""))
     JWT_EXPIRE_SECONDS: int = Field(

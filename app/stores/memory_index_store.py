@@ -12,7 +12,10 @@ from __future__ import annotations
 
 from collections import Counter
 from copy import deepcopy
+import logging
 from typing import Any
+
+LOGGER = logging.getLogger(__name__)
 
 
 class MemoryIndexStore:
@@ -128,6 +131,19 @@ class MemoryIndexStore:
             tag=tag,
         )
         total = len(matched_rows)
+        LOGGER.debug(
+            (
+                "memory index search matched | q=%r module=%s difficulty=%s tag=%s "
+                "total=%s page=%s page_size=%s"
+            ),
+            q.strip(),
+            module,
+            difficulty,
+            tag,
+            total,
+            page,
+            page_size,
+        )
 
         start = (page - 1) * page_size
         end = start + page_size
@@ -278,10 +294,21 @@ class MemoryIndexStore:
             difficulty=None,
             tag=None,
         )
+        LOGGER.debug(
+            "memory index suggest matched | q=%r total=%s",
+            keyword,
+            len(rows),
+        )
         limited_items = [
             self._build_suggest_item(row=row, keyword=keyword)
             for row in rows[:8]
         ]
+        LOGGER.debug(
+            "memory index suggest truncated | q=%r returned=%s limit=%s",
+            keyword,
+            len(limited_items),
+            8,
+        )
 
         return {
             "query": keyword,

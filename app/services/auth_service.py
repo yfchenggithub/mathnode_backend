@@ -13,6 +13,7 @@ from sqlalchemy.orm import Session
 
 from app.core.config import settings
 from app.core.exceptions import BizException
+from app.core.request_context import get_request_id
 from app.data.mock_data import MOCK_USERS
 from app.models.user import User
 from app.repositories.user_auth_identity_repo import UserAuthIdentityRepository
@@ -38,13 +39,32 @@ class AuthService:
     @staticmethod
     def login(code: str) -> dict:
         normalized_code = code.strip() if code else ""
+        LOGGER.info(
+            "login request received | request_id=%s platform=mock code=%s",
+            get_request_id(),
+            AuthService._mask_sensitive(normalized_code),
+        )
         if not normalized_code:
+            LOGGER.warning(
+                "login rejected | request_id=%s reason=empty_code",
+                get_request_id(),
+            )
             raise BizException(code=4010, message="login failed: code is required")
 
         user = MOCK_USERS.get(normalized_code)
         if not user:
+            LOGGER.warning(
+                "login rejected | request_id=%s reason=invalid_code code=%s",
+                get_request_id(),
+                AuthService._mask_sensitive(normalized_code),
+            )
             raise BizException(code=4010, message="login failed: code is invalid")
 
+        LOGGER.info(
+            "login success | request_id=%s platform=mock user_id=%s",
+            get_request_id(),
+            str(user.get("user_id", "")),
+        )
         return AuthService._build_login_response(
             user_id=str(user.get("user_id", "")),
             nickname=str(user.get("nickname", "")),
@@ -265,6 +285,12 @@ class AuthService:
     def create_access_token(user_id: str) -> str:
         expires_in = AuthService.get_token_expire_seconds()
         now = int(time.time())
+        LOGGER.debug(
+            "token generation start | request_id=%s user_id=%s expires_in=%s",
+            get_request_id(),
+            user_id,
+            expires_in,
+        )
         payload = {
             "sub": user_id,
             "iat": now,
@@ -282,7 +308,8 @@ class AuthService:
             raise BizException(code=5009, message="token generation failed")
 
         LOGGER.info(
-            "token issued, user_id=%s token=%s",
+            "token issued | request_id=%s user_id=%s token=%s",
+            get_request_id(),
             user_id,
             AuthService._mask_sensitive(token),
         )
@@ -292,18 +319,43 @@ class AuthService:
     def parse_access_token(token: str) -> str:
         normalized_token = token.strip() if token else ""
         if not normalized_token:
+            LOGGER.warning(
+                "token parse rejected | request_id=%s reason=empty_token",
+                get_request_id(),
+            )
             raise BizException(code=4011, message="unauthorized")
 
         try:
             payload = AuthService._decode_jwt(normalized_token)
         except BizException:
+            LOGGER.warning(
+                "token parse rejected | request_id=%s token=%s",
+                get_request_id(),
+                AuthService._mask_sensitive(normalized_token),
+            )
             raise
         except Exception:
+            LOGGER.exception(
+                "token parse failed unexpectedly | request_id=%s token=%s",
+                get_request_id(),
+                AuthService._mask_sensitive(normalized_token),
+            )
             raise BizException(code=4011, message="unauthorized")
 
         sub = payload.get("sub")
         if not isinstance(sub, str) or not sub.strip():
+            LOGGER.warning(
+                "token parse rejected | request_id=%s reason=missing_sub token=%s",
+                get_request_id(),
+                AuthService._mask_sensitive(normalized_token),
+            )
             raise BizException(code=4011, message="unauthorized")
+        LOGGER.debug(
+            "token parse success | request_id=%s user_id=%s token=%s",
+            get_request_id(),
+            sub,
+            AuthService._mask_sensitive(normalized_token),
+        )
         return sub
 
     @staticmethod
@@ -315,15 +367,27 @@ class AuthService:
     ) -> dict:
         normalized_code = code.strip() if code else ""
         if not normalized_code:
+            LOGGER.warning(
+                "wechat miniapp login rejected | request_id=%s reason=empty_code",
+                get_request_id(),
+            )
             raise BizException(code=4012, message="login failed: code is required")
 
         LOGGER.info(
-            "wechat miniapp login request received, code=%s",
+            (
+                "wechat miniapp login request received | request_id=%s platform=%s "
+                "provider=%s code=%s nickname_present=%s avatar_present=%s"
+            ),
+            get_request_id(),
+            AuthService.WECHAT_PLATFORM,
+            AuthService.WECHAT_PROVIDER,
             AuthService._mask_sensitive(normalized_code),
+            str(bool(nickname)).lower(),
+            str(bool(avatar_url)).lower(),
         )
 
         session_data = AuthService.exchange_code_for_session(normalized_code)
-        user, _ = AuthService.get_or_create_user_by_wechat_openid(
+        user, is_new_user = AuthService.get_or_create_user_by_wechat_openid(
             db=db,
             openid=session_data.openid,
             session_key=session_data.session_key,
@@ -333,6 +397,12 @@ class AuthService:
         )
 
         token = AuthService.create_access_token(user_id=user.id)
+        LOGGER.info(
+            "wechat miniapp login success | request_id=%s user_id=%s is_new_user=%s",
+            get_request_id(),
+            user.id,
+            str(is_new_user).lower(),
+        )
 
         return AuthService._build_login_response(
             user_id=user.id,
