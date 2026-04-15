@@ -7,30 +7,19 @@ import uuid
 from fastapi import FastAPI, Request, Response
 
 from app.core.config import settings
+from app.core.logging_config import parse_log_level
 from app.core.logging_helpers import summarize_query_params
 from app.core.request_context import bind_request_id, reset_request_id
 
 LOGGER = logging.getLogger(__name__)
-_VALID_LOG_LEVEL_NAMES = {"CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG"}
-
-
-def _normalize_log_level_name(raw_level: str | None, fallback: str = "INFO") -> str:
-    level_name = (raw_level or "").strip().upper()
-    if level_name in _VALID_LOG_LEVEL_NAMES:
-        return level_name
-
-    fallback_name = (fallback or "INFO").strip().upper()
-    if fallback_name in _VALID_LOG_LEVEL_NAMES:
-        return fallback_name
-    return "INFO"
 
 
 def _resolve_request_log_level() -> int:
-    level_name = _normalize_log_level_name(
-        settings.REQUEST_LOG_LEVEL,
-        fallback=settings.APP_LOG_LEVEL,
+    fallback_level = parse_log_level(
+        settings.APP_LOG_LEVEL,
+        logging.INFO,
     )
-    return logging.getLevelNamesMapping().get(level_name, logging.INFO)
+    return parse_log_level(settings.REQUEST_LOG_LEVEL, fallback_level)
 
 
 def _resolve_client_ip(request: Request) -> str:

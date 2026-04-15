@@ -11,6 +11,28 @@ _VALID_LOG_LEVELS = {"CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"}
 _VALID_LOG_FORMATS = {"standard", "detailed"}
 
 
+def parse_log_level(level_name: str | None, default: int = logging.INFO) -> int:
+    normalized = str(level_name or "").strip().upper()
+    if not normalized:
+        return default
+
+    level_map = {
+        "CRITICAL": logging.CRITICAL,
+        "FATAL": logging.FATAL,
+        "ERROR": logging.ERROR,
+        "WARNING": logging.WARNING,
+        "WARN": logging.WARNING,
+        "INFO": logging.INFO,
+        "DEBUG": logging.DEBUG,
+        "NOTSET": logging.NOTSET,
+    }
+
+    if normalized.isdigit():
+        return int(normalized)
+
+    return level_map.get(normalized, default)
+
+
 def _normalize_log_level(raw_level: str | None, fallback: str = "INFO") -> str:
     level = (raw_level or "").strip().upper()
     if level in _VALID_LOG_LEVELS:
