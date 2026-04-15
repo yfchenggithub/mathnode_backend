@@ -142,7 +142,9 @@ class Settings(BaseModel):
             "WECHAT_MINIAPP_SECRET", "e69fc3bf3e9b170707711daa03f5cba7"
         )
     )
-    JWT_SECRET: str = Field(default_factory=lambda: _env_str("JWT_SECRET", ""))
+    JWT_SECRET: str = Field(
+        default_factory=lambda: _env_str("JWT_SECRET", "wx283419118cbfff52")
+    )
     JWT_EXPIRE_SECONDS: int = Field(
         default_factory=lambda: _env_int("JWT_EXPIRE_SECONDS", 86400)
     )
