@@ -33,7 +33,10 @@ class AuthService:
     WECHAT_PROVIDER = "wechat_mini_program"
     WECHAT_PLATFORM = "wechat_miniapp"
     WECHAT_CODE2SESSION_URL = "https://api.weixin.qq.com/sns/jscode2session"
-    WECHAT_TIMEOUT_SECONDS = 5.0
+    WECHAT_CONNECT_TIMEOUT_SECONDS = 10.0
+    WECHAT_READ_TIMEOUT_SECONDS = 15.0
+    WECHAT_WRITE_TIMEOUT_SECONDS = 15.0
+    WECHAT_POOL_TIMEOUT_SECONDS = 15.0
     TOKEN_TYPE = "Bearer"
 
     @staticmethod
@@ -78,46 +81,126 @@ class AuthService:
     @staticmethod
     def exchange_code_for_session(code: str) -> WechatSessionData:
         normalized_code = code.strip() if code else ""
+        request_id = get_request_id()
+
         if not normalized_code:
             raise BizException(code=4012, message="login failed: code is required")
 
         appid, secret = AuthService._get_wechat_credentials()
+        masked_code = AuthService._mask_sensitive(normalized_code)
+        start_time = time.perf_counter()
 
         LOGGER.info(
-            "wechat code exchange start, code=%s",
-            AuthService._mask_sensitive(normalized_code),
+            (
+                "wechat code exchange start | request_id=%s url=%s code=%s "
+                "connect_timeout=%ss read_timeout=%ss"
+            ),
+            request_id,
+            AuthService.WECHAT_CODE2SESSION_URL,
+            masked_code,
+            AuthService.WECHAT_CONNECT_TIMEOUT_SECONDS,
+            AuthService.WECHAT_READ_TIMEOUT_SECONDS,
         )
 
         try:
-            response = httpx.get(
-                AuthService.WECHAT_CODE2SESSION_URL,
-                params={
-                    "appid": appid,
-                    "secret": secret,
-                    "js_code": normalized_code,
-                    "grant_type": "authorization_code",
+            with httpx.Client(
+                timeout=AuthService._build_wechat_http_timeout(),
+                trust_env=False,
+                follow_redirects=False,
+                headers={
+                    "Accept": "application/json",
+                    "User-Agent": "math-search-backend/1.0",
                 },
-                timeout=AuthService.WECHAT_TIMEOUT_SECONDS,
-            )
-        except httpx.TimeoutException:
+            ) as client:
+                response = client.get(
+                    AuthService.WECHAT_CODE2SESSION_URL,
+                    params={
+                        "appid": appid,
+                        "secret": secret,
+                        "js_code": normalized_code,
+                        "grant_type": "authorization_code",
+                    },
+                )
+        except httpx.ConnectTimeout:
+            elapsed_ms = int((time.perf_counter() - start_time) * 1000)
             LOGGER.warning(
-                "wechat code exchange timeout, code=%s",
-                AuthService._mask_sensitive(normalized_code),
+                (
+                    "wechat code exchange connect timeout | request_id=%s "
+                    "elapsed_ms=%s code=%s"
+                ),
+                request_id,
+                elapsed_ms,
+                masked_code,
             )
             raise BizException(code=5021, message="wechat login timeout")
-        except httpx.HTTPError:
+        except httpx.ReadTimeout:
+            elapsed_ms = int((time.perf_counter() - start_time) * 1000)
+            LOGGER.warning(
+                "wechat code exchange read timeout | request_id=%s elapsed_ms=%s code=%s",
+                request_id,
+                elapsed_ms,
+                masked_code,
+            )
+            raise BizException(code=5021, message="wechat login timeout")
+        except httpx.ConnectError:
+            elapsed_ms = int((time.perf_counter() - start_time) * 1000)
             LOGGER.exception(
-                "wechat code exchange network failure, code=%s",
-                AuthService._mask_sensitive(normalized_code),
+                (
+                    "wechat code exchange connect error | request_id=%s "
+                    "elapsed_ms=%s code=%s"
+                ),
+                request_id,
+                elapsed_ms,
+                masked_code,
             )
             raise BizException(code=5022, message="wechat login service unavailable")
+        except httpx.HTTPError:
+            elapsed_ms = int((time.perf_counter() - start_time) * 1000)
+            LOGGER.exception(
+                (
+                    "wechat code exchange http error | request_id=%s "
+                    "elapsed_ms=%s code=%s"
+                ),
+                request_id,
+                elapsed_ms,
+                masked_code,
+            )
+            raise BizException(code=5022, message="wechat login service unavailable")
+
+        elapsed_ms = int((time.perf_counter() - start_time) * 1000)
+
+        LOGGER.info(
+            "wechat code exchange response | request_id=%s status=%s elapsed_ms=%s",
+            request_id,
+            response.status_code,
+            elapsed_ms,
+        )
+
+        if response.status_code != 200:
+            response_preview = response.text[:200].replace("\n", " ").replace("\r", " ")
+            LOGGER.error(
+                (
+                    "wechat code exchange non-200 response | request_id=%s status=%s "
+                    "elapsed_ms=%s body=%s"
+                ),
+                request_id,
+                response.status_code,
+                elapsed_ms,
+                response_preview,
+            )
+            raise BizException(code=5020, message="wechat login response invalid")
 
         try:
             payload = response.json()
         except ValueError:
             LOGGER.error(
-                "wechat code exchange invalid response, status=%s",
+                (
+                    "wechat code exchange invalid json | request_id=%s status=%s "
+                    "elapsed_ms=%s"
+                ),
+                request_id,
                 response.status_code,
+                elapsed_ms,
             )
             raise BizException(code=5020, message="wechat login response invalid")
 
@@ -125,10 +208,15 @@ class AuthService:
         if errcode not in (None, 0, "0"):
             errmsg = str(payload.get("errmsg", ""))
             LOGGER.warning(
-                "wechat code exchange failed, errcode=%s errmsg=%s code=%s",
+                (
+                    "wechat code exchange failed | request_id=%s errcode=%s "
+                    "errmsg=%s code=%s elapsed_ms=%s"
+                ),
+                request_id,
                 errcode,
                 errmsg,
-                AuthService._mask_sensitive(normalized_code),
+                masked_code,
+                elapsed_ms,
             )
             if str(errcode) in {"40029", "40163"}:
                 raise BizException(
@@ -139,14 +227,23 @@ class AuthService:
 
         openid = str(payload.get("openid", "")).strip()
         if not openid:
-            LOGGER.error("wechat code exchange openid missing")
+            LOGGER.error(
+                "wechat code exchange openid missing | request_id=%s elapsed_ms=%s",
+                request_id,
+                elapsed_ms,
+            )
             raise BizException(code=5023, message="wechat login failed: openid missing")
 
         session_key = str(payload.get("session_key", "")).strip()
         if not session_key:
             LOGGER.error(
-                "wechat code exchange session_key missing, openid=%s",
+                (
+                    "wechat code exchange session_key missing | request_id=%s "
+                    "openid=%s elapsed_ms=%s"
+                ),
+                request_id,
                 AuthService._mask_sensitive(openid),
+                elapsed_ms,
             )
             raise BizException(
                 code=5024,
@@ -156,7 +253,20 @@ class AuthService:
         raw_unionid = payload.get("unionid")
         unionid = str(raw_unionid).strip() if raw_unionid else None
 
-        return WechatSessionData(openid=openid, session_key=session_key, unionid=unionid)
+        LOGGER.info(
+            (
+                "wechat code exchange success | request_id=%s openid=%s "
+                "unionid_present=%s elapsed_ms=%s"
+            ),
+            request_id,
+            AuthService._mask_sensitive(openid),
+            str(bool(unionid)).lower(),
+            elapsed_ms,
+        )
+
+        return WechatSessionData(
+            openid=openid, session_key=session_key, unionid=unionid
+        )
 
     @staticmethod
     def get_or_create_user_by_wechat_openid(
@@ -185,7 +295,9 @@ class AuthService:
             raise BizException(code=5010, message="database transaction failed")
 
         if identity is None:
-            user_nickname = normalized_nickname or AuthService._build_default_nickname(openid)
+            user_nickname = normalized_nickname or AuthService._build_default_nickname(
+                openid
+            )
 
             try:
                 user = UserRepository.create_user(
@@ -417,6 +529,15 @@ class AuthService:
     @staticmethod
     def get_token_expire_seconds() -> int:
         return settings.JWT_EXPIRE_SECONDS if settings.JWT_EXPIRE_SECONDS > 0 else 86400
+
+    @staticmethod
+    def _build_wechat_http_timeout() -> httpx.Timeout:
+        return httpx.Timeout(
+            connect=AuthService.WECHAT_CONNECT_TIMEOUT_SECONDS,
+            read=AuthService.WECHAT_READ_TIMEOUT_SECONDS,
+            write=AuthService.WECHAT_WRITE_TIMEOUT_SECONDS,
+            pool=AuthService.WECHAT_POOL_TIMEOUT_SECONDS,
+        )
 
     @staticmethod
     def _encode_jwt(payload: dict[str, Any]) -> str:
