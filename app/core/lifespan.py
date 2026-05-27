@@ -85,6 +85,7 @@ async def app_lifespan(app: FastAPI):
         index_store = MemoryIndexStore(
             records=index_result.records,
             source=index_result.source,
+            generated_at=index_result.generated_at,
         )
         pdf_mapping_result = load_pdf_mapping(
             mapping_json_path=pdf_mapping_json_path,
@@ -110,6 +111,7 @@ async def app_lifespan(app: FastAPI):
             "pdf_mapping_strict": settings.PDF_MAPPING_STRICT,
             "content_source": content_result.source,
             "index_source": index_result.source,
+            "index_generated_at": index_result.generated_at,
             "pdf_mapping_source": pdf_mapping_result.source,
             "content_store": content_store.__class__.__name__,
             "index_store": index_store.__class__.__name__,

@@ -121,3 +121,53 @@ class SearchService:
             (time.perf_counter() - started_at) * 1000,
         )
         return result
+
+    @staticmethod
+    def home_recommendations(
+        index_store: IndexStore,
+        limit: int,
+        favorite_ids: set[str] | None = None,
+    ) -> dict:
+        started_at = time.perf_counter()
+        favorite_ids = favorite_ids or set()
+
+        LOGGER.debug(
+            (
+                "home recommendations start | request_id=%s limit=%s "
+                "favorite_count=%s index_count=%s"
+            ),
+            get_request_id(),
+            limit,
+            len(favorite_ids),
+            index_store.count(),
+        )
+
+        try:
+            result = index_store.home_recommendations(
+                limit=limit,
+                favorite_ids=favorite_ids,
+            )
+        except Exception:
+            LOGGER.exception(
+                "home recommendations failed | request_id=%s limit=%s",
+                get_request_id(),
+                limit,
+            )
+            raise
+
+        total = int(result.get("total", 0))
+        items = result.get("items", [])
+        item_count = len(items) if isinstance(items, list) else 0
+
+        LOGGER.info(
+            (
+                "home recommendations finished | request_id=%s limit=%s total=%s "
+                "returned=%s elapsed_ms=%.2f"
+            ),
+            get_request_id(),
+            limit,
+            total,
+            item_count,
+            (time.perf_counter() - started_at) * 1000,
+        )
+        return result

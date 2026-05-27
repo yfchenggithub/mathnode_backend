@@ -30,6 +30,7 @@ class IndexLoadResult:
     records: list[dict[str, Any]]
     source: str
     missing_key_field_count: int
+    generated_at: str
 
 
 def _safe_str(value: object) -> str:
@@ -261,6 +262,7 @@ def load_index_records(
     path = _resolve_index_json_path(index_file_path)
     index_root = _load_index_root(path)
     docs = _extract_docs_node(index_root=index_root, path=path)
+    generated_at = _safe_str(index_root.get("generatedAt")).strip()
 
     records: list[dict[str, Any]] = []
     missing_key_field_count = 0
@@ -273,17 +275,19 @@ def load_index_records(
         records=records,
         source="backend_search_index:file",
         missing_key_field_count=missing_key_field_count,
+        generated_at=generated_at,
     )
 
     LOGGER.info(
         (
             "Index records loaded from JSON: path=%s docs=%s records=%s "
-            "missing_key_field_count=%s"
+            "missing_key_field_count=%s generated_at=%s"
         ),
         path,
         len(docs),
         len(result.records),
         result.missing_key_field_count,
+        result.generated_at or "-",
     )
     LOGGER.debug(
         "index records load elapsed | path=%s elapsed_ms=%.2f",

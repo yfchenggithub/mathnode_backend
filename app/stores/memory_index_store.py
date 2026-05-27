@@ -32,8 +32,14 @@ class MemoryIndexStore:
         "complex": "复数",
     }
 
-    def __init__(self, records: list[dict[str, Any]], source: str = "content_store") -> None:
+    def __init__(
+        self,
+        records: list[dict[str, Any]],
+        source: str = "content_store",
+        generated_at: str = "",
+    ) -> None:
         self._source = source
+        self._generated_at = str(generated_at or "").strip()
         self._records: list[dict[str, Any]] = []
 
         for item in sorted(records, key=lambda x: x["id"]):
@@ -210,6 +216,47 @@ class MemoryIndexStore:
             return "其他"
         return cls._MODULE_LABEL_MAP.get(text.lower(), text)
 
+    @staticmethod
+    def _has_recommend_tag(tags: list[str], keywords: tuple[str, ...]) -> bool:
+        for tag in tags:
+            normalized = str(tag).strip().lower()
+            if not normalized:
+                continue
+            for keyword in keywords:
+                if keyword in normalized:
+                    return True
+        return False
+
+    def _recommend_score(self, row: dict[str, Any]) -> float:
+        doc_payload = row["doc_payload"]
+        rank = self._safe_float(doc_payload.get("rank"))
+        hot_score = self._clamp(self._safe_float(doc_payload.get("hotScore")), 0.0, 100.0)
+        exam_frequency = self._clamp(
+            self._safe_float(doc_payload.get("examFrequency")),
+            0.0,
+            1.0,
+        )
+        exam_score = self._clamp(self._safe_float(doc_payload.get("examScore")), 0.0, 100.0)
+        search_boost = self._clamp(
+            self._safe_float(doc_payload.get("searchBoost")),
+            0.0,
+            1.0,
+        )
+
+        score = 0.0
+        score += rank * 12.0
+        score += hot_score * 10.0
+        score += exam_frequency * 100.0
+        score += exam_score * 20.0
+        score += search_boost * 100.0
+
+        if self._has_recommend_tag(row["tags"], ("高频", "热门", "hot")):
+            score += 1200.0
+        if self._has_recommend_tag(row["tags"], ("常用", "common")):
+            score += 120.0
+
+        return score
+
     def _build_suggest_item(self, row: dict[str, Any], keyword: str) -> dict[str, Any]:
         keyword_lower = keyword.lower()
         match_type = "contains"
@@ -317,6 +364,36 @@ class MemoryIndexStore:
             "items": limited_items,
         }
 
+    def home_recommendations(
+        self,
+        limit: int,
+        favorite_ids: set[str] | None,
+    ) -> dict[str, Any]:
+        favorite_ids = favorite_ids or set()
+
+        safe_limit = max(1, min(80, int(limit)))
+        sorted_rows = sorted(
+            self._records,
+            key=lambda row: (
+                -self._recommend_score(row),
+                -self._safe_float(row["doc_payload"].get("rank")),
+                -self._safe_float(row["doc_payload"].get("hotScore")),
+                row["id"],
+            ),
+        )
+
+        items: list[dict[str, Any]] = []
+        for row in sorted_rows[:safe_limit]:
+            item_payload = deepcopy(row["doc_payload"])
+            item_payload["is_favorited"] = row["id"] in favorite_ids
+            items.append(item_payload)
+
+        return {
+            "total": len(self._records),
+            "generated_at": self._generated_at,
+            "items": items,
+        }
+
     def count(self) -> int:
         return len(self._records)
 
@@ -325,4 +402,5 @@ class MemoryIndexStore:
             "store": self.__class__.__name__,
             "source": self._source,
             "count": len(self._records),
+            "generated_at": self._generated_at,
         }

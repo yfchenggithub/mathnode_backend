@@ -69,6 +69,13 @@ class IndexStore(Protocol):
     def suggest(self, q: str) -> dict[str, Any]:
         ...
 
+    def home_recommendations(
+        self,
+        limit: int,
+        favorite_ids: set[str] | None,
+    ) -> dict[str, Any]:
+        ...
+
     def count(self) -> int:
         ...
 

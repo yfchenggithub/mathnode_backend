@@ -78,3 +78,38 @@ def search(
     )
 
     return success_response(data=data)
+
+
+@router.get("/home/recommendations")
+def home_recommendations(
+    limit: int = Query(default=40, ge=1, le=80),
+    user_id: str | None = Depends(get_optional_user_id),
+    db: Session = Depends(get_db),
+    index_store: IndexStore = Depends(get_index_store),
+):
+    LOGGER.info(
+        "home recommendations api received | request_id=%s user_id=%s limit=%s",
+        get_request_id(),
+        mask_sensitive(user_id, left=2, right=2) if user_id else "-",
+        limit,
+    )
+
+    favorite_ids = (
+        FavoriteService.get_favorite_ids(db=db, user_id=user_id) if user_id else set()
+    )
+
+    data = SearchService.home_recommendations(
+        index_store=index_store,
+        limit=limit,
+        favorite_ids=favorite_ids,
+    )
+
+    LOGGER.info(
+        "home recommendations api success | request_id=%s limit=%s total=%s returned=%s",
+        get_request_id(),
+        limit,
+        data.get("total"),
+        len(data.get("items", [])) if isinstance(data.get("items"), list) else 0,
+    )
+
+    return success_response(data=data)
