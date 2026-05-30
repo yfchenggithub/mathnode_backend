@@ -3,4 +3,4 @@ uvicorn[standard]==0.44.0
 pydantic==2.12.5
 sqlalchemy==2.0.43
 httpx==0.28.1
-pikepdf==10.5.1
+pikepdf==10.7.2
