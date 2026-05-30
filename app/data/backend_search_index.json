@@ -1,11 +1,11 @@
 {
   "meta": {
-    "source_file": "D:\\mathnote\\.tmp\\build_backend_and_canonical_1779848818387_31876\\search_bundle.js",
-    "extracted_at": "2026-05-27T02:27:00+00:00",
+    "source_file": "D:\\mathnote\\.tmp\\build_backend_and_canonical_1780109474168_36260\\search_bundle.js",
+    "extracted_at": "2026-05-30T02:51:16+00:00",
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-05-27T10:26:59+08:00",
+  "generatedAt": "2026-05-30T10:51:15+08:00",
   "stats": {
     "documents": 120,
     "terms": 6909,
