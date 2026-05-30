@@ -48,3 +48,21 @@ Environment=REQUEST_LOG_ENABLED=true
 Environment=REQUEST_LOG_LEVEL=INFO
 Environment=HTTP_CLIENT_DEBUG=false
 Environment=BOOTSTRAP_LOG_VERBOSE=false
+
+# 收藏讲义阶段 2 部署补充
+
+安装依赖：
+- 仍使用 `pip install -r requirements.txt`
+- 讲义目录和页脚渲染依赖 `Pillow`（已在 `requirements.txt` 中锁定版本）
+- PDF 合并与叠加继续使用 `pikepdf`
+
+建议新增环境变量：
+- `HANDOUT_CJK_FONT_PATH`：建议显式指向可用中文字体（例如 Windows: `C:\Windows\Fonts\msyh.ttc`）
+- `HANDOUT_FOOTER_ENABLED=true`
+- `HANDOUT_FOOTER_Y_MM=8`
+- `HANDOUT_FOOTER_FONT_SIZE=9`
+- `HANDOUT_TOC_MAX_ITERATIONS=3`
+
+说明：
+- 若未提供 `HANDOUT_CJK_FONT_PATH`，服务会尝试系统常见 CJK 字体。
+- 若字体不可用，生成接口会返回 `HANDOUT_FONT_UNAVAILABLE`，不会输出乱码目录。

@@ -134,6 +134,24 @@ class Settings(BaseModel):
     HANDOUT_TIMEZONE: str = Field(
         default_factory=lambda: _env_str("HANDOUT_TIMEZONE", "Asia/Shanghai")
     )
+    HANDOUT_CJK_FONT_PATH: str = Field(
+        default_factory=lambda: _env_str("HANDOUT_CJK_FONT_PATH", "")
+    )
+    HANDOUT_CJK_FONT_NAME: str = Field(
+        default_factory=lambda: _env_str("HANDOUT_CJK_FONT_NAME", "handout_cjk")
+    )
+    HANDOUT_FOOTER_ENABLED: bool = Field(
+        default_factory=lambda: _env_bool("HANDOUT_FOOTER_ENABLED", True)
+    )
+    HANDOUT_FOOTER_Y_MM: int = Field(
+        default_factory=lambda: _env_int("HANDOUT_FOOTER_Y_MM", 8)
+    )
+    HANDOUT_FOOTER_FONT_SIZE: int = Field(
+        default_factory=lambda: _env_int("HANDOUT_FOOTER_FONT_SIZE", 9)
+    )
+    HANDOUT_TOC_MAX_ITERATIONS: int = Field(
+        default_factory=lambda: _env_int("HANDOUT_TOC_MAX_ITERATIONS", 3)
+    )
     CONCLUSION_PDF_MAP_PATH: str = Field(
         default_factory=lambda: _env_str(
             "CONCLUSION_PDF_MAP_PATH",
