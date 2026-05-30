@@ -48,10 +48,17 @@ def _error_json_response(
     code: int,
     message: str,
     request_id: str,
+    extra: dict[str, object] | None = None,
 ) -> JSONResponse:
+    payload = error_response(code=code, message=message)
+    if extra:
+        for key, value in extra.items():
+            if key in payload:
+                continue
+            payload[key] = value
     return JSONResponse(
         status_code=status_code,
-        content=error_response(code=code, message=message),
+        content=payload,
         headers={"X-Request-ID": request_id},
     )
 
@@ -166,6 +173,7 @@ async def app_error_exception_handler(request: Request, exc: AppError) -> JSONRe
         code=exc.code,
         message=exc.message,
         request_id=request_id,
+        extra=exc.extra,
     )
 
 

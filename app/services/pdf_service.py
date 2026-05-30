@@ -3,6 +3,10 @@
 import logging
 from dataclasses import dataclass
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from app.stores.interfaces import PdfMappingStore
 
 LOGGER = logging.getLogger(__name__)
 
@@ -73,3 +77,15 @@ class PdfService:
             absolute_path=absolute_path,
             filename=absolute_path.name,
         )
+
+    @staticmethod
+    def resolve_conclusion_pdf_file(
+        *,
+        conclusion_id: str,
+        pdf_mapping_store: "PdfMappingStore",
+        raw_root_dir: str,
+    ) -> PdfFile | None:
+        pdf_filename = pdf_mapping_store.get_pdf_filename(conclusion_id)
+        if not pdf_filename:
+            return None
+        return PdfService.resolve_pdf_file(file_path=pdf_filename, raw_root_dir=raw_root_dir)

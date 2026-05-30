@@ -5,6 +5,8 @@ from urllib.parse import quote
 
 from app.core.exceptions import BizException
 from app.core.request_context import get_request_id
+from app.core.config import settings
+from app.services.pdf_service import PdfFileNotFoundError, PdfPathValidationError, PdfService
 from app.stores.interfaces import ContentStore, PdfMappingStore
 
 LOGGER = logging.getLogger(__name__)
@@ -14,8 +16,26 @@ def _derive_pdf_meta(
     conclusion_id: str,
     pdf_mapping_store: PdfMappingStore,
 ) -> dict[str, str | bool | None]:
-    pdf_filename = pdf_mapping_store.get_pdf_filename(conclusion_id)
-    if not pdf_filename:
+    try:
+        pdf_file = PdfService.resolve_conclusion_pdf_file(
+            conclusion_id=conclusion_id,
+            pdf_mapping_store=pdf_mapping_store,
+            raw_root_dir=settings.PDF_ROOT_DIR,
+        )
+    except (PdfPathValidationError, PdfFileNotFoundError) as exc:
+        LOGGER.warning(
+            "conclusion pdf resolve failed | request_id=%s conclusion_id=%s reason=%s",
+            get_request_id(),
+            conclusion_id,
+            str(exc),
+        )
+        return {
+            "pdf_url": None,
+            "pdf_filename": None,
+            "pdf_available": False,
+        }
+
+    if not pdf_file:
         LOGGER.debug(
             "conclusion pdf mapping missing | request_id=%s conclusion_id=%s",
             get_request_id(),
@@ -31,11 +51,11 @@ def _derive_pdf_meta(
         "conclusion pdf mapping found | request_id=%s conclusion_id=%s pdf_filename=%s",
         get_request_id(),
         conclusion_id,
-        pdf_filename,
+        pdf_file.filename,
     )
     return {
-        "pdf_url": f"/api/v1/pdfs/{quote(pdf_filename)}",
-        "pdf_filename": pdf_filename,
+        "pdf_url": f"/api/v1/pdfs/{quote(pdf_file.filename)}",
+        "pdf_filename": pdf_file.filename,
         "pdf_available": True,
     }
 

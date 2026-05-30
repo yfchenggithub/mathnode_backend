@@ -125,6 +125,15 @@ class Settings(BaseModel):
     PDF_ROOT_DIR: str = Field(
         default_factory=lambda: _env_str("PDF_ROOT_DIR", "app/data/pdfs")
     )
+    HANDOUT_OUTPUT_DIR: str = Field(
+        default_factory=lambda: _env_str("HANDOUT_OUTPUT_DIR", "app/data/handouts")
+    )
+    HANDOUT_EXPIRE_DAYS: int = Field(
+        default_factory=lambda: _env_int("HANDOUT_EXPIRE_DAYS", 7)
+    )
+    HANDOUT_TIMEZONE: str = Field(
+        default_factory=lambda: _env_str("HANDOUT_TIMEZONE", "Asia/Shanghai")
+    )
     CONCLUSION_PDF_MAP_PATH: str = Field(
         default_factory=lambda: _env_str(
             "CONCLUSION_PDF_MAP_PATH",

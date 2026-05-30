@@ -83,7 +83,7 @@ class FavoriteService:
             get_request_id(),
             _mask_user_id(user_id),
         )
-        favorite_ids = FavoriteRepository.list_ids(db, user_id)
+        favorite_ids = FavoriteRepository.list_ids_in_default_order(db, user_id)
         items = []
 
         for conclusion_id in favorite_ids:
@@ -103,8 +103,6 @@ class FavoriteService:
                     "module": summary["module"],
                 }
             )
-
-        items.sort(key=lambda x: x["conclusion_id"])
 
         result = {
             "total": len(items),

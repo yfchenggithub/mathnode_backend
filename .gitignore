@@ -2,3 +2,4 @@
 __pycache__/
 *.py[cod]
 math_search.db
+tests/.tmp/

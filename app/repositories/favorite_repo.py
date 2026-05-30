@@ -37,3 +37,13 @@ class FavoriteRepository:
         stmt = select(Favorite.conclusion_id).where(Favorite.user_id == user_id)
         rows = db.execute(stmt).all()
         return {row[0] for row in rows}
+
+    @staticmethod
+    def list_ids_in_default_order(db: Session, user_id: str) -> list[str]:
+        stmt = (
+            select(Favorite.conclusion_id)
+            .where(Favorite.user_id == user_id)
+            .order_by(Favorite.conclusion_id.asc(), Favorite.id.asc())
+        )
+        rows = db.execute(stmt).all()
+        return [row[0] for row in rows]
