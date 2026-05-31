@@ -143,6 +143,9 @@ class Settings(BaseModel):
     HANDOUT_FOOTER_ENABLED: bool = Field(
         default_factory=lambda: _env_bool("HANDOUT_FOOTER_ENABLED", True)
     )
+    HANDOUT_FOOTER_COLLISION_GUARD_ENABLED: bool = Field(
+        default_factory=lambda: _env_bool("HANDOUT_FOOTER_COLLISION_GUARD_ENABLED", False)
+    )
     HANDOUT_FOOTER_Y_MM: int = Field(
         default_factory=lambda: _env_int("HANDOUT_FOOTER_Y_MM", 8)
     )

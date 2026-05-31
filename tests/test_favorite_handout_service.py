@@ -28,6 +28,7 @@ class FavoriteHandoutServiceTests(unittest.TestCase):
         self._old_font_path = settings.HANDOUT_CJK_FONT_PATH
         self._old_footer_font_size = settings.HANDOUT_FOOTER_FONT_SIZE
         self._old_footer_y = settings.HANDOUT_FOOTER_Y_MM
+        self._old_footer_collision_guard_enabled = settings.HANDOUT_FOOTER_COLLISION_GUARD_ENABLED
         self._old_miniapp_qrcode_enabled = settings.HANDOUT_MINIAPP_QRCODE_ENABLED
         self._old_miniapp_qrcode_path = settings.HANDOUT_MINIAPP_QRCODE_PATH
         self._old_miniapp_qrcode_size_mm = settings.HANDOUT_MINIAPP_QRCODE_SIZE_MM
@@ -37,6 +38,7 @@ class FavoriteHandoutServiceTests(unittest.TestCase):
 
         settings.HANDOUT_FOOTER_FONT_SIZE = 9
         settings.HANDOUT_FOOTER_Y_MM = 8
+        settings.HANDOUT_FOOTER_COLLISION_GUARD_ENABLED = False
         settings.HANDOUT_MINIAPP_QRCODE_ENABLED = False
         settings.HANDOUT_MINIAPP_QRCODE_PATH = ""
         settings.HANDOUT_MINIAPP_QRCODE_SIZE_MM = 20
@@ -51,6 +53,7 @@ class FavoriteHandoutServiceTests(unittest.TestCase):
         settings.HANDOUT_CJK_FONT_PATH = self._old_font_path
         settings.HANDOUT_FOOTER_FONT_SIZE = self._old_footer_font_size
         settings.HANDOUT_FOOTER_Y_MM = self._old_footer_y
+        settings.HANDOUT_FOOTER_COLLISION_GUARD_ENABLED = self._old_footer_collision_guard_enabled
         settings.HANDOUT_MINIAPP_QRCODE_ENABLED = self._old_miniapp_qrcode_enabled
         settings.HANDOUT_MINIAPP_QRCODE_PATH = self._old_miniapp_qrcode_path
         settings.HANDOUT_MINIAPP_QRCODE_SIZE_MM = self._old_miniapp_qrcode_size_mm

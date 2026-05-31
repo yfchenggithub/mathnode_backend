@@ -96,6 +96,7 @@ class FavoriteHandoutApiTests(unittest.TestCase):
         self._old_handout_timezone = settings.HANDOUT_TIMEZONE
         self._old_handout_cjk_font_path = settings.HANDOUT_CJK_FONT_PATH
         self._old_handout_footer_enabled = settings.HANDOUT_FOOTER_ENABLED
+        self._old_handout_footer_collision_guard_enabled = settings.HANDOUT_FOOTER_COLLISION_GUARD_ENABLED
         self._old_handout_footer_y = settings.HANDOUT_FOOTER_Y_MM
         self._old_handout_footer_font_size = settings.HANDOUT_FOOTER_FONT_SIZE
         self._old_handout_miniapp_qrcode_enabled = settings.HANDOUT_MINIAPP_QRCODE_ENABLED
@@ -110,6 +111,7 @@ class FavoriteHandoutApiTests(unittest.TestCase):
         settings.HANDOUT_EXPIRE_DAYS = 7
         settings.HANDOUT_TIMEZONE = "Asia/Shanghai"
         settings.HANDOUT_FOOTER_ENABLED = True
+        settings.HANDOUT_FOOTER_COLLISION_GUARD_ENABLED = False
         settings.HANDOUT_FOOTER_Y_MM = 8
         settings.HANDOUT_FOOTER_FONT_SIZE = 9
         settings.HANDOUT_MINIAPP_QRCODE_ENABLED = False
@@ -188,6 +190,7 @@ class FavoriteHandoutApiTests(unittest.TestCase):
         settings.HANDOUT_TIMEZONE = self._old_handout_timezone
         settings.HANDOUT_CJK_FONT_PATH = self._old_handout_cjk_font_path
         settings.HANDOUT_FOOTER_ENABLED = self._old_handout_footer_enabled
+        settings.HANDOUT_FOOTER_COLLISION_GUARD_ENABLED = self._old_handout_footer_collision_guard_enabled
         settings.HANDOUT_FOOTER_Y_MM = self._old_handout_footer_y
         settings.HANDOUT_FOOTER_FONT_SIZE = self._old_handout_footer_font_size
         settings.HANDOUT_MINIAPP_QRCODE_ENABLED = self._old_handout_miniapp_qrcode_enabled
@@ -422,6 +425,30 @@ class FavoriteHandoutApiTests(unittest.TestCase):
         self._insert_favorite(user_id="u1001", conclusion_id="I002")
 
         with mock.patch.object(
+            FavoriteHandoutService,
+            "_render_page_number_overlay",
+            wraps=FavoriteHandoutService._render_page_number_overlay,
+        ) as overlay_mock:
+            data = self._create_handout()
+
+        handout = self._find_handout_by_public_id(data["handout_id"])
+        merged_path = self._handout_root / str(handout.stored_filename)
+        with pikepdf.Pdf.open(str(merged_path)) as reader:
+            total_pages = len(reader.pages)
+        self.assertEqual(overlay_mock.call_count, total_pages)
+
+    def test_post_footer_still_applied_when_risk_detected_and_guard_disabled(self) -> None:
+        self._skip_if_font_unavailable()
+
+        self._insert_favorite(user_id="u1001", conclusion_id="I001")
+        self._insert_favorite(user_id="u1001", conclusion_id="I002")
+        settings.HANDOUT_FOOTER_COLLISION_GUARD_ENABLED = False
+
+        with mock.patch.object(
+            FavoriteHandoutService,
+            "_has_footer_collision_risk",
+            return_value=True,
+        ), mock.patch.object(
             FavoriteHandoutService,
             "_render_page_number_overlay",
             wraps=FavoriteHandoutService._render_page_number_overlay,

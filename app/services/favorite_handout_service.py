@@ -61,14 +61,14 @@ TOC_MARGIN_LEFT_MM = 16.0
 TOC_MARGIN_RIGHT_MM = 16.0
 TOC_MARGIN_TOP_MM = 14.0
 TOC_MARGIN_BOTTOM_MM = 14.0
-TOC_LINE_HEIGHT_MM = 6.0
-TOC_ENTRY_GAP_MM = 1.2
-TOC_TITLE_FONT_SIZE_PT = 22
-TOC_META_FONT_SIZE_PT = 11
-TOC_SECTION_FONT_SIZE_PT = 15
-TOC_ENTRY_FONT_SIZE_PT = 11
-TOC_PAGE_HINT_FONT_SIZE_PT = 11
-TOC_QRCODE_CAPTION_FONT_SIZE_PT = 9
+TOC_LINE_HEIGHT_MM = 7.0
+TOC_ENTRY_GAP_MM = 1.4
+TOC_TITLE_FONT_SIZE_PT = 30
+TOC_META_FONT_SIZE_PT = 14
+TOC_SECTION_FONT_SIZE_PT = 19
+TOC_ENTRY_FONT_SIZE_PT = 14
+TOC_PAGE_HINT_FONT_SIZE_PT = 13
+TOC_QRCODE_CAPTION_FONT_SIZE_PT = 10
 TOC_QRCODE_CAPTION_TEXT = "扫码进入小程序继续学习"
 TOC_QRCODE_ENTRY_GAP_MM = 3.0
 A4_CONTENT_MARGIN_MM = 8.0
@@ -235,12 +235,17 @@ class FavoriteHandoutService:
 
             final_tmp_output = temp_dir / "final_handout.tmp.pdf"
             footer_applied = False
+            footer_collision_risk_detected = False
             if settings.HANDOUT_FOOTER_ENABLED:
-                if FavoriteHandoutService._has_footer_collision_risk(source_entries):
+                footer_collision_risk_detected = FavoriteHandoutService._has_footer_collision_risk(source_entries)
+                if (
+                    footer_collision_risk_detected
+                    and settings.HANDOUT_FOOTER_COLLISION_GUARD_ENABLED
+                ):
                     LOGGER.warning(
                         (
                             "favorite handout footer skipped due collision risk | request_id=%s "
-                            "user_id=%s handout_id=%s"
+                            "user_id=%s handout_id=%s guard_enabled=true"
                         ),
                         get_request_id(),
                         _mask_user_id(user_id),
@@ -248,6 +253,16 @@ class FavoriteHandoutService:
                     )
                     FavoriteHandoutService._copy_file(merged_without_footer, final_tmp_output)
                 else:
+                    if footer_collision_risk_detected:
+                        LOGGER.warning(
+                            (
+                                "favorite handout footer collision risk detected but ignored | request_id=%s "
+                                "user_id=%s handout_id=%s guard_enabled=false"
+                            ),
+                            get_request_id(),
+                            _mask_user_id(user_id),
+                            handout_id,
+                        )
                     FavoriteHandoutService._apply_unified_page_numbers(
                         input_pdf_path=merged_without_footer,
                         final_output_path=final_tmp_output,
@@ -306,7 +321,8 @@ class FavoriteHandoutService:
         LOGGER.info(
             (
                 "favorite handout create success | request_id=%s user_id=%s handout_id=%s "
-                "item_count=%s source_pages=%s total_pages=%s footer_applied=%s output_bytes=%s elapsed_ms=%s"
+                "item_count=%s source_pages=%s total_pages=%s footer_applied=%s "
+                "footer_collision_risk=%s output_bytes=%s elapsed_ms=%s"
             ),
             get_request_id(),
             _mask_user_id(user_id),
@@ -315,6 +331,7 @@ class FavoriteHandoutService:
             source_total_pages,
             validated_page_count,
             str(footer_applied).lower(),
+            str(footer_collision_risk_detected).lower(),
             file_size,
             elapsed_ms,
         )
@@ -847,10 +864,9 @@ class FavoriteHandoutService:
             toc_pdf = Pdf.open(str(toc_pdf_path))
             opened.append(toc_pdf)
             for toc_page in toc_pdf.pages:
-                FavoriteHandoutService._append_page_to_merged_pdf(
-                    merged_pdf=merged,
-                    source_page=toc_page,
-                )
+                # TOC pages are already rendered to final handout size.
+                # Append directly to avoid a second scaling pass that can make text look too small.
+                merged.pages.append(toc_page)
             for entry in source_entries:
                 source_pdf = Pdf.open(str(entry.source_pdf_path))
                 opened.append(source_pdf)
@@ -885,6 +901,12 @@ class FavoriteHandoutService:
     @staticmethod
     def _append_page_to_merged_pdf(*, merged_pdf: Any, source_page: Any) -> None:
         if not settings.HANDOUT_FORCE_A4_PAGE_SIZE:
+            merged_pdf.pages.append(source_page)
+            return
+
+        source_width = _pt_value(source_page.MediaBox[2]) - _pt_value(source_page.MediaBox[0])
+        source_height = _pt_value(source_page.MediaBox[3]) - _pt_value(source_page.MediaBox[1])
+        if abs(source_width - A4_WIDTH_PT) < 1.0 and abs(source_height - A4_HEIGHT_PT) < 1.0:
             merged_pdf.pages.append(source_page)
             return
 

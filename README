@@ -59,6 +59,7 @@ Environment=BOOTSTRAP_LOG_VERBOSE=false
 建议新增环境变量：
 - `HANDOUT_CJK_FONT_PATH`：建议显式指向可用中文字体（例如 Windows: `C:\Windows\Fonts\msyh.ttc`）
 - `HANDOUT_FOOTER_ENABLED=true`
+- `HANDOUT_FOOTER_COLLISION_GUARD_ENABLED=false`
 - `HANDOUT_FOOTER_Y_MM=8`
 - `HANDOUT_FOOTER_FONT_SIZE=9`
 - `HANDOUT_MINIAPP_QRCODE_ENABLED=true`
@@ -72,6 +73,7 @@ Environment=BOOTSTRAP_LOG_VERBOSE=false
 - 若未提供 `HANDOUT_CJK_FONT_PATH`，服务会尝试系统常见 CJK 字体。
 - 若字体不可用，生成接口会返回 `HANDOUT_FONT_UNAVAILABLE`，不会输出乱码目录。
 - 若小程序码文件不存在，服务会跳过二维码渲染并记录 warning 日志，不影响讲义生成。
+- 若需要保守避免正文底部潜在遮挡，可将 `HANDOUT_FOOTER_COLLISION_GUARD_ENABLED=true`。
 
 # systemd 启动建议（math-search.service）
 
