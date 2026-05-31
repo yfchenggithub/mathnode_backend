@@ -42,6 +42,98 @@ def _resolve_project_path(raw_path: str) -> Path:
     return (project_root / path).resolve()
 
 
+def _resolve_runtime_path(raw_path: str) -> Path:
+    """Resolve absolute or project-relative runtime path."""
+    path = Path(raw_path).expanduser()
+    if path.is_absolute():
+        return path
+    return _resolve_project_path(raw_path)
+
+
+def _check_handout_cjk_font_startup() -> dict[str, str | bool | int | None]:
+    """
+    Startup self-check for handout CJK font availability.
+    This check never raises, to avoid blocking unrelated API capabilities.
+    """
+    from app.services.favorite_handout_service import COMMON_CJK_FONT_CANDIDATES
+
+    configured_raw = settings.HANDOUT_CJK_FONT_PATH.strip()
+    configured_resolved: Path | None = None
+    configured_exists = False
+
+    selected_path: Path | None = None
+    selected_source = "none"
+
+    if configured_raw:
+        configured_resolved = _resolve_runtime_path(configured_raw)
+        configured_exists = configured_resolved.is_file()
+        if configured_exists:
+            selected_path = configured_resolved
+            selected_source = "configured"
+
+    if selected_path is None:
+        for candidate in COMMON_CJK_FONT_CANDIDATES:
+            resolved = _resolve_runtime_path(candidate)
+            if resolved.is_file():
+                selected_path = resolved
+                selected_source = "candidate"
+                break
+
+    loadable = False
+    load_error: str | None = None
+
+    if selected_path is not None:
+        try:
+            from PIL import ImageFont
+
+            ImageFont.truetype(str(selected_path), size=12)
+            loadable = True
+        except Exception as exc:
+            load_error = f"{exc.__class__.__name__}: {exc}"
+    else:
+        load_error = "no_available_font_file"
+
+    result: dict[str, str | bool | int | None] = {
+        "handout_font_configured": configured_raw or None,
+        "handout_font_configured_resolved": (
+            str(configured_resolved) if configured_resolved is not None else None
+        ),
+        "handout_font_configured_exists": configured_exists,
+        "handout_font_selected_source": selected_source,
+        "handout_font_selected_path": str(selected_path) if selected_path else None,
+        "handout_font_loadable": loadable,
+        "handout_font_candidate_count": len(COMMON_CJK_FONT_CANDIDATES),
+        "handout_font_load_error": load_error,
+    }
+
+    if loadable:
+        LOGGER.info(
+            (
+                "bootstrap handout font check passed | configured=%s resolved=%s "
+                "selected_source=%s selected_path=%s"
+            ),
+            result["handout_font_configured"],
+            result["handout_font_configured_resolved"],
+            result["handout_font_selected_source"],
+            result["handout_font_selected_path"],
+        )
+    else:
+        LOGGER.error(
+            (
+                "bootstrap handout font check failed | configured=%s resolved=%s "
+                "selected_source=%s selected_path=%s error=%s candidates=%s"
+            ),
+            result["handout_font_configured"],
+            result["handout_font_configured_resolved"],
+            result["handout_font_selected_source"],
+            result["handout_font_selected_path"],
+            result["handout_font_load_error"],
+            result["handout_font_candidate_count"],
+        )
+
+    return result
+
+
 @asynccontextmanager
 async def app_lifespan(app: FastAPI):
     started_at = time.perf_counter()
@@ -98,6 +190,7 @@ async def app_lifespan(app: FastAPI):
         )
 
         bootstrap_time_ms = int((time.perf_counter() - started_at) * 1000)
+        handout_font_check = _check_handout_cjk_font_startup()
 
         bootstrap_status = {
             "app_env": settings.APP_ENV,
@@ -131,6 +224,7 @@ async def app_lifespan(app: FastAPI):
                 settings.CONTENT_BACKEND == "memory"
                 and settings.INDEX_BACKEND == "memory"
             ),
+            **handout_font_check,
         }
 
         app.state.content_store = content_store

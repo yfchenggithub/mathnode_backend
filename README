@@ -72,3 +72,32 @@ Environment=BOOTSTRAP_LOG_VERBOSE=false
 - 若未提供 `HANDOUT_CJK_FONT_PATH`，服务会尝试系统常见 CJK 字体。
 - 若字体不可用，生成接口会返回 `HANDOUT_FONT_UNAVAILABLE`，不会输出乱码目录。
 - 若小程序码文件不存在，服务会跳过二维码渲染并记录 warning 日志，不影响讲义生成。
+
+# systemd 启动建议（math-search.service）
+
+推荐用 override 文件，不直接改发行版自带 unit：
+
+```bash
+sudo systemctl edit math-search.service
+```
+
+在打开的编辑器里写入：
+
+```ini
+[Service]
+Environment=HANDOUT_CJK_FONT_PATH=/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
+```
+
+保存后执行：
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart math-search.service
+sudo systemctl status math-search.service
+```
+
+查看启动时字体自检日志：
+
+```bash
+journalctl -u math-search.service -n 200 --no-pager | grep "bootstrap handout font check"
+```
