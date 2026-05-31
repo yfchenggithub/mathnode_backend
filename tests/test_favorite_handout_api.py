@@ -98,6 +98,10 @@ class FavoriteHandoutApiTests(unittest.TestCase):
         self._old_handout_footer_enabled = settings.HANDOUT_FOOTER_ENABLED
         self._old_handout_footer_y = settings.HANDOUT_FOOTER_Y_MM
         self._old_handout_footer_font_size = settings.HANDOUT_FOOTER_FONT_SIZE
+        self._old_handout_miniapp_qrcode_enabled = settings.HANDOUT_MINIAPP_QRCODE_ENABLED
+        self._old_handout_miniapp_qrcode_path = settings.HANDOUT_MINIAPP_QRCODE_PATH
+        self._old_handout_miniapp_qrcode_size_mm = settings.HANDOUT_MINIAPP_QRCODE_SIZE_MM
+        self._old_handout_miniapp_qrcode_bottom_mm = settings.HANDOUT_MINIAPP_QRCODE_BOTTOM_MM
         self._old_handout_force_a4_page_size = settings.HANDOUT_FORCE_A4_PAGE_SIZE
         self._old_handout_toc_iterations = settings.HANDOUT_TOC_MAX_ITERATIONS
 
@@ -108,6 +112,10 @@ class FavoriteHandoutApiTests(unittest.TestCase):
         settings.HANDOUT_FOOTER_ENABLED = True
         settings.HANDOUT_FOOTER_Y_MM = 8
         settings.HANDOUT_FOOTER_FONT_SIZE = 9
+        settings.HANDOUT_MINIAPP_QRCODE_ENABLED = False
+        settings.HANDOUT_MINIAPP_QRCODE_PATH = ""
+        settings.HANDOUT_MINIAPP_QRCODE_SIZE_MM = 20
+        settings.HANDOUT_MINIAPP_QRCODE_BOTTOM_MM = 14
         settings.HANDOUT_FORCE_A4_PAGE_SIZE = True
         settings.HANDOUT_TOC_MAX_ITERATIONS = 3
 
@@ -182,6 +190,10 @@ class FavoriteHandoutApiTests(unittest.TestCase):
         settings.HANDOUT_FOOTER_ENABLED = self._old_handout_footer_enabled
         settings.HANDOUT_FOOTER_Y_MM = self._old_handout_footer_y
         settings.HANDOUT_FOOTER_FONT_SIZE = self._old_handout_footer_font_size
+        settings.HANDOUT_MINIAPP_QRCODE_ENABLED = self._old_handout_miniapp_qrcode_enabled
+        settings.HANDOUT_MINIAPP_QRCODE_PATH = self._old_handout_miniapp_qrcode_path
+        settings.HANDOUT_MINIAPP_QRCODE_SIZE_MM = self._old_handout_miniapp_qrcode_size_mm
+        settings.HANDOUT_MINIAPP_QRCODE_BOTTOM_MM = self._old_handout_miniapp_qrcode_bottom_mm
         settings.HANDOUT_FORCE_A4_PAGE_SIZE = self._old_handout_force_a4_page_size
         settings.HANDOUT_TOC_MAX_ITERATIONS = self._old_handout_toc_iterations
         if self._tmp_root.exists():
@@ -215,6 +227,24 @@ class FavoriteHandoutApiTests(unittest.TestCase):
             writer.add_blank_page(page_size=(float(width), 200.0))
         writer.save(str(path))
         writer.close()
+
+    @staticmethod
+    def _write_qrcode_png(path: Path, size: int = 240) -> None:
+        from PIL import Image, ImageDraw
+
+        path.parent.mkdir(parents=True, exist_ok=True)
+        image = Image.new("RGB", (size, size), color=(255, 255, 255))
+        draw = ImageDraw.Draw(image)
+        block = size // 8
+        for row in range(8):
+            for col in range(8):
+                if (row + col) % 2 == 0:
+                    x0 = col * block
+                    y0 = row * block
+                    x1 = x0 + block - 1
+                    y1 = y0 + block - 1
+                    draw.rectangle((x0, y0, x1, y1), fill=(0, 0, 0))
+        image.save(str(path), format="PNG")
 
     def _refresh_mapping_store(self) -> None:
         self._pdf_mapping_store = MemoryPdfMappingStore(
@@ -312,6 +342,27 @@ class FavoriteHandoutApiTests(unittest.TestCase):
             self.assertAlmostEqual(page_width, 595.2, delta=1.5)
             self.assertAlmostEqual(page_height, 842.0, delta=2.0)
         reader.close()
+
+    def test_post_generates_toc_with_miniapp_qrcode(self) -> None:
+        self._skip_if_font_unavailable()
+
+        qrcode_path = self._tmp_root / "assets" / "miniapp_qrcode.png"
+        self._write_qrcode_png(qrcode_path)
+        settings.HANDOUT_MINIAPP_QRCODE_ENABLED = True
+        settings.HANDOUT_MINIAPP_QRCODE_PATH = str(qrcode_path)
+        settings.HANDOUT_MINIAPP_QRCODE_SIZE_MM = 20
+        settings.HANDOUT_MINIAPP_QRCODE_BOTTOM_MM = 14
+
+        self._insert_favorite(user_id="u1001", conclusion_id="I001")
+        self._insert_favorite(user_id="u1001", conclusion_id="I002")
+
+        data = self._create_handout()
+        handout = self._find_handout_by_public_id(data["handout_id"])
+        merged_path = self._handout_root / str(handout.stored_filename)
+        self.assertTrue(merged_path.exists())
+
+        with pikepdf.Pdf.open(str(merged_path)) as reader:
+            self.assertEqual(len(reader.pages), 4)
 
     def test_post_multi_page_toc_has_body_after_toc(self) -> None:
         self._skip_if_font_unavailable()

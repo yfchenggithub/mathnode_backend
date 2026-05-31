@@ -61,9 +61,14 @@ Environment=BOOTSTRAP_LOG_VERBOSE=false
 - `HANDOUT_FOOTER_ENABLED=true`
 - `HANDOUT_FOOTER_Y_MM=8`
 - `HANDOUT_FOOTER_FONT_SIZE=9`
+- `HANDOUT_MINIAPP_QRCODE_ENABLED=true`
+- `HANDOUT_MINIAPP_QRCODE_PATH=app/data/handout_assets/miniapp_qrcode.png`
+- `HANDOUT_MINIAPP_QRCODE_SIZE_MM=20`
+- `HANDOUT_MINIAPP_QRCODE_BOTTOM_MM=14`
 - `HANDOUT_FORCE_A4_PAGE_SIZE=true`
 - `HANDOUT_TOC_MAX_ITERATIONS=3`
 
 说明：
 - 若未提供 `HANDOUT_CJK_FONT_PATH`，服务会尝试系统常见 CJK 字体。
 - 若字体不可用，生成接口会返回 `HANDOUT_FONT_UNAVAILABLE`，不会输出乱码目录。
+- 若小程序码文件不存在，服务会跳过二维码渲染并记录 warning 日志，不影响讲义生成。

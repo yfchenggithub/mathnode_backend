@@ -15,6 +15,7 @@
 - 讲义第一页开始生成“收藏讲义 + 基本信息 + 目录”
 - 目录支持多页，并写入每条内容在最终讲义中的起始页码
 - 最终讲义统一页脚页码（若检测到正文遮挡风险则自动跳过页脚，正文仍保持原样）
+- 可在目录第一页底部（靠近页脚）嵌入通用小程序首页码
 - 讲义输出页统一为 A4 纸张尺寸（将源页等比放置到 A4，可打印性更稳定）
 - 对外文件名升级为 `收藏讲义_YYYYMMDD_N条.pdf`
 
@@ -109,6 +110,7 @@
 
 - 源 PDF 根目录：`PDF_ROOT_DIR`
 - 讲义输出目录：`HANDOUT_OUTPUT_DIR`
+- 讲义模板资产目录（含小程序码）：建议 `app/data/handout_assets/`
 - 讲义默认过期：`HANDOUT_EXPIRE_DAYS`（默认 7 天）
 - 下载时强制检查过期状态
 
@@ -119,6 +121,10 @@
 - `HANDOUT_FOOTER_ENABLED`：是否启用统一页脚（默认 `true`）
 - `HANDOUT_FOOTER_Y_MM`：页脚纵向位置
 - `HANDOUT_FOOTER_FONT_SIZE`：页脚字号
+- `HANDOUT_MINIAPP_QRCODE_ENABLED`：是否在目录页显示小程序码（默认 `true`）
+- `HANDOUT_MINIAPP_QRCODE_PATH`：小程序码图片路径（默认 `app/data/handout_assets/miniapp_qrcode.png`）
+- `HANDOUT_MINIAPP_QRCODE_SIZE_MM`：小程序码边长（默认 `20`）
+- `HANDOUT_MINIAPP_QRCODE_BOTTOM_MM`：小程序码距离页底边距（默认 `14`）
 - `HANDOUT_FORCE_A4_PAGE_SIZE`：是否强制输出统一 A4 页面（默认 `true`）
 - `HANDOUT_TOC_MAX_ITERATIONS`：目录分页稳定计算最大迭代次数（默认 `3`）
 

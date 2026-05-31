@@ -149,6 +149,21 @@ class Settings(BaseModel):
     HANDOUT_FOOTER_FONT_SIZE: int = Field(
         default_factory=lambda: _env_int("HANDOUT_FOOTER_FONT_SIZE", 9)
     )
+    HANDOUT_MINIAPP_QRCODE_ENABLED: bool = Field(
+        default_factory=lambda: _env_bool("HANDOUT_MINIAPP_QRCODE_ENABLED", True)
+    )
+    HANDOUT_MINIAPP_QRCODE_PATH: str = Field(
+        default_factory=lambda: _env_str(
+            "HANDOUT_MINIAPP_QRCODE_PATH",
+            "app/data/handout_assets/miniapp_qrcode.png",
+        )
+    )
+    HANDOUT_MINIAPP_QRCODE_SIZE_MM: int = Field(
+        default_factory=lambda: _env_int("HANDOUT_MINIAPP_QRCODE_SIZE_MM", 20)
+    )
+    HANDOUT_MINIAPP_QRCODE_BOTTOM_MM: int = Field(
+        default_factory=lambda: _env_int("HANDOUT_MINIAPP_QRCODE_BOTTOM_MM", 14)
+    )
     HANDOUT_FORCE_A4_PAGE_SIZE: bool = Field(
         default_factory=lambda: _env_bool("HANDOUT_FORCE_A4_PAGE_SIZE", True)
     )

@@ -28,11 +28,19 @@ class FavoriteHandoutServiceTests(unittest.TestCase):
         self._old_font_path = settings.HANDOUT_CJK_FONT_PATH
         self._old_footer_font_size = settings.HANDOUT_FOOTER_FONT_SIZE
         self._old_footer_y = settings.HANDOUT_FOOTER_Y_MM
+        self._old_miniapp_qrcode_enabled = settings.HANDOUT_MINIAPP_QRCODE_ENABLED
+        self._old_miniapp_qrcode_path = settings.HANDOUT_MINIAPP_QRCODE_PATH
+        self._old_miniapp_qrcode_size_mm = settings.HANDOUT_MINIAPP_QRCODE_SIZE_MM
+        self._old_miniapp_qrcode_bottom_mm = settings.HANDOUT_MINIAPP_QRCODE_BOTTOM_MM
         self._old_force_a4_page_size = settings.HANDOUT_FORCE_A4_PAGE_SIZE
         self._old_toc_iterations = settings.HANDOUT_TOC_MAX_ITERATIONS
 
         settings.HANDOUT_FOOTER_FONT_SIZE = 9
         settings.HANDOUT_FOOTER_Y_MM = 8
+        settings.HANDOUT_MINIAPP_QRCODE_ENABLED = False
+        settings.HANDOUT_MINIAPP_QRCODE_PATH = ""
+        settings.HANDOUT_MINIAPP_QRCODE_SIZE_MM = 20
+        settings.HANDOUT_MINIAPP_QRCODE_BOTTOM_MM = 14
         settings.HANDOUT_FORCE_A4_PAGE_SIZE = True
         settings.HANDOUT_TOC_MAX_ITERATIONS = 3
 
@@ -43,6 +51,10 @@ class FavoriteHandoutServiceTests(unittest.TestCase):
         settings.HANDOUT_CJK_FONT_PATH = self._old_font_path
         settings.HANDOUT_FOOTER_FONT_SIZE = self._old_footer_font_size
         settings.HANDOUT_FOOTER_Y_MM = self._old_footer_y
+        settings.HANDOUT_MINIAPP_QRCODE_ENABLED = self._old_miniapp_qrcode_enabled
+        settings.HANDOUT_MINIAPP_QRCODE_PATH = self._old_miniapp_qrcode_path
+        settings.HANDOUT_MINIAPP_QRCODE_SIZE_MM = self._old_miniapp_qrcode_size_mm
+        settings.HANDOUT_MINIAPP_QRCODE_BOTTOM_MM = self._old_miniapp_qrcode_bottom_mm
         settings.HANDOUT_FORCE_A4_PAGE_SIZE = self._old_force_a4_page_size
         settings.HANDOUT_TOC_MAX_ITERATIONS = self._old_toc_iterations
         if self._tmp_root.exists():
@@ -75,6 +87,24 @@ class FavoriteHandoutServiceTests(unittest.TestCase):
             writer.add_blank_page(page_size=(width, height))
         writer.save(str(path))
         writer.close()
+
+    @staticmethod
+    def _write_qrcode_png(path: Path, size: int = 240) -> None:
+        from PIL import Image, ImageDraw
+
+        path.parent.mkdir(parents=True, exist_ok=True)
+        image = Image.new("RGB", (size, size), color=(255, 255, 255))
+        draw = ImageDraw.Draw(image)
+        block = size // 8
+        for row in range(8):
+            for col in range(8):
+                if (row + col) % 2 == 0:
+                    x0 = col * block
+                    y0 = row * block
+                    x1 = x0 + block - 1
+                    y1 = y0 + block - 1
+                    draw.rectangle((x0, y0, x1, y1), fill=(0, 0, 0))
+        image.save(str(path), format="PNG")
 
     def test_calculate_toc_entries_start_pages_one_toc_page(self) -> None:
         entries = [
@@ -149,6 +179,35 @@ class FavoriteHandoutServiceTests(unittest.TestCase):
 
         self.assertTrue(output_path.exists())
         self.assertGreater(page_count, 1)
+
+    def test_render_toc_pdf_with_miniapp_qrcode_enabled(self) -> None:
+        self._skip_if_font_unavailable()
+
+        qrcode_path = self._tmp_root / "assets" / "miniapp_qrcode.png"
+        self._write_qrcode_png(qrcode_path)
+        settings.HANDOUT_MINIAPP_QRCODE_ENABLED = True
+        settings.HANDOUT_MINIAPP_QRCODE_PATH = str(qrcode_path)
+
+        entries = [
+            TocEntry(order=1, title="条目一", start_page=2),
+            TocEntry(order=2, title="条目二", start_page=4),
+        ]
+        output_path = self._tmp_root / "toc_qrcode.pdf"
+        page_count = FavoriteHandoutService._render_toc_pdf(
+            entries_with_pages=entries,
+            item_count=2,
+            total_pages=6,
+            created_at=datetime.utcnow(),
+            output_path=output_path,
+        )
+
+        self.assertEqual(page_count, 1)
+        self.assertTrue(output_path.exists())
+
+    def test_resolve_miniapp_qrcode_path_returns_none_when_disabled(self) -> None:
+        settings.HANDOUT_MINIAPP_QRCODE_ENABLED = False
+        settings.HANDOUT_MINIAPP_QRCODE_PATH = str(self._tmp_root / "assets" / "miniapp_qrcode.png")
+        self.assertIsNone(FavoriteHandoutService._resolve_miniapp_qrcode_path())
 
     def test_apply_unified_page_numbers_calls_overlay_per_page(self) -> None:
         self._skip_if_font_unavailable()

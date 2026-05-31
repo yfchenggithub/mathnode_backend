@@ -68,6 +68,9 @@ TOC_META_FONT_SIZE_PT = 11
 TOC_SECTION_FONT_SIZE_PT = 15
 TOC_ENTRY_FONT_SIZE_PT = 11
 TOC_PAGE_HINT_FONT_SIZE_PT = 11
+TOC_QRCODE_CAPTION_FONT_SIZE_PT = 9
+TOC_QRCODE_CAPTION_TEXT = "扫码进入小程序继续学习"
+TOC_QRCODE_ENTRY_GAP_MM = 3.0
 A4_CONTENT_MARGIN_MM = 8.0
 
 COMMON_CJK_FONT_CANDIDATES = (
@@ -573,7 +576,7 @@ class FavoriteHandoutService:
         output_path: Path,
     ) -> int:
         try:
-            from PIL import Image, ImageDraw, ImageFont
+            from PIL import Image, ImageDraw
         except Exception:
             LOGGER.exception("favorite handout toc generator unavailable | request_id=%s", get_request_id())
             raise BizException(
@@ -602,18 +605,23 @@ class FavoriteHandoutService:
         section_font = _font(TOC_SECTION_FONT_SIZE_PT)
         entry_font = _font(TOC_ENTRY_FONT_SIZE_PT)
         hint_font = _font(TOC_PAGE_HINT_FONT_SIZE_PT)
+        qrcode_caption_font = _font(TOC_QRCODE_CAPTION_FONT_SIZE_PT)
 
         page_images: list[Any] = []
 
-        def _new_page() -> tuple[Any, Any]:
+        def _new_page() -> tuple[Any, Any, int]:
             image = Image.new("RGB", (width_px, height_px), color=(255, 255, 255))
             draw = ImageDraw.Draw(image)
             page_images.append(image)
-            return image, draw
+            return image, draw, len(page_images) - 1
 
         def _text_width(draw: Any, text: str, font: Any) -> int:
             bbox = draw.textbbox((0, 0), text, font=font)
             return int(bbox[2] - bbox[0])
+
+        def _text_height(draw: Any, text: str, font: Any) -> int:
+            bbox = draw.textbbox((0, 0), text, font=font)
+            return int(bbox[3] - bbox[1])
 
         def _wrap_text(draw: Any, text: str, max_width: int, font: Any) -> list[str]:
             if not text:
@@ -635,7 +643,61 @@ class FavoriteHandoutService:
                 lines.append(current)
             return lines or [""]
 
-        _, draw = _new_page()
+        qrcode_image: Any | None = None
+        qrcode_size_px = 0
+        qrcode_bottom_px = 0
+        qrcode_caption_height_px = 0
+        qrcode_entry_gap_px = _pt_to_px(_mm_to_pt(TOC_QRCODE_ENTRY_GAP_MM), TOC_RENDER_DPI)
+
+        qrcode_path = FavoriteHandoutService._resolve_miniapp_qrcode_path()
+        if qrcode_path is not None:
+            try:
+                qrcode_image = Image.open(str(qrcode_path)).convert("RGBA")
+                qrcode_size_mm = (
+                    settings.HANDOUT_MINIAPP_QRCODE_SIZE_MM
+                    if settings.HANDOUT_MINIAPP_QRCODE_SIZE_MM > 0
+                    else 20
+                )
+                qrcode_bottom_mm = (
+                    settings.HANDOUT_MINIAPP_QRCODE_BOTTOM_MM
+                    if settings.HANDOUT_MINIAPP_QRCODE_BOTTOM_MM >= 0
+                    else 14
+                )
+                qrcode_size_px = _pt_to_px(_mm_to_pt(float(qrcode_size_mm)), TOC_RENDER_DPI)
+                qrcode_bottom_px = _pt_to_px(_mm_to_pt(float(qrcode_bottom_mm)), TOC_RENDER_DPI)
+            except Exception:
+                LOGGER.warning(
+                    (
+                        "favorite handout qrcode load failed, skip qrcode | request_id=%s "
+                        "file=%s"
+                    ),
+                    get_request_id(),
+                    qrcode_path.name,
+                )
+                qrcode_image = None
+
+        _, draw, current_page_index = _new_page()
+        if qrcode_image is not None:
+            qrcode_caption_height_px = _text_height(draw, TOC_QRCODE_CAPTION_TEXT, qrcode_caption_font)
+
+        first_page_bottom_px = bottom_px
+        if qrcode_image is not None:
+            reserved_top = (
+                height_px
+                - qrcode_bottom_px
+                - qrcode_size_px
+                - qrcode_caption_height_px
+                - 4
+            )
+            first_page_bottom_px = min(first_page_bottom_px, reserved_top - qrcode_entry_gap_px)
+            if first_page_bottom_px <= top_px + line_height_px * 3:
+                LOGGER.warning(
+                    "favorite handout qrcode skipped due layout space | request_id=%s",
+                    get_request_id(),
+                )
+                qrcode_image = None
+                first_page_bottom_px = bottom_px
+
         current_y = top_px
         draw.text((left_px, current_y), HANDOUT_TITLE, font=title_font, fill=(20, 20, 20))
         current_y += int(line_height_px * 1.6)
@@ -674,8 +736,14 @@ class FavoriteHandoutService:
             title_lines = _wrap_text(draw, entry.title, title_max_width, entry_font)
             entry_height = len(title_lines) * line_height_px + entry_gap_px
 
-            if current_y + entry_height > bottom_px:
-                _, draw = _new_page()
+            page_bottom_limit = (
+                first_page_bottom_px
+                if current_page_index == 0
+                else bottom_px
+            )
+
+            if current_y + entry_height > page_bottom_limit:
+                _, draw, current_page_index = _new_page()
                 current_y = top_px
                 draw.text((left_px, current_y), "目录（续）", font=hint_font, fill=(30, 30, 30))
                 current_y += int(line_height_px * 1.2)
@@ -708,6 +776,33 @@ class FavoriteHandoutService:
                 )
 
             current_y += line_height_px + entry_gap_px
+
+        if qrcode_image is not None and page_images:
+            qrcode_resample = (
+                Image.Resampling.LANCZOS
+                if hasattr(Image, "Resampling")
+                else Image.LANCZOS
+            )
+            qrcode_resized = qrcode_image.resize(
+                (qrcode_size_px, qrcode_size_px),
+                qrcode_resample,
+            )
+            qrcode_x = right_px - qrcode_size_px
+            qrcode_y = height_px - qrcode_bottom_px - qrcode_size_px
+            qrcode_caption_gap_px = 4
+            qrcode_caption_y = qrcode_y - qrcode_caption_height_px - qrcode_caption_gap_px
+
+            first_page = page_images[0]
+            first_page.paste(qrcode_resized, (qrcode_x, qrcode_y), qrcode_resized)
+            first_draw = ImageDraw.Draw(first_page)
+            caption_width = _text_width(first_draw, TOC_QRCODE_CAPTION_TEXT, qrcode_caption_font)
+            caption_x = qrcode_x + int((qrcode_size_px - caption_width) / 2)
+            first_draw.text(
+                (caption_x, qrcode_caption_y),
+                TOC_QRCODE_CAPTION_TEXT,
+                font=qrcode_caption_font,
+                fill=(80, 80, 80),
+            )
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         if not page_images:
@@ -1001,6 +1096,26 @@ class FavoriteHandoutService:
             return path
         project_root = Path(__file__).resolve().parents[2]
         return (project_root / path).resolve()
+
+    @staticmethod
+    def _resolve_miniapp_qrcode_path() -> Path | None:
+        if not settings.HANDOUT_MINIAPP_QRCODE_ENABLED:
+            return None
+
+        configured = settings.HANDOUT_MINIAPP_QRCODE_PATH.strip()
+        if not configured:
+            return None
+
+        resolved = FavoriteHandoutService._resolve_font_path(configured)
+        if resolved.is_file():
+            return resolved
+
+        LOGGER.warning(
+            "favorite handout miniapp qrcode missing, skip qrcode | request_id=%s file=%s",
+            get_request_id(),
+            configured,
+        )
+        return None
 
     @staticmethod
     def _ensure_cjk_font_path() -> Path:
