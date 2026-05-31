@@ -149,6 +149,9 @@ class Settings(BaseModel):
     HANDOUT_FOOTER_FONT_SIZE: int = Field(
         default_factory=lambda: _env_int("HANDOUT_FOOTER_FONT_SIZE", 9)
     )
+    HANDOUT_FORCE_A4_PAGE_SIZE: bool = Field(
+        default_factory=lambda: _env_bool("HANDOUT_FORCE_A4_PAGE_SIZE", True)
+    )
     HANDOUT_TOC_MAX_ITERATIONS: int = Field(
         default_factory=lambda: _env_int("HANDOUT_TOC_MAX_ITERATIONS", 3)
     )

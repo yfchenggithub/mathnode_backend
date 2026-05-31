@@ -28,10 +28,12 @@ class FavoriteHandoutServiceTests(unittest.TestCase):
         self._old_font_path = settings.HANDOUT_CJK_FONT_PATH
         self._old_footer_font_size = settings.HANDOUT_FOOTER_FONT_SIZE
         self._old_footer_y = settings.HANDOUT_FOOTER_Y_MM
+        self._old_force_a4_page_size = settings.HANDOUT_FORCE_A4_PAGE_SIZE
         self._old_toc_iterations = settings.HANDOUT_TOC_MAX_ITERATIONS
 
         settings.HANDOUT_FOOTER_FONT_SIZE = 9
         settings.HANDOUT_FOOTER_Y_MM = 8
+        settings.HANDOUT_FORCE_A4_PAGE_SIZE = True
         settings.HANDOUT_TOC_MAX_ITERATIONS = 3
 
         self._font_path = self._pick_font_path()
@@ -41,6 +43,7 @@ class FavoriteHandoutServiceTests(unittest.TestCase):
         settings.HANDOUT_CJK_FONT_PATH = self._old_font_path
         settings.HANDOUT_FOOTER_FONT_SIZE = self._old_footer_font_size
         settings.HANDOUT_FOOTER_Y_MM = self._old_footer_y
+        settings.HANDOUT_FORCE_A4_PAGE_SIZE = self._old_force_a4_page_size
         settings.HANDOUT_TOC_MAX_ITERATIONS = self._old_toc_iterations
         if self._tmp_root.exists():
             shutil.rmtree(self._tmp_root, ignore_errors=True)

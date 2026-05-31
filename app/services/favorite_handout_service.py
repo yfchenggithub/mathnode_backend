@@ -68,6 +68,7 @@ TOC_META_FONT_SIZE_PT = 11
 TOC_SECTION_FONT_SIZE_PT = 15
 TOC_ENTRY_FONT_SIZE_PT = 11
 TOC_PAGE_HINT_FONT_SIZE_PT = 11
+A4_CONTENT_MARGIN_MM = 8.0
 
 COMMON_CJK_FONT_CANDIDATES = (
     r"C:\Windows\Fonts\msyh.ttc",
@@ -750,11 +751,19 @@ class FavoriteHandoutService:
         try:
             toc_pdf = Pdf.open(str(toc_pdf_path))
             opened.append(toc_pdf)
-            merged.pages.extend(toc_pdf.pages)
+            for toc_page in toc_pdf.pages:
+                FavoriteHandoutService._append_page_to_merged_pdf(
+                    merged_pdf=merged,
+                    source_page=toc_page,
+                )
             for entry in source_entries:
                 source_pdf = Pdf.open(str(entry.source_pdf_path))
                 opened.append(source_pdf)
-                merged.pages.extend(source_pdf.pages)
+                for source_page in source_pdf.pages:
+                    FavoriteHandoutService._append_page_to_merged_pdf(
+                        merged_pdf=merged,
+                        source_page=source_page,
+                    )
             merged.save(str(merged_output_path))
         except Exception:
             LOGGER.exception(
@@ -777,6 +786,24 @@ class FavoriteHandoutService:
                 merged.close()
             except Exception:
                 pass
+
+    @staticmethod
+    def _append_page_to_merged_pdf(*, merged_pdf: Any, source_page: Any) -> None:
+        if not settings.HANDOUT_FORCE_A4_PAGE_SIZE:
+            merged_pdf.pages.append(source_page)
+            return
+
+        from pikepdf import Rectangle
+
+        target_page = merged_pdf.add_blank_page(page_size=(A4_WIDTH_PT, A4_HEIGHT_PT))
+        margin_pt = _mm_to_pt(A4_CONTENT_MARGIN_MM)
+        target_rect = Rectangle(
+            margin_pt,
+            margin_pt,
+            A4_WIDTH_PT - margin_pt,
+            A4_HEIGHT_PT - margin_pt,
+        )
+        target_page.add_overlay(source_page, target_rect, shrink=True, expand=False)
 
     @staticmethod
     def _render_page_number_overlay(
@@ -909,8 +936,49 @@ class FavoriteHandoutService:
         summary = content_store.get_summary(conclusion_id)
         if not summary:
             return conclusion_id
-        title = str(summary.get("title") or "").strip()
-        return title or conclusion_id
+        raw_title = str(summary.get("title") or "").strip()
+        title = FavoriteHandoutService._normalize_display_title(raw_title)
+        if not title:
+            return conclusion_id
+        if title.count("?") >= max(2, len(title) // 2):
+            return conclusion_id
+        return title
+
+    @staticmethod
+    def _normalize_display_title(value: str) -> str:
+        text = value.strip()
+        if not text:
+            return ""
+
+        # Attempt to repair common mojibake patterns from legacy encoding mismatches.
+        for src_encoding in ("latin-1", "cp1252", "gbk"):
+            try:
+                candidate = text.encode(src_encoding).decode("utf-8")
+            except (UnicodeEncodeError, UnicodeDecodeError):
+                continue
+            candidate = candidate.strip()
+            if not candidate:
+                continue
+            if candidate != text and FavoriteHandoutService._contains_cjk(candidate):
+                return candidate
+
+        return text
+
+    @staticmethod
+    def _contains_cjk(value: str) -> bool:
+        for ch in value:
+            code = ord(ch)
+            if (
+                0x4E00 <= code <= 0x9FFF
+                or 0x3400 <= code <= 0x4DBF
+                or 0x20000 <= code <= 0x2A6DF
+                or 0x2A700 <= code <= 0x2B73F
+                or 0x2B740 <= code <= 0x2B81F
+                or 0x2B820 <= code <= 0x2CEAF
+                or 0xF900 <= code <= 0xFAFF
+            ):
+                return True
+        return False
 
     @staticmethod
     def _generate_handout_id() -> str:

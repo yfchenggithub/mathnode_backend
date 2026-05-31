@@ -98,6 +98,7 @@ class FavoriteHandoutApiTests(unittest.TestCase):
         self._old_handout_footer_enabled = settings.HANDOUT_FOOTER_ENABLED
         self._old_handout_footer_y = settings.HANDOUT_FOOTER_Y_MM
         self._old_handout_footer_font_size = settings.HANDOUT_FOOTER_FONT_SIZE
+        self._old_handout_force_a4_page_size = settings.HANDOUT_FORCE_A4_PAGE_SIZE
         self._old_handout_toc_iterations = settings.HANDOUT_TOC_MAX_ITERATIONS
 
         settings.PDF_ROOT_DIR = str(self._pdf_root)
@@ -107,6 +108,7 @@ class FavoriteHandoutApiTests(unittest.TestCase):
         settings.HANDOUT_FOOTER_ENABLED = True
         settings.HANDOUT_FOOTER_Y_MM = 8
         settings.HANDOUT_FOOTER_FONT_SIZE = 9
+        settings.HANDOUT_FORCE_A4_PAGE_SIZE = True
         settings.HANDOUT_TOC_MAX_ITERATIONS = 3
 
         self._font_path = self._pick_font_path()
@@ -180,6 +182,7 @@ class FavoriteHandoutApiTests(unittest.TestCase):
         settings.HANDOUT_FOOTER_ENABLED = self._old_handout_footer_enabled
         settings.HANDOUT_FOOTER_Y_MM = self._old_handout_footer_y
         settings.HANDOUT_FOOTER_FONT_SIZE = self._old_handout_footer_font_size
+        settings.HANDOUT_FORCE_A4_PAGE_SIZE = self._old_handout_force_a4_page_size
         settings.HANDOUT_TOC_MAX_ITERATIONS = self._old_handout_toc_iterations
         if self._tmp_root.exists():
             shutil.rmtree(self._tmp_root, ignore_errors=True)
@@ -303,12 +306,11 @@ class FavoriteHandoutApiTests(unittest.TestCase):
 
         reader = pikepdf.Pdf.open(str(merged_path))
         self.assertEqual(len(reader.pages), 4)
-        toc_page_width = float(reader.pages[0].MediaBox[2])
-        first_source_width = float(reader.pages[1].MediaBox[2])
-        second_source_width = float(reader.pages[2].MediaBox[2])
-        self.assertAlmostEqual(toc_page_width, 595.2, delta=1.5)
-        self.assertEqual(first_source_width, 200.0)
-        self.assertEqual(second_source_width, 320.0)
+        for idx in range(4):
+            page_width = float(reader.pages[idx].MediaBox[2])
+            page_height = float(reader.pages[idx].MediaBox[3])
+            self.assertAlmostEqual(page_width, 595.2, delta=1.5)
+            self.assertAlmostEqual(page_height, 842.0, delta=2.0)
         reader.close()
 
     def test_post_multi_page_toc_has_body_after_toc(self) -> None:
@@ -333,7 +335,9 @@ class FavoriteHandoutApiTests(unittest.TestCase):
         toc_pages = total_pages - source_pages
         self.assertGreaterEqual(toc_pages, 2)
         first_body_width = float(reader.pages[toc_pages].MediaBox[2])
-        self.assertEqual(first_body_width, 260.0)
+        first_body_height = float(reader.pages[toc_pages].MediaBox[3])
+        self.assertAlmostEqual(first_body_width, 595.2, delta=1.5)
+        self.assertAlmostEqual(first_body_height, 842.0, delta=2.0)
         reader.close()
 
     def test_post_long_chinese_title_can_be_rendered(self) -> None:
