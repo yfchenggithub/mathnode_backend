@@ -196,9 +196,6 @@ class Settings(BaseModel):
     JWT_EXPIRE_SECONDS: int = Field(
         default_factory=lambda: _env_int("JWT_EXPIRE_SECONDS", 86400)
     )
-    ADMIN_USER_IDS: str = Field(
-        default_factory=lambda: _env_str("ADMIN_USER_IDS", "")
-    )
 
 
 settings = Settings()

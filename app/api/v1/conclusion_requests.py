@@ -5,7 +5,7 @@ import logging
 from fastapi import APIRouter, Depends, Query, status
 from sqlalchemy.orm import Session
 
-from app.api.deps import get_admin_user_id, get_db, get_optional_user_id
+from app.api.deps import get_current_user_id, get_db, get_optional_user_id
 from app.core.logging_helpers import mask_sensitive, summarize_text
 from app.core.request_context import get_request_id
 from app.core.response import success_response
@@ -55,16 +55,16 @@ def list_conclusion_requests(
     keyword: str | None = Query(default=None, max_length=80),
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=20, ge=1, le=100),
-    admin_user_id: str = Depends(get_admin_user_id),
+    user_id: str = Depends(get_current_user_id),
     db: Session = Depends(get_db),
 ):
     LOGGER.info(
         (
             "conclusion request admin list api received | request_id=%s "
-            "admin_user_id=%s status=%s page=%s page_size=%s"
+            "user_id=%s status=%s page=%s page_size=%s"
         ),
         get_request_id(),
-        mask_sensitive(admin_user_id, left=2, right=2),
+        mask_sensitive(user_id, left=2, right=2),
         status_filter or "all",
         page,
         page_size,
@@ -79,10 +79,10 @@ def list_conclusion_requests(
     LOGGER.info(
         (
             "conclusion request admin list api success | request_id=%s "
-            "admin_user_id=%s total=%s"
+            "user_id=%s total=%s"
         ),
         get_request_id(),
-        mask_sensitive(admin_user_id, left=2, right=2),
+        mask_sensitive(user_id, left=2, right=2),
         data.get("total"),
     )
     return success_response(data=data)
@@ -92,16 +92,16 @@ def list_conclusion_requests(
 def update_conclusion_request_status(
     request_id: int,
     payload: ConclusionRequestUpdateRequest,
-    admin_user_id: str = Depends(get_admin_user_id),
+    user_id: str = Depends(get_current_user_id),
     db: Session = Depends(get_db),
 ):
     LOGGER.info(
         (
             "conclusion request admin update api received | request_id=%s "
-            "admin_user_id=%s target_id=%s status=%s"
+            "user_id=%s target_id=%s status=%s"
         ),
         get_request_id(),
-        mask_sensitive(admin_user_id, left=2, right=2),
+        mask_sensitive(user_id, left=2, right=2),
         request_id,
         payload.status,
     )
@@ -113,10 +113,10 @@ def update_conclusion_request_status(
     LOGGER.info(
         (
             "conclusion request admin update api success | request_id=%s "
-            "admin_user_id=%s target_id=%s status=%s"
+            "user_id=%s target_id=%s status=%s"
         ),
         get_request_id(),
-        mask_sensitive(admin_user_id, left=2, right=2),
+        mask_sensitive(user_id, left=2, right=2),
         request_id,
         data.get("status"),
     )

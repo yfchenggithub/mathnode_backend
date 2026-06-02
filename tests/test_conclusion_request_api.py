@@ -10,17 +10,12 @@ from sqlalchemy.pool import StaticPool
 
 from app.api.deps import MOCK_TOKEN, get_db
 from app.api.v1.conclusion_requests import router as conclusion_requests_router
-from app.core.config import settings
 from app.core.exception_handlers import register_exception_handlers
 from app.db.base import Base
-from app.services.auth_service import AuthService
 
 
 class ConclusionRequestApiTests(unittest.TestCase):
     def setUp(self) -> None:
-        self._old_admin_user_ids = settings.ADMIN_USER_IDS
-        settings.ADMIN_USER_IDS = "u1001"
-
         self._engine = create_engine(
             "sqlite://",
             connect_args={"check_same_thread": False},
@@ -47,15 +42,11 @@ class ConclusionRequestApiTests(unittest.TestCase):
         app.dependency_overrides[get_db] = _override_db
 
         self.client = TestClient(app)
-        self._admin_headers = {"Authorization": f"Bearer {MOCK_TOKEN}"}
-        self._user_headers = {
-            "Authorization": f"Bearer {AuthService.create_access_token('u2002')}"
-        }
+        self._auth_headers = {"Authorization": f"Bearer {MOCK_TOKEN}"}
 
     def tearDown(self) -> None:
         self.client.close()
         self._engine.dispose()
-        settings.ADMIN_USER_IDS = self._old_admin_user_ids
 
     def _create_request(self, query: str = "cauchy", note: str = "need common usage") -> dict:
         response = self.client.post(
@@ -103,7 +94,7 @@ class ConclusionRequestApiTests(unittest.TestCase):
 
         list_response = self.client.get(
             "/api/v1/admin/conclusion-requests",
-            headers=self._admin_headers,
+            headers=self._auth_headers,
         )
         self.assertEqual(list_response.status_code, 200)
         list_payload = list_response.json()
@@ -112,7 +103,7 @@ class ConclusionRequestApiTests(unittest.TestCase):
 
         update_response = self.client.put(
             f"/api/v1/admin/conclusion-requests/{created['id']}",
-            headers=self._admin_headers,
+            headers=self._auth_headers,
             json={
                 "status": "updated",
             },
@@ -121,20 +112,12 @@ class ConclusionRequestApiTests(unittest.TestCase):
         update_payload = update_response.json()
         self.assertEqual(update_payload["data"]["status"], "updated")
 
-    def test_admin_list_requires_admin_user(self) -> None:
+    def test_admin_list_requires_login(self) -> None:
         response = self.client.get("/api/v1/admin/conclusion-requests")
 
         self.assertEqual(response.status_code, 400)
         payload = response.json()
         self.assertEqual(payload["code"], 4011)
-
-        forbidden_response = self.client.get(
-            "/api/v1/admin/conclusion-requests",
-            headers=self._user_headers,
-        )
-        self.assertEqual(forbidden_response.status_code, 403)
-        forbidden_payload = forbidden_response.json()
-        self.assertEqual(forbidden_payload["error_code"], "ADMIN_FORBIDDEN")
 
 
 if __name__ == "__main__":
