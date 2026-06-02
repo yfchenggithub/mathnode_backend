@@ -5,6 +5,7 @@ from fastapi import Depends, Header
 from sqlalchemy.orm import Session
 
 from app.core.exceptions import BizException
+from app.core.config import settings
 from app.core.logging_helpers import mask_sensitive
 from app.core.request_context import get_request_id
 from app.db.session import SessionLocal
@@ -107,6 +108,35 @@ def get_current_user_id(token: str | None = Depends(get_access_token)) -> str:
         )
         raise BizException(code=4011, message="unauthorized")
     return _resolve_user_id_from_token(token)
+
+
+def _parse_admin_user_ids(raw_value: str) -> set[str]:
+    return {
+        item.strip()
+        for item in raw_value.split(",")
+        if item.strip()
+    }
+
+
+def get_admin_user_id(user_id: str = Depends(get_current_user_id)) -> str:
+    admin_user_ids = _parse_admin_user_ids(settings.ADMIN_USER_IDS)
+    if user_id in admin_user_ids:
+        return user_id
+
+    LOGGER.warning(
+        "admin auth rejected | request_id=%s user_id=%s admin_configured=%s",
+        get_request_id(),
+        mask_sensitive(user_id, left=2, right=2),
+        bool(admin_user_ids),
+    )
+    raise BizException(
+        code=4031,
+        message="forbidden",
+        status_code=403,
+        extra={
+            "error_code": "ADMIN_FORBIDDEN",
+        },
+    )
 
 
 def get_current_user(

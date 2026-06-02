@@ -7,6 +7,7 @@ from app.data.seed_conclusions import SEED_CONCLUSIONS
 from app.db.base import Base
 from app.db.session import SessionLocal, engine
 from app.models.conclusion import Conclusion
+from app.models.conclusion_request import ConclusionRequest
 from app.models.favorite import Favorite
 from app.models.favorite_handout import FavoriteHandout
 from app.models.recent_search import RecentSearch
