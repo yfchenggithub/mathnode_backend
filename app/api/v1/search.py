@@ -10,6 +10,7 @@ from app.core.request_context import get_request_id
 from app.core.response import success_response
 from app.services.favorite_service import FavoriteService
 from app.services.recent_search_service import RecentSearchService
+from app.services.search_keyword_service import SearchKeywordService
 from app.services.search_service import SearchService
 from app.stores.interfaces import IndexStore
 
@@ -59,6 +60,18 @@ def search(
         page_size=page_size,
         favorite_ids=favorite_ids,
     )
+
+    if normalized_q and db is not None:
+        SearchKeywordService.record_keyword(
+            db=db,
+            keyword=normalized_q,
+            result_count=int(data.get("total", 0) or 0),
+        )
+        LOGGER.debug(
+            "search api global keyword saved | request_id=%s keyword=%r",
+            get_request_id(),
+            summarize_text(normalized_q, max_length=80),
+        )
 
     if user_id and q.strip():
         RecentSearchService.add_keyword(db=db, user_id=user_id, keyword=q.strip())

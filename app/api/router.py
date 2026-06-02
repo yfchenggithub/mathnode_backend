@@ -8,6 +8,7 @@ from app.api.v1.health import router as health_router
 from app.api.v1.pdfs import router as pdfs_router
 from app.api.v1.recent_searches import router as recent_searches_router
 from app.api.v1.search import router as search_router
+from app.api.v1.search_keywords import router as search_keywords_router
 from app.api.v1.suggest import router as suggest_router
 from app.api.v1.users import router as users_router
 from app.core.config import settings
@@ -22,6 +23,7 @@ api_router.include_router(auth_router, tags=["auth"])
 api_router.include_router(users_router, tags=["users"])
 api_router.include_router(favorites_router, tags=["favorites"])
 api_router.include_router(recent_searches_router, tags=["recent_searches"])
+api_router.include_router(search_keywords_router, tags=["search_keywords"])
 api_router.include_router(pdfs_router, tags=["pdfs"])
 api_router.include_router(conclusion_requests_router, tags=["conclusion_requests"])
 
