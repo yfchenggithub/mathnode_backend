@@ -18,6 +18,7 @@ from app.data.mock_data import MOCK_USERS
 from app.models.user import User
 from app.repositories.user_auth_identity_repo import UserAuthIdentityRepository
 from app.repositories.user_repo import UserRepository
+from app.services.user_service import UserService
 
 LOGGER = logging.getLogger(__name__)
 
@@ -359,6 +360,8 @@ class AuthService:
                 AuthService._mask_sensitive(openid),
             )
             raise BizException(code=5011, message="user not found")
+
+        UserService.ensure_active(user)
 
         try:
             UserAuthIdentityRepository.update_identity_session(

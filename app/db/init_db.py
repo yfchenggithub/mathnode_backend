@@ -1,6 +1,6 @@
 import logging
 
-from sqlalchemy import select
+from sqlalchemy import inspect, select, text
 from sqlalchemy.orm import Session
 
 from app.data.seed_conclusions import SEED_CONCLUSIONS
@@ -15,6 +15,23 @@ from app.models.user import User
 from app.models.user_auth_identity import UserAuthIdentity
 
 LOGGER = logging.getLogger(__name__)
+
+
+def ensure_user_status_column() -> None:
+    inspector = inspect(engine)
+    if "users" not in inspector.get_table_names():
+        return
+
+    columns = {column["name"] for column in inspector.get_columns("users")}
+    if "status" in columns:
+        return
+
+    LOGGER.info("db migration start | table=users add_column=status")
+    with engine.begin() as connection:
+        connection.execute(
+            text("ALTER TABLE users ADD COLUMN status VARCHAR(20) NOT NULL DEFAULT 'active'")
+        )
+    LOGGER.info("db migration complete | table=users add_column=status")
 
 
 def seed_conclusions_if_empty(db: Session) -> None:
@@ -34,6 +51,7 @@ def seed_conclusions_if_empty(db: Session) -> None:
 def init_db() -> None:
     LOGGER.debug("db init start")
     Base.metadata.create_all(bind=engine)
+    ensure_user_status_column()
 
     db = SessionLocal()
     try:

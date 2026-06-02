@@ -9,9 +9,17 @@ from app.db.base import Base
 class User(Base):
     __tablename__ = "users"
 
+    STATUS_ACTIVE = "active"
+    STATUS_DISABLED = "disabled"
+
     id: Mapped[str] = mapped_column(String(64), primary_key=True, index=True)
     nickname: Mapped[str] = mapped_column(String(100), nullable=False)
     avatar_url: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    status: Mapped[str] = mapped_column(
+        String(20),
+        default=STATUS_ACTIVE,
+        nullable=False,
+    )
     created_at: Mapped[datetime] = mapped_column(
         DateTime, default=datetime.utcnow, nullable=False
     )

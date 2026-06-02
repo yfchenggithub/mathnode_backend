@@ -27,6 +27,7 @@ from app.core.exceptions import BizException
 from app.db.base import Base
 from app.models.favorite import Favorite
 from app.models.favorite_handout import FavoriteHandout
+from app.models.user import User
 from app.services.auth_service import AuthService
 from app.services.favorite_handout_service import FavoriteHandoutService
 from app.stores.memory_pdf_mapping_store import MemoryPdfMappingStore
@@ -138,6 +139,8 @@ class FavoriteHandoutApiTests(unittest.TestCase):
             autocommit=False,
         )
         Base.metadata.create_all(bind=self._engine)
+        self._insert_user(user_id="u1001", nickname="User One")
+        self._insert_user(user_id="u2002", nickname="User Two")
 
         self._titles: dict[str, str] = {
             "I001": "标题 I001",
@@ -273,6 +276,14 @@ class FavoriteHandoutApiTests(unittest.TestCase):
         db: Session = self._session_factory()
         try:
             db.add(Favorite(user_id=user_id, conclusion_id=conclusion_id))
+            db.commit()
+        finally:
+            db.close()
+
+    def _insert_user(self, *, user_id: str, nickname: str) -> None:
+        db: Session = self._session_factory()
+        try:
+            db.add(User(id=user_id, nickname=nickname, status="active"))
             db.commit()
         finally:
             db.close()

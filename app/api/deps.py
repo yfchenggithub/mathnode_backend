@@ -11,6 +11,7 @@ from app.db.session import SessionLocal
 from app.models.user import User
 from app.repositories.user_repo import UserRepository
 from app.services.auth_service import AuthService
+from app.services.user_service import UserService
 
 MOCK_TOKEN = "mock-token-u1001"
 MOCK_USER_ID = "u1001"
@@ -93,23 +94,48 @@ def _resolve_user_id_from_token(token: str) -> str:
     return user_id
 
 
-def get_optional_user_id(token: str | None = Depends(get_access_token)) -> str | None:
+def _resolve_active_user_id_from_token(
+    token: str,
+    db: Session,
+) -> str:
+    user_id = _resolve_user_id_from_token(token)
+    user = UserRepository.get_user_by_id(db=db, user_id=user_id)
+
+    if user is None:
+        if token == MOCK_TOKEN:
+            return user_id
+
+        LOGGER.warning(
+            "token user not found | request_id=%s user_id=%s",
+            get_request_id(),
+            mask_sensitive(user_id, left=2, right=2),
+        )
+        raise BizException(code=4011, message="unauthorized")
+
+    UserService.ensure_active(user)
+    return user.id
+
+
+def get_optional_user_id(
+    token: str | None = Depends(get_access_token),
+    db: Session = Depends(get_db),
+) -> str | None:
     if token is None:
         return None
-    return _resolve_user_id_from_token(token)
+    return _resolve_active_user_id_from_token(token, db)
 
 
-def get_current_user_id(token: str | None = Depends(get_access_token)) -> str:
+def get_current_user_id(
+    token: str | None = Depends(get_access_token),
+    db: Session = Depends(get_db),
+) -> str:
     if token is None:
         LOGGER.warning(
             "auth required but token missing | request_id=%s",
             get_request_id(),
         )
         raise BizException(code=4011, message="unauthorized")
-    return _resolve_user_id_from_token(token)
-
-
-
+    return _resolve_active_user_id_from_token(token, db)
 
 def get_current_user(
     user_id: str = Depends(get_current_user_id),
@@ -123,6 +149,7 @@ def get_current_user(
             mask_sensitive(user_id, left=2, right=2),
         )
         raise BizException(code=4011, message="unauthorized")
+    UserService.ensure_active(user)
     return user
 
 
