@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 from sqlalchemy import desc, func, or_, select
 from sqlalchemy.exc import IntegrityError
@@ -18,7 +18,7 @@ class SearchKeywordRepository:
         normalized_keyword: str,
         result_count: int,
     ) -> SearchKeyword:
-        now = datetime.now(UTC).replace(tzinfo=None)
+        now = datetime.now(timezone.utc).replace(tzinfo=None)
         row = SearchKeywordRepository.get_by_normalized_keyword(
             db,
             normalized_keyword=normalized_keyword,
