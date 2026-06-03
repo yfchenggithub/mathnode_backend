@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import date, datetime, time, timedelta, timezone
 
-from sqlalchemy import desc, func, or_, select
+from sqlalchemy import and_, desc, func, or_, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
@@ -78,19 +78,20 @@ class SearchKeywordRepository:
         db: Session,
         *,
         keyword: str | None = None,
+        start_date: date | None = None,
+        end_date: date | None = None,
+        result_filter: str = "all",
+        low_result_threshold: int = 3,
         page: int = 1,
         page_size: int = 20,
     ) -> tuple[list[SearchKeyword], int]:
-        conditions = []
-        normalized_keyword = (keyword or "").strip().lower()
-        if normalized_keyword:
-            keyword_pattern = f"%{normalized_keyword}%"
-            conditions.append(
-                or_(
-                    SearchKeyword.keyword.like(keyword_pattern),
-                    SearchKeyword.normalized_keyword.like(keyword_pattern),
-                )
-            )
+        conditions = SearchKeywordRepository._build_filter_conditions(
+            keyword=keyword,
+            start_date=start_date,
+            end_date=end_date,
+            result_filter=result_filter,
+            low_result_threshold=low_result_threshold,
+        )
 
         stmt = select(SearchKeyword)
         count_stmt = select(func.count()).select_from(SearchKeyword)
@@ -102,10 +103,7 @@ class SearchKeywordRepository:
         offset = max(0, page - 1) * page_size
         rows = (
             db.execute(
-                stmt.order_by(
-                    desc(SearchKeyword.updated_at),
-                    desc(SearchKeyword.id),
-                )
+                SearchKeywordRepository._apply_default_order(stmt)
                 .offset(offset)
                 .limit(page_size)
             )
@@ -113,6 +111,84 @@ class SearchKeywordRepository:
             .all()
         )
         return list(rows), total
+
+    @staticmethod
+    def list_keywords_for_export(
+        db: Session,
+        *,
+        keyword: str | None = None,
+        start_date: date | None = None,
+        end_date: date | None = None,
+        result_filter: str = "all",
+        low_result_threshold: int = 3,
+    ) -> list[SearchKeyword]:
+        conditions = SearchKeywordRepository._build_filter_conditions(
+            keyword=keyword,
+            start_date=start_date,
+            end_date=end_date,
+            result_filter=result_filter,
+            low_result_threshold=low_result_threshold,
+        )
+        stmt = select(SearchKeyword)
+        if conditions:
+            stmt = stmt.where(*conditions)
+
+        rows = db.execute(SearchKeywordRepository._apply_default_order(stmt)).scalars().all()
+        return list(rows)
+
+    @staticmethod
+    def _build_filter_conditions(
+        *,
+        keyword: str | None,
+        start_date: date | None,
+        end_date: date | None,
+        result_filter: str,
+        low_result_threshold: int,
+    ) -> list:
+        conditions = []
+        normalized_keyword = (keyword or "").strip().lower()
+        if normalized_keyword:
+            keyword_pattern = f"%{normalized_keyword}%"
+            conditions.append(
+                or_(
+                    SearchKeyword.keyword.like(keyword_pattern),
+                    SearchKeyword.normalized_keyword.like(keyword_pattern),
+                )
+            )
+
+        if start_date is not None:
+            conditions.append(
+                SearchKeyword.updated_at >= datetime.combine(start_date, time.min)
+            )
+        if end_date is not None:
+            end_exclusive = datetime.combine(end_date + timedelta(days=1), time.min)
+            conditions.append(SearchKeyword.updated_at < end_exclusive)
+
+        if result_filter == "no_result":
+            conditions.append(
+                or_(
+                    SearchKeyword.last_has_result.is_(False),
+                    SearchKeyword.last_result_count <= 0,
+                )
+            )
+        elif result_filter == "low_result":
+            safe_threshold = max(1, int(low_result_threshold or 1))
+            conditions.append(
+                and_(
+                    SearchKeyword.last_result_count > 0,
+                    SearchKeyword.last_result_count <= safe_threshold,
+                )
+            )
+
+        return conditions
+
+    @staticmethod
+    def _apply_default_order(stmt):
+        return stmt.order_by(
+            desc(SearchKeyword.search_count),
+            desc(SearchKeyword.updated_at),
+            desc(SearchKeyword.id),
+        )
 
     @staticmethod
     def _update_keyword(

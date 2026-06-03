@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import datetime
 import unittest
 from typing import Any
 
@@ -15,6 +16,7 @@ from app.api.v1.search import router as search_router
 from app.api.v1.search_keywords import router as search_keywords_router
 from app.core.exception_handlers import register_exception_handlers
 from app.db.base import Base
+from app.models.search_keyword import SearchKeyword
 
 
 class FakeIndexStore:
@@ -92,6 +94,30 @@ class SearchKeywordApiTests(unittest.TestCase):
         self.client.close()
         self._engine.dispose()
 
+    def _insert_keyword(
+        self,
+        *,
+        keyword: str,
+        search_count: int,
+        last_result_count: int,
+        updated_at: datetime,
+    ) -> None:
+        db = self._session_factory()
+        try:
+            row = SearchKeyword(
+                keyword=keyword,
+                normalized_keyword=keyword.lower(),
+                search_count=search_count,
+                last_result_count=last_result_count,
+                last_has_result=last_result_count > 0,
+                created_at=updated_at,
+                updated_at=updated_at,
+            )
+            db.add(row)
+            db.commit()
+        finally:
+            db.close()
+
     def test_search_records_anonymous_keyword_and_admin_lists_it(self) -> None:
         first_response = self.client.get(
             "/api/v1/search",
@@ -139,6 +165,115 @@ class SearchKeywordApiTests(unittest.TestCase):
         self.assertEqual(item["search_count"], 1)
         self.assertEqual(item["last_result_count"], 0)
         self.assertFalse(item["last_has_result"])
+
+    def test_admin_list_defaults_to_search_count_desc(self) -> None:
+        self._insert_keyword(
+            keyword="alpha",
+            search_count=2,
+            last_result_count=6,
+            updated_at=datetime(2026, 1, 3, 10, 0, 0),
+        )
+        self._insert_keyword(
+            keyword="beta",
+            search_count=5,
+            last_result_count=6,
+            updated_at=datetime(2026, 1, 2, 10, 0, 0),
+        )
+        self._insert_keyword(
+            keyword="gamma",
+            search_count=5,
+            last_result_count=6,
+            updated_at=datetime(2026, 1, 4, 10, 0, 0),
+        )
+
+        response = self.client.get(
+            "/api/v1/admin/search-keywords",
+            headers=self._auth_headers,
+        )
+
+        self.assertEqual(response.status_code, 200)
+        keywords = [item["keyword"] for item in response.json()["data"]["items"]]
+        self.assertEqual(keywords, ["gamma", "beta", "alpha"])
+
+    def test_admin_list_supports_time_and_result_filters(self) -> None:
+        self._insert_keyword(
+            keyword="old no result",
+            search_count=10,
+            last_result_count=0,
+            updated_at=datetime(2025, 12, 30, 10, 0, 0),
+        )
+        self._insert_keyword(
+            keyword="fresh no result",
+            search_count=3,
+            last_result_count=0,
+            updated_at=datetime(2026, 1, 2, 10, 0, 0),
+        )
+        self._insert_keyword(
+            keyword="fresh low result",
+            search_count=4,
+            last_result_count=2,
+            updated_at=datetime(2026, 1, 3, 10, 0, 0),
+        )
+        self._insert_keyword(
+            keyword="fresh rich result",
+            search_count=5,
+            last_result_count=8,
+            updated_at=datetime(2026, 1, 4, 10, 0, 0),
+        )
+
+        no_result_response = self.client.get(
+            "/api/v1/admin/search-keywords",
+            params={
+                "start_date": "2026-01-01",
+                "end_date": "2026-01-03",
+                "result_filter": "no_result",
+            },
+            headers=self._auth_headers,
+        )
+        self.assertEqual(no_result_response.status_code, 200)
+        no_result_keywords = [
+            item["keyword"] for item in no_result_response.json()["data"]["items"]
+        ]
+        self.assertEqual(no_result_keywords, ["fresh no result"])
+
+        low_result_response = self.client.get(
+            "/api/v1/admin/search-keywords",
+            params={"result_filter": "low_result", "low_result_threshold": 3},
+            headers=self._auth_headers,
+        )
+        self.assertEqual(low_result_response.status_code, 200)
+        low_result_keywords = [
+            item["keyword"] for item in low_result_response.json()["data"]["items"]
+        ]
+        self.assertEqual(low_result_keywords, ["fresh low result"])
+
+    def test_admin_csv_export_uses_current_filters(self) -> None:
+        self._insert_keyword(
+            keyword="zero result",
+            search_count=7,
+            last_result_count=0,
+            updated_at=datetime(2026, 1, 5, 10, 0, 0),
+        )
+        self._insert_keyword(
+            keyword="has result",
+            search_count=8,
+            last_result_count=5,
+            updated_at=datetime(2026, 1, 5, 11, 0, 0),
+        )
+
+        response = self.client.get(
+            "/api/v1/admin/search-keywords/export.csv",
+            params={"result_filter": "no_result"},
+            headers=self._auth_headers,
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("text/csv", response.headers["content-type"])
+        self.assertIn("attachment", response.headers["content-disposition"])
+        csv_text = response.content.decode("utf-8-sig")
+        self.assertIn("搜索词", csv_text)
+        self.assertIn("zero result", csv_text)
+        self.assertNotIn("has result", csv_text)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import csv
+import io
 import logging
+from datetime import date
 
 from sqlalchemy.orm import Session
 
@@ -42,6 +45,10 @@ def _to_item(row: SearchKeyword) -> dict:
     }
 
 
+def _format_bool(value: bool) -> str:
+    return "是" if value else "否"
+
+
 class SearchKeywordService:
     @staticmethod
     def record_keyword(db: Session, keyword: str, result_count: int = 0) -> None:
@@ -69,12 +76,20 @@ class SearchKeywordService:
         db: Session,
         *,
         keyword: str | None = None,
+        start_date: date | None = None,
+        end_date: date | None = None,
+        result_filter: str = "all",
+        low_result_threshold: int = 3,
         page: int = 1,
         page_size: int = 20,
     ) -> dict:
         rows, total = SearchKeywordRepository.list_keywords(
             db,
             keyword=keyword,
+            start_date=start_date,
+            end_date=end_date,
+            result_filter=result_filter,
+            low_result_threshold=low_result_threshold,
             page=page,
             page_size=page_size,
         )
@@ -84,3 +99,47 @@ class SearchKeywordService:
             "page_size": page_size,
             "items": [_to_item(row) for row in rows],
         }
+
+    @staticmethod
+    def export_keywords_csv(
+        db: Session,
+        *,
+        keyword: str | None = None,
+        start_date: date | None = None,
+        end_date: date | None = None,
+        result_filter: str = "all",
+        low_result_threshold: int = 3,
+    ) -> str:
+        rows = SearchKeywordRepository.list_keywords_for_export(
+            db,
+            keyword=keyword,
+            start_date=start_date,
+            end_date=end_date,
+            result_filter=result_filter,
+            low_result_threshold=low_result_threshold,
+        )
+        output = io.StringIO()
+        output.write("\ufeff")
+        writer = csv.writer(output)
+        writer.writerow([
+            "ID",
+            "搜索词",
+            "归一化搜索词",
+            "搜索次数",
+            "最近结果数",
+            "最近是否有结果",
+            "首次搜索时间",
+            "最近搜索时间",
+        ])
+        for row in rows:
+            writer.writerow([
+                row.id,
+                row.keyword,
+                row.normalized_keyword,
+                row.search_count,
+                row.last_result_count,
+                _format_bool(bool(row.last_has_result)),
+                row.created_at.isoformat(),
+                row.updated_at.isoformat(),
+            ])
+        return output.getvalue()
