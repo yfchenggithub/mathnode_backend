@@ -66,6 +66,56 @@ class SearchApiIndexPayloadTests(unittest.TestCase):
         actual.pop("is_favorited", None)
         self.assertEqual(actual, expected)
 
+    def test_search_cards_returns_requested_items_in_order(self) -> None:
+        response = self.client.get("/api/v1/search/cards?ids=I005,I001")
+
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertEqual(payload["code"], 0)
+
+        data = payload["data"]
+        items = data["items"]
+        self.assertEqual(data["total"], 2)
+        self.assertEqual(data["missing_ids"], [])
+        self.assertEqual([item.get("id") for item in items], ["I005", "I001"])
+
+        i005_item = items[0]
+        self.assertIn("is_favorited", i005_item)
+        self.assertIsInstance(i005_item["is_favorited"], bool)
+        self.assertFalse(i005_item["is_favorited"])
+        self.assertEqual(
+            i005_item["coreFormula"]["asset"]["png"],
+            self._docs["I005"]["coreFormula"]["asset"]["png"],
+        )
+
+        expected = deepcopy(self._docs["I005"])
+        actual = deepcopy(i005_item)
+        actual.pop("is_favorited", None)
+        self.assertEqual(actual, expected)
+
+    def test_search_cards_dedupes_ids_and_reports_missing_ids(self) -> None:
+        response = self.client.get(
+            "/api/v1/search/cards?ids=I005,UNKNOWN_CARD_ID,I005,I001"
+        )
+
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertEqual(payload["code"], 0)
+
+        data = payload["data"]
+        self.assertEqual([item.get("id") for item in data["items"]], ["I005", "I001"])
+        self.assertEqual(data["missing_ids"], ["UNKNOWN_CARD_ID"])
+
+    def test_search_cards_empty_ids_returns_empty_payload(self) -> None:
+        response = self.client.get("/api/v1/search/cards")
+
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertEqual(payload["code"], 0)
+        self.assertEqual(payload["data"]["total"], 0)
+        self.assertEqual(payload["data"]["items"], [])
+        self.assertEqual(payload["data"]["missing_ids"], [])
+
 
 if __name__ == "__main__":
     unittest.main()

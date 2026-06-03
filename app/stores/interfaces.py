@@ -76,6 +76,13 @@ class IndexStore(Protocol):
     ) -> dict[str, Any]:
         ...
 
+    def get_cards_by_ids(
+        self,
+        ids: list[str],
+        favorite_ids: set[str] | None,
+    ) -> dict[str, Any]:
+        ...
+
     def count(self) -> int:
         ...
 

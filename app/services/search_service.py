@@ -171,3 +171,54 @@ class SearchService:
             (time.perf_counter() - started_at) * 1000,
         )
         return result
+
+    @staticmethod
+    def get_cards_by_ids(
+        index_store: IndexStore,
+        ids: list[str],
+        favorite_ids: set[str] | None = None,
+    ) -> dict:
+        started_at = time.perf_counter()
+        favorite_ids = favorite_ids or set()
+
+        LOGGER.debug(
+            (
+                "search cards start | request_id=%s id_count=%s favorite_count=%s "
+                "index_count=%s"
+            ),
+            get_request_id(),
+            len(ids),
+            len(favorite_ids),
+            index_store.count(),
+        )
+
+        try:
+            result = index_store.get_cards_by_ids(
+                ids=ids,
+                favorite_ids=favorite_ids,
+            )
+        except Exception:
+            LOGGER.exception(
+                "search cards failed | request_id=%s id_count=%s",
+                get_request_id(),
+                len(ids),
+            )
+            raise
+
+        items = result.get("items", [])
+        missing_ids = result.get("missing_ids", [])
+        item_count = len(items) if isinstance(items, list) else 0
+        missing_count = len(missing_ids) if isinstance(missing_ids, list) else 0
+
+        LOGGER.info(
+            (
+                "search cards finished | request_id=%s requested=%s returned=%s "
+                "missing=%s elapsed_ms=%.2f"
+            ),
+            get_request_id(),
+            len(ids),
+            item_count,
+            missing_count,
+            (time.perf_counter() - started_at) * 1000,
+        )
+        return result

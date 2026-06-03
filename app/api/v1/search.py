@@ -18,6 +18,56 @@ router = APIRouter()
 LOGGER = logging.getLogger(__name__)
 
 
+def _parse_card_ids(raw_ids: str) -> list[str]:
+    ids: list[str] = []
+    seen_ids: set[str] = set()
+    for part in str(raw_ids or "").replace("，", ",").split(","):
+        conclusion_id = part.strip()
+        if not conclusion_id or conclusion_id in seen_ids:
+            continue
+
+        ids.append(conclusion_id)
+        seen_ids.add(conclusion_id)
+
+    return ids
+
+
+@router.get("/search/cards")
+def search_cards(
+    ids: str = Query(default=""),
+    user_id: str | None = Depends(get_optional_user_id),
+    db: Session = Depends(get_db),
+    index_store: IndexStore = Depends(get_index_store),
+):
+    parsed_ids = _parse_card_ids(ids)
+    LOGGER.info(
+        "search cards api received | request_id=%s user_id=%s id_count=%s ids=%r",
+        get_request_id(),
+        mask_sensitive(user_id, left=2, right=2) if user_id else "-",
+        len(parsed_ids),
+        summarize_text(",".join(parsed_ids), max_length=120),
+    )
+
+    favorite_ids = (
+        FavoriteService.get_favorite_ids(db=db, user_id=user_id) if user_id else set()
+    )
+
+    data = SearchService.get_cards_by_ids(
+        index_store=index_store,
+        ids=parsed_ids,
+        favorite_ids=favorite_ids,
+    )
+
+    LOGGER.info(
+        "search cards api success | request_id=%s requested=%s returned=%s missing=%s",
+        get_request_id(),
+        len(parsed_ids),
+        len(data.get("items", [])) if isinstance(data.get("items"), list) else 0,
+        len(data.get("missing_ids", [])) if isinstance(data.get("missing_ids"), list) else 0,
+    )
+    return success_response(data=data)
+
+
 @router.get("/search")
 def search(
     q: str = Query(default=""),

@@ -41,6 +41,7 @@ class MemoryIndexStore:
         self._source = source
         self._generated_at = str(generated_at or "").strip()
         self._records: list[dict[str, Any]] = []
+        self._by_id: dict[str, dict[str, Any]] = {}
 
         for item in sorted(records, key=lambda x: x["id"]):
             doc_payload = self._build_doc_payload(item)
@@ -61,6 +62,10 @@ class MemoryIndexStore:
             normalized["_statement_clean_lower"] = normalized["statement_clean"].lower()
             normalized["_tags_text_lower"] = normalized["tags_text"].lower()
             self._records.append(normalized)
+
+            record_id = normalized["id"]
+            if record_id and record_id not in self._by_id:
+                self._by_id[record_id] = normalized
 
     @staticmethod
     def _build_doc_payload(item: dict[str, Any]) -> dict[str, Any]:
@@ -190,6 +195,41 @@ class MemoryIndexStore:
                     for key, value in tags_counter.items()
                 ],
             },
+        }
+
+    def get_cards_by_ids(
+        self,
+        ids: list[str],
+        favorite_ids: set[str] | None = None,
+    ) -> dict[str, Any]:
+        favorite_ids = favorite_ids or set()
+
+        normalized_ids: list[str] = []
+        seen_ids: set[str] = set()
+        for raw_id in ids:
+            conclusion_id = str(raw_id or "").strip()
+            if not conclusion_id or conclusion_id in seen_ids:
+                continue
+
+            normalized_ids.append(conclusion_id)
+            seen_ids.add(conclusion_id)
+
+        items: list[dict[str, Any]] = []
+        missing_ids: list[str] = []
+        for conclusion_id in normalized_ids:
+            row = self._by_id.get(conclusion_id)
+            if row is None:
+                missing_ids.append(conclusion_id)
+                continue
+
+            item_payload = deepcopy(row["doc_payload"])
+            item_payload["is_favorited"] = row["id"] in favorite_ids
+            items.append(item_payload)
+
+        return {
+            "total": len(items),
+            "items": items,
+            "missing_ids": missing_ids,
         }
 
     @staticmethod
