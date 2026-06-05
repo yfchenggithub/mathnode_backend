@@ -121,5 +121,6 @@
   "V019": "V019_Orthocenter.pdf",
   "R005": "R005_mutually_exclusive_addition.pdf",
   "R006": "R006_independent_event_multiplication_rule.pdf",
-  "R007": "R007_binomial_probability_formula.pdf"
+  "R007": "R007_binomial_probability_formula.pdf",
+  "R008": "R008_discrete_expectation_definition.pdf"
 }
