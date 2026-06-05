@@ -5,7 +5,7 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-04T16:31:56+08:00",
+  "generatedAt": "2026-06-05T08:50:49+08:00",
   "stats": {
     "documents": 123,
     "terms": 7203,
@@ -4197,15 +4197,15 @@
         "伯努利试验"
       ],
       "coreFormula": {
-        "latex": "P_n(k)=\\\\mathrm{C}_n^k p^k (1-p)^{n-k}",
+        "latex": "P_n(k)=\\mathrm{C}_n^k p^k (1-p)^{n-k}",
         "type": "math_image",
         "asset": {
-          "png": "/static/formulas/R007/406c4ed1aae8cd7a@3x.png",
-          "webp": "/static/formulas/R007/406c4ed1aae8cd7a@3x.webp",
-          "width_px": 444,
-          "height_px": 120,
-          "display_width_px": 148,
-          "display_height_px": 40,
+          "png": "/static/formulas/R007/de0e88d69bcc6954@3x.png",
+          "webp": "/static/formulas/R007/de0e88d69bcc6954@3x.webp",
+          "width_px": 447,
+          "height_px": 71,
+          "display_width_px": 149,
+          "display_height_px": 24,
           "scale": 3
         }
       },
@@ -5505,13 +5505,6 @@
         4096
       ]
     ],
-    "\\\\mathrm{c}_n^k": [
-      [
-        "R007",
-        78,
-        2048
-      ]
-    ],
     "\\\\sin^2x\\\\lex^2": [
       [
         "I029",
@@ -5524,13 +5517,6 @@
         "P007",
         78,
         2048
-      ]
-    ],
-    "\\\\sum_{k=0}^n\\\\mathrm{c}_n^kp^k(1-p)^{n-k}=1": [
-      [
-        "R007",
-        144,
-        6144
       ]
     ],
     "\\angle afc = \\angle adc = 90^\\circ": [
@@ -7321,6 +7307,13 @@
         4096
       ]
     ],
+    "\\mathrm{c}_n^k": [
+      [
+        "R007",
+        78,
+        2048
+      ]
+    ],
     "\\operatorname{artanh}e=\\frac12\\ln\\frac{1+e}{1-e}": [
       [
         "G004",
@@ -7752,6 +7745,13 @@
         "S001",
         225,
         6148
+      ]
+    ],
+    "\\sum_{k=0}^n\\mathrm{c}_n^kp^k(1-p)^{n-k}=1": [
+      [
+        "R007",
+        144,
+        6144
       ]
     ],
     "\\sum_{k=1}^{n}k*k!=(n+1)!-1": [
@@ -31078,7 +31078,7 @@
         2052
       ]
     ],
-    "p_n(k)=\\\\mathrm{c}_n^kp^k(1-p)^{n-k}": [
+    "p_n(k)=\\mathrm{c}_n^kp^k(1-p)^{n-k}": [
       [
         "R007",
         66,
