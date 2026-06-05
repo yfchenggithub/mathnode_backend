@@ -125,5 +125,6 @@
   "R008": "R008_discrete_expectation_definition.pdf",
   "R009": "R009_expectation_linearity.pdf",
   "R010": "R010_binomial_expectation.pdf",
-  "R011": "R011_geometric_distribution_mean.pdf"
+  "R011": "R011_geometric_distribution_mean.pdf",
+  "R012": "R012_discrete_variance_definition.pdf"
 }
