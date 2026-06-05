@@ -5,7 +5,7 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-05T15:00:36+08:00",
+  "generatedAt": "2026-06-05T15:02:54+08:00",
   "stats": {
     "documents": 127,
     "terms": 7444,
@@ -4333,15 +4333,15 @@
         "几何分布求期望"
       ],
       "coreFormula": {
-        "latex": "E\\\\xi = \\\\frac{1}{p}",
+        "latex": "E\\xi = \\frac{1}{p}",
         "type": "math_image",
         "asset": {
-          "png": "/static/formulas/R011/89d33a525ca79568@3x.png",
-          "webp": "/static/formulas/R011/89d33a525ca79568@3x.webp",
-          "width_px": 145,
-          "height_px": 162,
-          "display_width_px": 48,
-          "display_height_px": 54,
+          "png": "/static/formulas/R011/69c1bd425ac1b010@3x.png",
+          "webp": "/static/formulas/R011/69c1bd425ac1b010@3x.webp",
+          "width_px": 166,
+          "height_px": 114,
+          "display_width_px": 55,
+          "display_height_px": 38,
           "scale": 3
         }
       },
@@ -5634,13 +5634,6 @@
         2048
       ]
     ],
-    "\\\\frac{1}{p}": [
-      [
-        "R011",
-        78,
-        2048
-      ]
-    ],
     "\\\\frac{c_{n+1}-q^{2}c_n+qc_1}{(q-1)^{2}}": [
       [
         "L001",
@@ -6058,6 +6051,13 @@
         "I023",
         66,
         4096
+      ]
+    ],
+    "\\frac{1}{p}": [
+      [
+        "R011",
+        78,
+        2048
       ]
     ],
     "\\frac{1}{x}+\\frac{1}{y}": [
@@ -18977,13 +18977,6 @@
         4096
       ]
     ],
-    "e\\\\xi=\\\\frac{1}{p}": [
-      [
-        "R011",
-        210,
-        6144
-      ]
-    ],
     "e\\xi": [
       [
         "R008",
@@ -18994,6 +18987,13 @@
         "R010",
         78,
         2048
+      ]
+    ],
+    "e\\xi=\\frac{1}{p}": [
+      [
+        "R011",
+        210,
+        6144
       ]
     ],
     "e\\xi=\\sum_ix_ip_i": [
@@ -31659,20 +31659,6 @@
         4
       ]
     ],
-    "p(\\\\xi=k)=q^{k-1}p": [
-      [
-        "R011",
-        144,
-        6144
-      ]
-    ],
-    "p(\\\\xi=k)=q^{k-1}p,\\\\quadq=1-p": [
-      [
-        "R011",
-        66,
-        4096
-      ]
-    ],
     "p(\\bigcup_{i=1}^{n}a_i)=\\sum_{i=1}^{n}p(a_i)": [
       [
         "R005",
@@ -31704,6 +31690,20 @@
     "p(\\overline{a}b)=p(\\overline{a})p(b)": [
       [
         "R006",
+        66,
+        4096
+      ]
+    ],
+    "p(\\xi=k)=q^{k-1}p": [
+      [
+        "R011",
+        144,
+        6144
+      ]
+    ],
+    "p(\\xi=k)=q^{k-1}p,\\quadq=1-p": [
+      [
+        "R011",
         66,
         4096
       ]
