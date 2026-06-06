@@ -12,8 +12,15 @@ from __future__ import annotations
 
 from collections import Counter
 from copy import deepcopy
+from datetime import datetime
 import logging
 from typing import Any
+
+from app.services.pdf_service import (
+    PdfFileNotFoundError,
+    PdfPathValidationError,
+    PdfService,
+)
 
 LOGGER = logging.getLogger(__name__)
 
@@ -37,18 +44,27 @@ class MemoryIndexStore:
         records: list[dict[str, Any]],
         source: str = "content_store",
         generated_at: str = "",
+        pdf_mapping: dict[str, str] | None = None,
+        pdf_root_dir: str = "",
     ) -> None:
         self._source = source
         self._generated_at = str(generated_at or "").strip()
+        self._pdf_updated_at_by_id = self._build_pdf_updated_at_map(
+            pdf_mapping=pdf_mapping or {},
+            pdf_root_dir=pdf_root_dir,
+        )
         self._records: list[dict[str, Any]] = []
         self._by_id: dict[str, dict[str, Any]] = {}
 
         for item in sorted(records, key=lambda x: x["id"]):
             doc_payload = self._build_doc_payload(item)
+            record_id = str(doc_payload.get("id") or item.get("id") or "").strip()
+            self._apply_pdf_updated_at(record_id, doc_payload)
+
             tags: list[str] = [str(x).strip() for x in item.get("tags", []) if str(x).strip()]
             tags_text = ",".join(tags)
             normalized = {
-                "id": str(item.get("id", "")),
+                "id": record_id or str(item.get("id", "")),
                 "title": str(item.get("title", "")),
                 "module": str(item.get("module", "")),
                 "difficulty": int(item.get("difficulty", 1)),
@@ -87,6 +103,80 @@ class MemoryIndexStore:
             payload["id"] = str(item.get("id", ""))
 
         return payload
+
+    @staticmethod
+    def _format_timestamp(timestamp: float) -> str:
+        if timestamp <= 0:
+            return ""
+
+        return datetime.fromtimestamp(timestamp).astimezone().isoformat(timespec="minutes")
+
+    @classmethod
+    def _build_pdf_updated_at_map(
+        cls,
+        *,
+        pdf_mapping: dict[str, str],
+        pdf_root_dir: str,
+    ) -> dict[str, str]:
+        if not pdf_mapping or not str(pdf_root_dir or "").strip():
+            return {}
+
+        result: dict[str, str] = {}
+        for raw_conclusion_id, raw_pdf_filename in pdf_mapping.items():
+            conclusion_id = str(raw_conclusion_id or "").strip()
+            pdf_filename = str(raw_pdf_filename or "").strip()
+            if not conclusion_id or not pdf_filename:
+                continue
+
+            try:
+                pdf_file = PdfService.resolve_pdf_file(
+                    file_path=pdf_filename,
+                    raw_root_dir=pdf_root_dir,
+                )
+                updated_at = cls._format_timestamp(pdf_file.absolute_path.stat().st_mtime)
+            except (OSError, PdfPathValidationError, PdfFileNotFoundError) as exc:
+                LOGGER.warning(
+                    "pdf updated_at resolve skipped | conclusion_id=%s filename=%s reason=%s",
+                    conclusion_id,
+                    pdf_filename,
+                    exc,
+                )
+                continue
+
+            if updated_at:
+                result[conclusion_id] = updated_at
+
+        return result
+
+    @staticmethod
+    def _has_content_timestamp(payload: dict[str, Any]) -> bool:
+        timestamp_fields = (
+            "updated_at",
+            "updatedAt",
+            "update_time",
+            "updateTime",
+            "modified_at",
+            "modifiedAt",
+            "created_at",
+            "createdAt",
+            "created_time",
+            "createdTime",
+        )
+
+        for field in timestamp_fields:
+            value = payload.get(field)
+            if str(value or "").strip():
+                return True
+
+        return False
+
+    def _apply_pdf_updated_at(self, conclusion_id: str, payload: dict[str, Any]) -> None:
+        if self._has_content_timestamp(payload):
+            return
+
+        updated_at = self._pdf_updated_at_by_id.get(conclusion_id)
+        if updated_at:
+            payload["updated_at"] = updated_at
 
     def _filter_records(
         self,
@@ -240,6 +330,74 @@ class MemoryIndexStore:
             return float(value)
         except (TypeError, ValueError):
             return default
+
+    @classmethod
+    def _safe_timestamp(cls, value: Any) -> float:
+        if value is None:
+            return 0.0
+
+        if isinstance(value, (int, float)) and not isinstance(value, bool):
+            numeric_value = float(value)
+            if numeric_value > 1e12:
+                return numeric_value / 1000.0
+            if numeric_value > 1e9:
+                return numeric_value
+            return 0.0
+
+        text = str(value or "").strip()
+        if not text:
+            return 0.0
+
+        try:
+            return cls._safe_timestamp(float(text))
+        except ValueError:
+            pass
+
+        try:
+            parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+        except ValueError:
+            return 0.0
+
+        return parsed.timestamp()
+
+    @classmethod
+    def _payload_timestamp(cls, payload: dict[str, Any], fields: tuple[str, ...]) -> float:
+        for field in fields:
+            timestamp = cls._safe_timestamp(payload.get(field))
+            if timestamp > 0:
+                return timestamp
+
+        return 0.0
+
+    @classmethod
+    def _updated_timestamp(cls, row: dict[str, Any]) -> float:
+        return cls._payload_timestamp(
+            row["doc_payload"],
+            (
+                "updated_at",
+                "updatedAt",
+                "update_time",
+                "updateTime",
+                "modified_at",
+                "modifiedAt",
+            ),
+        )
+
+    @classmethod
+    def _created_timestamp(cls, row: dict[str, Any]) -> float:
+        return cls._payload_timestamp(
+            row["doc_payload"],
+            (
+                "created_at",
+                "createdAt",
+                "created_time",
+                "createdTime",
+            ),
+        )
+
+    @classmethod
+    def _recent_timestamp(cls, row: dict[str, Any]) -> float:
+        return cls._updated_timestamp(row) or cls._created_timestamp(row)
 
     @staticmethod
     def _clamp(value: float, low: float, high: float) -> float:
@@ -412,6 +570,8 @@ class MemoryIndexStore:
         favorite_ids = favorite_ids or set()
 
         safe_limit = max(1, min(80, int(limit)))
+        recent_quota = min(max(1, safe_limit // 4), safe_limit)
+        recommend_quota = max(0, safe_limit - recent_quota)
         sorted_rows = sorted(
             self._records,
             key=lambda row: (
@@ -421,9 +581,52 @@ class MemoryIndexStore:
                 row["id"],
             ),
         )
+        recent_rows = [
+            row
+            for row in sorted(
+                self._records,
+                key=lambda row: (
+                    -self._recent_timestamp(row),
+                    -self._safe_float(row["doc_payload"].get("rank")),
+                    row["id"],
+                ),
+            )
+            if self._recent_timestamp(row) > 0
+        ]
 
         items: list[dict[str, Any]] = []
-        for row in sorted_rows[:safe_limit]:
+        selected_rows: list[dict[str, Any]] = []
+        selected_ids: set[str] = set()
+
+        for row in sorted_rows:
+            if len(selected_rows) >= recommend_quota:
+                break
+
+            selected_rows.append(row)
+            selected_ids.add(row["id"])
+
+        for row in recent_rows:
+            if len(selected_rows) >= safe_limit:
+                break
+
+            if row["id"] in selected_ids:
+                continue
+
+            selected_rows.append(row)
+            selected_ids.add(row["id"])
+
+        if len(selected_rows) < safe_limit:
+            for row in sorted_rows:
+                if len(selected_rows) >= safe_limit:
+                    break
+
+                if row["id"] in selected_ids:
+                    continue
+
+                selected_rows.append(row)
+                selected_ids.add(row["id"])
+
+        for row in selected_rows:
             item_payload = deepcopy(row["doc_payload"])
             item_payload["is_favorited"] = row["id"] in favorite_ids
             items.append(item_payload)

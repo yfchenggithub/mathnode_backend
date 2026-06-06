@@ -173,12 +173,6 @@ async def app_lifespan(app: FastAPI):
             raw_records_by_id=content_result.raw_records_by_id,
         )
 
-        index_result = load_index_records(index_file_path=index_json_path)
-        index_store = MemoryIndexStore(
-            records=index_result.records,
-            source=index_result.source,
-            generated_at=index_result.generated_at,
-        )
         pdf_mapping_result = load_pdf_mapping(
             mapping_json_path=pdf_mapping_json_path,
             pdf_root_dir=settings.PDF_ROOT_DIR,
@@ -187,6 +181,14 @@ async def app_lifespan(app: FastAPI):
         pdf_mapping_store = MemoryPdfMappingStore(
             mapping=pdf_mapping_result.mapping,
             source=pdf_mapping_result.source,
+        )
+        index_result = load_index_records(index_file_path=index_json_path)
+        index_store = MemoryIndexStore(
+            records=index_result.records,
+            source=index_result.source,
+            generated_at=index_result.generated_at,
+            pdf_mapping=pdf_mapping_result.mapping,
+            pdf_root_dir=settings.PDF_ROOT_DIR,
         )
 
         bootstrap_time_ms = int((time.perf_counter() - started_at) * 1000)

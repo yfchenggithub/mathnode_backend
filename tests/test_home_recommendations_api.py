@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import os
+import tempfile
 import unittest
+from datetime import datetime
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -11,6 +14,33 @@ from app.api.deps import get_db
 from app.api.v1.search import router as search_router
 from app.loaders.index_loader import load_index_records
 from app.stores.memory_index_store import MemoryIndexStore
+
+
+def _build_test_record(
+    conclusion_id: str,
+    *,
+    title: str,
+    rank: int = 0,
+    hot_score: int = 0,
+) -> dict:
+    return {
+        "id": conclusion_id,
+        "title": title,
+        "module": "test",
+        "difficulty": 1,
+        "tags": [],
+        "statement_clean": title,
+        "doc_payload": {
+            "id": conclusion_id,
+            "title": title,
+            "module": "test",
+            "difficulty": 1,
+            "tags": [],
+            "summary": title,
+            "rank": rank,
+            "hotScore": hot_score,
+        },
+    }
 
 
 class HomeRecommendationsApiTests(unittest.TestCase):
@@ -67,6 +97,41 @@ class HomeRecommendationsApiTests(unittest.TestCase):
     def test_home_recommendations_limit_validation(self) -> None:
         response = self.client.get("/api/v1/home/recommendations?limit=0")
         self.assertEqual(response.status_code, 422)
+
+    def test_home_recommendations_keep_recent_pdf_updates(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            pdf_root = Path(tmp_dir)
+            old_pdf = pdf_root / "old.pdf"
+            new_pdf = pdf_root / "new.pdf"
+            old_pdf.write_bytes(b"%PDF-1.4\n%%EOF")
+            new_pdf.write_bytes(b"%PDF-1.4\n%%EOF")
+
+            old_ts = datetime(2026, 1, 1, 8, 0).timestamp()
+            new_ts = datetime(2026, 1, 2, 9, 30).timestamp()
+            os.utime(old_pdf, (old_ts, old_ts))
+            os.utime(new_pdf, (new_ts, new_ts))
+
+            store = MemoryIndexStore(
+                records=[
+                    _build_test_record("HOT", title="Hot conclusion", rank=100, hot_score=100),
+                    _build_test_record("NEW", title="New conclusion", rank=0, hot_score=0),
+                    _build_test_record("MID", title="Middle conclusion", rank=50, hot_score=50),
+                ],
+                pdf_mapping={
+                    "HOT": "old.pdf",
+                    "NEW": "new.pdf",
+                },
+                pdf_root_dir=str(pdf_root),
+            )
+
+            data = store.home_recommendations(limit=2, favorite_ids=set())
+            ids = [item["id"] for item in data["items"]]
+            self.assertIn("HOT", ids)
+            self.assertIn("NEW", ids)
+
+            new_item = next(item for item in data["items"] if item["id"] == "NEW")
+            self.assertIn("updated_at", new_item)
+            self.assertIn("2026-01-02", new_item["updated_at"])
 
 
 if __name__ == "__main__":
