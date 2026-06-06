@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "description": "Manual tag aliases to reapply after backend_search_index.json is regenerated. Append each entry.tags to docs[doc_id].tags when missing.",
+  "entries": [
+    {
+      "doc_id": "I006",
+      "title": "权方和不等式",
+      "tags": [
+        "全方",
+        "全方和",
+        "全方和不等式"
+      ],
+      "source": "836835c788d18b8f0a4cbdf685cbbc0ff05b363c"
+    },
+    {
+      "doc_id": "I040",
+      "title": "三元权方和不等式",
+      "tags": [
+        "全方",
+        "全方和",
+        "全方和不等式"
+      ],
+      "source": "836835c788d18b8f0a4cbdf685cbbc0ff05b363c"
+    },
+    {
+      "doc_id": "I033",
+      "title": "对数平均值不等式",
+      "tags": [
+        "对数均值",
+        "对数均值不等式"
+      ],
+      "source": "manual-request-2026-06-06"
+    }
+  ]
+}
