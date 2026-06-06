@@ -136,5 +136,6 @@
   "C031": "C031_point_line_symmetry_factor.pdf",
   "C032": "C032_apollonius_circle_ratio.pdf",
   "G005": "G005_cuboid_circumsphere_radius.pdf",
-  "G006": "G006_cube_circumsphere_radius.pdf"
+  "G006": "G006_cube_circumsphere_radius.pdf",
+  "G007": "G007_right_prism_circumsphere_radius.pdf"
 }
