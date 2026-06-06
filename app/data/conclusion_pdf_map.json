@@ -134,5 +134,6 @@
   "C029": "C029_ellipse_focal_radius.pdf",
   "C030": "C030_ellipse_focal_triangle_perimeter_constant.pdf",
   "C031": "C031_point_line_symmetry_factor.pdf",
-  "C032": "C032_apollonius_circle_ratio.pdf"
+  "C032": "C032_apollonius_circle_ratio.pdf",
+  "G005": "G005_cuboid_circumsphere_radius.pdf"
 }
