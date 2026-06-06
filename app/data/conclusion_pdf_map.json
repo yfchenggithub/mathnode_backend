@@ -137,5 +137,6 @@
   "C032": "C032_apollonius_circle_ratio.pdf",
   "G005": "G005_cuboid_circumsphere_radius.pdf",
   "G006": "G006_cube_circumsphere_radius.pdf",
-  "G007": "G007_right_prism_circumsphere_radius.pdf"
+  "G007": "G007_right_prism_circumsphere_radius.pdf",
+  "G008": "G008_regular_triangular_prism_circumradius.pdf"
 }
