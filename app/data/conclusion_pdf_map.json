@@ -141,5 +141,6 @@
   "G008": "G008_regular_triangular_prism_circumradius.pdf",
   "G009": "G009_regular_pyramid_circumradius.pdf",
   "T005": "T005_reduction_formulas.pdf",
-  "F003": "F003_pade_common_functions.pdf"
+  "F003": "F003_pade_common_functions.pdf",
+  "F004": "F004_common_taylor_approximations.pdf"
 }
