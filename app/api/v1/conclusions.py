@@ -9,6 +9,7 @@ from app.core.logging_helpers import mask_sensitive, summarize_text
 from app.core.request_context import get_request_id
 from app.core.response import success_response
 from app.services.conclusion_service import ConclusionService
+from app.services.conclusion_metrics_service import ConclusionMetricsService
 from app.services.favorite_service import FavoriteService
 from app.services.search_service import SearchService
 from app.stores.interfaces import ContentStore, IndexStore, PdfMappingStore
@@ -89,15 +90,21 @@ def get_conclusion(
         conclusion_id=conclusion_id,
         favorite_ids=favorite_ids,
     )
+    record_id = str(data.get("id") or conclusion_id).strip()
+    if record_id:
+        ConclusionMetricsService.record_view(db=db, conclusion_id=record_id)
+    ConclusionMetricsService.append_counts_to_payload(db=db, payload=data)
+
     LOGGER.info(
         (
             "conclusion api success | request_id=%s conclusion_id=%s pdf_available=%s "
-            "is_favorited=%s"
+            "is_favorited=%s favorite_count=%s view_count=%s"
         ),
         get_request_id(),
         conclusion_id,
         data.get("pdf_available"),
         data.get("is_favorited"),
+        data.get("favorite_count"),
+        data.get("view_count"),
     )
     return success_response(data=data)
-

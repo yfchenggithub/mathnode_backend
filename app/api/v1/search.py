@@ -8,6 +8,7 @@ from app.api.deps import get_db, get_optional_user_id
 from app.core.logging_helpers import mask_sensitive, summarize_text
 from app.core.request_context import get_request_id
 from app.core.response import success_response
+from app.services.conclusion_metrics_service import ConclusionMetricsService
 from app.services.favorite_service import FavoriteService
 from app.services.recent_search_service import RecentSearchService
 from app.services.search_keyword_service import SearchKeywordService
@@ -21,7 +22,7 @@ LOGGER = logging.getLogger(__name__)
 def _parse_card_ids(raw_ids: str) -> list[str]:
     ids: list[str] = []
     seen_ids: set[str] = set()
-    for part in str(raw_ids or "").replace("，", ",").split(","):
+    for part in str(raw_ids or "").replace("\uff0c", ",").split(","):
         conclusion_id = part.strip()
         if not conclusion_id or conclusion_id in seen_ids:
             continue
@@ -57,6 +58,7 @@ def search_cards(
         ids=parsed_ids,
         favorite_ids=favorite_ids,
     )
+    ConclusionMetricsService.append_counts_to_items(db=db, items=data.get("items"))
 
     LOGGER.info(
         "search cards api success | request_id=%s requested=%s returned=%s missing=%s",
@@ -110,6 +112,7 @@ def search(
         page_size=page_size,
         favorite_ids=favorite_ids,
     )
+    ConclusionMetricsService.append_counts_to_items(db=db, items=data.get("items"))
 
     if normalized_q and db is not None:
         SearchKeywordService.record_keyword(
@@ -166,6 +169,7 @@ def home_recommendations(
         limit=limit,
         favorite_ids=favorite_ids,
     )
+    ConclusionMetricsService.append_counts_to_items(db=db, items=data.get("items"))
 
     LOGGER.info(
         "home recommendations api success | request_id=%s limit=%s total=%s returned=%s",

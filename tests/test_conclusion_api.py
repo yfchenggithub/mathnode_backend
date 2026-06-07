@@ -8,10 +8,14 @@ from urllib.parse import quote
 
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import StaticPool
 
 from app.api.dependencies import get_content_store, get_pdf_mapping_store
 from app.api.deps import get_db
 from app.api.v1.conclusions import router as conclusions_router
+from app.db.base import Base
 from app.loaders.content_loader import load_content_from_json
 from app.stores.memory_content_store import MemoryContentStore
 from app.stores.memory_pdf_mapping_store import MemoryPdfMappingStore
@@ -79,9 +83,38 @@ class ConclusionApiRawRecordTests(unittest.TestCase):
 
         expected = deepcopy(self._canonical_payload["I040"])
         expected["is_favorited"] = False
+        expected["favorite_count"] = 0
+        expected["view_count"] = 0
         expected.update(self._expected_pdf_meta("I040"))
 
         self.assertEqual(payload["data"], expected)
+
+    def test_get_conclusion_increments_view_count_when_db_available(self) -> None:
+        engine = create_engine(
+            "sqlite://",
+            connect_args={"check_same_thread": False},
+            poolclass=StaticPool,
+        )
+        Base.metadata.create_all(engine)
+        session_factory = sessionmaker(bind=engine)
+
+        def _db():
+            db = session_factory()
+            try:
+                yield db
+            finally:
+                db.close()
+
+        self._app.dependency_overrides[get_db] = _db
+
+        first_response = self.client.get("/api/v1/conclusions/I040")
+        second_response = self.client.get("/api/v1/conclusions/I040")
+
+        self.assertEqual(first_response.status_code, 200)
+        self.assertEqual(second_response.status_code, 200)
+        self.assertEqual(first_response.json()["data"]["view_count"], 1)
+        self.assertEqual(second_response.json()["data"]["view_count"], 2)
+        self.assertEqual(second_response.json()["data"]["favorite_count"], 0)
 
     def test_get_i041_returns_no_pdf(self) -> None:
         response = self.client.get("/api/v1/conclusions/I041")
@@ -92,6 +125,8 @@ class ConclusionApiRawRecordTests(unittest.TestCase):
 
         expected = deepcopy(self._canonical_payload["I041"])
         expected["is_favorited"] = False
+        expected["favorite_count"] = 0
+        expected["view_count"] = 0
         expected.update(self._expected_pdf_meta("I041"))
 
         self.assertEqual(payload["data"], expected)

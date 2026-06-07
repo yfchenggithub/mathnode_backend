@@ -96,6 +96,8 @@ class HomeRecommendationsApiTests(unittest.TestCase):
             self.assertIn("summary", first)
             self.assertIn("is_favorited", first)
             self.assertIsInstance(first["is_favorited"], bool)
+            self.assertEqual(first["favorite_count"], 0)
+            self.assertEqual(first["view_count"], 0)
 
     def test_home_recommendations_limit_validation(self) -> None:
         response = self.client.get("/api/v1/home/recommendations?limit=0")

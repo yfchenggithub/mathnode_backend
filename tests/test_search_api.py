@@ -60,10 +60,14 @@ class SearchApiIndexPayloadTests(unittest.TestCase):
         self.assertIn("is_favorited", i001_item)
         self.assertIsInstance(i001_item["is_favorited"], bool)
         self.assertFalse(i001_item["is_favorited"])
+        self.assertEqual(i001_item["favorite_count"], 0)
+        self.assertEqual(i001_item["view_count"], 0)
 
         expected = deepcopy(self._docs["I001"])
         actual = deepcopy(i001_item)
         actual.pop("is_favorited", None)
+        actual.pop("favorite_count", None)
+        actual.pop("view_count", None)
         self.assertEqual(actual, expected)
 
     def test_search_cards_returns_requested_items_in_order(self) -> None:
@@ -83,6 +87,8 @@ class SearchApiIndexPayloadTests(unittest.TestCase):
         self.assertIn("is_favorited", i005_item)
         self.assertIsInstance(i005_item["is_favorited"], bool)
         self.assertFalse(i005_item["is_favorited"])
+        self.assertEqual(i005_item["favorite_count"], 0)
+        self.assertEqual(i005_item["view_count"], 0)
         self.assertEqual(
             i005_item["coreFormula"]["asset"]["png"],
             self._docs["I005"]["coreFormula"]["asset"]["png"],
@@ -91,6 +97,8 @@ class SearchApiIndexPayloadTests(unittest.TestCase):
         expected = deepcopy(self._docs["I005"])
         actual = deepcopy(i005_item)
         actual.pop("is_favorited", None)
+        actual.pop("favorite_count", None)
+        actual.pop("view_count", None)
         self.assertEqual(actual, expected)
 
     def test_search_cards_dedupes_ids_and_reports_missing_ids(self) -> None:
