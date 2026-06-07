@@ -145,5 +145,6 @@
   "F004": "F004_common_taylor_approximations.pdf",
   "T006": "T006_double_angle_formula.pdf",
   "V020": "V020_projection_scalar_vector.pdf",
-  "C033": "C033_ellipse_line_vieta_formula.pdf"
+  "C033": "C033_ellipse_line_vieta_formula.pdf",
+  "C034": "C034_line_hyperbola_direct_vieta.pdf"
 }
