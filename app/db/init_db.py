@@ -35,6 +35,32 @@ def ensure_user_status_column() -> None:
     LOGGER.info("db migration complete | table=users add_column=status")
 
 
+def ensure_search_keyword_no_result_count_column() -> None:
+    inspector = inspect(engine)
+    if "search_keywords" not in inspector.get_table_names():
+        return
+
+    columns = {column["name"] for column in inspector.get_columns("search_keywords")}
+    if "no_result_count" in columns:
+        return
+
+    LOGGER.info("db migration start | table=search_keywords add_column=no_result_count")
+    with engine.begin() as connection:
+        connection.execute(
+            text(
+                "ALTER TABLE search_keywords "
+                "ADD COLUMN no_result_count INTEGER NOT NULL DEFAULT 0"
+            )
+        )
+        connection.execute(
+            text(
+                "UPDATE search_keywords SET no_result_count = 1 "
+                "WHERE last_has_result = 0 OR last_result_count <= 0"
+            )
+        )
+    LOGGER.info("db migration complete | table=search_keywords add_column=no_result_count")
+
+
 def seed_conclusions_if_empty(db: Session) -> None:
     stmt = select(Conclusion).limit(1)
     exists = db.execute(stmt).scalar_one_or_none()
@@ -53,6 +79,7 @@ def init_db() -> None:
     LOGGER.debug("db init start")
     Base.metadata.create_all(bind=engine)
     ensure_user_status_column()
+    ensure_search_keyword_no_result_count_column()
 
     db = SessionLocal()
     try:

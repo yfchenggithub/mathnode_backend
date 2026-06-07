@@ -16,6 +16,7 @@ from app.services.search_keyword_service import SearchKeywordService
 router = APIRouter()
 LOGGER = logging.getLogger(__name__)
 SearchKeywordResultFilter = Literal["all", "no_result", "low_result"]
+SearchKeywordSortBy = Literal["recent", "search_count", "no_result_count"]
 
 
 @router.get("/admin/search-keywords")
@@ -25,6 +26,7 @@ def list_search_keywords(
     end_date: date | None = Query(default=None),
     result_filter: SearchKeywordResultFilter = Query(default="all"),
     low_result_threshold: int = Query(default=3, ge=1, le=100),
+    sort_by: SearchKeywordSortBy = Query(default="search_count"),
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=20, ge=1, le=100),
     user_id: str = Depends(get_current_user_id),
@@ -34,7 +36,7 @@ def list_search_keywords(
         (
             "search keywords admin list api received | request_id=%s "
             "user_id=%s keyword=%r start_date=%s end_date=%s "
-            "result_filter=%s low_result_threshold=%s page=%s page_size=%s"
+            "result_filter=%s low_result_threshold=%s sort_by=%s page=%s page_size=%s"
         ),
         get_request_id(),
         mask_sensitive(user_id, left=2, right=2),
@@ -43,6 +45,7 @@ def list_search_keywords(
         end_date,
         result_filter,
         low_result_threshold,
+        sort_by,
         page,
         page_size,
     )
@@ -53,6 +56,7 @@ def list_search_keywords(
         end_date=end_date,
         result_filter=result_filter,
         low_result_threshold=low_result_threshold,
+        sort_by=sort_by,
         page=page,
         page_size=page_size,
     )
@@ -75,6 +79,7 @@ def export_search_keywords_csv(
     end_date: date | None = Query(default=None),
     result_filter: SearchKeywordResultFilter = Query(default="all"),
     low_result_threshold: int = Query(default=3, ge=1, le=100),
+    sort_by: SearchKeywordSortBy = Query(default="search_count"),
     user_id: str = Depends(get_current_user_id),
     db: Session = Depends(get_db),
 ):
@@ -82,7 +87,7 @@ def export_search_keywords_csv(
         (
             "search keywords admin csv export api received | request_id=%s "
             "user_id=%s keyword=%r start_date=%s end_date=%s "
-            "result_filter=%s low_result_threshold=%s"
+            "result_filter=%s low_result_threshold=%s sort_by=%s"
         ),
         get_request_id(),
         mask_sensitive(user_id, left=2, right=2),
@@ -91,6 +96,7 @@ def export_search_keywords_csv(
         end_date,
         result_filter,
         low_result_threshold,
+        sort_by,
     )
     csv_text = SearchKeywordService.export_keywords_csv(
         db=db,
@@ -99,6 +105,7 @@ def export_search_keywords_csv(
         end_date=end_date,
         result_filter=result_filter,
         low_result_threshold=low_result_threshold,
+        sort_by=sort_by,
     )
     return Response(
         content=csv_text,

@@ -101,13 +101,19 @@ class SearchKeywordApiTests(unittest.TestCase):
         search_count: int,
         last_result_count: int,
         updated_at: datetime,
+        no_result_count: int | None = None,
     ) -> None:
         db = self._session_factory()
         try:
+            if no_result_count is None:
+                resolved_no_result_count = search_count if last_result_count <= 0 else 0
+            else:
+                resolved_no_result_count = no_result_count
             row = SearchKeyword(
                 keyword=keyword,
                 normalized_keyword=keyword.lower(),
                 search_count=search_count,
+                no_result_count=resolved_no_result_count,
                 last_result_count=last_result_count,
                 last_has_result=last_result_count > 0,
                 created_at=updated_at,
@@ -144,8 +150,11 @@ class SearchKeywordApiTests(unittest.TestCase):
         self.assertEqual(item["keyword"], "tan x")
         self.assertEqual(item["normalized_keyword"], "tan x")
         self.assertEqual(item["search_count"], 2)
+        self.assertEqual(item["no_result_count"], 0)
         self.assertEqual(item["last_result_count"], 3)
         self.assertTrue(item["last_has_result"])
+        self.assertEqual(payload["data"]["no_result_total"], 0)
+        self.assertEqual(payload["data"]["low_result_total"], 1)
 
     def test_admin_list_supports_keyword_filter_and_no_result_state(self) -> None:
         response = self.client.get(
@@ -163,6 +172,7 @@ class SearchKeywordApiTests(unittest.TestCase):
         item = list_response.json()["data"]["items"][0]
         self.assertEqual(item["keyword"], "unknown")
         self.assertEqual(item["search_count"], 1)
+        self.assertEqual(item["no_result_count"], 1)
         self.assertEqual(item["last_result_count"], 0)
         self.assertFalse(item["last_has_result"])
 
@@ -171,18 +181,21 @@ class SearchKeywordApiTests(unittest.TestCase):
             keyword="alpha",
             search_count=2,
             last_result_count=6,
+            no_result_count=2,
             updated_at=datetime(2026, 1, 3, 10, 0, 0),
         )
         self._insert_keyword(
             keyword="beta",
             search_count=5,
             last_result_count=6,
+            no_result_count=4,
             updated_at=datetime(2026, 1, 2, 10, 0, 0),
         )
         self._insert_keyword(
             keyword="gamma",
             search_count=5,
             last_result_count=6,
+            no_result_count=1,
             updated_at=datetime(2026, 1, 4, 10, 0, 0),
         )
 
@@ -195,6 +208,51 @@ class SearchKeywordApiTests(unittest.TestCase):
         keywords = [item["keyword"] for item in response.json()["data"]["items"]]
         self.assertEqual(keywords, ["gamma", "beta", "alpha"])
 
+    def test_admin_list_supports_sort_by_recent_and_no_result_count(self) -> None:
+        self._insert_keyword(
+            keyword="alpha",
+            search_count=2,
+            last_result_count=6,
+            no_result_count=5,
+            updated_at=datetime(2026, 1, 3, 10, 0, 0),
+        )
+        self._insert_keyword(
+            keyword="beta",
+            search_count=8,
+            last_result_count=6,
+            no_result_count=1,
+            updated_at=datetime(2026, 1, 5, 10, 0, 0),
+        )
+        self._insert_keyword(
+            keyword="gamma",
+            search_count=3,
+            last_result_count=6,
+            no_result_count=7,
+            updated_at=datetime(2026, 1, 4, 10, 0, 0),
+        )
+
+        recent_response = self.client.get(
+            "/api/v1/admin/search-keywords",
+            params={"sort_by": "recent"},
+            headers=self._auth_headers,
+        )
+        self.assertEqual(recent_response.status_code, 200)
+        recent_keywords = [
+            item["keyword"] for item in recent_response.json()["data"]["items"]
+        ]
+        self.assertEqual(recent_keywords, ["beta", "gamma", "alpha"])
+
+        no_result_response = self.client.get(
+            "/api/v1/admin/search-keywords",
+            params={"sort_by": "no_result_count"},
+            headers=self._auth_headers,
+        )
+        self.assertEqual(no_result_response.status_code, 200)
+        no_result_keywords = [
+            item["keyword"] for item in no_result_response.json()["data"]["items"]
+        ]
+        self.assertEqual(no_result_keywords, ["gamma", "alpha", "beta"])
+
     def test_admin_list_supports_time_and_result_filters(self) -> None:
         self._insert_keyword(
             keyword="old no result",
@@ -206,6 +264,7 @@ class SearchKeywordApiTests(unittest.TestCase):
             keyword="fresh no result",
             search_count=3,
             last_result_count=0,
+            no_result_count=3,
             updated_at=datetime(2026, 1, 2, 10, 0, 0),
         )
         self._insert_keyword(
@@ -231,10 +290,13 @@ class SearchKeywordApiTests(unittest.TestCase):
             headers=self._auth_headers,
         )
         self.assertEqual(no_result_response.status_code, 200)
+        no_result_payload = no_result_response.json()["data"]
         no_result_keywords = [
-            item["keyword"] for item in no_result_response.json()["data"]["items"]
+            item["keyword"] for item in no_result_payload["items"]
         ]
         self.assertEqual(no_result_keywords, ["fresh no result"])
+        self.assertEqual(no_result_payload["no_result_total"], 1)
+        self.assertEqual(no_result_payload["low_result_total"], 1)
 
         low_result_response = self.client.get(
             "/api/v1/admin/search-keywords",
@@ -252,6 +314,7 @@ class SearchKeywordApiTests(unittest.TestCase):
             keyword="zero result",
             search_count=7,
             last_result_count=0,
+            no_result_count=7,
             updated_at=datetime(2026, 1, 5, 10, 0, 0),
         )
         self._insert_keyword(
@@ -272,6 +335,7 @@ class SearchKeywordApiTests(unittest.TestCase):
         self.assertIn("attachment", response.headers["content-disposition"])
         csv_text = response.content.decode("utf-8-sig")
         self.assertIn("搜索词", csv_text)
+        self.assertIn("无结果次数", csv_text)
         self.assertIn("zero result", csv_text)
         self.assertNotIn("has result", csv_text)
 

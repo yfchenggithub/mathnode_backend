@@ -38,6 +38,7 @@ def _to_item(row: SearchKeyword) -> dict:
         "keyword": row.keyword,
         "normalized_keyword": row.normalized_keyword,
         "search_count": row.search_count,
+        "no_result_count": row.no_result_count,
         "last_result_count": row.last_result_count,
         "last_has_result": row.last_has_result,
         "created_at": row.created_at.isoformat(),
@@ -80,6 +81,7 @@ class SearchKeywordService:
         end_date: date | None = None,
         result_filter: str = "all",
         low_result_threshold: int = 3,
+        sort_by: str = "search_count",
         page: int = 1,
         page_size: int = 20,
     ) -> dict:
@@ -90,11 +92,21 @@ class SearchKeywordService:
             end_date=end_date,
             result_filter=result_filter,
             low_result_threshold=low_result_threshold,
+            sort_by=sort_by,
             page=page,
             page_size=page_size,
         )
+        no_result_total, low_result_total = SearchKeywordRepository.count_result_buckets(
+            db,
+            keyword=keyword,
+            start_date=start_date,
+            end_date=end_date,
+            low_result_threshold=low_result_threshold,
+        )
         return {
             "total": total,
+            "no_result_total": no_result_total,
+            "low_result_total": low_result_total,
             "page": page,
             "page_size": page_size,
             "items": [_to_item(row) for row in rows],
@@ -109,6 +121,7 @@ class SearchKeywordService:
         end_date: date | None = None,
         result_filter: str = "all",
         low_result_threshold: int = 3,
+        sort_by: str = "search_count",
     ) -> str:
         rows = SearchKeywordRepository.list_keywords_for_export(
             db,
@@ -117,6 +130,7 @@ class SearchKeywordService:
             end_date=end_date,
             result_filter=result_filter,
             low_result_threshold=low_result_threshold,
+            sort_by=sort_by,
         )
         output = io.StringIO()
         output.write("\ufeff")
@@ -126,6 +140,7 @@ class SearchKeywordService:
             "搜索词",
             "归一化搜索词",
             "搜索次数",
+            "无结果次数",
             "最近结果数",
             "最近是否有结果",
             "首次搜索时间",
@@ -137,6 +152,7 @@ class SearchKeywordService:
                 row.keyword,
                 row.normalized_keyword,
                 row.search_count,
+                row.no_result_count,
                 row.last_result_count,
                 _format_bool(bool(row.last_has_result)),
                 row.created_at.isoformat(),

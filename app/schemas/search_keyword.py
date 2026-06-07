@@ -6,6 +6,7 @@ class SearchKeywordItem(BaseModel):
     keyword: str
     normalized_keyword: str
     search_count: int
+    no_result_count: int
     last_result_count: int
     last_has_result: bool
     created_at: str
@@ -14,6 +15,8 @@ class SearchKeywordItem(BaseModel):
 
 class SearchKeywordListResponseData(BaseModel):
     total: int
+    no_result_total: int
+    low_result_total: int
     page: int
     page_size: int
     items: list[SearchKeywordItem]

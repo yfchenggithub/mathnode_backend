@@ -36,6 +36,7 @@ class SearchKeywordRepository:
             keyword=keyword,
             normalized_keyword=normalized_keyword,
             search_count=1,
+            no_result_count=1 if result_count <= 0 else 0,
             last_result_count=result_count,
             last_has_result=result_count > 0,
             created_at=now,
@@ -82,6 +83,7 @@ class SearchKeywordRepository:
         end_date: date | None = None,
         result_filter: str = "all",
         low_result_threshold: int = 3,
+        sort_by: str = "search_count",
         page: int = 1,
         page_size: int = 20,
     ) -> tuple[list[SearchKeyword], int]:
@@ -103,7 +105,7 @@ class SearchKeywordRepository:
         offset = max(0, page - 1) * page_size
         rows = (
             db.execute(
-                SearchKeywordRepository._apply_default_order(stmt)
+                SearchKeywordRepository._apply_order(stmt, sort_by)
                 .offset(offset)
                 .limit(page_size)
             )
@@ -121,6 +123,7 @@ class SearchKeywordRepository:
         end_date: date | None = None,
         result_filter: str = "all",
         low_result_threshold: int = 3,
+        sort_by: str = "search_count",
     ) -> list[SearchKeyword]:
         conditions = SearchKeywordRepository._build_filter_conditions(
             keyword=keyword,
@@ -133,8 +136,47 @@ class SearchKeywordRepository:
         if conditions:
             stmt = stmt.where(*conditions)
 
-        rows = db.execute(SearchKeywordRepository._apply_default_order(stmt)).scalars().all()
+        rows = db.execute(SearchKeywordRepository._apply_order(stmt, sort_by)).scalars().all()
         return list(rows)
+
+    @staticmethod
+    def count_result_buckets(
+        db: Session,
+        *,
+        keyword: str | None = None,
+        start_date: date | None = None,
+        end_date: date | None = None,
+        low_result_threshold: int = 3,
+    ) -> tuple[int, int]:
+        base_conditions = SearchKeywordRepository._build_filter_conditions(
+            keyword=keyword,
+            start_date=start_date,
+            end_date=end_date,
+            result_filter="all",
+            low_result_threshold=low_result_threshold,
+        )
+        safe_threshold = max(1, int(low_result_threshold or 1))
+        no_result_conditions = [
+            *base_conditions,
+            SearchKeywordRepository._no_result_condition(),
+        ]
+        low_result_conditions = [
+            *base_conditions,
+            and_(
+                SearchKeyword.last_result_count > 0,
+                SearchKeyword.last_result_count <= safe_threshold,
+            ),
+        ]
+
+        no_result_stmt = select(func.count()).select_from(SearchKeyword).where(
+            *no_result_conditions
+        )
+        low_result_stmt = select(func.count()).select_from(SearchKeyword).where(
+            *low_result_conditions
+        )
+        no_result_total = int(db.execute(no_result_stmt).scalar_one() or 0)
+        low_result_total = int(db.execute(low_result_stmt).scalar_one() or 0)
+        return no_result_total, low_result_total
 
     @staticmethod
     def _build_filter_conditions(
@@ -165,12 +207,7 @@ class SearchKeywordRepository:
             conditions.append(SearchKeyword.updated_at < end_exclusive)
 
         if result_filter == "no_result":
-            conditions.append(
-                or_(
-                    SearchKeyword.last_has_result.is_(False),
-                    SearchKeyword.last_result_count <= 0,
-                )
-            )
+            conditions.append(SearchKeywordRepository._no_result_condition())
         elif result_filter == "low_result":
             safe_threshold = max(1, int(low_result_threshold or 1))
             conditions.append(
@@ -183,7 +220,29 @@ class SearchKeywordRepository:
         return conditions
 
     @staticmethod
-    def _apply_default_order(stmt):
+    def _no_result_condition():
+        return or_(
+            SearchKeyword.no_result_count > 0,
+            SearchKeyword.last_has_result.is_(False),
+            SearchKeyword.last_result_count <= 0,
+        )
+
+    @staticmethod
+    def _apply_order(stmt, sort_by: str):
+        if sort_by == "recent":
+            return stmt.order_by(
+                desc(SearchKeyword.updated_at),
+                desc(SearchKeyword.id),
+            )
+
+        if sort_by == "no_result_count":
+            return stmt.order_by(
+                desc(SearchKeyword.no_result_count),
+                desc(SearchKeyword.search_count),
+                desc(SearchKeyword.updated_at),
+                desc(SearchKeyword.id),
+            )
+
         return stmt.order_by(
             desc(SearchKeyword.search_count),
             desc(SearchKeyword.updated_at),
@@ -201,6 +260,8 @@ class SearchKeywordRepository:
     ) -> SearchKeyword:
         row.keyword = keyword
         row.search_count = int(row.search_count or 0) + 1
+        if result_count <= 0:
+            row.no_result_count = int(row.no_result_count or 0) + 1
         row.last_result_count = result_count
         row.last_has_result = result_count > 0
         row.updated_at = updated_at

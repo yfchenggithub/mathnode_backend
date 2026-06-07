@@ -15,6 +15,7 @@ class SearchKeyword(Base):
         String(255), unique=True, index=True, nullable=False
     )
     search_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    no_result_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     last_result_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     last_has_result: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     created_at: Mapped[datetime] = mapped_column(
