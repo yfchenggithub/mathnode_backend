@@ -44,11 +44,13 @@ class MemoryIndexStore:
         records: list[dict[str, Any]],
         source: str = "content_store",
         generated_at: str = "",
+        document_count: int | None = None,
         pdf_mapping: dict[str, str] | None = None,
         pdf_root_dir: str = "",
     ) -> None:
         self._source = source
         self._generated_at = str(generated_at or "").strip()
+        self._document_count = self._normalize_document_count(document_count, records)
         self._pdf_updated_at_by_id = self._build_pdf_updated_at_map(
             pdf_mapping=pdf_mapping or {},
             pdf_root_dir=pdf_root_dir,
@@ -82,6 +84,16 @@ class MemoryIndexStore:
             record_id = normalized["id"]
             if record_id and record_id not in self._by_id:
                 self._by_id[record_id] = normalized
+
+    @staticmethod
+    def _normalize_document_count(
+        value: int | None,
+        records: list[dict[str, Any]],
+    ) -> int:
+        if isinstance(value, int) and value >= 0:
+            return value
+
+        return len(records)
 
     @staticmethod
     def _build_doc_payload(item: dict[str, Any]) -> dict[str, Any]:
@@ -632,18 +644,19 @@ class MemoryIndexStore:
             items.append(item_payload)
 
         return {
-            "total": len(self._records),
+            "total": self._document_count,
             "generated_at": self._generated_at,
             "items": items,
         }
 
     def count(self) -> int:
-        return len(self._records)
+        return self._document_count
 
     def stats(self) -> dict[str, Any]:
         return {
             "store": self.__class__.__name__,
             "source": self._source,
-            "count": len(self._records),
+            "count": self._document_count,
+            "record_count": len(self._records),
             "generated_at": self._generated_at,
         }

@@ -31,6 +31,7 @@ class IndexLoadResult:
     source: str
     missing_key_field_count: int
     generated_at: str
+    document_count: int
 
 
 def _safe_str(value: object) -> str:
@@ -175,6 +176,18 @@ def _extract_docs_node(index_root: dict[str, object], path: Path) -> dict[str, d
     return normalized_docs
 
 
+def _extract_document_count(index_root: dict[str, object], fallback: int) -> int:
+    stats = index_root.get("stats")
+    if not isinstance(stats, dict):
+        return fallback
+
+    document_count = _safe_int(stats.get("documents"), default=fallback)
+    if document_count < 0:
+        return fallback
+
+    return document_count
+
+
 def _count_missing_fields(
     raw_id: str,
     title: str,
@@ -263,6 +276,7 @@ def load_index_records(
     index_root = _load_index_root(path)
     docs = _extract_docs_node(index_root=index_root, path=path)
     generated_at = _safe_str(index_root.get("generatedAt")).strip()
+    document_count = _extract_document_count(index_root, fallback=len(docs))
 
     records: list[dict[str, Any]] = []
     missing_key_field_count = 0
@@ -276,18 +290,20 @@ def load_index_records(
         source="backend_search_index:file",
         missing_key_field_count=missing_key_field_count,
         generated_at=generated_at,
+        document_count=document_count,
     )
 
     LOGGER.info(
         (
             "Index records loaded from JSON: path=%s docs=%s records=%s "
-            "missing_key_field_count=%s generated_at=%s"
+            "missing_key_field_count=%s generated_at=%s document_count=%s"
         ),
         path,
         len(docs),
         len(result.records),
         result.missing_key_field_count,
         result.generated_at or "-",
+        result.document_count,
     )
     LOGGER.debug(
         "index records load elapsed | path=%s elapsed_ms=%.2f",

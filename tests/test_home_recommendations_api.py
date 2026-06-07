@@ -48,10 +48,12 @@ class HomeRecommendationsApiTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         index_path = Path("app/data/backend_search_index.json")
         index_result = load_index_records(index_file_path=index_path)
+        cls._index_document_count = index_result.document_count
         cls._index_store = MemoryIndexStore(
             records=index_result.records,
             source=index_result.source,
             generated_at=index_result.generated_at,
+            document_count=index_result.document_count,
         )
 
     def setUp(self) -> None:
@@ -80,6 +82,7 @@ class HomeRecommendationsApiTests(unittest.TestCase):
         self.assertIn("total", data)
         self.assertIn("items", data)
         self.assertIn("generated_at", data)
+        self.assertEqual(data["total"], self._index_document_count)
         self.assertIsInstance(data["items"], list)
         self.assertLessEqual(len(data["items"]), 5)
 
@@ -97,6 +100,21 @@ class HomeRecommendationsApiTests(unittest.TestCase):
     def test_home_recommendations_limit_validation(self) -> None:
         response = self.client.get("/api/v1/home/recommendations?limit=0")
         self.assertEqual(response.status_code, 422)
+
+    def test_home_recommendations_total_uses_index_document_count(self) -> None:
+        store = MemoryIndexStore(
+            records=[
+                _build_test_record("ONLY", title="Only returned record"),
+            ],
+            generated_at="2026-06-06T20:52:17+08:00",
+            document_count=140,
+        )
+
+        data = store.home_recommendations(limit=1, favorite_ids=set())
+
+        self.assertEqual(data["total"], 140)
+        self.assertEqual(data["generated_at"], "2026-06-06T20:52:17+08:00")
+        self.assertEqual(len(data["items"]), 1)
 
     def test_home_recommendations_keep_recent_pdf_updates(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:

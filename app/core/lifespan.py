@@ -187,6 +187,7 @@ async def app_lifespan(app: FastAPI):
             records=index_result.records,
             source=index_result.source,
             generated_at=index_result.generated_at,
+            document_count=index_result.document_count,
             pdf_mapping=pdf_mapping_result.mapping,
             pdf_root_dir=settings.PDF_ROOT_DIR,
         )
@@ -207,6 +208,7 @@ async def app_lifespan(app: FastAPI):
             "content_source": content_result.source,
             "index_source": index_result.source,
             "index_generated_at": index_result.generated_at,
+            "index_document_count": index_result.document_count,
             "pdf_mapping_source": pdf_mapping_result.source,
             "content_store": content_store.__class__.__name__,
             "index_store": index_store.__class__.__name__,
