@@ -139,5 +139,6 @@
   "G006": "G006_cube_circumsphere_radius.pdf",
   "G007": "G007_right_prism_circumsphere_radius.pdf",
   "G008": "G008_regular_triangular_prism_circumradius.pdf",
-  "G009": "G009_regular_pyramid_circumradius.pdf"
+  "G009": "G009_regular_pyramid_circumradius.pdf",
+  "T005": "T005_reduction_formulas.pdf"
 }
