@@ -151,5 +151,6 @@
   "P010": "P010_triangle_projection_sum.pdf",
   "T007": "T007_law_of_cosines.pdf",
   "T008": "T008_sine_law.pdf",
-  "G010": "G010_regular_tetrahedron_circumradius.pdf"
+  "G010": "G010_regular_tetrahedron_circumradius.pdf",
+  "G003": "G003_pyramid_circumsphere_center_altitude.pdf"
 }
