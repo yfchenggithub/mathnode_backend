@@ -5,7 +5,7 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-21T20:08:24+08:00",
+  "generatedAt": "2026-06-21T20:18:23+08:00",
   "stats": {
     "documents": 159,
     "suggestions": 500,
@@ -5599,34 +5599,35 @@
       "id": "S012",
       "module": "set",
       "moduleDir": "00_set",
-      "title": "空集是任何集合的子集（真子集条件）",
-      "summary": "空集是任意集合的子集；仅当集合非空时，空集才是其真子集。",
-      "category": "集合",
+      "title": "空集是任何集合的子集",
+      "summary": "空集不含元素，因此自动包含于任何集合；若集合非空，则空集是它的真子集。",
+      "category": "集合基础",
       "tags": [
         "S012",
-        "集合",
         "空集",
         "子集",
-        "真子集"
+        "真子集",
+        "集合基础",
+        "元素与集合"
       ],
       "coreFormula": {
-        "latex": "\\emptyset \\subseteq A; \\quad \\emptyset \\subsetneq A \\ (A \\neq \\emptyset)",
+        "latex": "\\emptyset \\subseteq A",
         "type": "math_image",
         "asset": {
-          "png": "/static/formulas/S012/58b599decd84a27b@3x.png",
-          "width_px": 444,
-          "height_px": 66,
-          "display_width_px": 148,
-          "display_height_px": 22,
+          "png": "/static/formulas/S012/940c2e388087bafc@3x.png",
+          "width_px": 129,
+          "height_px": 61,
+          "display_width_px": 43,
+          "display_height_px": 20,
           "scale": 3
         }
       },
-      "rank": 174,
-      "difficulty": 2.0,
-      "searchBoost": 0.69,
-      "hotScore": 60.0,
+      "rank": 198,
+      "difficulty": 1.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
       "examFrequency": 0.8,
-      "examScore": 5.0
+      "examScore": 4.0
     }
   },
   "suggestions": [
@@ -6559,6 +6560,11 @@
       "经典不等式",
       "I036",
       319
+    ],
+    [
+      "空集是任何集合的子集",
+      "S012",
+      318
     ],
     [
       "2sinxcosx",
@@ -8123,11 +8129,6 @@
     [
       "二元不等式",
       "I022",
-      296
-    ],
-    [
-      "数学期望",
-      "R008",
       296
     ]
   ]
