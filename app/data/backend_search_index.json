@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-21T20:18:23+08:00",
+  "generatedAt": "2026-06-21T20:31:04+08:00",
   "stats": {
-    "documents": 159,
+    "documents": 160,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -5628,6 +5628,41 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 4.0
+    },
+    "S013": {
+      "id": "S013",
+      "module": "set",
+      "moduleDir": "00_set",
+      "title": "三集合容斥原理",
+      "summary": "并集的元素个数等于各集合元素个数之和减去两两交集之和再加三者交集。",
+      "category": "集合",
+      "tags": [
+        "S013",
+        "集合",
+        "容斥原理",
+        "计数",
+        "有限集合",
+        "交集",
+        "并集"
+      ],
+      "coreFormula": {
+        "latex": "n(A\\cup B\\cup C)=n(A)+n(B)+n(C)-n(A\\cap B)-n(B\\cap C)-n(C\\cap A)+n(A\\cap B\\cap C)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/S013/1a09e261747e3c88@3x.png",
+          "width_px": 1605,
+          "height_px": 65,
+          "display_width_px": 535,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 185,
+      "difficulty": 2.0,
+      "searchBoost": 0.65,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -7322,6 +7357,11 @@
       306
     ],
     [
+      "三集合容斥原理",
+      "S013",
+      305
+    ],
+    [
       "二项分布通项",
       "R007",
       305
@@ -8125,11 +8165,6 @@
       "正三棱柱外接球半径",
       "G008",
       297
-    ],
-    [
-      "二元不等式",
-      "I022",
-      296
     ]
   ]
 }
