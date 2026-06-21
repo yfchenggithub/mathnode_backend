@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-21T18:00:51+08:00",
+  "generatedAt": "2026-06-21T18:10:02+08:00",
   "stats": {
-    "documents": 158,
+    "documents": 159,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -5595,6 +5595,39 @@
       "hotScore": 50.0,
       "examFrequency": 0.8,
       "examScore": 3.0
+    },
+    "S012": {
+      "id": "S012",
+      "module": "set",
+      "moduleDir": "00_set",
+      "title": "空集是任何集合的子集（真子集条件）",
+      "summary": "空集是任意集合的子集；仅当集合非空时，空集才是其真子集。",
+      "category": "集合",
+      "tags": [
+        "S012",
+        "集合",
+        "空集",
+        "子集",
+        "真子集"
+      ],
+      "coreFormula": {
+        "latex": "\\emptyset \\subseteq A; \\quad \\emptyset \\subsetneq A \\ (A \\neq \\emptyset)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/S012/58b599decd84a27b@3x.png",
+          "width_px": 444,
+          "height_px": 66,
+          "display_width_px": 148,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 174,
+      "difficulty": 2.0,
+      "searchBoost": 0.69,
+      "hotScore": 60.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
