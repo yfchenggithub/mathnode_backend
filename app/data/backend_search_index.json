@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-21T20:31:04+08:00",
+  "generatedAt": "2026-06-21T20:46:30+08:00",
   "stats": {
-    "documents": 160,
+    "documents": 161,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -5663,6 +5663,41 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "S014": {
+      "id": "S014",
+      "module": "set",
+      "moduleDir": "00_set",
+      "title": "集合的并交运算律（交换律、结合律、分配律）",
+      "summary": "集合的并和交运算满足交换律、结合律以及两个分配律，是化简集合表达式的代数工具。",
+      "category": "集合",
+      "tags": [
+        "S014",
+        "集合",
+        "运算律",
+        "交换律",
+        "结合律",
+        "分配律",
+        "基础性质"
+      ],
+      "coreFormula": {
+        "latex": "A\\cap(B\\cup C) = (A\\cap B)\\cup(A\\cap C),\\quad A\\cup(B\\cap C) = (A\\cup B)\\cap(A\\cup C)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/S014/75f2895976e5c5ba@3x.png",
+          "width_px": 1265,
+          "height_px": 65,
+          "display_width_px": 422,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 101,
+      "difficulty": 1.0,
+      "searchBoost": 0.3,
+      "hotScore": 50.0,
+      "examFrequency": 0.2,
+      "examScore": 3.0
     }
   },
   "suggestions": [
