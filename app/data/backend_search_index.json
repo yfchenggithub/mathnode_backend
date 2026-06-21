@@ -5,7 +5,7 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-21T18:10:02+08:00",
+  "generatedAt": "2026-06-21T20:08:24+08:00",
   "stats": {
     "documents": 159,
     "suggestions": 500,
@@ -5565,35 +5565,34 @@
       "id": "S011",
       "module": "set",
       "moduleDir": "00_set",
-      "title": "集合元素的三大特性（确定性、互异性、无序性）",
-      "summary": "集合的元素必须满足确定性、互异性和无序性，这是集合定义的基础。",
-      "category": "集合与常用逻辑用语",
+      "title": "集合元素的三大特性",
+      "summary": "集合元素具有确定性、互异性、无序性——这是所有集合运算和关系判断的底层逻辑。",
+      "category": "集合",
       "tags": [
         "S011",
         "集合",
-        "元素性质",
-        "基础定义",
         "确定性",
         "互异性",
-        "无序性"
+        "无序性",
+        "基础定义"
       ],
       "coreFormula": {
-        "latex": "A = B \\iff (\\forall x)(x\\in A \\leftrightarrow x\\in B)",
+        "latex": "\\{a,a\\} = \\{a\\}",
         "type": "math_image",
         "asset": {
-          "png": "/static/formulas/S011/708613412b34e8e0@3x.png",
-          "width_px": 632,
+          "png": "/static/formulas/S011/0e442b42c76a3f87@3x.png",
+          "width_px": 243,
           "height_px": 65,
-          "display_width_px": 211,
+          "display_width_px": 81,
           "display_height_px": 22,
           "scale": 3
         }
       },
-      "rank": 133,
+      "rank": 115,
       "difficulty": 1.0,
-      "searchBoost": 0.5,
+      "searchBoost": 0.4,
       "hotScore": 50.0,
-      "examFrequency": 0.8,
+      "examFrequency": 0.4,
       "examScore": 3.0
     },
     "S012": {
