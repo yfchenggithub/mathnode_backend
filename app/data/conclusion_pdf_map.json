@@ -154,5 +154,6 @@
   "G010": "G010_regular_tetrahedron_circumradius.pdf",
   "G003": "G003_pyramid_circumsphere_center_altitude.pdf",
   "G011": "G011_cone_circumradius.pdf",
-  "F005": "F005_lhopital_rule_zero_zero.pdf"
+  "F005": "F005_lhopital_rule_zero_zero.pdf",
+  "C082": "C082_confocal_conic_bundle.pdf"
 }
