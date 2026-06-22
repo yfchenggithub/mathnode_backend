@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-22T19:50:34+08:00",
+  "generatedAt": "2026-06-22T20:02:53+08:00",
   "stats": {
-    "documents": 167,
+    "documents": 168,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -5904,6 +5904,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 4.0
+    },
+    "S022": {
+      "id": "S022",
+      "module": "set",
+      "moduleDir": "00_set",
+      "title": "推出关系与等价关系的传递性",
+      "summary": "若命题A能推出B，B能推出C，则A能推出C；若A与B等价且B与C等价，则A与C等价。",
+      "category": "集合与常用逻辑用语",
+      "tags": [
+        "S022",
+        "逻辑推理",
+        "传递性",
+        "充分条件",
+        "充要条件",
+        "命题"
+      ],
+      "coreFormula": {
+        "latex": "(A\\Rightarrow B)\\land (B\\Rightarrow C)\\Longrightarrow (A\\Rightarrow C);\\quad (A\\Leftrightarrow B)\\land (B\\Leftrightarrow C)\\Longrightarrow (A\\Leftrightarrow C)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/S022/7a4fc00bfb51df0f@3x.png",
+          "width_px": 1277,
+          "height_px": 65,
+          "display_width_px": 426,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 120,
+      "difficulty": 2.0,
+      "searchBoost": 0.45,
+      "hotScore": 50.0,
+      "examFrequency": 0.3,
+      "examScore": 3.0
     }
   },
   "suggestions": [

@@ -165,5 +165,6 @@
   "S017": "S017_subset_count_formula.pdf",
   "S018": "S018_connectives_truth_table.pdf",
   "S019": "S019_universal_quantifier_negation.pdf",
-  "S020": "S020_existential_quantifier_negation.pdf"
+  "S020": "S020_existential_quantifier_negation.pdf",
+  "S022": "S022_implication_equivalence_transitivity.pdf"
 }
