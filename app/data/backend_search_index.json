@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-22T19:32:46+08:00",
+  "generatedAt": "2026-06-22T19:50:34+08:00",
   "stats": {
-    "documents": 166,
+    "documents": 167,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -5870,6 +5870,40 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 5.0
+    },
+    "S020": {
+      "id": "S020",
+      "module": "set",
+      "moduleDir": "00_set",
+      "title": "存在量词命题的否定规则",
+      "summary": "否定含「存在」的命题时，将存在改为任意，并否定结论。",
+      "category": "集合与逻辑",
+      "tags": [
+        "S020",
+        "存在量词",
+        "命题否定",
+        "逻辑变换",
+        "全称量词",
+        "课本结论"
+      ],
+      "coreFormula": {
+        "latex": "\\neg\\big(\\exists x\\in M,\\,p(x)\\big)\\iff\\forall x\\in M,\\,\\neg p(x)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/S020/bc44f9ed816935ee@3x.png",
+          "width_px": 710,
+          "height_px": 83,
+          "display_width_px": 237,
+          "display_height_px": 28,
+          "scale": 3
+        }
+      },
+      "rank": 187,
+      "difficulty": 2.0,
+      "searchBoost": 0.77,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 4.0
     }
   },
   "suggestions": [
@@ -7514,6 +7548,11 @@
       308
     ],
     [
+      "存在量词命题的否定规则",
+      "S020",
+      307
+    ],
+    [
       "Jensen不等式指数形式",
       "I015",
       306
@@ -8366,11 +8405,6 @@
     [
       "球心位置",
       "G007",
-      298
-    ],
-    [
-      "球表面积公式",
-      "G001",
       298
     ]
   ]
