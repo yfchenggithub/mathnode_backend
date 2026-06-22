@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-22T07:29:58+08:00",
+  "generatedAt": "2026-06-22T18:37:24+08:00",
   "stats": {
-    "documents": 163,
+    "documents": 164,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -5766,6 +5766,29 @@
       "searchBoost": 0.82,
       "hotScore": 80.0,
       "examFrequency": 0.9,
+      "examScore": 5.0
+    },
+    "S017": {
+      "id": "S017",
+      "module": "set",
+      "moduleDir": "00_set",
+      "title": "子集个数公式（$2^n$）",
+      "summary": "有限集的子集个数为2的n次方；若强制包含某些元素，则剩下元素自由组合，个数为2的n-m次方。",
+      "category": "计数原理",
+      "tags": [
+        "S017",
+        "子集计数",
+        "分类加法",
+        "分步乘法",
+        "组合数学基础",
+        "二项式系数"
+      ],
+      "coreFormula": "2^{n}",
+      "rank": 199,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 70.0,
+      "examFrequency": 1.0,
       "examScore": 5.0
     }
   },
