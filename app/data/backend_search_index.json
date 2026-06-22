@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-22T19:18:01+08:00",
+  "generatedAt": "2026-06-22T19:32:46+08:00",
   "stats": {
-    "documents": 165,
+    "documents": 166,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -5836,6 +5836,40 @@
       "hotScore": 50.0,
       "examFrequency": 0.2,
       "examScore": 3.0
+    },
+    "S019": {
+      "id": "S019",
+      "module": "set",
+      "moduleDir": "00_set",
+      "title": "全称命题否定规则",
+      "summary": "全称命题的否定：将全称量词改为存在量词，并否定谓词。",
+      "category": "常用逻辑用语",
+      "tags": [
+        "S019",
+        "全称量词",
+        "命题否定",
+        "逻辑用语",
+        "量词转化",
+        "对偶规则"
+      ],
+      "coreFormula": {
+        "latex": "\\neg\\big(\\forall x\\in M,\\; p(x)\\big) \\;\\Longleftrightarrow\\; \\exists x\\in M,\\; \\neg p(x).",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/S019/47fc0ee9b60e4758@3x.png",
+          "width_px": 731,
+          "height_px": 83,
+          "display_width_px": 244,
+          "display_height_px": 28,
+          "scale": 3
+        }
+      },
+      "rank": 193,
+      "difficulty": 2.0,
+      "searchBoost": 0.64,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -7180,6 +7214,11 @@
       313
     ],
     [
+      "全称命题否定规则",
+      "S019",
+      313
+    ],
+    [
       "圆锥外接球半径公式",
       "G011",
       313
@@ -8332,11 +8371,6 @@
     [
       "球表面积公式",
       "G001",
-      298
-    ],
-    [
-      "直棱柱外接球",
-      "G007",
       298
     ]
   ]
