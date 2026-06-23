@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-22T20:45:50+08:00",
+  "generatedAt": "2026-06-23T08:27:19+08:00",
   "stats": {
-    "documents": 170,
+    "documents": 171,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -6006,6 +6006,41 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 6.0
+    },
+    "S021": {
+      "id": "S021",
+      "module": "set",
+      "moduleDir": "00_set",
+      "title": "命题的否定与否命题辨析",
+      "summary": "命题的否定是举反例（条件真结论假），否命题是条件和结论都取否定，原命题等价于逆否命题。",
+      "category": "简易逻辑",
+      "tags": [
+        "S021",
+        "命题",
+        "逻辑",
+        "否定",
+        "否命题",
+        "逆否命题",
+        "等价"
+      ],
+      "coreFormula": {
+        "latex": "p\\land\\lnot q",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/S021/65ca792fb02e3c26@3x.png",
+          "width_px": 135,
+          "height_px": 56,
+          "display_width_px": 45,
+          "display_height_px": 19,
+          "scale": 3
+        }
+      },
+      "rank": 200,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -6852,6 +6887,11 @@
     [
       "三次舒尔不等式",
       "I026",
+      320
+    ],
+    [
+      "命题的否定与否命题辨析",
+      "S021",
       320
     ],
     [
@@ -8501,11 +8541,6 @@
     ],
     [
       "|sin x| ≤ |x|",
-      "I029",
-      298
-    ],
-    [
-      "三角函数放缩",
       "I029",
       298
     ]

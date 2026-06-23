@@ -168,5 +168,6 @@
   "S020": "S020_existential_quantifier_negation.pdf",
   "S022": "S022_implication_equivalence_transitivity.pdf",
   "S023": "S023_subset_condition_criterion.pdf",
-  "S024": "S024_quantifier_extrema_conversion.pdf"
+  "S024": "S024_quantifier_extrema_conversion.pdf",
+  "S021": "S021_negation_inverse_discrimination.pdf"
 }
