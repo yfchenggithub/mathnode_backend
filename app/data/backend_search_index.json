@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T12:27:37+08:00",
+  "generatedAt": "2026-06-23T12:49:04+08:00",
   "stats": {
-    "documents": 182,
+    "documents": 183,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -6419,6 +6419,41 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 8.0
+    },
+    "C049": {
+      "id": "C049",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "椭圆焦半径公式（焦点在x轴）",
+      "summary": "椭圆上的点到左焦点的距离等于 a+ex₀，到右焦点的距离等于 a−ex₀，其中 e 为离心率，x₀ 为点的横坐标。",
+      "category": "解析几何",
+      "tags": [
+        "C049",
+        "椭圆",
+        "焦半径",
+        "圆锥曲线",
+        "二级结论",
+        "焦点",
+        "离心率"
+      ],
+      "coreFormula": {
+        "latex": "|PF_1| = a + e x_0,\\quad |PF_2| = a - e x_0",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C049/c9f47ad47a7a2b20@3x.png",
+          "width_px": 649,
+          "height_px": 65,
+          "display_width_px": 216,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 207,
+      "difficulty": 3.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
