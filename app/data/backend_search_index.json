@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T19:19:00+08:00",
+  "generatedAt": "2026-06-23T19:33:07+08:00",
   "stats": {
-    "documents": 200,
+    "documents": 201,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7035,6 +7035,41 @@
       "searchBoost": 0.73,
       "hotScore": 70.0,
       "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "C069": {
+      "id": "C069",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "双曲线切点弦方程",
+      "summary": "过双曲线外一点的两条切线的切点弦所在直线方程，只需将双曲线标准方程中的x²和y²分别替换为x₀x和y₀y。",
+      "category": "解析几何",
+      "tags": [
+        "C069",
+        "双曲线",
+        "切点弦",
+        "切线方程",
+        "代换规则",
+        "解析几何",
+        "圆锥曲线"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{x_0 x}{a^2} - \\frac{y_0 y}{b^2} = 1 \\quad \\text{（焦点在$x$轴）} \\quad \\text{或} \\quad \\frac{y_0 y}{a^2} - \\frac{x_0 x}{b^2} = 1 \\quad \\text{（焦点在$y$轴）}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C069/3a8f7489e01961a8@3x.png",
+          "width_px": 1324,
+          "height_px": 99,
+          "display_width_px": 441,
+          "display_height_px": 33,
+          "scale": 3
+        }
+      },
+      "rank": 180,
+      "difficulty": 3.0,
+      "searchBoost": 0.67,
+      "hotScore": 70.0,
+      "examFrequency": 0.6,
       "examScore": 5.0
     }
   },
