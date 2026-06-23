@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T09:31:48+08:00",
+  "generatedAt": "2026-06-23T09:42:50+08:00",
   "stats": {
-    "documents": 174,
+    "documents": 175,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -6144,6 +6144,41 @@
       "hotScore": 50.0,
       "examFrequency": 0.2,
       "examScore": 3.0
+    },
+    "C039": {
+      "id": "C039",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "椭圆的第二定义",
+      "summary": "椭圆上任意点到焦点的距离与到对应准线的距离之比恒等于离心率 e。",
+      "category": "解析几何",
+      "tags": [
+        "C039",
+        "椭圆",
+        "第二定义",
+        "离心率",
+        "焦点",
+        "准线",
+        "焦准距"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{|PF|}{d(P,l)} = e",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C039/867af393b59aea48@3x.png",
+          "width_px": 229,
+          "height_px": 122,
+          "display_width_px": 76,
+          "display_height_px": 41,
+          "scale": 3
+        }
+      },
+      "rank": 192,
+      "difficulty": 2.0,
+      "searchBoost": 0.7,
+      "hotScore": 75.0,
+      "examFrequency": 0.9,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -7648,6 +7683,11 @@
       312
     ],
     [
+      "椭圆的第二定义",
+      "C039",
+      312
+    ],
+    [
       "Apollonius圆",
       "C032",
       311
@@ -8640,11 +8680,6 @@
     [
       "椭圆性质",
       "C020",
-      299
-    ],
-    [
-      "椭圆联立公式",
-      "C033",
       299
     ]
   ]
