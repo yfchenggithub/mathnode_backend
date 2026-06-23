@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T13:04:25+08:00",
+  "generatedAt": "2026-06-23T13:17:43+08:00",
   "stats": {
-    "documents": 184,
+    "documents": 185,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -6488,6 +6488,41 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "C051": {
+      "id": "C051",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "抛物线焦半径公式（坐标形式）",
+      "summary": "抛物线上的点到焦点的距离等于该点的横坐标与半通径之和。",
+      "category": "解析几何",
+      "tags": [
+        "C051",
+        "抛物线",
+        "焦半径",
+        "圆锥曲线",
+        "距离公式",
+        "解析几何",
+        "焦点"
+      ],
+      "coreFormula": {
+        "latex": "PF = x_0 + \\frac{p}{2}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C051/876085ca83c707fb@3x.png",
+          "width_px": 269,
+          "height_px": 97,
+          "display_width_px": 90,
+          "display_height_px": 32,
+          "scale": 3
+        }
+      },
+      "rank": 213,
+      "difficulty": 3.0,
+      "searchBoost": 0.82,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -8252,6 +8287,11 @@
       310
     ],
     [
+      "抛物线焦点距离",
+      "C051",
+      309
+    ],
+    [
       "球的半径比与表面积体积比的比例关系",
       "G002",
       309
@@ -8985,11 +9025,6 @@
       "首项",
       "L002",
       301
-    ],
-    [
-      "三角形内角余弦平方和恒等式",
-      "T002",
-      300
     ]
   ]
 }
