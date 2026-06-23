@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T15:10:37+08:00",
+  "generatedAt": "2026-06-23T15:36:45+08:00",
   "stats": {
-    "documents": 189,
+    "documents": 190,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -6661,6 +6661,39 @@
       "searchBoost": 0.74,
       "hotScore": 70.0,
       "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "C057": {
+      "id": "C057",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "双曲线焦点分弦定理：同支倒数之和与异支倒数之差",
+      "summary": "双曲线过焦点的弦，若两点在同一支上，则到焦点的距离的倒数之和为定值；若在异支，则倒数之差的绝对值为定值。",
+      "category": "解析几何",
+      "tags": [
+        "C057",
+        "双曲线",
+        "焦点弦",
+        "倒数关系",
+        "二级结论"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{1}{|AF|}+\\frac{1}{|BF|}=\\frac{2a}{b^2}\\ (\\text{同支})",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C057/5453fdf902559454@3x.png",
+          "width_px": 518,
+          "height_px": 118,
+          "display_width_px": 173,
+          "display_height_px": 39,
+          "scale": 3
+        }
+      },
+      "rank": 173,
+      "difficulty": 3.0,
+      "searchBoost": 0.6,
+      "hotScore": 70.0,
+      "examFrequency": 0.6,
       "examScore": 5.0
     }
   },
