@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T10:04:04+08:00",
+  "generatedAt": "2026-06-23T10:15:51+08:00",
   "stats": {
-    "documents": 176,
+    "documents": 177,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -6213,6 +6213,40 @@
       "hotScore": 85.0,
       "examFrequency": 1.0,
       "examScore": 6.0
+    },
+    "C041": {
+      "id": "C041",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "抛物线的第二定义（焦点与准线定义）",
+      "summary": "到焦点距离等于到定直线距离的点的轨迹是抛物线。",
+      "category": "解析几何",
+      "tags": [
+        "C041",
+        "抛物线",
+        "第二定义",
+        "焦点",
+        "准线",
+        "焦准距"
+      ],
+      "coreFormula": {
+        "latex": "y^2 = 2px \\quad (p>0)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C041/0593aaa34938b1e5@3x.png",
+          "width_px": 348,
+          "height_px": 70,
+          "display_width_px": 116,
+          "display_height_px": 23,
+          "scale": 3
+        }
+      },
+      "rank": 155,
+      "difficulty": 2.0,
+      "searchBoost": 0.5,
+      "hotScore": 60.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
