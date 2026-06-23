@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T11:49:34+08:00",
+  "generatedAt": "2026-06-23T12:08:58+08:00",
   "stats": {
-    "documents": 180,
+    "documents": 181,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -6351,6 +6351,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "C047": {
+      "id": "C047",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "椭圆焦点三角形面积公式",
+      "summary": "椭圆上一点与两焦点构成的三角形面积等于短半轴平方乘以顶角半角正切。",
+      "category": "解析几何",
+      "tags": [
+        "C047",
+        "椭圆",
+        "焦点三角形",
+        "面积公式",
+        "角度关系",
+        "正切"
+      ],
+      "coreFormula": {
+        "latex": "S = b^{2}\\tan\\frac{\\theta}{2}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C047/0e2851ad9dccf20f@3x.png",
+          "width_px": 251,
+          "height_px": 108,
+          "display_width_px": 84,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 191,
+      "difficulty": 3.0,
+      "searchBoost": 0.74,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -7985,6 +8019,11 @@
       311
     ],
     [
+      "椭圆焦点三角形面积公式",
+      "C047",
+      311
+    ],
+    [
       "椭圆焦点距离几何均值",
       "C020",
       311
@@ -8847,11 +8886,6 @@
     [
       "半径",
       "C032",
-      299
-    ],
-    [
-      "原点距离",
-      "C020",
       299
     ]
   ]
