@@ -15,6 +15,7 @@ from app.models.recent_search import RecentSearch
 from app.models.search_keyword import SearchKeyword
 from app.models.user import User
 from app.models.user_auth_identity import UserAuthIdentity
+from app.models.weekly_update_subscription import WeeklyUpdateSubscription
 
 LOGGER = logging.getLogger(__name__)
 

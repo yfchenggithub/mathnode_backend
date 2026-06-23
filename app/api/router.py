@@ -11,6 +11,9 @@ from app.api.v1.search import router as search_router
 from app.api.v1.search_keywords import router as search_keywords_router
 from app.api.v1.suggest import router as suggest_router
 from app.api.v1.users import router as users_router
+from app.api.v1.weekly_update_subscriptions import (
+    router as weekly_update_subscriptions_router,
+)
 from app.core.config import settings
 
 api_router = APIRouter()
@@ -26,6 +29,10 @@ api_router.include_router(recent_searches_router, tags=["recent_searches"])
 api_router.include_router(search_keywords_router, tags=["search_keywords"])
 api_router.include_router(pdfs_router, tags=["pdfs"])
 api_router.include_router(conclusion_requests_router, tags=["conclusion_requests"])
+api_router.include_router(
+    weekly_update_subscriptions_router,
+    tags=["weekly_update_subscriptions"],
+)
 
 if settings.ENABLE_DEBUG_ENDPOINTS:
     from app.api.debug import router as debug_router

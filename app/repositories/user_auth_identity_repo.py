@@ -18,6 +18,16 @@ class UserAuthIdentityRepository:
         return db.execute(stmt).scalar_one_or_none()
 
     @staticmethod
+    def get_identity_by_user_id_and_provider(
+        db: Session, user_id: str, provider: str
+    ) -> UserAuthIdentity | None:
+        stmt = select(UserAuthIdentity).where(
+            UserAuthIdentity.user_id == user_id,
+            UserAuthIdentity.provider == provider,
+        )
+        return db.execute(stmt).scalar_one_or_none()
+
+    @staticmethod
     def create_identity(
         db: Session,
         user_id: str,

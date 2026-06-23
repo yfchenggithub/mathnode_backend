@@ -196,6 +196,27 @@ class Settings(BaseModel):
     JWT_EXPIRE_SECONDS: int = Field(
         default_factory=lambda: _env_int("JWT_EXPIRE_SECONDS", 86400)
     )
+    WECHAT_WEEKLY_UPDATE_TEMPLATE_ID: str = Field(
+        default_factory=lambda: _env_str(
+            "WECHAT_WEEKLY_UPDATE_TEMPLATE_ID",
+            "ZRc75fk-bUszGZ5lVUA-rHz_zBxGgs_o9LevvwPUIxw",
+        )
+    )
+    WECHAT_WEEKLY_UPDATE_PAGE: str = Field(
+        default_factory=lambda: _env_str(
+            "WECHAT_WEEKLY_UPDATE_PAGE",
+            "pages/weekly-updates/weekly-updates",
+        )
+    )
+    WECHAT_WEEKLY_UPDATE_PROJECT_FIELD: str = Field(
+        default_factory=lambda: _env_str("WECHAT_WEEKLY_UPDATE_PROJECT_FIELD", "thing1")
+    )
+    WECHAT_WEEKLY_UPDATE_PROGRESS_FIELD: str = Field(
+        default_factory=lambda: _env_str("WECHAT_WEEKLY_UPDATE_PROGRESS_FIELD", "thing2")
+    )
+    WECHAT_WEEKLY_UPDATE_TIME_FIELD: str = Field(
+        default_factory=lambda: _env_str("WECHAT_WEEKLY_UPDATE_TIME_FIELD", "time3")
+    )
 
 
 settings = Settings()
