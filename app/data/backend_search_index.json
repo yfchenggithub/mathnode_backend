@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T22:56:02+08:00",
+  "generatedAt": "2026-06-23T23:14:01+08:00",
   "stats": {
-    "documents": 212,
+    "documents": 213,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7450,6 +7450,41 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "C081": {
+      "id": "C081",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "椭圆的仿射变换与几何量转化",
+      "summary": "通过纵向拉伸将椭圆化为圆，利用圆的性质求解后按比例还原。",
+      "category": "解析几何",
+      "tags": [
+        "C081",
+        "仿射变换",
+        "椭圆",
+        "圆",
+        "面积",
+        "斜率",
+        "比例不变性"
+      ],
+      "coreFormula": {
+        "latex": "\\varphi: x'=x,\\ y'=\\frac{a}{b}y \\Longrightarrow x'^2+y'^2=a^2",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C081/2891985a73d71bfc@3x.png",
+          "width_px": 709,
+          "height_px": 98,
+          "display_width_px": 236,
+          "display_height_px": 33,
+          "scale": 3
+        }
+      },
+      "rank": 206,
+      "difficulty": 3.0,
+      "searchBoost": 0.79,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 7.0
     }
   },
   "suggestions": [
@@ -8316,6 +8351,11 @@
     [
       "循环分式不等式",
       "I041",
+      326
+    ],
+    [
+      "椭圆的仿射变换与几何量转化",
+      "C081",
       326
     ],
     [
@@ -9946,11 +9986,6 @@
     [
       "独立重复试验公式",
       "R007",
-      305
-    ],
-    [
-      "离散型随机变量方差定义公式",
-      "R012",
       305
     ]
   ]
