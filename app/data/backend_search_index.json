@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T09:09:57+08:00",
+  "generatedAt": "2026-06-23T09:31:48+08:00",
   "stats": {
-    "documents": 173,
+    "documents": 174,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -6110,6 +6110,40 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 10.0
+    },
+    "C038": {
+      "id": "C038",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "抛物线的定义：到焦点与准线距离相等",
+      "summary": "平面内一动点到定点的距离等于它到定直线的距离，则该点轨迹是抛物线。",
+      "category": "解析几何",
+      "tags": [
+        "C038",
+        "抛物线定义",
+        "焦点",
+        "准线",
+        "距离相等",
+        "充要条件"
+      ],
+      "coreFormula": {
+        "latex": "PF=PH",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C038/e842f5b7078c3f9f@3x.png",
+          "width_px": 206,
+          "height_px": 52,
+          "display_width_px": 69,
+          "display_height_px": 17,
+          "scale": 3
+        }
+      },
+      "rank": 91,
+      "difficulty": 1.0,
+      "searchBoost": 0.2,
+      "hotScore": 50.0,
+      "examFrequency": 0.2,
+      "examScore": 3.0
     }
   },
   "suggestions": [
