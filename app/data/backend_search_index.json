@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T20:04:57+08:00",
+  "generatedAt": "2026-06-23T20:22:10+08:00",
   "stats": {
-    "documents": 203,
+    "documents": 204,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7142,6 +7142,41 @@
       "hotScore": 70.0,
       "examFrequency": 0.6,
       "examScore": 8.0
+    },
+    "C072": {
+      "id": "C072",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "抛物线阿基米德三角形顶点坐标与面积公式",
+      "summary": "抛物线两切点连线与两切线围成的三角形，其顶点坐标和面积可直接由切点横坐标计算。",
+      "category": "解析几何",
+      "tags": [
+        "C072",
+        "抛物线",
+        "切线",
+        "阿基米德三角形",
+        "面积",
+        "中线",
+        "切点弦"
+      ],
+      "coreFormula": {
+        "latex": "S_{\\triangle PAB} = \\frac{|x_1-x_2|^3}{8p}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C072/75750d9e3c45b9d2@3x.png",
+          "width_px": 390,
+          "height_px": 123,
+          "display_width_px": 130,
+          "display_height_px": 41,
+          "scale": 3
+        }
+      },
+      "rank": 207,
+      "difficulty": 3.0,
+      "searchBoost": 0.8,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -7943,6 +7978,11 @@
     [
       "平方和分式不等式",
       "I006",
+      327
+    ],
+    [
+      "抛物线阿基米德三角形顶点坐标与面积公式",
+      "C072",
       327
     ],
     [
@@ -9638,11 +9678,6 @@
     [
       "内斯比特不等式",
       "I025",
-      304
-    ],
-    [
-      "减糖原理",
-      "I003",
       304
     ]
   ]
