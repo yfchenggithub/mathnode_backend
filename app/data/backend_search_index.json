@@ -5,7 +5,7 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T23:14:01+08:00",
+  "generatedAt": "2026-06-23T23:29:44+08:00",
   "stats": {
     "documents": 213,
     "suggestions": 500,
@@ -5530,36 +5530,35 @@
       "id": "C082",
       "module": "conic",
       "moduleDir": "03_conic",
-      "title": "共焦点二次曲线束",
-      "summary": "用一个含参方程统一表示以相同两点为焦点的所有椭圆和双曲线。",
+      "title": "共焦点二次曲线系",
+      "summary": "给定一个椭圆，通过参数λ改变分母得到所有与它共焦点的椭圆或双曲线，焦点保持不变。",
       "category": "解析几何",
       "tags": [
         "C082",
-        "共焦点",
-        "曲线束",
+        "共焦点曲线系",
         "椭圆",
         "双曲线",
-        "参数方程",
-        "圆锥曲线"
+        "参数范围",
+        "焦点"
       ],
       "coreFormula": {
-        "latex": "\\frac{x^2}{a^2+\\lambda}+\\frac{y^2}{b^2+\\lambda}=1\\quad(\\lambda\\neq -a^2,-b^2)",
+        "latex": "\\frac{x^{2}}{a^{2}-\\lambda}+\\frac{y^{2}}{b^{2}-\\lambda}=1 \\quad (c=\\sqrt{a^{2}-b^{2}})",
         "type": "math_image",
         "asset": {
-          "png": "/static/formulas/C082/014b099e26b67e3f@3x.png",
-          "width_px": 712,
+          "png": "/static/formulas/C082/18ace26838d15798@3x.png",
+          "width_px": 716,
           "height_px": 118,
-          "display_width_px": 237,
+          "display_width_px": 239,
           "display_height_px": 39,
           "scale": 3
         }
       },
-      "rank": 156,
-      "difficulty": 2.0,
-      "searchBoost": 0.54,
-      "hotScore": 60.0,
-      "examFrequency": 0.4,
-      "examScore": 6.0
+      "rank": 190,
+      "difficulty": 4.0,
+      "searchBoost": 0.7,
+      "hotScore": 75.0,
+      "examFrequency": 0.6,
+      "examScore": 5.0
     },
     "S011": {
       "id": "S011",
@@ -9509,6 +9508,11 @@
       310
     ],
     [
+      "共焦点二次曲线系",
+      "C082",
+      310
+    ],
+    [
       "定值结论",
       "C055",
       310
@@ -9981,11 +9985,6 @@
     [
       "焦点在x轴的圆锥曲线方程",
       "C045",
-      305
-    ],
-    [
-      "独立重复试验公式",
-      "R007",
       305
     ]
   ]
