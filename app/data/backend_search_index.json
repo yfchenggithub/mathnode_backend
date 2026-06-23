@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T20:40:24+08:00",
+  "generatedAt": "2026-06-23T21:08:19+08:00",
   "stats": {
-    "documents": 205,
+    "documents": 206,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7211,6 +7211,41 @@
       "hotScore": 65.0,
       "examFrequency": 0.6,
       "examScore": 5.0
+    },
+    "C074": {
+      "id": "C074",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "圆锥曲线的光学性质：椭圆法线平分焦半径夹角，双曲线切线平分焦半径夹角，抛物线切线平分焦半径与对称轴夹角",
+      "summary": "圆锥曲线上任意一点处的法线（椭圆）或切线（双曲线、抛物线）具有角平分线性质，可用于快速证明角度相等或反射路径问题。",
+      "category": "解析几何",
+      "tags": [
+        "C074",
+        "圆锥曲线",
+        "光学性质",
+        "角平分线",
+        "切线",
+        "法线",
+        "焦点"
+      ],
+      "coreFormula": {
+        "latex": "\\angle F_1 P n = \\angle n P F_2;\\quad \\angle F_1 P l = \\angle l P F_2;\\quad \\angle F P l = \\angle l P H.",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C074/2a251a4343d9213d@3x.png",
+          "width_px": 1030,
+          "height_px": 61,
+          "display_width_px": 343,
+          "display_height_px": 20,
+          "scale": 3
+        }
+      },
+      "rank": 202,
+      "difficulty": 3.0,
+      "searchBoost": 0.75,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
