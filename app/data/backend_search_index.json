@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T19:47:00+08:00",
+  "generatedAt": "2026-06-23T20:04:57+08:00",
   "stats": {
-    "documents": 202,
+    "documents": 203,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7106,6 +7106,42 @@
       "hotScore": 75.0,
       "examFrequency": 0.7,
       "examScore": 6.0
+    },
+    "C071": {
+      "id": "C071",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "椭圆蒙日圆（垂直切线交点轨迹）",
+      "summary": "椭圆外一点引两条互相垂直的切线，该点的轨迹是圆心为原点、半径为√(a²+b²)的圆。",
+      "category": "解析几何",
+      "tags": [
+        "C071",
+        "椭圆",
+        "蒙日圆",
+        "切线",
+        "垂直",
+        "轨迹",
+        "圆锥曲线",
+        "二级结论"
+      ],
+      "coreFormula": {
+        "latex": "x^2+y^2=a^2+b^2",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C071/df4ed519d7b60a13@3x.png",
+          "width_px": 331,
+          "height_px": 68,
+          "display_width_px": 110,
+          "display_height_px": 23,
+          "scale": 3
+        }
+      },
+      "rank": 210,
+      "difficulty": 3.0,
+      "searchBoost": 0.82,
+      "hotScore": 70.0,
+      "examFrequency": 0.6,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -9360,6 +9396,11 @@
       306
     ],
     [
+      "垂直切线轨迹圆",
+      "C071",
+      306
+    ],
+    [
       "对数平均不等式特例",
       "I023",
       306
@@ -9380,6 +9421,11 @@
       306
     ],
     [
+      "椭圆蒙日圆",
+      "C071",
+      306
+    ],
+    [
       "正弦凹性放缩",
       "I017",
       306
@@ -9387,6 +9433,21 @@
     [
       "正弦函数中点不等式",
       "I017",
+      306
+    ],
+    [
+      "蒙日圆",
+      "C071",
+      306
+    ],
+    [
+      "蒙日圆定理",
+      "C071",
+      306
+    ],
+    [
+      "蒙日圆的逆定理",
+      "C071",
       306
     ],
     [
@@ -9581,31 +9642,6 @@
     ],
     [
       "减糖原理",
-      "I003",
-      304
-    ],
-    [
-      "分式放缩",
-      "I003",
-      304
-    ],
-    [
-      "分数和不等式",
-      "I025",
-      304
-    ],
-    [
-      "分段求和",
-      "L003",
-      304
-    ],
-    [
-      "前n项和",
-      "L003",
-      304
-    ],
-    [
-      "加糖原理",
       "I003",
       304
     ]
