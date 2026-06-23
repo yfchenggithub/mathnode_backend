@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T21:24:17+08:00",
+  "generatedAt": "2026-06-23T21:40:27+08:00",
   "stats": {
-    "documents": 207,
+    "documents": 208,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7280,6 +7280,40 @@
       "hotScore": 85.0,
       "examFrequency": 1.0,
       "examScore": 8.0
+    },
+    "C076": {
+      "id": "C076",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "极点极线共轭性：点与极线的对称关系",
+      "summary": "非退化二次曲线中，若点P在点Q的极线上，则点Q也在点P的极线上，这是极点极线理论的核心对称性质。",
+      "category": "解析几何",
+      "tags": [
+        "C076",
+        "极点极线",
+        "共轭性",
+        "圆锥曲线",
+        "对称性",
+        "配极对应"
+      ],
+      "coreFormula": {
+        "latex": "\\boxed{P\\in l_Q \\iff Q\\in l_P \\iff S_P(x_2,y_2)=0}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C076/b032e26412ee9d3b@3x.png",
+          "width_px": 753,
+          "height_px": 88,
+          "display_width_px": 251,
+          "display_height_px": 29,
+          "scale": 3
+        }
+      },
+      "rank": 197,
+      "difficulty": 3.0,
+      "searchBoost": 0.7,
+      "hotScore": 65.0,
+      "examFrequency": 0.8,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -8589,6 +8623,11 @@
       317
     ],
     [
+      "极点极线共轭性:点与极线的对称关系",
+      "C076",
+      317
+    ],
+    [
       "降幂公式",
       "T006",
       317
@@ -9776,11 +9815,6 @@
     [
       "重叠计数",
       "S016",
-      305
-    ],
-    [
-      "阶乘裂项求和公式",
-      "L006",
       305
     ]
   ]
