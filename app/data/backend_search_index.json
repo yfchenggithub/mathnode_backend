@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T17:26:57+08:00",
+  "generatedAt": "2026-06-23T18:03:26+08:00",
   "stats": {
-    "documents": 195,
+    "documents": 196,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -6865,6 +6865,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 8.0
+    },
+    "C064": {
+      "id": "C064",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "椭圆第三定义：斜率乘积定值",
+      "summary": "椭圆上任意一点（非长轴端点）与长轴两端点连线的斜率乘积为定值 -b²/a²，仅由椭圆形状决定。",
+      "category": "解析几何",
+      "tags": [
+        "C064",
+        "椭圆第三定义",
+        "斜率积定值",
+        "圆锥曲线",
+        "定值问题",
+        "椭圆"
+      ],
+      "coreFormula": {
+        "latex": "k_{PA_1}\\cdot k_{PA_2}=-\\frac{b^2}{a^2}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C064/7f653004fbca6f6a@3x.png",
+          "width_px": 358,
+          "height_px": 115,
+          "display_width_px": 119,
+          "display_height_px": 38,
+          "scale": 3
+        }
+      },
+      "rank": 209,
+      "difficulty": 2.0,
+      "searchBoost": 0.84,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -7471,6 +7505,11 @@
     [
       "圆锥曲线通径公式",
       "C046",
+      329
+    ],
+    [
+      "椭圆第三定义:斜率乘积定值",
+      "C064",
       329
     ],
     [
@@ -9124,6 +9163,21 @@
       305
     ],
     [
+      "斜率积定值",
+      "C064",
+      305
+    ],
+    [
+      "椭圆第三定义",
+      "C064",
+      305
+    ],
+    [
+      "椭圆顶点斜率乘积",
+      "C064",
+      305
+    ],
+    [
       "正弦平方差公式",
       "T004",
       305
@@ -9345,26 +9399,6 @@
     ],
     [
       "椭圆焦点距离",
-      "C029",
-      304
-    ],
-    [
-      "正切凸性不等式与锐角三角形正切和",
-      "I019",
-      304
-    ],
-    [
-      "焦半径",
-      "C058",
-      304
-    ],
-    [
-      "焦半径和差",
-      "C029",
-      304
-    ],
-    [
-      "焦半径长度",
       "C029",
       304
     ]
