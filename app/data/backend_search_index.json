@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T11:35:07+08:00",
+  "generatedAt": "2026-06-24T11:54:07+08:00",
   "stats": {
-    "documents": 224,
+    "documents": 225,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7860,6 +7860,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 6.0
+    },
+    "T016": {
+      "id": "T016",
+      "module": "trigonometry",
+      "moduleDir": "08_trigonometry",
+      "title": "和差化积公式",
+      "summary": "将同名三角函数的和或差转化为两角半值的正弦、余弦乘积形式，常带系数2。",
+      "category": "三角函数",
+      "tags": [
+        "T016",
+        "和差化积",
+        "恒等变换",
+        "三角函数公式",
+        "正弦",
+        "余弦"
+      ],
+      "coreFormula": {
+        "latex": "\\sin\\alpha+\\sin\\beta=2\\sin\\frac{\\alpha+\\beta}{2}\\cos\\frac{\\alpha-\\beta}{2}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/T016/19957a2524ceaa04@3x.png",
+          "width_px": 671,
+          "height_px": 108,
+          "display_width_px": 224,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 217,
+      "difficulty": 3.0,
+      "searchBoost": 0.9,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -8091,6 +8125,11 @@
     [
       "双曲线焦点三角形面积公式",
       "C048",
+      337
+    ],
+    [
+      "和差化积公式",
+      "T016",
       337
     ],
     [
@@ -9654,8 +9693,18 @@
       314
     ],
     [
+      "cos±cos公式",
+      "T016",
+      313
+    ],
+    [
       "cos定理",
       "T007",
+      313
+    ],
+    [
+      "sin±sin公式",
+      "T016",
       313
     ],
     [
@@ -9686,6 +9735,16 @@
     [
       "双曲线面积公式",
       "C048",
+      313
+    ],
+    [
+      "和差化积",
+      "T016",
+      313
+    ],
+    [
+      "和积互化",
+      "T016",
       313
     ],
     [
@@ -10337,31 +10396,6 @@
       "点差法",
       "C059",
       307
-    ],
-    [
-      "焦点在y轴",
-      "C066",
-      307
-    ],
-    [
-      "直线与曲线弦长",
-      "C063",
-      307
-    ],
-    [
-      "解析几何",
-      "C066",
-      307
-    ],
-    [
-      "设而不求",
-      "C059",
-      307
-    ],
-    [
-      "Jensen不等式指数形式",
-      "I015",
-      306
     ]
   ]
 }
