@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T04:40:52+08:00",
+  "generatedAt": "2026-06-25T04:57:32+08:00",
   "stats": {
-    "documents": 273,
+    "documents": 274,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -9541,6 +9541,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "P039": {
+      "id": "P039",
+      "module": "geometry-plane",
+      "moduleDir": "09_geometry-plane",
+      "title": "梅涅劳斯定理",
+      "summary": "三点共线转化为三个有向线段比的乘积为1。",
+      "category": "平面几何",
+      "tags": [
+        "P039",
+        "梅涅劳斯定理",
+        "平面几何",
+        "三点共线",
+        "有向线段",
+        "比例关系"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{AF}{FB}\\cdot\\frac{BD}{DC}\\cdot\\frac{CE}{EA}=1",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P039/c6acb4e9a1266199@3x.png",
+          "width_px": 400,
+          "height_px": 110,
+          "display_width_px": 133,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 144,
+      "difficulty": 4.0,
+      "searchBoost": 0.58,
+      "hotScore": 55.0,
+      "examFrequency": 0.4,
+      "examScore": 3.0
     }
   },
   "suggestions": [
