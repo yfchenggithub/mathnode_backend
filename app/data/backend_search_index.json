@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T15:44:34+08:00",
+  "generatedAt": "2026-06-24T16:03:26+08:00",
   "stats": {
-    "documents": 237,
+    "documents": 238,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -8303,6 +8303,41 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 6.0
+    },
+    "T029": {
+      "id": "T029",
+      "module": "trigonometry",
+      "moduleDir": "08_trigonometry",
+      "title": "三角形边角判据（锐直钝判定）",
+      "summary": "角A为锐角、直角或钝角，完全等价于a²小于、等于或大于b²+c²。",
+      "category": "解三角形",
+      "tags": [
+        "T029",
+        "解三角形",
+        "余弦定理",
+        "边角关系",
+        "锐角钝角判定",
+        "三角形形状判断",
+        "最大边"
+      ],
+      "coreFormula": {
+        "latex": "\\angle A<90^\\circ \\iff a^2<b^2+c^2,\\quad \\angle A=90^\\circ \\iff a^2=b^2+c^2,\\quad \\angle A>90^\\circ \\iff a^2>b^2+c^2.",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/T029/386bf8137222c2fd@3x.png",
+          "width_px": 1636,
+          "height_px": 68,
+          "display_width_px": 545,
+          "display_height_px": 23,
+          "scale": 3
+        }
+      },
+      "rank": 211,
+      "difficulty": 2.0,
+      "searchBoost": 0.82,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
