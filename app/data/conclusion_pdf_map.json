@@ -266,5 +266,6 @@
   "P030": "P030_centroid_min_sq_dist.pdf",
   "P031": "P031_circumcenter_sine_law.pdf",
   "P032": "P032_orthocenter_perpendicular.pdf",
-  "P033": "P033_incenter_incircle_radius.pdf"
+  "P033": "P033_incenter_incircle_radius.pdf",
+  "P034": "P034_euler_line_ratio.pdf"
 }
