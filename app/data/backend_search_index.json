@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T06:57:36+08:00",
+  "generatedAt": "2026-06-25T07:25:11+08:00",
   "stats": {
-    "documents": 281,
+    "documents": 282,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -9817,6 +9817,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "P049": {
+      "id": "P049",
+      "module": "geometry-plane",
+      "moduleDir": "09_geometry-plane",
+      "title": "割线定理",
+      "summary": "从圆外一点引两条割线，两条割线上从该点到两个交点的线段之积相等。",
+      "category": "平面几何",
+      "tags": [
+        "P049",
+        "圆幂定理",
+        "割线定理",
+        "平面几何",
+        "比例线段",
+        "圆的性质"
+      ],
+      "coreFormula": {
+        "latex": "PA \\cdot PB = PC \\cdot PD",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P049/ac4e1a51ef2483e9@3x.png",
+          "width_px": 386,
+          "height_px": 54,
+          "display_width_px": 129,
+          "display_height_px": 18,
+          "scale": 3
+        }
+      },
+      "rank": 209,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -10508,6 +10542,11 @@
     [
       "倍角公式",
       "T006",
+      329
+    ],
+    [
+      "割线定理",
+      "P049",
       329
     ],
     [
@@ -12314,11 +12353,6 @@
       "阿波罗圆",
       "C032",
       311
-    ],
-    [
-      "-p2",
-      "C055",
-      310
     ]
   ]
 }
