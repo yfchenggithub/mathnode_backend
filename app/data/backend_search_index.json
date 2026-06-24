@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T20:34:55+08:00",
+  "generatedAt": "2026-06-24T20:55:04+08:00",
   "stats": {
-    "documents": 249,
+    "documents": 250,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -8718,6 +8718,41 @@
       "hotScore": 70.0,
       "examFrequency": 0.6,
       "examScore": 5.0
+    },
+    "P013": {
+      "id": "P013",
+      "module": "geometry-plane",
+      "moduleDir": "09_geometry-plane",
+      "title": "两条直线平行的一般式判定（交叉积法）",
+      "summary": "两直线平行（不重合）等价于对应系数交叉积相等且常数项不成比例。",
+      "category": "解析几何",
+      "tags": [
+        "P013",
+        "解析几何",
+        "直线方程",
+        "位置关系",
+        "充要条件",
+        "平行判定",
+        "一般式"
+      ],
+      "coreFormula": {
+        "latex": "$L_1\\parallel L_2 \\iff A_1B_2 = A_2B_1 \\;\\text{且}\\; (A_1C_2 \\neq A_2C_1 \\;\\text{或}\\; B_1C_2 \\neq B_2C_1)$",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P013/9d7111503819e7e9@3x.png",
+          "width_px": 1203,
+          "height_px": 65,
+          "display_width_px": 401,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 215,
+      "difficulty": 2.0,
+      "searchBoost": 0.86,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -10757,6 +10792,11 @@
       311
     ],
     [
+      "一般式平行条件",
+      "P013",
+      311
+    ],
+    [
       "三元不等式",
       "I040",
       311
@@ -10827,6 +10867,16 @@
       311
     ],
     [
+      "平行且不重合",
+      "P013",
+      311
+    ],
+    [
+      "平行判定",
+      "P013",
+      311
+    ],
+    [
       "放缩技巧",
       "I040",
       311
@@ -10884,6 +10934,11 @@
     [
       "焦点对应准线",
       "C040",
+      311
+    ],
+    [
+      "直线平行判定公式",
+      "P013",
       311
     ],
     [
@@ -11199,26 +11254,6 @@
     [
       "平方和开方",
       "T015",
-      308
-    ],
-    [
-      "振幅",
-      "T015",
-      308
-    ],
-    [
-      "椭圆切线距离与焦半径乘积关系",
-      "C021",
-      308
-    ],
-    [
-      "正弦定理求角",
-      "T008",
-      308
-    ],
-    [
-      "正弦定理求边",
-      "T008",
       308
     ]
   ]
