@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T23:31:15+08:00",
+  "generatedAt": "2026-06-24T23:50:14+08:00",
   "stats": {
-    "documents": 257,
+    "documents": 258,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -8994,6 +8994,41 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "P022": {
+      "id": "P022",
+      "module": "geometry-plane",
+      "moduleDir": "09_geometry-plane",
+      "title": "弦长公式（圆）",
+      "summary": "已知圆的半径和弦心距，直接计算弦长的公式，由垂径定理和勾股定理推导得出。",
+      "category": "解析几何",
+      "tags": [
+        "P022",
+        "圆",
+        "弦",
+        "弦长",
+        "弦心距",
+        "垂径定理",
+        "勾股定理"
+      ],
+      "coreFormula": {
+        "latex": "L=2\\sqrt{r^{2}-d^{2}}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P022/e22c9e91558e1e65@3x.png",
+          "width_px": 293,
+          "height_px": 75,
+          "display_width_px": 98,
+          "display_height_px": 25,
+          "scale": 3
+        }
+      },
+      "rank": 224,
+      "difficulty": 2.0,
+      "searchBoost": 1.0,
+      "hotScore": 75.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -10228,6 +10263,26 @@
       320
     ],
     [
+      "圆心距公式",
+      "P022",
+      320
+    ],
+    [
+      "垂径定理数值形式",
+      "P022",
+      320
+    ],
+    [
+      "弦心距公式",
+      "P022",
+      320
+    ],
+    [
+      "弦长公式",
+      "P022",
+      320
+    ],
+    [
       "椭圆上点到直线距离最值公式",
       "C002",
       320
@@ -10615,11 +10670,6 @@
     [
       "异号",
       "I007",
-      316
-    ],
-    [
-      "弦长公式",
-      "C053",
       316
     ],
     [
@@ -11480,21 +11530,6 @@
     [
       "三角形边长与正弦",
       "T008",
-      308
-    ],
-    [
-      "不等式工具",
-      "I026",
-      308
-    ],
-    [
-      "两等一零",
-      "I026",
-      308
-    ],
-    [
-      "余弦形式",
-      "T015",
       308
     ]
   ]
