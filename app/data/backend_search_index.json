@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T01:12:29+08:00",
+  "generatedAt": "2026-06-25T01:31:30+08:00",
   "stats": {
-    "documents": 262,
+    "documents": 263,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -9166,6 +9166,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "P027": {
+      "id": "P027",
+      "module": "conic",
+      "moduleDir": "09_geometry-plane",
+      "title": "圆的直径式方程",
+      "summary": "已知圆直径端点，直接写出圆方程，无需先求圆心半径。",
+      "category": "解析几何",
+      "tags": [
+        "P027",
+        "圆的直径式方程",
+        "解析几何",
+        "向量垂直",
+        "圆周角",
+        "直径"
+      ],
+      "coreFormula": {
+        "latex": "(x-x_1)(x-x_2)+(y-y_1)(y-y_2)=0",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P027/dcd5f300cc3369c4@3x.png",
+          "width_px": 718,
+          "height_px": 65,
+          "display_width_px": 239,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 192,
+      "difficulty": 2.0,
+      "searchBoost": 0.72,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -11295,6 +11329,11 @@
       312
     ],
     [
+      "圆的直径式方程",
+      "P027",
+      312
+    ],
+    [
       "椭圆的第二定义",
       "C039",
       312
@@ -11662,11 +11701,6 @@
     [
       "asinx+bcosx",
       "T015",
-      308
-    ],
-    [
-      "sin单调性边角",
-      "T028",
       308
     ]
   ]
