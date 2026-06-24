@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T11:54:07+08:00",
+  "generatedAt": "2026-06-24T12:08:53+08:00",
   "stats": {
-    "documents": 225,
+    "documents": 226,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7894,6 +7894,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "T017": {
+      "id": "T017",
+      "module": "trigonometry",
+      "moduleDir": "08_trigonometry",
+      "title": "齐次式切化弦转化法",
+      "summary": "将sin x和cos x的齐次分式，分子分母同除以cos的幂次，转化为tan x的有理式",
+      "category": "三角函数",
+      "tags": [
+        "T017",
+        "齐次式",
+        "切化弦",
+        "三角恒等变换",
+        "代数转化",
+        "有理化"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{P_n(\\sin x,\\cos x)}{Q_n(\\sin x,\\cos x)} = \\frac{P_n(\\tan x,1)}{Q_n(\\tan x,1)}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/T017/1da65826f4df9ac3@3x.png",
+          "width_px": 593,
+          "height_px": 122,
+          "display_width_px": 198,
+          "display_height_px": 41,
+          "scale": 3
+        }
+      },
+      "rank": 194,
+      "difficulty": 2.0,
+      "searchBoost": 0.79,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -9693,6 +9727,11 @@
       314
     ],
     [
+      "齐次式切化弦转化法",
+      "T017",
+      314
+    ],
+    [
       "cos±cos公式",
       "T016",
       313
@@ -10390,11 +10429,6 @@
     [
       "点切线",
       "C066",
-      307
-    ],
-    [
-      "点差法",
-      "C059",
       307
     ]
   ]
