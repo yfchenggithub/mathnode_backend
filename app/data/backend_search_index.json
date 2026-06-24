@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T09:21:19+08:00",
+  "generatedAt": "2026-06-24T09:40:49+08:00",
   "stats": {
-    "documents": 218,
+    "documents": 219,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7657,6 +7657,41 @@
       "hotScore": 85.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "T010": {
+      "id": "T010",
+      "module": "trigonometry",
+      "moduleDir": "08_trigonometry",
+      "title": "两角和与差的正弦、余弦、正切公式",
+      "summary": "将两个角的和或差的三角函数用单个角的三角函数线性表示，是三角恒等变换的基石。",
+      "category": "三角函数",
+      "tags": [
+        "T010",
+        "和角公式",
+        "三角恒等变换",
+        "正弦",
+        "余弦",
+        "正切",
+        "基础公式"
+      ],
+      "coreFormula": {
+        "latex": "\\begin{aligned}\\sin(\\alpha\\pm\\beta)&=\\sin\\alpha\\cos\\beta\\pm\\cos\\alpha\\sin\\beta\\cos(\\alpha\\pm\\beta)&=\\cos\\alpha\\cos\\beta\\mp\\sin\\alpha\\sin\\beta\\tan(\\alpha\\pm\\beta)&=\\frac{\\tan\\alpha\\pm\\tan\\beta}{1\\mp\\tan\\alpha\\tan\\beta}\\end{aligned}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/T010/8b3363ec56ce1455@3x.png",
+          "width_px": 1899,
+          "height_px": 116,
+          "display_width_px": 633,
+          "display_height_px": 39,
+          "scale": 3
+        }
+      },
+      "rank": 205,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -8544,6 +8579,11 @@
       "耐克函数",
       "I013",
       326
+    ],
+    [
+      "两角和与差的正弦、余弦、正切公式",
+      "T010",
+      325
     ],
     [
       "倒数和不等式",
@@ -10154,11 +10194,6 @@
       "蒙日圆的逆定理",
       "C071",
       306
-    ],
-    [
-      "三集合容斥原理",
-      "S013",
-      305
     ]
   ]
 }
