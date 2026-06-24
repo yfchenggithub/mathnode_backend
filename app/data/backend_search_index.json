@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T12:43:12+08:00",
+  "generatedAt": "2026-06-24T13:01:14+08:00",
   "stats": {
-    "documents": 228,
+    "documents": 229,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7994,6 +7994,41 @@
       "difficulty": 2.0,
       "searchBoost": 0.7,
       "hotScore": 65.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "T020": {
+      "id": "T020",
+      "module": "trigonometry",
+      "moduleDir": "08_trigonometry",
+      "title": "同角三角函数的平方恒等式（1的代换）",
+      "summary": "同角的正弦平方与余弦平方之和恒等于1，可将常数1代换为sin²α+cos²α用于齐次化或配方。",
+      "category": "三角函数",
+      "tags": [
+        "T020",
+        "恒等式",
+        "代换",
+        "齐次化",
+        "平方关系",
+        "三角函数化简",
+        "求值"
+      ],
+      "coreFormula": {
+        "latex": "1 = \\sin^2\\alpha + \\cos^2\\alpha",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/T020/b68970e272e4ff04@3x.png",
+          "width_px": 354,
+          "height_px": 63,
+          "display_width_px": 118,
+          "display_height_px": 21,
+          "scale": 3
+        }
+      },
+      "rank": 185,
+      "difficulty": 2.0,
+      "searchBoost": 0.7,
+      "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
     }
