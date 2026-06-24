@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T13:01:14+08:00",
+  "generatedAt": "2026-06-24T13:21:16+08:00",
   "stats": {
-    "documents": 229,
+    "documents": 230,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -8031,6 +8031,42 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "T021": {
+      "id": "T021",
+      "module": "trigonometry",
+      "moduleDir": "08_trigonometry",
+      "title": "三角函数图像变换：平移量与伸缩顺序的关系",
+      "summary": "由 $y=\\sin x$ 变换到 $y=A\\sin(\\omega x+\\varphi)$，先伸缩后平移时水平平移量变为 $|\\varphi/\\omega|$，而非 $|\\varphi|$。",
+      "category": "三角函数",
+      "tags": [
+        "T021",
+        "图像变换",
+        "平移",
+        "伸缩",
+        "三角函数",
+        "正弦函数",
+        "平移量",
+        "易错点"
+      ],
+      "coreFormula": {
+        "latex": "y=A\\sin(\\omega x+\\varphi)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/T021/f4a2d1d50d61e2bd@3x.png",
+          "width_px": 342,
+          "height_px": 65,
+          "display_width_px": 114,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 191,
+      "difficulty": 2.0,
+      "searchBoost": 0.7,
+      "hotScore": 80.0,
+      "examFrequency": 0.6,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -9955,6 +9991,11 @@
       311
     ],
     [
+      "三角函数图像变换:平移量与伸缩顺序的关系",
+      "T021",
+      311
+    ],
+    [
       "代数恒等变形",
       "I010",
       311
@@ -10527,11 +10568,6 @@
     [
       "斜率",
       "C059",
-      307
-    ],
-    [
-      "斜率积定值",
-      "C065",
       307
     ]
   ]
