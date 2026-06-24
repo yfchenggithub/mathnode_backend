@@ -213,5 +213,6 @@
   "C080": "C080_confocal_conic_family.pdf",
   "C081": "C081_affine_ellipse_area_slope.pdf",
   "C063": "C063_conic_chord_length_formula.pdf",
-  "C052": "C052_ellipse_focal_chord_length.pdf"
+  "C052": "C052_ellipse_focal_chord_length.pdf",
+  "C042": "C042_ellipse_abc_relation.pdf"
 }

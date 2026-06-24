@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T08:15:23+08:00",
+  "generatedAt": "2026-06-24T08:19:51+08:00",
   "stats": {
-    "documents": 215,
+    "documents": 216,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7553,6 +7553,40 @@
       "searchBoost": 0.7,
       "hotScore": 75.0,
       "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "C042": {
+      "id": "C042",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "椭圆基本关系：a²=b²+c²",
+      "summary": "椭圆中长半轴a、短半轴b和半焦距c满足a²=b²+c²，这是椭圆定义导出的基本几何关系。",
+      "category": "解析几何",
+      "tags": [
+        "C042",
+        "椭圆",
+        "基本关系",
+        "a²=b²+c²",
+        "参数关系",
+        "标准方程"
+      ],
+      "coreFormula": {
+        "latex": "a^{2}=b^{2}+c^{2}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C042/740b188b5c040d8f@3x.png",
+          "width_px": 238,
+          "height_px": 63,
+          "display_width_px": 79,
+          "display_height_px": 21,
+          "scale": 3
+        }
+      },
+      "rank": 207,
+      "difficulty": 1.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
       "examScore": 5.0
     }
   },
