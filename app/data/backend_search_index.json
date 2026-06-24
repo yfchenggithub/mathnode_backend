@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T00:50:34+08:00",
+  "generatedAt": "2026-06-25T01:12:29+08:00",
   "stats": {
-    "documents": 261,
+    "documents": 262,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -9132,6 +9132,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "P026": {
+      "id": "P026",
+      "module": "geometry-plane",
+      "moduleDir": "09_geometry-plane",
+      "title": "切线长定理",
+      "summary": "圆外一点到圆的两条切线的长度相等。",
+      "category": "平面几何",
+      "tags": [
+        "P026",
+        "平面几何",
+        "切线长",
+        "垂直平分",
+        "角平分线",
+        "圆"
+      ],
+      "coreFormula": {
+        "latex": "PA = PB = \\sqrt{d^{2} - r^{2}}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P026/069cc73c09e3a36b@3x.png",
+          "width_px": 422,
+          "height_px": 75,
+          "display_width_px": 141,
+          "display_height_px": 25,
+          "scale": 3
+        }
+      },
+      "rank": 201,
+      "difficulty": 2.0,
+      "searchBoost": 0.86,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -10279,6 +10313,11 @@
       "直棱柱外接球半径公式",
       "G007",
       322
+    ],
+    [
+      "切线长定理",
+      "P026",
+      321
     ],
     [
       "同角基本关系",
@@ -11628,11 +11667,6 @@
     [
       "sin单调性边角",
       "T028",
-      308
-    ],
-    [
-      "tanφ",
-      "T015",
       308
     ]
   ]
