@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T21:44:44+08:00",
+  "generatedAt": "2026-06-24T22:04:18+08:00",
   "stats": {
-    "documents": 252,
+    "documents": 253,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -8821,6 +8821,41 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 5.0
+    },
+    "P017": {
+      "id": "P017",
+      "module": "geometry-plane",
+      "moduleDir": "09_geometry-plane",
+      "title": "过两直线交点的直线系方程",
+      "summary": "过两条相交直线交点的任意直线，均可写成两直线方程线性组合的形式。",
+      "category": "解析几何",
+      "tags": [
+        "P017",
+        "直线系方程",
+        "过定点",
+        "参数方程",
+        "解析几何",
+        "相交直线",
+        "直线方程"
+      ],
+      "coreFormula": {
+        "latex": "A_1x+B_1y+C_1 + \\lambda (A_2x+B_2y+C_2)=0,\\quad \\lambda \\in \\mathbb{R}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P017/2701e73903ba52c9@3x.png",
+          "width_px": 939,
+          "height_px": 65,
+          "display_width_px": 313,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 199,
+      "difficulty": 2.0,
+      "searchBoost": 0.69,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -10205,6 +10240,11 @@
       319
     ],
     [
+      "过两直线交点的直线系方程",
+      "P017",
+      319
+    ],
+    [
       "空集是任何集合的子集",
       "S012",
       318
@@ -11317,11 +11357,6 @@
     [
       "外接圆直径",
       "T008",
-      308
-    ],
-    [
-      "大边对大角",
-      "T028",
       308
     ]
   ]
