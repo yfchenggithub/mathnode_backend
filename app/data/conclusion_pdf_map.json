@@ -268,5 +268,6 @@
   "P032": "P032_orthocenter_perpendicular.pdf",
   "P033": "P033_incenter_incircle_radius.pdf",
   "P034": "P034_euler_line_ratio.pdf",
-  "P035": "P035_angle_bisector_ratio.pdf"
+  "P035": "P035_angle_bisector_ratio.pdf",
+  "P036": "P036_external_angle_bisector_ratio.pdf"
 }
