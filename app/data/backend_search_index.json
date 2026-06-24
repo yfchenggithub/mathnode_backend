@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T07:41:23+08:00",
+  "generatedAt": "2026-06-25T07:56:55+08:00",
   "stats": {
-    "documents": 283,
+    "documents": 284,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -9885,6 +9885,40 @@
       "hotScore": 85.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "P051": {
+      "id": "P051",
+      "module": "geometry-plane",
+      "moduleDir": "09_geometry-plane",
+      "title": "圆幂定理",
+      "summary": "点 $P$ 到定圆 $O$ 的幂（$|d^{2}-R^{2}|$）等于过 $P$ 任意直线截圆所得两段长度之积。",
+      "category": "平面几何",
+      "tags": [
+        "P051",
+        "圆幂定理",
+        "相交弦定理",
+        "切线长定理",
+        "定值问题",
+        "圆"
+      ],
+      "coreFormula": {
+        "latex": "PA\\cdot PB = |d^{2} - R^{2}|",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P051/4a192d084d124bac@3x.png",
+          "width_px": 391,
+          "height_px": 70,
+          "display_width_px": 130,
+          "display_height_px": 23,
+          "scale": 3
+        }
+      },
+      "rank": 208,
+      "difficulty": 3.0,
+      "searchBoost": 0.82,
+      "hotScore": 70.0,
+      "examFrequency": 1.0,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -10661,6 +10695,11 @@
     [
       "双曲线",
       "C037",
+      328
+    ],
+    [
+      "圆幂定理",
+      "P051",
       328
     ],
     [
@@ -12381,11 +12420,6 @@
     [
       "边分线段",
       "P038",
-      311
-    ],
-    [
-      "配方证明",
-      "I010",
       311
     ]
   ]
