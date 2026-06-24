@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T17:14:19+08:00",
+  "generatedAt": "2026-06-24T17:35:43+08:00",
   "stats": {
-    "documents": 242,
+    "documents": 243,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -8475,6 +8475,42 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 8.0
+    },
+    "T034": {
+      "id": "T034",
+      "module": "geometry-plane",
+      "moduleDir": "08_trigonometry",
+      "title": "三角形内角平分线定理",
+      "summary": "三角形内角平分线将对边分成的两段长度，等于夹该角的两边长度之比。",
+      "category": "平面几何",
+      "tags": [
+        "T034",
+        "三角形",
+        "角平分线",
+        "比例",
+        "相似三角形",
+        "平面几何",
+        "定理",
+        "几何性质"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{BD}{DC} = \\frac{AB}{AC}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/T034/799dbdb8386c8c04@3x.png",
+          "width_px": 240,
+          "height_px": 110,
+          "display_width_px": 80,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 207,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -9326,6 +9362,11 @@
     [
       "三元对称不等式链",
       "I024",
+      327
+    ],
+    [
+      "三角形内角平分线定理",
+      "T034",
       327
     ],
     [
@@ -10971,11 +11012,6 @@
     [
       "中点弦",
       "C059",
-      307
-    ],
-    [
-      "中点纵坐标",
-      "C062",
       307
     ]
   ]
