@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T01:31:30+08:00",
+  "generatedAt": "2026-06-25T01:45:03+08:00",
   "stats": {
-    "documents": 263,
+    "documents": 264,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -9200,6 +9200,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "P028": {
+      "id": "P028",
+      "module": "geometry-plane",
+      "moduleDir": "09_geometry-plane",
+      "title": "圆内接四边形对角互补",
+      "summary": "圆内接四边形中，两组对角之和均等于180°；反之，若四边形一组对角互补，则四点共圆。",
+      "category": "平面几何",
+      "tags": [
+        "P028",
+        "圆内接四边形",
+        "对角互补",
+        "圆周角定理",
+        "四点共圆",
+        "角度关系"
+      ],
+      "coreFormula": {
+        "latex": "\\angle A+\\angle C=180^\\circ,\\quad \\angle B+\\angle D=180^\\circ",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P028/b729a8c0f007100d@3x.png",
+          "width_px": 697,
+          "height_px": 61,
+          "display_width_px": 232,
+          "display_height_px": 20,
+          "scale": 3
+        }
+      },
+      "rank": 205,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -10136,6 +10170,11 @@
     [
       "倒数和不等式",
       "I039",
+      325
+    ],
+    [
+      "圆内接四边形对角互补",
+      "P028",
       325
     ],
     [
@@ -11696,11 +11735,6 @@
     [
       "SSA",
       "T008",
-      308
-    ],
-    [
-      "asinx+bcosx",
-      "T015",
       308
     ]
   ]
