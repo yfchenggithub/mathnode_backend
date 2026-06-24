@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-23T23:29:44+08:00",
+  "generatedAt": "2026-06-24T08:07:43+08:00",
   "stats": {
-    "documents": 213,
+    "documents": 214,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7484,6 +7484,42 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 7.0
+    },
+    "C063": {
+      "id": "C063",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "圆锥曲线弦长公式",
+      "summary": "弦长等于√(1+k²)乘以横坐标差的绝对值，可大幅简化直线与圆锥曲线相交弦长的计算。",
+      "category": "解析几何",
+      "tags": [
+        "C063",
+        "弦长公式",
+        "圆锥曲线",
+        "直线与圆锥曲线",
+        "韦达定理",
+        "距离公式",
+        "斜率",
+        "弦长"
+      ],
+      "coreFormula": {
+        "latex": "|AB| = \\sqrt{1+k^2}\\,|x_1-x_2|",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C063/e104bcf3b59e1f6d@3x.png",
+          "width_px": 474,
+          "height_px": 80,
+          "display_width_px": 158,
+          "display_height_px": 27,
+          "scale": 3
+        }
+      },
+      "rank": 211,
+      "difficulty": 2.0,
+      "searchBoost": 0.79,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -8005,6 +8041,11 @@
     [
       "凸函数不等式",
       "I014",
+      331
+    ],
+    [
+      "圆锥曲线弦长公式",
+      "C063",
       331
     ],
     [
@@ -9803,6 +9844,11 @@
       307
     ],
     [
+      "直线与曲线弦长",
+      "C063",
+      307
+    ],
+    [
       "解析几何",
       "C066",
       307
@@ -9975,16 +10021,6 @@
     [
       "正棱锥外接球半径公式",
       "G009",
-      305
-    ],
-    [
-      "泰勒展开",
-      "I012",
-      305
-    ],
-    [
-      "焦点在x轴的圆锥曲线方程",
-      "C045",
       305
     ]
   ]
