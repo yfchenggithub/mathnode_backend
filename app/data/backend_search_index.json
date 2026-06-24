@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T08:19:51+08:00",
+  "generatedAt": "2026-06-24T08:22:18+08:00",
   "stats": {
-    "documents": 216,
+    "documents": 217,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7588,6 +7588,42 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 5.0
+    },
+    "C044": {
+      "id": "C044",
+      "module": "conic",
+      "moduleDir": "03_conic",
+      "title": "离心率的几何定义与代数公式",
+      "summary": "离心率是圆锥曲线上任意一点到焦点与到准线距离的比值，也等于半焦距与半长轴之比，用于统一描述椭圆、双曲线、抛物线的形状。",
+      "category": "解析几何",
+      "tags": [
+        "C044",
+        "离心率",
+        "圆锥曲线",
+        "定义",
+        "几何意义",
+        "椭圆",
+        "双曲线",
+        "抛物线"
+      ],
+      "coreFormula": {
+        "latex": "e = \\frac{|PF|}{d(P,l)} = \\frac{c}{a}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/C044/2803e9319abb0f48@3x.png",
+          "width_px": 323,
+          "height_px": 122,
+          "display_width_px": 108,
+          "display_height_px": 41,
+          "scale": 3
+        }
+      },
+      "rank": 212,
+      "difficulty": 2.0,
+      "searchBoost": 0.82,
+      "hotScore": 85.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -8069,6 +8105,11 @@
     [
       "平方和",
       "I002",
+      332
+    ],
+    [
+      "离心率的几何定义与代数公式",
+      "C044",
       332
     ],
     [
@@ -9752,6 +9793,11 @@
       308
     ],
     [
+      "圆锥曲线离心率公式",
+      "C044",
+      308
+    ],
+    [
       "外接圆直径",
       "T008",
       308
@@ -9789,6 +9835,16 @@
     [
       "正弦定理求边",
       "T008",
+      308
+    ],
+    [
+      "离心率定义",
+      "C044",
+      308
+    ],
+    [
+      "离心率范围",
+      "C044",
       308
     ],
     [
@@ -10069,26 +10125,6 @@
     [
       "指数函数",
       "I012",
-      305
-    ],
-    [
-      "椭圆第三定义",
-      "C064",
-      305
-    ],
-    [
-      "椭圆顶点斜率乘积",
-      "C064",
-      305
-    ],
-    [
-      "正弦平方差公式",
-      "T004",
-      305
-    ],
-    [
-      "正棱锥外接球半径公式",
-      "G009",
       305
     ]
   ]
