@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T03:34:34+08:00",
+  "generatedAt": "2026-06-25T03:50:29+08:00",
   "stats": {
-    "documents": 269,
+    "documents": 270,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -9404,6 +9404,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 8.0
+    },
+    "P035": {
+      "id": "P035",
+      "module": "geometry-plane",
+      "moduleDir": "09_geometry-plane",
+      "title": "三角形内角平分线定理",
+      "summary": "三角形内角平分线将对边分成的两段与两邻边长度成比例。",
+      "category": "平面几何",
+      "tags": [
+        "P035",
+        "角平分线",
+        "比例",
+        "平面几何",
+        "基本定理",
+        "相似三角形"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{BD}{DC}=\\frac{AB}{AC}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P035/e7e73d3ff697dbc1@3x.png",
+          "width_px": 240,
+          "height_px": 110,
+          "display_width_px": 80,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 195,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
