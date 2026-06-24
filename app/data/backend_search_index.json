@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T06:11:37+08:00",
+  "generatedAt": "2026-06-25T06:21:22+08:00",
   "stats": {
-    "documents": 279,
+    "documents": 280,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -9748,6 +9748,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "P045": {
+      "id": "P045",
+      "module": "trigonometry",
+      "moduleDir": "09_geometry-plane",
+      "title": "三角形面积与外接圆半径公式",
+      "summary": "三角形面积等于三边乘积除以四倍外接圆半径，无需角度。",
+      "category": "解三角形",
+      "tags": [
+        "P045",
+        "解三角形",
+        "外接圆半径",
+        "面积公式",
+        "正弦定理",
+        "三边乘积"
+      ],
+      "coreFormula": {
+        "latex": "S=\\frac{abc}{4R}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P045/3042435fe076a2ea@3x.png",
+          "width_px": 179,
+          "height_px": 109,
+          "display_width_px": 60,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 222,
+      "difficulty": 2.0,
+      "searchBoost": 0.88,
+      "hotScore": 85.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -9934,6 +9968,11 @@
     [
       "三个数的平均不等式",
       "I009",
+      342
+    ],
+    [
+      "三角形面积与外接圆半径公式",
+      "P045",
       342
     ],
     [
@@ -10379,11 +10418,6 @@
     [
       "三个正数",
       "I009",
-      330
-    ],
-    [
-      "三角形面积与外接圆半径公式",
-      "T033",
       330
     ],
     [
@@ -11284,6 +11318,11 @@
     [
       "空集是任何集合的子集",
       "S012",
+      318
+    ],
+    [
+      "面积外接圆公式",
+      "P045",
       318
     ],
     [
@@ -12244,11 +12283,6 @@
     [
       "-p2",
       "C055",
-      310
-    ],
-    [
-      "sin x 绝对值小于等于 x 绝对值",
-      "I029",
       310
     ]
   ]
