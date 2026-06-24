@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T18:45:20+08:00",
+  "generatedAt": "2026-06-24T19:55:40+08:00",
   "stats": {
-    "documents": 246,
+    "documents": 247,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -8614,6 +8614,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "T037": {
+      "id": "T037",
+      "module": "geometry-plane",
+      "moduleDir": "08_trigonometry",
+      "title": "海伦公式（三角形面积公式）",
+      "summary": "已知三角形三边长，直接求面积的公式。",
+      "category": "平面几何",
+      "tags": [
+        "T037",
+        "海伦公式",
+        "三角形面积",
+        "已知三边求面积",
+        "平面几何",
+        "解三角形"
+      ],
+      "coreFormula": {
+        "latex": "S = \\sqrt{p(p-a)(p-b)(p-c)},\\quad p=\\frac{a+b+c}{2}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/T037/3b51962642ef9e5d@3x.png",
+          "width_px": 837,
+          "height_px": 108,
+          "display_width_px": 279,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 210,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
