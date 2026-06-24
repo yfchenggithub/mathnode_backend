@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T00:12:00+08:00",
+  "generatedAt": "2026-06-25T00:32:54+08:00",
   "stats": {
-    "documents": 259,
+    "documents": 260,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -9063,6 +9063,42 @@
       "hotScore": 75.0,
       "examFrequency": 0.4,
       "examScore": 5.0
+    },
+    "P024": {
+      "id": "P024",
+      "module": "geometry-plane",
+      "moduleDir": "09_geometry-plane",
+      "title": "两圆位置关系判定",
+      "summary": "通过比较圆心距与半径和、差的大小，判断两圆是外离、外切、相交、内切还是内含。",
+      "category": "解析几何",
+      "tags": [
+        "P024",
+        "圆的位置关系",
+        "圆心距",
+        "分类讨论",
+        "外离",
+        "外切",
+        "相交",
+        "内切"
+      ],
+      "coreFormula": {
+        "latex": "\\begin{cases} d > R+r & \\text{外离} \\\\ d = R+r & \\text{外切} \\\\ R-r < d < R+r & \\text{相交} \\\\ d = R-r & \\text{内切} \\\\ 0 \\le d < R-r & \\text{内含} \\end{cases}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P024/8e74231290bfc56c@3x.png",
+          "width_px": 516,
+          "height_px": 260,
+          "display_width_px": 172,
+          "display_height_px": 87,
+          "scale": 3
+        }
+      },
+      "rank": 204,
+      "difficulty": 2.0,
+      "searchBoost": 0.84,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -10029,6 +10065,11 @@
     [
       "xlnx ≥ x-1",
       "I011",
+      324
+    ],
+    [
+      "两圆位置关系判定",
+      "P024",
       324
     ],
     [
@@ -11559,11 +11600,6 @@
     [
       "三角形边角同步",
       "T028",
-      308
-    ],
-    [
-      "三角形边长与正弦",
-      "T008",
       308
     ]
   ]
