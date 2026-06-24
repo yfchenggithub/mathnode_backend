@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T13:57:14+08:00",
+  "generatedAt": "2026-06-24T14:16:05+08:00",
   "stats": {
-    "documents": 232,
+    "documents": 233,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -8131,6 +8131,40 @@
       "difficulty": 3.0,
       "searchBoost": 0.82,
       "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "T024": {
+      "id": "T024",
+      "module": "trigonometry",
+      "moduleDir": "08_trigonometry",
+      "title": "正弦型三角函数在闭区间上的最值求法",
+      "summary": "通过换元 $t=\\omega x+\\varphi$ 将正弦型复合函数的最值转化为基本正弦函数在区间上的最值，再乘以系数 $A$ 得到结果。",
+      "category": "三角函数",
+      "tags": [
+        "T024",
+        "三角函数",
+        "换元法",
+        "最值",
+        "闭区间",
+        "正弦函数"
+      ],
+      "coreFormula": {
+        "latex": "y_{\\max}=A\\cdot M,\\quad y_{\\min}=A\\cdot m,\\quad M=\\max_{t\\in[t_1,t_2]}\\sin t,\\quad m=\\min_{t\\in[t_1,t_2]}\\sin t",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/T024/375766f804421f79@3x.png",
+          "width_px": 1198,
+          "height_px": 93,
+          "display_width_px": 399,
+          "display_height_px": 31,
+          "scale": 3
+        }
+      },
+      "rank": 170,
+      "difficulty": 2.0,
+      "searchBoost": 0.65,
+      "hotScore": 60.0,
       "examFrequency": 0.8,
       "examScore": 5.0
     }
