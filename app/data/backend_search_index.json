@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T14:57:10+08:00",
+  "generatedAt": "2026-06-24T15:23:26+08:00",
   "stats": {
-    "documents": 235,
+    "documents": 236,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -8235,6 +8235,40 @@
       "hotScore": 70.0,
       "examFrequency": 1.0,
       "examScore": 5.0
+    },
+    "T027": {
+      "id": "T027",
+      "module": "trigonometry",
+      "moduleDir": "08_trigonometry",
+      "title": "余弦定理变形：三边求角与三角形形状判断",
+      "summary": "已知三角形三边长度，可直接计算任意内角的余弦值，并通过最大角的余弦符号判断三角形是锐角、直角还是钝角。",
+      "category": "解三角形",
+      "tags": [
+        "T027",
+        "余弦定理",
+        "求角",
+        "形状判断",
+        "三边关系",
+        "最大角"
+      ],
+      "coreFormula": {
+        "latex": "\\cos A = \\frac{b^{2}+c^{2}-a^{2}}{2bc}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/T027/987208ea9ebedc74@3x.png",
+          "width_px": 398,
+          "height_px": 114,
+          "display_width_px": 133,
+          "display_height_px": 38,
+          "scale": 3
+        }
+      },
+      "rank": 220,
+      "difficulty": 2.0,
+      "searchBoost": 0.9,
+      "hotScore": 85.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -8422,6 +8456,11 @@
       "指数函数切线放缩不等式",
       "I012",
       341
+    ],
+    [
+      "余弦定理变形:三边求角与三角形形状判断",
+      "T027",
+      340
     ],
     [
       "全称量词与存在量词不等式的最值转化",
@@ -9654,6 +9693,11 @@
       316
     ],
     [
+      "三边求角公式",
+      "T027",
+      316
+    ],
+    [
       "事件并集",
       "R005",
       316
@@ -9676,6 +9720,16 @@
     [
       "互斥条件",
       "R005",
+      316
+    ],
+    [
+      "余弦定理求角公式",
+      "T027",
+      316
+    ],
+    [
+      "余弦形状判断",
+      "T027",
       316
     ],
     [
@@ -10716,26 +10770,6 @@
     [
       "存在量词命题的否定规则",
       "S020",
-      307
-    ],
-    [
-      "对称问题",
-      "C059",
-      307
-    ],
-    [
-      "弦AB",
-      "C062",
-      307
-    ],
-    [
-      "弦中点坐标",
-      "C059",
-      307
-    ],
-    [
-      "弦所在直线",
-      "C062",
       307
     ]
   ]
