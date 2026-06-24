@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T12:08:53+08:00",
+  "generatedAt": "2026-06-24T12:27:16+08:00",
   "stats": {
-    "documents": 226,
+    "documents": 227,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -7928,6 +7928,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "T018": {
+      "id": "T018",
+      "module": "trigonometry",
+      "moduleDir": "08_trigonometry",
+      "title": "三角函数知一求二：sin x±cos x与sin x cos x互化",
+      "summary": "通过平方关系，由 sin x+cos x、sin x-cos x、sin x cos x 中任一个可求其余两个，且取值范围受限。",
+      "category": "三角函数",
+      "tags": [
+        "T018",
+        "三角函数",
+        "知一求二",
+        "整体代换",
+        "范围问题",
+        "恒等变形"
+      ],
+      "coreFormula": {
+        "latex": "(S_{\\pm})^2 = 1 \\pm 2P",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/T018/beb30604c1678b69@3x.png",
+          "width_px": 300,
+          "height_px": 70,
+          "display_width_px": 100,
+          "display_height_px": 23,
+          "scale": 3
+        }
+      },
+      "rank": 211,
+      "difficulty": 2.0,
+      "searchBoost": 0.82,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -10332,8 +10366,18 @@
       308
     ],
     [
+      "S+、S−、P关系",
+      "T018",
+      307
+    ],
+    [
       "三倍角公式",
       "T011",
+      307
+    ],
+    [
+      "三角和差积互化",
+      "T018",
       307
     ],
     [
@@ -10419,16 +10463,6 @@
     [
       "斜率积定值",
       "C065",
-      307
-    ],
-    [
-      "椭圆中点弦",
-      "C059",
-      307
-    ],
-    [
-      "点切线",
-      "C066",
       307
     ]
   ]
