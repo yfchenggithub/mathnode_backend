@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-24T21:29:34+08:00",
+  "generatedAt": "2026-06-24T21:44:44+08:00",
   "stats": {
-    "documents": 251,
+    "documents": 252,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -8787,6 +8787,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "P016": {
+      "id": "P016",
+      "module": "conic",
+      "moduleDir": "09_geometry-plane",
+      "title": "两平行直线间的距离公式",
+      "summary": "将两平行直线化为相同系数的一般式后，距离等于常数项差绝对值除以系数平方和开方。",
+      "category": "解析几何",
+      "tags": [
+        "P016",
+        "平行线距离",
+        "点线距离公式",
+        "解析几何",
+        "直线方程",
+        "距离公式"
+      ],
+      "coreFormula": {
+        "latex": "d = \\frac{|C_1 - C_2|}{\\sqrt{A^2+B^2}}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P016/bd2d1868c225dc44@3x.png",
+          "width_px": 299,
+          "height_px": 125,
+          "display_width_px": 100,
+          "display_height_px": 42,
+          "scale": 3
+        }
+      },
+      "rank": 217,
+      "difficulty": 2.0,
+      "searchBoost": 0.9,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -9019,6 +9053,11 @@
       "等比数列前n项和公式",
       "L003",
       340
+    ],
+    [
+      "两平行直线间的距离公式",
+      "P016",
+      337
     ],
     [
       "余弦定理",
@@ -10741,6 +10780,21 @@
       313
     ],
     [
+      "平行直线距离",
+      "P016",
+      313
+    ],
+    [
+      "平行线距离公式",
+      "P016",
+      313
+    ],
+    [
+      "平行线间距离",
+      "P016",
+      313
+    ],
+    [
       "截距",
       "P011",
       313
@@ -10793,6 +10847,11 @@
     [
       "等差求和",
       "L002",
+      313
+    ],
+    [
+      "线线距",
+      "P016",
       313
     ],
     [
@@ -11263,31 +11322,6 @@
     [
       "大边对大角",
       "T028",
-      308
-    ],
-    [
-      "对称分式不等式",
-      "I038",
-      308
-    ],
-    [
-      "对称多项式",
-      "I026",
-      308
-    ],
-    [
-      "已知两角一边求边",
-      "T008",
-      308
-    ],
-    [
-      "已知两边及一角求角",
-      "T008",
-      308
-    ],
-    [
-      "平方和开方",
-      "T015",
       308
     ]
   ]
