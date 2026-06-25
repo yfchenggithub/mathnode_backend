@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T19:14:31+08:00",
+  "generatedAt": "2026-06-25T19:31:47+08:00",
   "stats": {
-    "documents": 318,
+    "documents": 319,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11082,6 +11082,40 @@
       "hotScore": 50.0,
       "examFrequency": 0.5,
       "examScore": 3.0
+    },
+    "V031": {
+      "id": "V031",
+      "module": "vector",
+      "moduleDir": "04_vector",
+      "title": "定比分点坐标公式",
+      "summary": "已知两端点坐标和分比，求分点坐标的公式。",
+      "category": "解析几何",
+      "tags": [
+        "V031",
+        "定比分点",
+        "坐标公式",
+        "向量共线",
+        "中点公式",
+        "分点"
+      ],
+      "coreFormula": {
+        "latex": "x = \\frac{x_1 + \\lambda x_2}{1+\\lambda}, \\quad y = \\frac{y_1 + \\lambda y_2}{1+\\lambda}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/V031/94497c338c473c69@3x.png",
+          "width_px": 575,
+          "height_px": 111,
+          "display_width_px": 192,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 194,
+      "difficulty": 2.0,
+      "searchBoost": 0.74,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -13286,6 +13320,11 @@
       314
     ],
     [
+      "定比分点坐标公式",
+      "V031",
+      314
+    ],
+    [
       "对勾不等式",
       "I013",
       314
@@ -13578,11 +13617,6 @@
     [
       "实数不等式",
       "I010",
-      311
-    ],
-    [
-      "对称不等式",
-      "I040",
       311
     ]
   ]
