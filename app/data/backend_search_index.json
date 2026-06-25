@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T20:36:58+08:00",
+  "generatedAt": "2026-06-25T21:05:03+08:00",
   "stats": {
-    "documents": 322,
+    "documents": 323,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11221,6 +11221,41 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "V036": {
+      "id": "V036",
+      "module": "vector",
+      "moduleDir": "04_vector",
+      "title": "向量数量积与模长判定三角形形状",
+      "summary": "利用向量数量积为零判定直角，利用向量模长相等判定等腰或等边。",
+      "category": "平面向量",
+      "tags": [
+        "V036",
+        "向量数量积",
+        "直角判定",
+        "等腰判定",
+        "等边判定",
+        "三角形形状",
+        "模长相等"
+      ],
+      "coreFormula": {
+        "latex": "\\overrightarrow{AB}\\cdot\\overrightarrow{AC}=0 \\iff \\angle A = 90^\\circ; \\ |\\overrightarrow{AB}|=|\\overrightarrow{AC}| \\iff AB=AC; \\ |\\overrightarrow{AB}|=|\\overrightarrow{AC}|=|\\overrightarrow{BC}| \\iff AB=AC=BC",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/V036/17d2b589593c380a@3x.png",
+          "width_px": 1865,
+          "height_px": 93,
+          "display_width_px": 622,
+          "display_height_px": 31,
+          "scale": 3
+        }
+      },
+      "rank": 132,
+      "difficulty": 2.0,
+      "searchBoost": 0.5,
+      "hotScore": 55.0,
+      "examFrequency": 0.4,
+      "examScore": 3.0
     }
   },
   "suggestions": [
