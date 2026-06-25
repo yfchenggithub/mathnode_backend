@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T19:52:36+08:00",
+  "generatedAt": "2026-06-25T20:08:53+08:00",
   "stats": {
-    "documents": 320,
+    "documents": 321,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11151,6 +11151,41 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "V033": {
+      "id": "V033",
+      "module": "vector",
+      "moduleDir": "04_vector",
+      "title": "坐标三角形面积公式",
+      "summary": "三角形一个顶点在原点时，面积等于两向量叉积绝对值的一半。",
+      "category": "解析几何",
+      "tags": [
+        "V033",
+        "三角形面积",
+        "坐标公式",
+        "平面向量",
+        "解析几何",
+        "叉积",
+        "面积公式"
+      ],
+      "coreFormula": {
+        "latex": "S = \\frac12\\bigl|x_1y_2 - x_2y_1\\bigr|",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/V033/4c6d8255d253aa0a@3x.png",
+          "width_px": 377,
+          "height_px": 107,
+          "display_width_px": 126,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 197,
+      "difficulty": 2.0,
+      "searchBoost": 0.72,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -12835,6 +12870,11 @@
       317
     ],
     [
+      "坐标三角形面积公式",
+      "V033",
+      317
+    ],
+    [
       "抛物线切点弦方程",
       "C070",
       317
@@ -13646,11 +13686,6 @@
     ],
     [
       "基础不等式",
-      "I010",
-      311
-    ],
-    [
-      "实数不等式",
       "I010",
       311
     ]
