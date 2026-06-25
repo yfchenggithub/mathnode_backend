@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T13:01:42+08:00",
+  "generatedAt": "2026-06-25T13:17:59+08:00",
   "stats": {
-    "documents": 300,
+    "documents": 301,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -10466,6 +10466,41 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "I055": {
+      "id": "I055",
+      "module": "inequality",
+      "moduleDir": "07_inequality",
+      "title": "排序不等式",
+      "summary": "两组递增数列，同序配对和最大，反序配对和最小，乱序居中。",
+      "category": "不等式",
+      "tags": [
+        "I055",
+        "排序不等式",
+        "顺序和",
+        "反序和",
+        "不等式证明",
+        "最值问题",
+        "经典不等式"
+      ],
+      "coreFormula": {
+        "latex": "\\sum_{i=1}^{n} a_i b_{n+1-i} \\le \\sum_{i=1}^{n} a_i b_{\\sigma(i)} \\le \\sum_{i=1}^{n} a_i b_i",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/I055/4b904cb2351b4132@3x.png",
+          "width_px": 642,
+          "height_px": 136,
+          "display_width_px": 214,
+          "display_height_px": 45,
+          "scale": 3
+        }
+      },
+      "rank": 205,
+      "difficulty": 4.0,
+      "searchBoost": 0.76,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -11472,6 +11507,11 @@
     [
       "幂函数凸性不等式",
       "I021",
+      325
+    ],
+    [
+      "排序不等式",
+      "I055",
       325
     ],
     [
@@ -12962,11 +13002,6 @@
     [
       "斯特瓦尔特定理",
       "P038",
-      311
-    ],
-    [
-      "条件极值",
-      "I040",
       311
     ]
   ]
