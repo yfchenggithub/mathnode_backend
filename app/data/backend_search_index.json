@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T12:25:57+08:00",
+  "generatedAt": "2026-06-25T12:46:24+08:00",
   "stats": {
-    "documents": 298,
+    "documents": 299,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -10398,6 +10398,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "I053": {
+      "id": "I053",
+      "module": "inequality",
+      "moduleDir": "07_inequality",
+      "title": "柯西不等式取等条件",
+      "summary": "柯西不等式等号成立当且仅当两向量对应分量成比例",
+      "category": "不等式",
+      "tags": [
+        "I053",
+        "柯西不等式",
+        "取等条件",
+        "向量线性相关",
+        "实数序列",
+        "不等式"
+      ],
+      "coreFormula": {
+        "latex": "\\biggl(\\sum_{i=1}^n a_i^2\\biggr)\\biggl(\\sum_{i=1}^n b_i^2\\biggr) \\ge \\biggl(\\sum_{i=1}^n a_i b_i\\biggr)^2",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/I053/dd738c2b383d5947@3x.png",
+          "width_px": 595,
+          "height_px": 136,
+          "display_width_px": 198,
+          "display_height_px": 45,
+          "scale": 3
+        }
+      },
+      "rank": 207,
+      "difficulty": 2.0,
+      "searchBoost": 0.82,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -11334,6 +11368,11 @@
     [
       "权方和",
       "I006",
+      327
+    ],
+    [
+      "柯西不等式取等条件",
+      "I053",
       327
     ],
     [
@@ -12893,11 +12932,6 @@
     ],
     [
       "椭圆几何恒等式",
-      "C020",
-      311
-    ],
-    [
-      "椭圆切线到原点距离",
       "C020",
       311
     ]
