@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T20:08:53+08:00",
+  "generatedAt": "2026-06-25T20:36:58+08:00",
   "stats": {
-    "documents": 321,
+    "documents": 322,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11186,6 +11186,41 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "V035": {
+      "id": "V035",
+      "module": "geometry-plane",
+      "moduleDir": "04_vector",
+      "title": "向量法求点到直线的距离公式",
+      "summary": "点到直线距离等于向量AP与方向向量v的叉积模除以v的模。",
+      "category": "平面解析几何",
+      "tags": [
+        "V035",
+        "向量法",
+        "点到直线距离",
+        "叉积",
+        "解析几何",
+        "平面几何",
+        "距离公式"
+      ],
+      "coreFormula": {
+        "latex": "d = \\frac{\\lvert \\vec{AP} \\times \\vec{v} \\rvert}{\\lvert \\vec{v} \\rvert}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/V035/230afc03b8d07672@3x.png",
+          "width_px": 274,
+          "height_px": 141,
+          "display_width_px": 91,
+          "display_height_px": 47,
+          "scale": 3
+        }
+      },
+      "rank": 191,
+      "difficulty": 3.0,
+      "searchBoost": 0.74,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -13685,8 +13720,8 @@
       311
     ],
     [
-      "基础不等式",
-      "I010",
+      "向量法求点到直线的距离公式",
+      "V035",
       311
     ]
   ]
