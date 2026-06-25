@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T09:37:41+08:00",
+  "generatedAt": "2026-06-25T10:14:46+08:00",
   "stats": {
-    "documents": 290,
+    "documents": 291,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -10124,6 +10124,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 8.0
+    },
+    "I045": {
+      "id": "I045",
+      "module": "inequality",
+      "moduleDir": "07_inequality",
+      "title": "穿根法（奇穿偶不穿）解高次不等式",
+      "summary": "在数轴上标出多项式因式的根，从右上方起笔，遇奇次根穿过数轴，遇偶次根不穿过，曲线上方对应大于0，下方对应小于0。",
+      "category": "不等式",
+      "tags": [
+        "I045",
+        "高次不等式",
+        "穿根法",
+        "奇穿偶不穿",
+        "不等式解法",
+        "数轴法"
+      ],
+      "coreFormula": {
+        "latex": "f(x)=a\\prod_{i=1}^{n}(x-x_i)^{m_i}>0\\quad(\\text{或}<0,\\ge 0,\\le 0),\\ a>0",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/I045/2a8d51b5cae97521@3x.png",
+          "width_px": 969,
+          "height_px": 136,
+          "display_width_px": 323,
+          "display_height_px": 45,
+          "scale": 3
+        }
+      },
+      "rank": 223,
+      "difficulty": 2.0,
+      "searchBoost": 0.88,
+      "hotScore": 85.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -11613,6 +11647,11 @@
       319
     ],
     [
+      "奇穿偶不穿",
+      "I045",
+      319
+    ],
+    [
       "子集个数公式",
       "S017",
       319
@@ -11625,6 +11664,11 @@
     [
       "抛物线中点弦",
       "C062",
+      319
+    ],
+    [
+      "数轴标根法",
+      "I045",
       319
     ],
     [
@@ -11658,6 +11702,11 @@
       319
     ],
     [
+      "穿根法",
+      "I045",
+      319
+    ],
+    [
       "等号成立条件",
       "I036",
       319
@@ -11670,6 +11719,11 @@
     [
       "过两直线交点的直线系方程",
       "P017",
+      319
+    ],
+    [
+      "高次不等式穿根",
+      "I045",
       319
     ],
     [
@@ -12605,26 +12659,6 @@
     [
       "椭圆焦点距离几何均值",
       "C020",
-      311
-    ],
-    [
-      "点关于直线对称快速公式",
-      "C031",
-      311
-    ],
-    [
-      "点对称公式",
-      "C031",
-      311
-    ],
-    [
-      "焦点对应准线",
-      "C040",
-      311
-    ],
-    [
-      "直线平行判定公式",
-      "P013",
       311
     ]
   ]
