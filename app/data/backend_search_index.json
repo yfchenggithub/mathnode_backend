@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T07:56:55+08:00",
+  "generatedAt": "2026-06-25T08:19:17+08:00",
   "stats": {
-    "documents": 284,
+    "documents": 285,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -9919,6 +9919,41 @@
       "hotScore": 70.0,
       "examFrequency": 1.0,
       "examScore": 6.0
+    },
+    "P052": {
+      "id": "P052",
+      "module": "geometry-plane",
+      "moduleDir": "09_geometry-plane",
+      "title": "弦切角定理",
+      "summary": "弦切角等于它所夹弧所对的圆周角。",
+      "category": "平面几何（圆）",
+      "tags": [
+        "P052",
+        "弦切角",
+        "圆",
+        "切线",
+        "圆周角",
+        "几何证明",
+        "角度相等"
+      ],
+      "coreFormula": {
+        "latex": "\\angle BAT = \\angle BCA",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P052/85e0cdbc7b030170@3x.png",
+          "width_px": 324,
+          "height_px": 54,
+          "display_width_px": 108,
+          "display_height_px": 18,
+          "scale": 3
+        }
+      },
+      "rank": 196,
+      "difficulty": 2.0,
+      "searchBoost": 0.76,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -11718,6 +11753,11 @@
       316
     ],
     [
+      "弦切角定理",
+      "P052",
+      316
+    ],
+    [
       "恒成立最值法",
       "S024",
       316
@@ -12415,11 +12455,6 @@
     [
       "距离比",
       "C040",
-      311
-    ],
-    [
-      "边分线段",
-      "P038",
       311
     ]
   ]
