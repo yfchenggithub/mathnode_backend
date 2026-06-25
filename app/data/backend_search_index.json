@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T14:26:52+08:00",
+  "generatedAt": "2026-06-25T14:47:48+08:00",
   "stats": {
-    "documents": 304,
+    "documents": 305,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -10602,6 +10602,40 @@
       "searchBoost": 0.8,
       "hotScore": 70.0,
       "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "I060": {
+      "id": "I060",
+      "module": "inequality",
+      "moduleDir": "07_inequality",
+      "title": "不等式证明的四种方法：比较法、综合法、分析法、反证法",
+      "summary": "通过作差定大小、由因导果、执果索因、反设矛盾四种逻辑途径证明不等式",
+      "category": "不等式证明",
+      "tags": [
+        "I060",
+        "不等式证明",
+        "比较法",
+        "综合法",
+        "分析法",
+        "反证法"
+      ],
+      "coreFormula": {
+        "latex": "a>b \\iff a-b>0,\\quad a=b \\iff a-b=0,\\quad a<b \\iff a-b<0",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/I060/4ed79182bbb0de2b@3x.png",
+          "width_px": 1235,
+          "height_px": 60,
+          "display_width_px": 412,
+          "display_height_px": 20,
+          "scale": 3
+        }
+      },
+      "rank": 156,
+      "difficulty": 2.0,
+      "searchBoost": 0.6,
+      "hotScore": 55.0,
+      "examFrequency": 0.6,
       "examScore": 5.0
     }
   },
