@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T13:17:59+08:00",
+  "generatedAt": "2026-06-25T13:53:13+08:00",
   "stats": {
-    "documents": 301,
+    "documents": 302,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -10501,6 +10501,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "I057": {
+      "id": "I057",
+      "module": "inequality",
+      "moduleDir": "07_inequality",
+      "title": "琴生不等式取等条件",
+      "summary": "严格凸函数加权平均的函数值不大于函数值的加权平均，等号仅当所有自变量相等；严格凹则反向。",
+      "category": "不等式",
+      "tags": [
+        "I057",
+        "凸函数",
+        "琴生不等式",
+        "取等条件",
+        "不等式",
+        "加权平均"
+      ],
+      "coreFormula": {
+        "latex": "f\\left(\\sum_{i=1}^n \\lambda_i x_i\\right) \\le \\sum_{i=1}^n \\lambda_i f(x_i)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/I057/d8ab1f79d96e07c5@3x.png",
+          "width_px": 512,
+          "height_px": 146,
+          "display_width_px": 171,
+          "display_height_px": 49,
+          "scale": 3
+        }
+      },
+      "rank": 203,
+      "difficulty": 3.0,
+      "searchBoost": 0.76,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -11682,6 +11716,11 @@
     [
       "焦准比",
       "C040",
+      323
+    ],
+    [
+      "琴生不等式取等条件",
+      "I057",
       323
     ],
     [
@@ -12997,11 +13036,6 @@
     [
       "放缩技巧",
       "I040",
-      311
-    ],
-    [
-      "斯特瓦尔特定理",
-      "P038",
       311
     ]
   ]
