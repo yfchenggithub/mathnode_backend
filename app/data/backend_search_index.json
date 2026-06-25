@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T18:56:29+08:00",
+  "generatedAt": "2026-06-25T19:14:31+08:00",
   "stats": {
-    "documents": 317,
+    "documents": 318,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11048,6 +11048,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.9,
       "examScore": 4.0
+    },
+    "V030": {
+      "id": "V030",
+      "module": "vector",
+      "moduleDir": "04_vector",
+      "title": "单位向量定义：非零向量除以模长",
+      "summary": "非零向量除以自身模长，得到长度为1、方向相同的单位向量。",
+      "category": "向量",
+      "tags": [
+        "V030",
+        "向量",
+        "单位向量",
+        "模长",
+        "方向",
+        "标准化"
+      ],
+      "coreFormula": {
+        "latex": "\\vec{e} = \\frac{\\vec{a}}{|\\vec{a}|}, \\quad |\\vec{e}| = 1",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/V030/b944444fa05f8bd2@3x.png",
+          "width_px": 343,
+          "height_px": 128,
+          "display_width_px": 114,
+          "display_height_px": 43,
+          "scale": 3
+        }
+      },
+      "rank": 107,
+      "difficulty": 1.0,
+      "searchBoost": 0.3,
+      "hotScore": 50.0,
+      "examFrequency": 0.5,
+      "examScore": 3.0
     }
   },
   "suggestions": [
