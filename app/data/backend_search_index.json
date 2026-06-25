@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T11:16:29+08:00",
+  "generatedAt": "2026-06-25T11:33:36+08:00",
   "stats": {
-    "documents": 294,
+    "documents": 295,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -10260,6 +10260,42 @@
       "hotScore": 60.0,
       "examFrequency": 0.6,
       "examScore": 5.0
+    },
+    "I049": {
+      "id": "I049",
+      "module": "inequality",
+      "moduleDir": "07_inequality",
+      "title": "基本不等式一正二定三相等原则",
+      "summary": "利用基本不等式 $a+b\\ge 2\\sqrt{ab}$ 求最值时，必须满足三项条件：各项为正数、和或积为定值、等号能取到。",
+      "category": "不等式",
+      "tags": [
+        "I049",
+        "基本不等式",
+        "一正二定三相等",
+        "最值问题",
+        "均值不等式",
+        "代数不等式",
+        "求最值",
+        "算术几何平均不等式"
+      ],
+      "coreFormula": {
+        "latex": "a+b \\ge 2\\sqrt{ab}\\quad(a,b>0)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/I049/555f3888610118ed@3x.png",
+          "width_px": 465,
+          "height_px": 75,
+          "display_width_px": 155,
+          "display_height_px": 25,
+          "scale": 3
+        }
+      },
+      "rank": 226,
+      "difficulty": 2.0,
+      "searchBoost": 0.84,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -10352,6 +10388,11 @@
       "斯特瓦尔特定理:三角形内分点与对顶点连线长度公式",
       "P038",
       347
+    ],
+    [
+      "基本不等式一正二定三相等原则",
+      "I049",
+      346
     ],
     [
       "抛物线焦点弦横纵坐标积公式",
@@ -11437,6 +11478,11 @@
       "长方体外接球半径公式",
       "G005",
       323
+    ],
+    [
+      "基本不等式使用条件",
+      "I049",
+      322
     ],
     [
       "抛物线焦点弦倒数之和定理",
@@ -12751,16 +12797,6 @@
     [
       "椭圆右焦点分弦比例定理",
       "C056",
-      311
-    ],
-    [
-      "椭圆焦点三角形面积公式",
-      "C047",
-      311
-    ],
-    [
-      "椭圆焦点距离几何均值",
-      "C020",
       311
     ]
   ]
