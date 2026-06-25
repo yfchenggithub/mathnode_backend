@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T13:53:13+08:00",
+  "generatedAt": "2026-06-25T14:08:28+08:00",
   "stats": {
-    "documents": 302,
+    "documents": 303,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -10535,6 +10535,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "I058": {
+      "id": "I058",
+      "module": "inequality",
+      "moduleDir": "07_inequality",
+      "title": "柯西不等式（二维形式）",
+      "summary": "两个实数的平方和之积不小于它们对应项乘积之和的平方。",
+      "category": "不等式",
+      "tags": [
+        "I058",
+        "柯西不等式",
+        "二维形式",
+        "代数结构",
+        "内积",
+        "最值"
+      ],
+      "coreFormula": {
+        "latex": "\\( (a^{2}+b^{2})(c^{2}+d^{2})\\ge (ac+bd)^{2} \\)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/I058/81c3fa03d1a765a9@3x.png",
+          "width_px": 640,
+          "height_px": 70,
+          "display_width_px": 213,
+          "display_height_px": 23,
+          "scale": 3
+        }
+      },
+      "rank": 237,
+      "difficulty": 3.0,
+      "searchBoost": 0.86,
+      "hotScore": 85.0,
+      "examFrequency": 1.0,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -10961,6 +10995,11 @@
     [
       "二维形式",
       "I005",
+      333
+    ],
+    [
+      "二维柯西",
+      "I058",
       333
     ],
     [
@@ -11772,6 +11811,16 @@
       "直棱柱外接球半径公式",
       "G007",
       322
+    ],
+    [
+      "二维",
+      "I058",
+      321
+    ],
+    [
+      "内积",
+      "I058",
+      321
     ],
     [
       "切线长定理",
@@ -13020,21 +13069,6 @@
     ],
     [
       "平方除以和",
-      "I040",
-      311
-    ],
-    [
-      "平行且不重合",
-      "P013",
-      311
-    ],
-    [
-      "平行判定",
-      "P013",
-      311
-    ],
-    [
-      "放缩技巧",
       "I040",
       311
     ]
