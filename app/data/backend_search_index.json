@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T09:02:24+08:00",
+  "generatedAt": "2026-06-25T09:11:09+08:00",
   "stats": {
-    "documents": 287,
+    "documents": 288,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -10020,6 +10020,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 4.0
+    },
+    "P046": {
+      "id": "P046",
+      "module": "geometry-plane",
+      "moduleDir": "09_geometry-plane",
+      "title": "海伦公式：三角形面积（三边求面积）",
+      "summary": "用三边长直接计算任意三角形面积，无需作高。",
+      "category": "平面几何",
+      "tags": [
+        "P046",
+        "三角形面积",
+        "海伦公式",
+        "半周长",
+        "代数运算",
+        "几何公式"
+      ],
+      "coreFormula": {
+        "latex": "S=\\sqrt{p(p-a)(p-b)(p-c)},\\quad p=\\frac{a+b+c}{2}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P046/35d878f6230e7250@3x.png",
+          "width_px": 837,
+          "height_px": 108,
+          "display_width_px": 279,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 194,
+      "difficulty": 2.0,
+      "searchBoost": 0.74,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
