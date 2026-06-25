@@ -321,5 +321,6 @@
   "V032": "V032_parallelogram_diagonal_square_sum.pdf",
   "V033": "V033_triangle_area_cross_product.pdf",
   "V035": "V035_point_line_distance_vector.pdf",
-  "V036": "V036_vector_triangle_shape_detection.pdf"
+  "V036": "V036_vector_triangle_shape_detection.pdf",
+  "V038": "V038_vector_triangle_inequality.pdf"
 }

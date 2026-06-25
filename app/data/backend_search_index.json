@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T21:05:03+08:00",
+  "generatedAt": "2026-06-25T21:37:50+08:00",
   "stats": {
-    "documents": 323,
+    "documents": 324,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11256,6 +11256,41 @@
       "hotScore": 55.0,
       "examFrequency": 0.4,
       "examScore": 3.0
+    },
+    "V038": {
+      "id": "V038",
+      "module": "vector",
+      "moduleDir": "04_vector",
+      "title": "向量三角不等式",
+      "summary": "两个向量模的和与差的取值范围由三边关系控制，类似三角形边长关系。",
+      "category": "向量",
+      "tags": [
+        "V038",
+        "向量",
+        "模",
+        "三角不等式",
+        "不等式",
+        "共线",
+        "最值"
+      ],
+      "coreFormula": {
+        "latex": "\\bigl| |\\mathbf{a}| - |\\mathbf{b}| \\bigr| \\leq |\\mathbf{a} \\pm \\mathbf{b}| \\leq |\\mathbf{a}| + |\\mathbf{b}|",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/V038/ad3c3dcabba8bc7e@3x.png",
+          "width_px": 569,
+          "height_px": 73,
+          "display_width_px": 190,
+          "display_height_px": 24,
+          "scale": 3
+        }
+      },
+      "rank": 215,
+      "difficulty": 2.0,
+      "searchBoost": 0.88,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -11572,6 +11607,11 @@
     [
       "切点弦方程",
       "C075",
+      335
+    ],
+    [
+      "向量三角不等式",
+      "V038",
       335
     ],
     [
@@ -13752,11 +13792,6 @@
     [
       "双曲线第二定义",
       "C040",
-      311
-    ],
-    [
-      "向量法求点到直线的距离公式",
-      "V035",
       311
     ]
   ]
