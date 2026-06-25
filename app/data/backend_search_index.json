@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T09:11:09+08:00",
+  "generatedAt": "2026-06-25T09:19:01+08:00",
   "stats": {
-    "documents": 288,
+    "documents": 289,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -10054,6 +10054,41 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "P048": {
+      "id": "P048",
+      "module": "geometry-plane",
+      "moduleDir": "09_geometry-plane",
+      "title": "相交弦定理",
+      "summary": "圆内两弦相交于一点，则交点分弦所得的两段线段长度乘积相等。",
+      "category": "平面几何",
+      "tags": [
+        "P048",
+        "相交弦定理",
+        "圆幂定理",
+        "圆",
+        "线段乘积",
+        "几何",
+        "等积式"
+      ],
+      "coreFormula": {
+        "latex": "PA \\cdot PB = PC \\cdot PD",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/P048/ac4e1a51ef2483e9@3x.png",
+          "width_px": 386,
+          "height_px": 54,
+          "display_width_px": 129,
+          "display_height_px": 18,
+          "scale": 3
+        }
+      },
+      "rank": 195,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -12098,6 +12133,11 @@
       315
     ],
     [
+      "相交弦定理",
+      "P048",
+      315
+    ],
+    [
       "竞赛不等式",
       "I006",
       315
@@ -12549,11 +12589,6 @@
     ],
     [
       "角平分线长度",
-      "P038",
-      311
-    ],
-    [
-      "解三角形",
       "P038",
       311
     ]
