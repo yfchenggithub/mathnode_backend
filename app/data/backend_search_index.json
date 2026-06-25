@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-25T11:33:36+08:00",
+  "generatedAt": "2026-06-25T11:51:37+08:00",
   "stats": {
-    "documents": 295,
+    "documents": 296,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -10296,6 +10296,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 8.0
+    },
+    "I050": {
+      "id": "I050",
+      "module": "inequality",
+      "moduleDir": "07_inequality",
+      "title": "1的代换：正数和为1时倒数和的最小值",
+      "summary": "两个正数之和为1，则它们的倒数之和至少为4，当且仅当两数相等时取等。",
+      "category": "不等式",
+      "tags": [
+        "I050",
+        "不等式",
+        "基本不等式",
+        "1的代换",
+        "倒数和最值",
+        "最小值"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{1}{a}+\\frac{1}{b}\\geq 4",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/I050/505c2339ecfbaf70@3x.png",
+          "width_px": 226,
+          "height_px": 107,
+          "display_width_px": 75,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 214,
+      "difficulty": 2.0,
+      "searchBoost": 0.9,
+      "hotScore": 75.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -10673,6 +10707,11 @@
       "高考压轴题",
       "I033",
       335
+    ],
+    [
+      "1的代换:正数和为1时倒数和的最小值",
+      "I050",
+      334
     ],
     [
       "椭圆的第一定义",
@@ -12792,11 +12831,6 @@
     [
       "椭圆切线焦点距离乘积",
       "C020",
-      311
-    ],
-    [
-      "椭圆右焦点分弦比例定理",
-      "C056",
       311
     ]
   ]
