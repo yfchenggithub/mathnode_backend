@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T20:04:43+08:00",
+  "generatedAt": "2026-06-26T20:26:55+08:00",
   "stats": {
-    "documents": 355,
+    "documents": 356,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12338,6 +12338,41 @@
       "difficulty": 2.0,
       "searchBoost": 1.0,
       "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "F038": {
+      "id": "F038",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "指数函数的基本性质（恒过定点、单调性、对称性）",
+      "summary": "指数函数 $y=a^x$ 的值域、定点、渐近线、单调性完全由底数 $a$ 是否大于1决定，且 $a^x$ 与 $(1/a)^x$ 的图像关于 $y$ 轴对称。",
+      "category": "函数",
+      "tags": [
+        "F038",
+        "指数函数",
+        "基本性质",
+        "单调性",
+        "对称性",
+        "值域",
+        "渐近线"
+      ],
+      "coreFormula": {
+        "latex": "f(x)=a^x\\ (a>0,\\ a\\neq1)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F038/d2209be4e488792b@3x.png",
+          "width_px": 466,
+          "height_px": 65,
+          "display_width_px": 155,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 184,
+      "difficulty": 2.0,
+      "searchBoost": 0.69,
+      "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
     }
