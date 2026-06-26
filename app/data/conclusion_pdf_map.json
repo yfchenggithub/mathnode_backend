@@ -379,5 +379,6 @@
   "F062": "F062_sign_varying_coefficient_classification.pdf",
   "F063": "F063_existence_max_min_equivalence.pdf",
   "F064": "F064_forall_exists_min_max_equivalence.pdf",
-  "F066": "F066_xf_construction_monotonicity.pdf"
+  "F066": "F066_xf_construction_monotonicity.pdf",
+  "F067": "F067_f_over_x_monotonicity.pdf"
 }

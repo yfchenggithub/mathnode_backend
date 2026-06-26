@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T04:22:33+08:00",
+  "generatedAt": "2026-06-27T04:37:22+08:00",
   "stats": {
-    "documents": 381,
+    "documents": 382,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -13231,6 +13231,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "F067": {
+      "id": "F067",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "构造函数判断单调性",
+      "summary": "通过构造$F(x)=f(x)/x$，将分子$x f'(x)-f(x)$的符号直接转化为$F(x)$的单调性。",
+      "category": "导数与函数单调性",
+      "tags": [
+        "F067",
+        "导数",
+        "构造法",
+        "单调性",
+        "压轴题",
+        "等价转化"
+      ],
+      "coreFormula": {
+        "latex": "F'(x)=\\frac{x f'(x)-f(x)}{x^{2}}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F067/ad635ddcf38d8c94@3x.png",
+          "width_px": 444,
+          "height_px": 113,
+          "display_width_px": 148,
+          "display_height_px": 38,
+          "scale": 3
+        }
+      },
+      "rank": 213,
+      "difficulty": 3.0,
+      "searchBoost": 0.81,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -13772,6 +13806,11 @@
     [
       "最值",
       "I005",
+      333
+    ],
+    [
+      "构造函数判断单调性",
+      "F067",
       333
     ],
     [
@@ -15727,11 +15766,6 @@
     [
       "存在性命题与最值转化",
       "F063",
-      315
-    ],
-    [
-      "对勾函数",
-      "F011",
       315
     ]
   ]
