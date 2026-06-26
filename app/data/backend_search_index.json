@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T13:47:40+08:00",
+  "generatedAt": "2026-06-26T14:03:53+08:00",
   "stats": {
-    "documents": 338,
+    "documents": 339,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11768,6 +11768,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "F020": {
+      "id": "F020",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "函数图象关于直线对称的充要条件",
+      "summary": "函数图象关于直线 x=a 对称当且仅当 f(a+x)=f(a-x) 对定义域内任意允许的 x 恒成立，且定义域关于 x=a 对称。",
+      "category": "函数性质",
+      "tags": [
+        "F020",
+        "函数对称性",
+        "充要条件",
+        "轴对称",
+        "基础结论",
+        "函数图象对称"
+      ],
+      "coreFormula": {
+        "latex": "f(a+x)=f(a-x)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F020/1758e7e469752b18@3x.png",
+          "width_px": 376,
+          "height_px": 65,
+          "display_width_px": 125,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 204,
+      "difficulty": 2.0,
+      "searchBoost": 0.79,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -12859,6 +12893,11 @@
     [
       "函数不等式",
       "I011",
+      324
+    ],
+    [
+      "函数图象关于直线对称的充要条件",
+      "F020",
       324
     ],
     [
@@ -14264,11 +14303,6 @@
     [
       "BD CD",
       "P038",
-      311
-    ],
-    [
-      "PH垂直",
-      "C040",
       311
     ]
   ]
