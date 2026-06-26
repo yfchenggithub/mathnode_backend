@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T10:55:18+08:00",
+  "generatedAt": "2026-06-26T11:44:08+08:00",
   "stats": {
-    "documents": 333,
+    "documents": 334,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11597,6 +11597,38 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 7.0
+    },
+    "F013": {
+      "id": "F013",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "复合函数的单调性（同增异减）",
+      "summary": "内外函数单调性相同时复合递增，相异时复合递减。",
+      "category": "函数",
+      "tags": [
+        "F013",
+        "函数单调性",
+        "复合函数",
+        "同增异减"
+      ],
+      "coreFormula": {
+        "latex": "\\begin{cases} f\\nearrow,\\;g\\nearrow \\implies f\\circ g\\nearrow,\\\\ f\\searrow,\\;g\\searrow \\implies f\\circ g\\nearrow,\\\\ f\\nearrow,\\;g\\searrow \\implies f\\circ g\\searrow,\\\\ f\\searrow,\\;g\\nearrow \\implies f\\circ g\\searrow. \\end{cases}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F013/ccb52960f1d48af9@3x.png",
+          "width_px": 486,
+          "height_px": 211,
+          "display_width_px": 162,
+          "display_height_px": 70,
+          "scale": 3
+        }
+      },
+      "rank": 209,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
