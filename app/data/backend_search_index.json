@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T18:08:26+08:00",
+  "generatedAt": "2026-06-26T18:37:06+08:00",
   "stats": {
-    "documents": 349,
+    "documents": 350,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12135,6 +12135,41 @@
       "hotScore": 75.0,
       "examFrequency": 0.9,
       "examScore": 6.0
+    },
+    "F032": {
+      "id": "F032",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "二次函数区间最值（轴定区间动）",
+      "summary": "二次函数在闭区间上的最值由对称轴与区间的位置及开口方向决定：开口向上时，顶点处取最小值，端点取最大值；开口向下时反之。",
+      "category": "函数",
+      "tags": [
+        "F032",
+        "二次函数",
+        "区间最值",
+        "对称轴",
+        "分类讨论",
+        "函数单调性",
+        "最值"
+      ],
+      "coreFormula": {
+        "latex": "\\begin{cases} \n\\text{当 } a>0 \\text{ 时：} & f_{\\min}=\\begin{cases} f(x_0), & x_0\\in[m,n] \\\\ \\min\\{f(m),f(n)\\}, & x_0\\notin[m,n] \\end{cases}, \\quad f_{\\max}=\\max\\{f(m),f(n)\\}; \\\\\n\\text{当 } a<0 \\text{ 时：} & f_{\\max}=\\begin{cases} f(x_0), & x_0\\in[m,n] \\\\ \\max\\{f(m),f(n)\\}, & x_0\\notin[m,n] \\end{cases}, \\quad f_{\\min}=\\min\\{f(m),f(n)\\}. \n\\end{cases}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F032/f6bee974877a7cc6@3x.png",
+          "width_px": 1561,
+          "height_px": 211,
+          "display_width_px": 520,
+          "display_height_px": 70,
+          "scale": 3
+        }
+      },
+      "rank": 226,
+      "difficulty": 3.0,
+      "searchBoost": 0.9,
+      "hotScore": 70.0,
+      "examFrequency": 1.0,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -13434,6 +13469,16 @@
       323
     ],
     [
+      "二次函数最值公式",
+      "F032",
+      322
+    ],
+    [
+      "二次函数闭区间最值",
+      "F032",
+      322
+    ],
+    [
       "双对称性推周期:轴轴、点点、轴点三种情形",
       "F026",
       322
@@ -13471,6 +13516,11 @@
     [
       "直棱柱外接球半径公式",
       "G007",
+      322
+    ],
+    [
+      "轴定区间动最值",
+      "F032",
       322
     ],
     [
@@ -14620,21 +14670,6 @@
     ],
     [
       "截距",
-      "P011",
-      313
-    ],
-    [
-      "截距式",
-      "P011",
-      313
-    ],
-    [
-      "斜截式",
-      "P011",
-      313
-    ],
-    [
-      "斜率",
       "P011",
       313
     ]
