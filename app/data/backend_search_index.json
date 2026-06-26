@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T09:19:18+08:00",
+  "generatedAt": "2026-06-26T09:37:20+08:00",
   "stats": {
-    "documents": 328,
+    "documents": 329,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11427,6 +11427,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "F007": {
+      "id": "F007",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "一次分式函数值域公式：分离常数法",
+      "summary": "一次分式函数 $y=\\frac{ax+b}{cx+d}$ 通过分离常数化为反比例函数平移，值域为全体实数除去 $\\frac{a}{c}$。",
+      "category": "函数",
+      "tags": [
+        "F007",
+        "函数值域",
+        "分式函数",
+        "分离常数",
+        "水平渐近线",
+        "反比例函数平移"
+      ],
+      "coreFormula": {
+        "latex": "y = \\frac{a}{c} + \\frac{bc-ad}{c(cx+d)}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F007/2c18413775eb5796@3x.png",
+          "width_px": 367,
+          "height_px": 119,
+          "display_width_px": 122,
+          "display_height_px": 40,
+          "scale": 3
+        }
+      },
+      "rank": 194,
+      "difficulty": 2.0,
+      "searchBoost": 0.74,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -13626,6 +13660,11 @@
       314
     ],
     [
+      "一次分式函数值域公式:分离常数法",
+      "F007",
+      314
+    ],
+    [
       "三角函数大小比较",
       "I030",
       314
@@ -13923,11 +13962,6 @@
     [
       "中线公式",
       "P038",
-      311
-    ],
-    [
-      "代数恒等变形",
-      "I010",
       311
     ]
   ]
