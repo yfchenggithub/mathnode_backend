@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T22:29:10+08:00",
+  "generatedAt": "2026-06-26T22:53:39+08:00",
   "stats": {
-    "documents": 363,
+    "documents": 364,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12612,6 +12612,39 @@
       "rank": 193,
       "difficulty": 2.0,
       "searchBoost": 0.78,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "F046": {
+      "id": "F046",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "函数 的图像翻折变换",
+      "summary": "保留 $x$ 轴上方部分，将 $x$ 轴下方部分关于 $x$ 轴对称翻折到上方，即得 $y=|f(x)|$ 的图像。",
+      "category": "函数",
+      "tags": [
+        "F046",
+        "函数图像变换",
+        "绝对值",
+        "翻折",
+        "分段函数"
+      ],
+      "coreFormula": {
+        "latex": "|f(x)| = \\begin{cases} f(x), & f(x)\\ge0,\\\\ -f(x), & f(x)<0. \\end{cases}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F046/f6fddc041071ef27@3x.png",
+          "width_px": 537,
+          "height_px": 114,
+          "display_width_px": 179,
+          "display_height_px": 38,
+          "scale": 3
+        }
+      },
+      "rank": 187,
+      "difficulty": 2.0,
+      "searchBoost": 0.72,
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
