@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T04:37:22+08:00",
+  "generatedAt": "2026-06-27T04:53:32+08:00",
   "stats": {
-    "documents": 382,
+    "documents": 383,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -13265,6 +13265,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 8.0
+    },
+    "F068": {
+      "id": "F068",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "构造函数 f(x) 转化 f'(x)+f(x) 符号判单调",
+      "summary": "当条件出现 f'(x)+f(x) 时，构造 F(x)=e^x f(x)，利用其导数符号判断 F(x) 单调性，从而转化问题。",
+      "category": "导数",
+      "tags": [
+        "F068",
+        "导数",
+        "构造函数",
+        "单调性",
+        "指数函数",
+        "f'(x)+f(x)型"
+      ],
+      "coreFormula": {
+        "latex": "F'(x)=e^{x}[f'(x)+f(x)]",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F068/f81a62a5b07e0df2@3x.png",
+          "width_px": 465,
+          "height_px": 67,
+          "display_width_px": 155,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 220,
+      "difficulty": 3.0,
+      "searchBoost": 0.86,
+      "hotScore": 70.0,
+      "examFrequency": 0.9,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -15544,6 +15578,11 @@
       316
     ],
     [
+      "指数型构造函数",
+      "F068",
+      316
+    ],
+    [
       "斜率k",
       "C027",
       316
@@ -15761,11 +15800,6 @@
     [
       "奇偶单调等价转化:和式与绝对值比较",
       "F019",
-      315
-    ],
-    [
-      "存在性命题与最值转化",
-      "F063",
       315
     ]
   ]
