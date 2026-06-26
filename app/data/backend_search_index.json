@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T01:06:26+08:00",
+  "generatedAt": "2026-06-27T01:17:51+08:00",
   "stats": {
-    "documents": 371,
+    "documents": 372,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12891,6 +12891,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "F055": {
+      "id": "F055",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "极值第一充分条件",
+      "summary": "导数从正变负得极大，从负变正得极小，两侧同号则不是极值。",
+      "category": "函数与导数",
+      "tags": [
+        "F055",
+        "极值判定",
+        "导数应用",
+        "一阶导数",
+        "极大值极小值",
+        "单调性"
+      ],
+      "coreFormula": {
+        "latex": "\\exists\\delta>0,\\; f'(x)>0\\;\\forall x\\in(x_0-\\delta,x_0),\\; f'(x)<0\\;\\forall x\\in(x_0,x_0+\\delta)\\Rightarrow f(x_0)\\text{ is a local maximum}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F055/46107eb1bb157204@3x.png",
+          "width_px": 1680,
+          "height_px": 67,
+          "display_width_px": 560,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 209,
+      "difficulty": 2.0,
+      "searchBoost": 0.85,
+      "hotScore": 75.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -13702,6 +13736,11 @@
     [
       "圆锥曲线通径公式",
       "C046",
+      329
+    ],
+    [
+      "极值第一充分条件",
+      "F055",
       329
     ],
     [
@@ -15387,11 +15426,6 @@
     [
       "cos±cos公式",
       "T016",
-      313
-    ],
-    [
-      "cos定理",
-      "T007",
       313
     ]
   ]
