@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T19:31:34+08:00",
+  "generatedAt": "2026-06-26T19:48:43+08:00",
   "stats": {
-    "documents": 353,
+    "documents": 354,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12273,6 +12273,39 @@
       "hotScore": 50.0,
       "examFrequency": 1.0,
       "examScore": 3.0
+    },
+    "F036": {
+      "id": "F036",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "对数运算法则（积商幂及换底公式）",
+      "summary": "对数将乘除转化为加减，幂的指数提前，不同底数可统一为同底进行运算。",
+      "category": "函数",
+      "tags": [
+        "F036",
+        "对数",
+        "运算法则",
+        "换底公式",
+        "恒等变形"
+      ],
+      "coreFormula": {
+        "latex": "$$\\log_a(MN)=\\log_a M+\\log_a N,\\quad \\log_a\\frac{M}{N}=\\log_a M-\\log_a N,\\quad \\log_a M^m=m\\log_a M,\\quad \\log_a b=\\frac{\\log_c b}{\\log_c a}.$$",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F036/262d24220fc54181@3x.png",
+          "width_px": 1924,
+          "height_px": 119,
+          "display_width_px": 641,
+          "display_height_px": 40,
+          "scale": 3
+        }
+      },
+      "rank": 199,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 70.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
