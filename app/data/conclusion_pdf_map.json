@@ -386,5 +386,6 @@
   "F070": "F070_exp_log_equivalence.pdf",
   "F072": "F072_homogeneous_substitution_ratio.pdf",
   "F073": "F073_lhopital_endpoint.pdf",
-  "F074": "F074_parameter_inequality_necessary_condition.pdf"
+  "F074": "F074_parameter_inequality_necessary_condition.pdf",
+  "F075": "F075_exp_log_tangent_bounds.pdf"
 }
