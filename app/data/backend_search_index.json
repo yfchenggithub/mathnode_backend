@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T16:24:50+08:00",
+  "generatedAt": "2026-06-26T16:48:36+08:00",
   "stats": {
-    "documents": 344,
+    "documents": 345,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11974,6 +11974,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "F027": {
+      "id": "F027",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "奇偶性与对称性导出周期公式",
+      "summary": "奇函数关于直线x=a对称，或偶函数关于点(a,0)对称，则函数周期为4|a|。",
+      "category": "函数性质",
+      "tags": [
+        "F027",
+        "函数周期性",
+        "奇偶性",
+        "对称性",
+        "周期函数",
+        "二级结论"
+      ],
+      "coreFormula": {
+        "latex": "T=4|a|",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F027/c5af9cb572506dce@3x.png",
+          "width_px": 172,
+          "height_px": 65,
+          "display_width_px": 57,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 204,
+      "difficulty": 3.0,
+      "searchBoost": 0.72,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -13110,6 +13144,11 @@
     [
       "基本不等式变形",
       "I011",
+      324
+    ],
+    [
+      "奇偶性与对称性导出周期公式",
+      "F027",
       324
     ],
     [
@@ -14470,11 +14509,6 @@
     [
       "求和公式",
       "L002",
-      313
-    ],
-    [
-      "点斜式",
-      "P011",
       313
     ]
   ]
