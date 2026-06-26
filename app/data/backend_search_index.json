@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T23:25:19+08:00",
+  "generatedAt": "2026-06-26T23:41:33+08:00",
   "stats": {
-    "documents": 365,
+    "documents": 366,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12681,6 +12681,42 @@
       "difficulty": 2.0,
       "searchBoost": 0.8,
       "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "F049": {
+      "id": "F049",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "基本初等函数的导数公式",
+      "summary": "八个基本初等函数的导数公式，是求导运算的基础。",
+      "category": "导数",
+      "tags": [
+        "F049",
+        "导数",
+        "基本初等函数",
+        "幂函数",
+        "指数函数",
+        "对数函数",
+        "三角函数",
+        "求导法则"
+      ],
+      "coreFormula": {
+        "latex": "\\begin{aligned} (x^\\alpha)' &= \\alpha x^{\\alpha-1}, \\\\ (a^x)' &= a^x \\ln a, \\\\ (e^x)' &= e^x, \\\\ (\\log_a x)' &= \\frac{1}{x\\ln a}, \\\\ (\\ln x)' &= \\frac{1}{x}, \\\\ (\\sin x)' &= \\cos x, \\\\ (\\cos x)' &= -\\sin x. \\end{aligned}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F049/4a699ea5d7298510@3x.png",
+          "width_px": 356,
+          "height_px": 481,
+          "display_width_px": 119,
+          "display_height_px": 160,
+          "scale": 3
+        }
+      },
+      "rank": 165,
+      "difficulty": 2.0,
+      "searchBoost": 0.6,
+      "hotScore": 60.0,
       "examFrequency": 0.8,
       "examScore": 5.0
     }
