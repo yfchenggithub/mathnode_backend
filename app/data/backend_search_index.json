@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T01:56:11+08:00",
+  "generatedAt": "2026-06-27T02:27:08+08:00",
   "stats": {
-    "documents": 374,
+    "documents": 375,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12993,6 +12993,41 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "F059": {
+      "id": "F059",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "三次函数对称中心坐标公式",
+      "summary": "三次函数图像的唯一对称中心是其拐点，横坐标为 $-\\dfrac{b}{3a}$。",
+      "category": "函数与导数",
+      "tags": [
+        "F059",
+        "三次函数",
+        "对称中心",
+        "拐点",
+        "导数",
+        "函数性质",
+        "中心对称"
+      ],
+      "coreFormula": {
+        "latex": "\\left(-\\frac{b}{3a}, f\\!\\left(-\\frac{b}{3a}\\right)\\right)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F059/26072f4cf92bc162@3x.png",
+          "width_px": 356,
+          "height_px": 112,
+          "display_width_px": 119,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 215,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -13310,6 +13345,11 @@
       "对数切线放缩",
       "I011",
       336
+    ],
+    [
+      "三次函数对称中心坐标公式",
+      "F059",
+      335
     ],
     [
       "不等式证明",
@@ -15488,11 +15528,6 @@
     ],
     [
       "竞赛不等式",
-      "I006",
-      315
-    ],
-    [
-      "高考压轴",
       "I006",
       315
     ]
