@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T16:48:36+08:00",
+  "generatedAt": "2026-06-26T17:09:29+08:00",
   "stats": {
-    "documents": 345,
+    "documents": 346,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12008,6 +12008,30 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "F028": {
+      "id": "F028",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "周期与对称性连锁性质",
+      "summary": "已知周期和一个对称轴（或中心），每过半周期就重复出现一个对称轴（或中心）；已知两个不同对称轴，两倍间距即为周期。",
+      "category": "函数性质",
+      "tags": [
+        "F028",
+        "函数周期性",
+        "对称性",
+        "抽象函数",
+        "对称轴",
+        "对称中心",
+        "周期函数"
+      ],
+      "coreFormula": "x = a + \\frac{kT}{2}\\ (k\\in\\mathbb{Z})",
+      "rank": 205,
+      "difficulty": 3.0,
+      "searchBoost": 0.83,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -13074,6 +13098,11 @@
     [
       "倒数和不等式",
       "I039",
+      325
+    ],
+    [
+      "周期与对称性连锁性质",
+      "F028",
       325
     ],
     [
@@ -14504,11 +14533,6 @@
     [
       "椭圆弦中点斜率",
       "C060",
-      313
-    ],
-    [
-      "求和公式",
-      "L002",
       313
     ]
   ]
