@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T10:32:57+08:00",
+  "generatedAt": "2026-06-26T10:55:18+08:00",
   "stats": {
-    "documents": 332,
+    "documents": 333,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11563,6 +11563,40 @@
       "hotScore": 60.0,
       "examFrequency": 0.6,
       "examScore": 5.0
+    },
+    "F011": {
+      "id": "F011",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "对勾函数值域公式（基本不等式）",
+      "summary": "利用均值不等式直接得到$f(x)=Ax+\\frac{B}{x}$（$A,B>0$）在$x>0$和$x<0$时的最值，从而确定整个值域。",
+      "category": "函数",
+      "tags": [
+        "F011",
+        "对勾函数",
+        "基本不等式",
+        "值域",
+        "分式函数",
+        "函数性质"
+      ],
+      "coreFormula": {
+        "latex": "f(x)=Ax+\\frac{B}{x}\\;(A,B>0,\\;x\\neq 0)\\\\ \\text{值域:}\\;(-\\infty,-2\\sqrt{AB}]\\cup[2\\sqrt{AB},+\\infty)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F011/c6bfb8cc2e06a947@3x.png",
+          "width_px": 673,
+          "height_px": 168,
+          "display_width_px": 224,
+          "display_height_px": 56,
+          "scale": 3
+        }
+      },
+      "rank": 219,
+      "difficulty": 2.0,
+      "searchBoost": 0.84,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 7.0
     }
   },
   "suggestions": [
@@ -13702,6 +13736,11 @@
       316
     ],
     [
+      "Nike函数",
+      "F011",
+      315
+    ],
+    [
       "m次推广",
       "I006",
       315
@@ -13732,8 +13771,18 @@
       315
     ],
     [
+      "双勾函数",
+      "F011",
+      315
+    ],
+    [
       "向量投影与投影向量",
       "V020",
+      315
+    ],
+    [
+      "对勾函数",
+      "F011",
       315
     ],
     [
@@ -14049,21 +14098,6 @@
     [
       "三元对称",
       "I040",
-      311
-    ],
-    [
-      "三角函数图像变换:平移量与伸缩顺序的关系",
-      "T021",
-      311
-    ],
-    [
-      "三角形分点",
-      "P038",
-      311
-    ],
-    [
-      "三角形边长关系",
-      "P038",
       311
     ]
   ]

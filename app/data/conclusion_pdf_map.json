@@ -330,5 +330,6 @@
   "F007": "F007_linear_fractional_range.pdf",
   "F008": "F008_quadratic_rational_discriminant_range.pdf",
   "F009": "F009_radical_range_substitution.pdf",
-  "F010": "F010_monotonic_range_endpoints.pdf"
+  "F010": "F010_monotonic_range_endpoints.pdf",
+  "F011": "F011_ax_plus_b_over_x_range.pdf"
 }
