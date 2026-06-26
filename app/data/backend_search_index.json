@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T03:55:50+08:00",
+  "generatedAt": "2026-06-27T04:22:33+08:00",
   "stats": {
-    "documents": 380,
+    "documents": 381,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -13195,6 +13195,40 @@
       "difficulty": 3.0,
       "searchBoost": 0.8,
       "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
+    },
+    "F066": {
+      "id": "F066",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "导数构造函数模型：x f(x)型",
+      "summary": "由条件 $x f'(x)+f(x)$ 构造 $F(x)=x f(x)$，利用导数符号判断单调性。",
+      "category": "导数",
+      "tags": [
+        "F066",
+        "导数构造函数",
+        "单调性",
+        "抽象不等式",
+        "x f(x)模型",
+        "比大小"
+      ],
+      "coreFormula": {
+        "latex": "F'(x)=x f'(x)+f(x),\\quad F(x)=x f(x)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F066/92f4b0b0afb2b961@3x.png",
+          "width_px": 726,
+          "height_px": 67,
+          "display_width_px": 242,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 207,
+      "difficulty": 3.0,
+      "searchBoost": 0.75,
+      "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 6.0
     }
