@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T12:42:54+08:00",
+  "generatedAt": "2026-06-26T13:23:34+08:00",
   "stats": {
-    "documents": 336,
+    "documents": 337,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11697,6 +11697,40 @@
       "searchBoost": 0.8,
       "hotScore": 80.0,
       "examFrequency": 1.0,
+      "examScore": 5.0
+    },
+    "F018": {
+      "id": "F018",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "复合函数奇偶性口诀：内偶则偶，内奇同外",
+      "summary": "复合函数的奇偶性由内函数主导：内函数为偶函数时整体为偶；内函数为奇函数时整体奇偶性与外函数相同。",
+      "category": "函数性质",
+      "tags": [
+        "F018",
+        "函数奇偶性",
+        "复合函数",
+        "口诀",
+        "对称性",
+        "函数性质"
+      ],
+      "coreFormula": {
+        "latex": "F(x)=f(g(x))",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F018/1988f6cdd6832af7@3x.png",
+          "width_px": 292,
+          "height_px": 65,
+          "display_width_px": 97,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 191,
+      "difficulty": 2.0,
+      "searchBoost": 0.76,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
       "examScore": 5.0
     }
   },
