@@ -3,6 +3,7 @@ from fastapi import APIRouter
 from app.api.v1.auth import router as auth_router
 from app.api.v1.conclusion_requests import router as conclusion_requests_router
 from app.api.v1.conclusions import router as conclusions_router
+from app.api.v1.correction_reports import router as correction_reports_router
 from app.api.v1.favorites import router as favorites_router
 from app.api.v1.health import router as health_router
 from app.api.v1.pdfs import router as pdfs_router
@@ -29,6 +30,7 @@ api_router.include_router(recent_searches_router, tags=["recent_searches"])
 api_router.include_router(search_keywords_router, tags=["search_keywords"])
 api_router.include_router(pdfs_router, tags=["pdfs"])
 api_router.include_router(conclusion_requests_router, tags=["conclusion_requests"])
+api_router.include_router(correction_reports_router, tags=["correction_reports"])
 api_router.include_router(
     weekly_update_subscriptions_router,
     tags=["weekly_update_subscriptions"],
