@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T08:59:12+08:00",
+  "generatedAt": "2026-06-26T09:19:18+08:00",
   "stats": {
-    "documents": 327,
+    "documents": 328,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11393,6 +11393,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "F006": {
+      "id": "F006",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "抽象函数定义域互推规则",
+      "summary": "定义域永远是自变量x的取值范围；已知f(x)定义域求f[g(x)]定义域用不等式，已知f[g(x)]定义域求f(x)定义域用值域。",
+      "category": "函数",
+      "tags": [
+        "F006",
+        "函数定义域",
+        "抽象函数",
+        "换元法",
+        "等价转化",
+        "自变量范围"
+      ],
+      "coreFormula": {
+        "latex": "f[g(x)]\\text{的定义域}=\\{x\\mid g(x)\\in D\\}\\quad(\\text{其中}D=f(x)\\text{的定义域})",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F006/b4bd2ba2464d5ced@3x.png",
+          "width_px": 1099,
+          "height_px": 65,
+          "display_width_px": 366,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 192,
+      "difficulty": 2.0,
+      "searchBoost": 0.77,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -13827,6 +13861,11 @@
       312
     ],
     [
+      "抽象函数定义域互推规则",
+      "F006",
+      312
+    ],
+    [
       "椭圆的第二定义",
       "C039",
       312
@@ -13889,11 +13928,6 @@
     [
       "代数恒等变形",
       "I010",
-      311
-    ],
-    [
-      "准线",
-      "C040",
       311
     ]
   ]
