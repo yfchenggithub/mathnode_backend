@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T08:50:34+08:00",
+  "generatedAt": "2026-06-26T08:59:12+08:00",
   "stats": {
-    "documents": 326,
+    "documents": 327,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11359,6 +11359,40 @@
       "hotScore": 65.0,
       "examFrequency": 0.6,
       "examScore": 5.0
+    },
+    "V037": {
+      "id": "V037",
+      "module": "vector",
+      "moduleDir": "04_vector",
+      "title": "向量形式的柯西-施瓦茨不等式",
+      "summary": "两个向量的数量积的绝对值不超过它们模长的乘积，等号当且仅当向量共线时成立。",
+      "category": "向量与不等式",
+      "tags": [
+        "V037",
+        "向量内积",
+        "Cauchy-Schwarz不等式",
+        "模长",
+        "共线",
+        "不等式"
+      ],
+      "coreFormula": {
+        "latex": "\\left|\\vec{a}\\cdot\\vec{b}\\right| \\le |\\vec{a}|\\,|\\vec{b}|",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/V037/6515aea8ab39d27d@3x.png",
+          "width_px": 270,
+          "height_px": 95,
+          "display_width_px": 90,
+          "display_height_px": 32,
+          "scale": 3
+        }
+      },
+      "rank": 211,
+      "difficulty": 3.0,
+      "searchBoost": 0.84,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -11960,6 +11994,11 @@
     [
       "凸函数不等式",
       "I014",
+      331
+    ],
+    [
+      "向量形式的柯西-施瓦茨不等式",
+      "V037",
       331
     ],
     [
@@ -13854,11 +13893,6 @@
     ],
     [
       "准线",
-      "C040",
-      311
-    ],
-    [
-      "双曲线第二定义",
       "C040",
       311
     ]
