@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T07:16:51+08:00",
+  "generatedAt": "2026-06-27T07:33:18+08:00",
   "stats": {
-    "documents": 391,
+    "documents": 392,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -13574,6 +13574,40 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 8.0
+    },
+    "F078": {
+      "id": "F078",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "连续单调函数零点唯一性定理",
+      "summary": "连续严格单调函数在区间端点异号时，有且仅有一个零点。",
+      "category": "函数与方程",
+      "tags": [
+        "F078",
+        "函数零点",
+        "单调性",
+        "充要条件",
+        "整数解",
+        "实根分布"
+      ],
+      "coreFormula": {
+        "latex": "f(m)f(n)<0\\;\\Longleftrightarrow\\;\\exists!\\,x_0\\in(m,n),\\;f(x_0)=0",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F078/1a276a006222a7e7@3x.png",
+          "width_px": 816,
+          "height_px": 65,
+          "display_width_px": 272,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 214,
+      "difficulty": 3.0,
+      "searchBoost": 0.82,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -14025,6 +14059,11 @@
     [
       "等差乘等比数列求和公式",
       "L001",
+      334
+    ],
+    [
+      "连续单调函数零点唯一性定理",
+      "F078",
       334
     ],
     [
@@ -16070,11 +16109,6 @@
     [
       "点P在椭圆上",
       "C018",
-      316
-    ],
-    [
-      "点代入圆切线",
-      "P025",
       316
     ]
   ]

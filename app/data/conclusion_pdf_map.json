@@ -389,5 +389,6 @@
   "F074": "F074_parameter_inequality_necessary_condition.pdf",
   "F075": "F075_exp_log_tangent_bounds.pdf",
   "F076": "F076_strict_monotonic_unwrapping.pdf",
-  "F077": "F077_exp_log_tangent_inequality.pdf"
+  "F077": "F077_exp_log_tangent_inequality.pdf",
+  "F078": "F078_continuous_monotonic_unique_zero.pdf"
 }
