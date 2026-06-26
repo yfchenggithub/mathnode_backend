@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T13:23:34+08:00",
+  "generatedAt": "2026-06-26T13:47:40+08:00",
   "stats": {
-    "documents": 337,
+    "documents": 338,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11732,6 +11732,42 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "F019": {
+      "id": "F019",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "奇偶单调等价转化：和式与绝对值比较",
+      "summary": "利用奇偶性和单调性，将函数值的大小或和的正负转化为自变量之间的简单代数比较。",
+      "category": "函数",
+      "tags": [
+        "F019",
+        "函数单调性",
+        "奇偶性",
+        "等价转化",
+        "对称性",
+        "参数范围",
+        "函数性质综合",
+        "不等式转化"
+      ],
+      "coreFormula": {
+        "latex": "f(a)+f(b)>0 \\iff a+b>0",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F019/85c3b2a78a10ecab@3x.png",
+          "width_px": 567,
+          "height_px": 65,
+          "display_width_px": 189,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 195,
+      "difficulty": 2.0,
+      "searchBoost": 0.7,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -13926,6 +13962,11 @@
       315
     ],
     [
+      "奇偶单调等价转化:和式与绝对值比较",
+      "F019",
+      315
+    ],
+    [
       "对勾函数",
       "F011",
       315
@@ -14228,11 +14269,6 @@
     [
       "PH垂直",
       "C040",
-      311
-    ],
-    [
-      "一般式平行条件",
-      "P013",
       311
     ]
   ]
