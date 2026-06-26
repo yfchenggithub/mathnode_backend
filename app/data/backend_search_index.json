@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T09:37:20+08:00",
+  "generatedAt": "2026-06-26T09:59:31+08:00",
   "stats": {
-    "documents": 329,
+    "documents": 330,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11461,6 +11461,39 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "F008": {
+      "id": "F008",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "判别式法求二次分式函数值域",
+      "summary": "将分式化为关于x的二次方程，利用判别式非负解出y的范围。",
+      "category": "函数",
+      "tags": [
+        "F008",
+        "函数值域",
+        "判别式法",
+        "二次分式",
+        "分式函数"
+      ],
+      "coreFormula": {
+        "latex": "\\Delta(y)=(b-ey)^2-4(a-dy)(c-fy)\\ge0",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F008/c10eb411208d5a53@3x.png",
+          "width_px": 750,
+          "height_px": 70,
+          "display_width_px": 250,
+          "display_height_px": 23,
+          "scale": 3
+        }
+      },
+      "rank": 203,
+      "difficulty": 3.0,
+      "searchBoost": 0.76,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -12597,6 +12630,11 @@
     [
       "切线方程",
       "C075",
+      323
+    ],
+    [
+      "判别式法求二次分式函数值域",
+      "F008",
       323
     ],
     [
@@ -13956,11 +13994,6 @@
     ],
     [
       "三角形边长关系",
-      "P038",
-      311
-    ],
-    [
-      "中线公式",
       "P038",
       311
     ]
