@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T00:53:28+08:00",
+  "generatedAt": "2026-06-27T01:06:26+08:00",
   "stats": {
-    "documents": 370,
+    "documents": 371,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12856,6 +12856,41 @@
       "hotScore": 72.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "F054": {
+      "id": "F054",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "极值点的必要不充分条件：导数零点判定",
+      "summary": "可导函数在极值点处导数必为零，但导数为零的点未必是极值点，需用二阶导或定义进一步判定。",
+      "category": "导数",
+      "tags": [
+        "F054",
+        "导数与极值",
+        "必要条件",
+        "可导函数",
+        "极值点判定",
+        "驻点",
+        "参数验证"
+      ],
+      "coreFormula": {
+        "latex": "f'(x_0)=0",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F054/a4b150250d25e9d1@3x.png",
+          "width_px": 211,
+          "height_px": 67,
+          "display_width_px": 70,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 195,
+      "difficulty": 2.0,
+      "searchBoost": 0.7,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -15255,6 +15290,11 @@
       315
     ],
     [
+      "极值点的必要不充分条件:导数零点判定",
+      "F054",
+      315
+    ],
+    [
       "正数和与倒数和的不等式",
       "I059",
       315
@@ -15352,11 +15392,6 @@
     [
       "cos定理",
       "T007",
-      313
-    ],
-    [
-      "sin±sin公式",
-      "T016",
       313
     ]
   ]
