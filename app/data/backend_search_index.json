@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T01:34:49+08:00",
+  "generatedAt": "2026-06-27T01:56:11+08:00",
   "stats": {
-    "documents": 373,
+    "documents": 374,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12959,6 +12959,40 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 8.0
+    },
+    "F057": {
+      "id": "F057",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "极值点判定与个数定理",
+      "summary": "极值点等价于导数在驻点两侧异号，极值点个数即变号驻点个数。",
+      "category": "函数与导数",
+      "tags": [
+        "F057",
+        "函数",
+        "导数",
+        "极值",
+        "驻点",
+        "变号"
+      ],
+      "coreFormula": {
+        "latex": "\\exists \\delta>0,\\,\\forall x_1\\in (x_0-\\delta,x_0),\\,\\forall x_2\\in (x_0,x_0+\\delta),\\, f'(x_1)f'(x_2)<0",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F057/cf364c228e8084c8@3x.png",
+          "width_px": 1150,
+          "height_px": 67,
+          "display_width_px": 383,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 202,
+      "difficulty": 3.0,
+      "searchBoost": 0.8,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -14373,6 +14407,11 @@
       322
     ],
     [
+      "极值点判定与个数定理",
+      "F057",
+      322
+    ],
+    [
       "焦点弦端点坐标积",
       "C055",
       322
@@ -15456,11 +15495,6 @@
       "高考压轴",
       "I006",
       315
-    ],
-    [
-      "2√ab",
-      "I013",
-      314
     ]
   ]
 }
