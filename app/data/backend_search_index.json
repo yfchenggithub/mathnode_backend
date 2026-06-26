@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T00:33:45+08:00",
+  "generatedAt": "2026-06-27T00:53:28+08:00",
   "stats": {
-    "documents": 369,
+    "documents": 370,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12821,6 +12821,41 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "F053": {
+      "id": "F053",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "含参函数单调性讨论的五类模板",
+      "summary": "将含参导函数化为五种标准型，按参数分类解不等式即可得到单调区间。",
+      "category": "导数应用",
+      "tags": [
+        "F053",
+        "函数单调性",
+        "含参讨论",
+        "导数",
+        "分类讨论",
+        "单调区间",
+        "导函数结构"
+      ],
+      "coreFormula": {
+        "latex": "f'(x)=kx+b",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F053/829b7719ba9d0801@3x.png",
+          "width_px": 285,
+          "height_px": 67,
+          "display_width_px": 95,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 203,
+      "difficulty": 4.0,
+      "searchBoost": 0.77,
+      "hotScore": 72.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -14080,6 +14115,11 @@
       323
     ],
     [
+      "含参函数单调性讨论的五类模板",
+      "F053",
+      323
+    ],
+    [
       "圆锥曲线",
       "C075",
       323
@@ -15317,11 +15357,6 @@
     [
       "sin±sin公式",
       "T016",
-      313
-    ],
-    [
-      "一般式",
-      "P011",
       313
     ]
   ]
