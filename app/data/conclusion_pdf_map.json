@@ -333,5 +333,6 @@
   "F010": "F010_monotonic_range_endpoints.pdf",
   "F011": "F011_ax_plus_b_over_x_range.pdf",
   "F013": "F013_composition_monotonicity_same_diff.pdf",
-  "F015": "F015_even_odd_domain_symmetry.pdf"
+  "F015": "F015_even_odd_domain_symmetry.pdf",
+  "F016": "F016_odd_function_zero_at_origin.pdf"
 }
