@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T21:02:49+08:00",
+  "generatedAt": "2026-06-26T21:21:20+08:00",
   "stats": {
-    "documents": 358,
+    "documents": 359,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12444,6 +12444,41 @@
       "searchBoost": 0.69,
       "hotScore": 75.0,
       "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "F041": {
+      "id": "F041",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "指数函数、幂函数、对数函数增长速度比较",
+      "summary": "当 a>1, α>0 时，x→+∞ 指数函数增长最快，幂函数次之，对数函数最慢。",
+      "category": "函数与极限",
+      "tags": [
+        "F041",
+        "增长速度",
+        "无穷大阶",
+        "极限",
+        "指数函数",
+        "对数函数",
+        "幂函数"
+      ],
+      "coreFormula": {
+        "latex": "\\displaystyle\\lim_{x\\to+\\infty}\\frac{a^x}{x^\\alpha}=+\\infty,\\quad \\displaystyle\\lim_{x\\to+\\infty}\\frac{x^\\alpha}{\\log_a x}=+\\infty",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F041/116d6720ac44d055@3x.png",
+          "width_px": 724,
+          "height_px": 117,
+          "display_width_px": 241,
+          "display_height_px": 39,
+          "scale": 3
+        }
+      },
+      "rank": 173,
+      "difficulty": 3.0,
+      "searchBoost": 0.6,
+      "hotScore": 70.0,
+      "examFrequency": 0.6,
       "examScore": 5.0
     }
   },
