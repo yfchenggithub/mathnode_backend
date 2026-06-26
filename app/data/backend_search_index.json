@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T03:04:21+08:00",
+  "generatedAt": "2026-06-27T03:22:51+08:00",
   "stats": {
-    "documents": 377,
+    "documents": 378,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -13095,6 +13095,40 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 8.0
+    },
+    "F062": {
+      "id": "F062",
+      "module": "inequality",
+      "moduleDir": "01_function",
+      "title": "含参不等式恒成立（变号系数分类讨论法）",
+      "summary": "当参数系数在区间内变号时，不能直接除，需按正、负、零分段等价转化后取交集。",
+      "category": "不等式",
+      "tags": [
+        "F062",
+        "含参不等式",
+        "恒成立",
+        "分类讨论",
+        "参数范围",
+        "变号因子"
+      ],
+      "coreFormula": {
+        "latex": "\\begin{cases} a\\ge \\dfrac{h(x)}{k(x)} & \\forall x\\in D_1,\\\\ a\\le \\dfrac{h(x)}{k(x)} & \\forall x\\in D_2,\\\\ 0\\ge h(x) & \\forall x\\in D_0. \\end{cases}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F062/d816849f087d1a4c@3x.png",
+          "width_px": 442,
+          "height_px": 277,
+          "display_width_px": 147,
+          "display_height_px": 92,
+          "scale": 3
+        }
+      },
+      "rank": 201,
+      "difficulty": 3.0,
+      "searchBoost": 0.79,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
