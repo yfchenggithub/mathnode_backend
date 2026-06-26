@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T19:48:43+08:00",
+  "generatedAt": "2026-06-26T20:04:43+08:00",
   "stats": {
-    "documents": 354,
+    "documents": 355,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12306,6 +12306,40 @@
       "hotScore": 70.0,
       "examFrequency": 1.0,
       "examScore": 5.0
+    },
+    "F037": {
+      "id": "F037",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "对数恒等式",
+      "summary": "指数底数与对数底数相同时，指数与对数相互抵消，结果等于真数。",
+      "category": "函数",
+      "tags": [
+        "F037",
+        "对数恒等式",
+        "指数与对数互化",
+        "指对互化",
+        "恒等变形",
+        "对数定义"
+      ],
+      "coreFormula": {
+        "latex": "a^{\\log_a N}=N",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F037/c3314a7c4a6bb7a5@3x.png",
+          "width_px": 219,
+          "height_px": 61,
+          "display_width_px": 73,
+          "display_height_px": 20,
+          "scale": 3
+        }
+      },
+      "rank": 225,
+      "difficulty": 2.0,
+      "searchBoost": 1.0,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -12432,6 +12466,11 @@
     [
       "向量点积不等式",
       "I005",
+      345
+    ],
+    [
+      "对数恒等式",
+      "F037",
       345
     ],
     [
@@ -13685,6 +13724,11 @@
       322
     ],
     [
+      "a的log_a N等于N",
+      "F037",
+      321
+    ],
+    [
       "二维",
       "I058",
       321
@@ -13712,6 +13756,16 @@
     [
       "开方",
       "P009",
+      321
+    ],
+    [
+      "指对恒等",
+      "F037",
+      321
+    ],
+    [
+      "指数与对数抵消公式",
+      "F037",
       321
     ],
     [
@@ -14787,26 +14841,6 @@
     [
       "余弦公式",
       "T007",
-      313
-    ],
-    [
-      "全称命题否定规则",
-      "S019",
-      313
-    ],
-    [
-      "共焦点曲线系方程",
-      "C080",
-      313
-    ],
-    [
-      "双曲线焦点三角形",
-      "C048",
-      313
-    ],
-    [
-      "双曲线面积公式",
-      "C048",
       313
     ]
   ]
