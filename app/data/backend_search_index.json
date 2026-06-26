@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T02:48:10+08:00",
+  "generatedAt": "2026-06-27T03:04:21+08:00",
   "stats": {
-    "documents": 376,
+    "documents": 377,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -13062,6 +13062,39 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "F061": {
+      "id": "F061",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "分离参数法（恒成立转化最值）",
+      "summary": "将含参恒成立问题转化为求函数最值问题：$a \\ge f(x)$ 恒成立等价于 $a \\ge \\max f(x)$；$a \\le f(x)$ 恒成立等价于 $a \\le \\min f(x)$。",
+      "category": "函数与导数",
+      "tags": [
+        "F061",
+        "恒成立问题",
+        "参数分离",
+        "函数最值",
+        "等价转化"
+      ],
+      "coreFormula": {
+        "latex": "a \\ge f(x)\\ (\\forall x\\in D) \\iff a \\ge \\max_{x\\in D} f(x);\\quad a \\le f(x)\\ (\\forall x\\in D) \\iff a \\le \\min_{x\\in D} f(x).",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F061/d3b6f18e86ffec80@3x.png",
+          "width_px": 1438,
+          "height_px": 87,
+          "display_width_px": 479,
+          "display_height_px": 29,
+          "scale": 3
+        }
+      },
+      "rank": 229,
+      "difficulty": 3.0,
+      "searchBoost": 0.83,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -14191,6 +14224,16 @@
       325
     ],
     [
+      "参数分离法",
+      "F061",
+      325
+    ],
+    [
+      "参数分离转化",
+      "F061",
+      325
+    ],
+    [
       "周期与对称性连锁性质",
       "F028",
       325
@@ -14208,6 +14251,11 @@
     [
       "平面向量基本定理",
       "V024",
+      325
+    ],
+    [
+      "恒成立分离参数",
+      "F061",
       325
     ],
     [
@@ -15548,21 +15596,6 @@
     [
       "平方和除以分母",
       "I006",
-      315
-    ],
-    [
-      "极值点的必要不充分条件:导数零点判定",
-      "F054",
-      315
-    ],
-    [
-      "正数和与倒数和的不等式",
-      "I059",
-      315
-    ],
-    [
-      "相交弦定理",
-      "P048",
       315
     ]
   ]
