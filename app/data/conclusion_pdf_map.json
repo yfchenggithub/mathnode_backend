@@ -373,5 +373,6 @@
   "F055": "F055_first_derivative_test.pdf",
   "F056": "F056_continuous_extreme_candidates.pdf",
   "F057": "F057_extreme_point_sign_change_count.pdf",
-  "F059": "F059_cubic_symmetry_center.pdf"
+  "F059": "F059_cubic_symmetry_center.pdf",
+  "F060": "F060_cubic_zero_count_discriminant.pdf"
 }
