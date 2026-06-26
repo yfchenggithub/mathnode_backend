@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T21:41:09+08:00",
+  "generatedAt": "2026-06-26T22:00:42+08:00",
   "stats": {
-    "documents": 360,
+    "documents": 361,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12514,6 +12514,39 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 4.0
+    },
+    "F043": {
+      "id": "F043",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "函数图像的左右平移（左加右减）",
+      "summary": "将函数图像向左平移a个单位，解析式中的自变量x替换为x+a；向右平移替换为x-a。",
+      "category": "函数",
+      "tags": [
+        "F043",
+        "函数图像",
+        "平移变换",
+        "左加右减",
+        "图像变换"
+      ],
+      "coreFormula": {
+        "latex": "y=f(x+a) \\text{（左移）}, \\ y=f(x-a) \\text{（右移）}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F043/d1aed5784dd30a62@3x.png",
+          "width_px": 828,
+          "height_px": 65,
+          "display_width_px": 276,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 202,
+      "difficulty": 1.0,
+      "searchBoost": 0.77,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 5.0
     }
   },
   "suggestions": [
