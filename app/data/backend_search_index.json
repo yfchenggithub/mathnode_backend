@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T15:07:08+08:00",
+  "generatedAt": "2026-06-26T16:03:27+08:00",
   "stats": {
-    "documents": 342,
+    "documents": 343,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -11904,6 +11904,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "F025": {
+      "id": "F025",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "倒数型周期结论",
+      "summary": "如果函数满足f(x+a)=1/f(x)或-1/f(x)，则周期为2a。",
+      "category": "函数周期性",
+      "tags": [
+        "F025",
+        "函数周期性",
+        "倒数型",
+        "抽象函数",
+        "周期变换",
+        "周期函数"
+      ],
+      "coreFormula": {
+        "latex": "f(x+2a)=f(x)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F025/d61dcb1ff6f21671@3x.png",
+          "width_px": 325,
+          "height_px": 65,
+          "display_width_px": 108,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 184,
+      "difficulty": 3.0,
+      "searchBoost": 0.71,
+      "hotScore": 70.0,
+      "examFrequency": 0.6,
+      "examScore": 5.0
     }
   },
   "suggestions": [
