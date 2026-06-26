@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T04:53:32+08:00",
+  "generatedAt": "2026-06-27T05:08:47+08:00",
   "stats": {
-    "documents": 383,
+    "documents": 384,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -13299,6 +13299,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.9,
       "examScore": 8.0
+    },
+    "F069": {
+      "id": "F069",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "导数构造函数：型",
+      "summary": "构造 $F(x)=\\frac{f(x)}{e^x}$，利用导数符号判断单调性，用于比较函数值或解抽象不等式。",
+      "category": "导数",
+      "tags": [
+        "F069",
+        "导数构造",
+        "辅助函数",
+        "$f'(x)-f(x)$型",
+        "单调性判断",
+        "抽象不等式"
+      ],
+      "coreFormula": {
+        "latex": "F(x)=\\frac{f(x)}{e^x}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F069/fb8fd015c9321e51@3x.png",
+          "width_px": 259,
+          "height_px": 112,
+          "display_width_px": 86,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 207,
+      "difficulty": 3.0,
+      "searchBoost": 0.78,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -14355,6 +14389,11 @@
     [
       "奇函数在原点处函数值为零",
       "F016",
+      327
+    ],
+    [
+      "导数构造函数:型",
+      "F069",
       327
     ],
     [
@@ -15795,11 +15834,6 @@
     [
       "向量投影与投影向量",
       "V020",
-      315
-    ],
-    [
-      "奇偶单调等价转化:和式与绝对值比较",
-      "F019",
       315
     ]
   ]
