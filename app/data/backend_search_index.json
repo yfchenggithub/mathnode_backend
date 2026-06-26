@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-26T22:00:42+08:00",
+  "generatedAt": "2026-06-26T22:13:12+08:00",
   "stats": {
-    "documents": 361,
+    "documents": 362,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -12547,6 +12547,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 5.0
+    },
+    "F044": {
+      "id": "F044",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "函数图像上下平移（上加下减）",
+      "summary": "函数图像沿y轴平移时，解析式整体加或减平移量。",
+      "category": "函数",
+      "tags": [
+        "F044",
+        "函数",
+        "平移",
+        "上加下减",
+        "图像变换",
+        "y轴平移"
+      ],
+      "coreFormula": {
+        "latex": "y = f(x) + b \\quad (b>0,\\ \\text{向上平移}) \\quad \\text{或} \\quad y = f(x) - b \\quad (b>0,\\ \\text{向下平移})",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F044/41b71232a13a6200@3x.png",
+          "width_px": 1302,
+          "height_px": 65,
+          "display_width_px": 434,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 115,
+      "difficulty": 2.0,
+      "searchBoost": 0.3,
+      "hotScore": 50.0,
+      "examFrequency": 0.8,
+      "examScore": 3.0
     }
   },
   "suggestions": [
