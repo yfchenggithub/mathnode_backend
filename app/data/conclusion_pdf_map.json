@@ -441,5 +441,6 @@
   "G018": "G018_plane_perpendicular_via_line_in_plane.pdf",
   "G019": "G019_perp_planes_line_perp_other.pdf",
   "G020": "G020_three_perpendiculars.pdf",
-  "G021": "G021_line_plane_angle_sine.pdf"
+  "G021": "G021_line_plane_angle_sine.pdf",
+  "G022": "G022_parallel_transfer_chain.pdf"
 }
