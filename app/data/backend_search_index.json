@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T12:21:35+08:00",
+  "generatedAt": "2026-06-27T12:37:34+08:00",
   "stats": {
-    "documents": 409,
+    "documents": 410,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14188,6 +14188,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 5.0
+    },
+    "L020": {
+      "id": "L020",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "累加法求通项公式",
+      "summary": "将相邻项之差累加为求和，直接得到通项公式。",
+      "category": "数列",
+      "tags": [
+        "L020",
+        "数列",
+        "累加法",
+        "递推",
+        "通项",
+        "求和"
+      ],
+      "coreFormula": {
+        "latex": "a_n = a_1 + \\sum_{k=1}^{n-1} f(k)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L020/c2ac66ffb7fd278e@3x.png",
+          "width_px": 351,
+          "height_px": 144,
+          "display_width_px": 117,
+          "display_height_px": 48,
+          "scale": 3
+        }
+      },
+      "rank": 205,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -15487,6 +15521,11 @@
       325
     ],
     [
+      "累加法求通项公式",
+      "L020",
+      325
+    ],
+    [
       "lnx ≤ x-1",
       "I011",
       324
@@ -16683,11 +16722,6 @@
     ],
     [
       "抛物线焦点弦",
-      "C053",
-      316
-    ],
-    [
-      "抛物线的弦",
       "C053",
       316
     ]
