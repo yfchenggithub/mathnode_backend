@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T22:56:00+08:00",
+  "generatedAt": "2026-06-27T23:17:31+08:00",
   "stats": {
-    "documents": 440,
+    "documents": 441,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15246,6 +15246,39 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "G019": {
+      "id": "G019",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "面面垂直性质定理",
+      "summary": "若两平面垂直，则在一个平面内且垂直于交线的直线垂直于另一个平面。",
+      "category": "立体几何",
+      "tags": [
+        "G019",
+        "立体几何",
+        "面面垂直",
+        "线面垂直",
+        "性质定理"
+      ],
+      "coreFormula": {
+        "latex": "\\alpha\\perp\\beta,\\ \\alpha\\cap\\beta=l,\\ a\\subset\\alpha,\\ a\\perp l\\ \\Longrightarrow\\ a\\perp\\beta",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G019/3e3419bcbfb3d942@3x.png",
+          "width_px": 782,
+          "height_px": 61,
+          "display_width_px": 261,
+          "display_height_px": 20,
+          "scale": 3
+        }
+      },
+      "rank": 200,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -17310,6 +17343,11 @@
       320
     ],
     [
+      "面面垂直性质定理",
+      "G019",
+      320
+    ],
+    [
       "面面平行",
       "G014",
       320
@@ -17742,11 +17780,6 @@
     [
       "d与r比较",
       "P021",
-      316
-    ],
-    [
-      "l⊥a",
-      "G016",
       316
     ]
   ]
