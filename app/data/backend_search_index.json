@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T17:03:27+08:00",
+  "generatedAt": "2026-06-27T17:19:52+08:00",
   "stats": {
-    "documents": 421,
+    "documents": 422,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14601,6 +14601,40 @@
       "searchBoost": 0.7,
       "hotScore": 80.0,
       "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "L034": {
+      "id": "L034",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "对数型裂项恒等式",
+      "summary": "将对数分式 $\\log_a\\!\\left(1+\\frac{1}{n}\\right)$ 拆成 $\\log_a(n+1)-\\log_a n$，用于数列裂项求和。",
+      "category": "数列",
+      "tags": [
+        "L034",
+        "对数运算法则",
+        "数列求和",
+        "裂项相消",
+        "恒等变形",
+        "对数恒等式"
+      ],
+      "coreFormula": {
+        "latex": "\\log_a\\!\\left(1+\\frac{1}{n}\\right)=\\log_a(n+1)-\\log_a n",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L034/221cf98c0852230d@3x.png",
+          "width_px": 664,
+          "height_px": 111,
+          "display_width_px": 221,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 150,
+      "difficulty": 2.0,
+      "searchBoost": 0.43,
+      "hotScore": 70.0,
+      "examFrequency": 0.4,
       "examScore": 5.0
     }
   },
