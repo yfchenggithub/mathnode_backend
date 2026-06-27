@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T16:48:47+08:00",
+  "generatedAt": "2026-06-27T17:03:27+08:00",
   "stats": {
-    "documents": 420,
+    "documents": 421,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14567,6 +14567,41 @@
       "hotScore": 70.0,
       "examFrequency": 1.0,
       "examScore": 6.0
+    },
+    "L033": {
+      "id": "L033",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "根式型裂项相消公式",
+      "summary": "将分母为两个根号之和的分数转化为分子为根号差的形式，用于数列求和时逐项相消。",
+      "category": "数列",
+      "tags": [
+        "L033",
+        "数列求和",
+        "分母有理化",
+        "裂项相消",
+        "根式化简",
+        "根式型裂项",
+        "数列技巧"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{1}{\\sqrt{n+k}+\\sqrt{n}}=\\frac{\\sqrt{n+k}-\\sqrt{n}}{k}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L033/d2c16a07319e01ec@3x.png",
+          "width_px": 592,
+          "height_px": 135,
+          "display_width_px": 197,
+          "display_height_px": 45,
+          "scale": 3
+        }
+      },
+      "rank": 195,
+      "difficulty": 2.0,
+      "searchBoost": 0.7,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
