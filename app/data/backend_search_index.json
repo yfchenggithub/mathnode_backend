@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T18:58:41+08:00",
+  "generatedAt": "2026-06-27T19:33:28+08:00",
   "stats": {
-    "documents": 426,
+    "documents": 427,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14771,6 +14771,39 @@
       "searchBoost": 0.3,
       "hotScore": 50.0,
       "examFrequency": 0.6,
+      "examScore": 5.0
+    },
+    "L041": {
+      "id": "L041",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "等差数列前n项和最大值条件",
+      "summary": "在递减等差数列中，前n项和的最大值在最后一个非负项处取得。",
+      "category": "数列",
+      "tags": [
+        "L041",
+        "等差数列",
+        "前n项和",
+        "最值",
+        "递减数列"
+      ],
+      "coreFormula": {
+        "latex": "S_n \\text{ 最大 } \\iff a_n \\ge 0 \\text{ 且 } a_{n+1} < 0",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L041/548a8f05140ccc75@3x.png",
+          "width_px": 624,
+          "height_px": 63,
+          "display_width_px": 208,
+          "display_height_px": 21,
+          "scale": 3
+        }
+      },
+      "rank": 150,
+      "difficulty": 2.0,
+      "searchBoost": 0.35,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
       "examScore": 5.0
     }
   },
