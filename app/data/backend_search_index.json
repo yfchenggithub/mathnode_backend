@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T08:45:14+08:00",
+  "generatedAt": "2026-06-27T09:00:16+08:00",
   "stats": {
-    "documents": 397,
+    "documents": 398,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -13779,6 +13779,40 @@
       "hotScore": 65.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "L007": {
+      "id": "L007",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "等差数列通项公式",
+      "summary": "等差数列的通项公式是首项加上(n-1)倍公差，反映项数与项的一次函数关系。",
+      "category": "数列",
+      "tags": [
+        "L007",
+        "等差数列",
+        "通项公式",
+        "一次函数",
+        "首项",
+        "公差"
+      ],
+      "coreFormula": {
+        "latex": "a_n = a_1 + (n-1)d = d\\,n + (a_1 - d)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L007/2137b9b45dc34e11@3x.png",
+          "width_px": 656,
+          "height_px": 65,
+          "display_width_px": 219,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 185,
+      "difficulty": 1.0,
+      "searchBoost": 0.8,
+      "hotScore": 70.0,
+      "examFrequency": 0.9,
+      "examScore": 3.0
     }
   },
   "suggestions": [
