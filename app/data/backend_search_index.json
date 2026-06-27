@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T13:10:01+08:00",
+  "generatedAt": "2026-06-27T13:35:18+08:00",
   "stats": {
-    "documents": 412,
+    "documents": 413,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14291,6 +14291,41 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 6.0
+    },
+    "L023": {
+      "id": "L023",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "一次函数型递推通项公式：等比构造法",
+      "summary": "通过设 $b_n=a_n+An+B$ 消去递推中的一次项，化为等比数列求通项。",
+      "category": "数列",
+      "tags": [
+        "L023",
+        "数列递推",
+        "待定系数法",
+        "等比数列构造",
+        "一次函数型",
+        "通项公式",
+        "递推数列"
+      ],
+      "coreFormula": {
+        "latex": "a_n = (a_1 + \\frac{q}{p-1} + \\frac{r}{p-1} + \\frac{q}{(p-1)^2}) p^{n-1} - \\frac{q}{p-1} n - \\left( \\frac{r}{p-1} + \\frac{q}{(p-1)^2} \\right)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L023/204671015197e187@3x.png",
+          "width_px": 1403,
+          "height_px": 122,
+          "display_width_px": 468,
+          "display_height_px": 41,
+          "scale": 3
+        }
+      },
+      "rank": 187,
+      "difficulty": 3.0,
+      "searchBoost": 0.72,
+      "hotScore": 70.0,
+      "examFrequency": 0.7,
+      "examScore": 5.0
     }
   },
   "suggestions": [
