@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T21:33:32+08:00",
+  "generatedAt": "2026-06-27T21:58:24+08:00",
   "stats": {
-    "documents": 435,
+    "documents": 436,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15076,6 +15076,41 @@
       "hotScore": 85.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "G014": {
+      "id": "G014",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "面面平行判定定理",
+      "summary": "一个平面内的两条相交直线都平行于另一个平面，则两平面平行。",
+      "category": "立体几何",
+      "tags": [
+        "G014",
+        "面面平行",
+        "判定定理",
+        "平行",
+        "立体几何",
+        "相交直线",
+        "线面平行"
+      ],
+      "coreFormula": {
+        "latex": "\\boxed{\\left.\\begin{array}{l}\na \\subset \\alpha,\\; b \\subset \\alpha\\\\\na \\cap b = P\\\\\na \\parallel \\beta,\\; b \\parallel \\beta\n\\end{array}\\right\\}\n\\;\\Longrightarrow\\; \\alpha \\parallel \\beta}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G014/c8be409e1f840531@3x.png",
+          "width_px": 554,
+          "height_px": 211,
+          "display_width_px": 185,
+          "display_height_px": 70,
+          "scale": 3
+        }
+      },
+      "rank": 224,
+      "difficulty": 2.0,
+      "searchBoost": 1.0,
+      "hotScore": 70.0,
+      "examFrequency": 1.0,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -15282,6 +15317,11 @@
     [
       "舒尔不等式",
       "I026",
+      344
+    ],
+    [
+      "面面平行判定定理",
+      "G014",
       344
     ],
     [
@@ -16910,6 +16950,11 @@
       320
     ],
     [
+      "两平面平行",
+      "G014",
+      320
+    ],
+    [
       "中线",
       "P040",
       320
@@ -16980,6 +17025,11 @@
       320
     ],
     [
+      "平面与平面平行判定",
+      "G014",
+      320
+    ],
+    [
       "弦心距公式",
       "P022",
       320
@@ -17035,6 +17085,11 @@
       320
     ],
     [
+      "由线面平行推面面",
+      "G014",
+      320
+    ],
+    [
       "离散型随机变量的数学期望",
       "R008",
       320
@@ -17077,6 +17132,11 @@
     [
       "重心",
       "P040",
+      320
+    ],
+    [
+      "面面平行",
+      "G014",
       320
     ],
     [
@@ -17552,31 +17612,6 @@
     [
       "互斥事件",
       "R005",
-      316
-    ],
-    [
-      "互斥事件概率",
-      "R005",
-      316
-    ],
-    [
-      "互斥条件",
-      "R005",
-      316
-    ],
-    [
-      "余弦定理求角公式",
-      "T027",
-      316
-    ],
-    [
-      "余弦形状判断",
-      "T027",
-      316
-    ],
-    [
-      "倒数和公式",
-      "C058",
       316
     ]
   ]
