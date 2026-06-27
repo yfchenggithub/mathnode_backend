@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T08:33:39+08:00",
+  "generatedAt": "2026-06-27T08:39:25+08:00",
   "stats": {
-    "documents": 395,
+    "documents": 396,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -13710,6 +13710,40 @@
       "hotScore": 85.0,
       "examFrequency": 0.9,
       "examScore": 6.0
+    },
+    "F065": {
+      "id": "F065",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "常见切线不等式",
+      "summary": "利用指数函数和对数函数在点 (0,1) 和 (1,0) 处的切线构造的不等式，用于导数放缩和数值比较。",
+      "category": "函数与导数",
+      "tags": [
+        "F065",
+        "切线放缩",
+        "指数不等式",
+        "对数不等式",
+        "导数放缩",
+        "比较大小"
+      ],
+      "coreFormula": {
+        "latex": "\\ln x \\le x-1\\ (x>0);\\quad e^x \\ge x+1\\ (x\\in\\mathbb{R})",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F065/07635874f7cfd7ac@3x.png",
+          "width_px": 772,
+          "height_px": 65,
+          "display_width_px": 257,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 226,
+      "difficulty": 2.0,
+      "searchBoost": 0.82,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -13821,6 +13855,11 @@
     [
       "基本不等式一正二定三相等原则",
       "I049",
+      346
+    ],
+    [
+      "常见切线不等式",
+      "F065",
       346
     ],
     [
@@ -15179,6 +15218,11 @@
       323
     ],
     [
+      "ln x≤x-1",
+      "F065",
+      322
+    ],
+    [
       "二次函数最值公式",
       "F032",
       322
@@ -15216,6 +15260,11 @@
     [
       "抛物线焦点弦坐标定值",
       "C055",
+      322
+    ],
+    [
+      "指数切线不等式",
+      "F065",
       322
     ],
     [
@@ -16196,21 +16245,6 @@
     [
       "椭圆标准方程",
       "C018",
-      316
-    ],
-    [
-      "椭圆焦点半径",
-      "C029",
-      316
-    ],
-    [
-      "椭圆焦点弦长推导",
-      "C027",
-      316
-    ],
-    [
-      "椭圆通径",
-      "C027",
       316
     ]
   ]
