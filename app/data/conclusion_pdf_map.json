@@ -459,5 +459,6 @@
   "G040": "G040_cuboid_supplement_circumradius.pdf",
   "G041": "G041_polyhedra_circumsphere_diameter.pdf",
   "G042": "G042_cube_sphere_radii.pdf",
-  "G044": "G044_inscribed_sphere_radius_formula.pdf"
+  "G044": "G044_inscribed_sphere_radius_formula.pdf",
+  "G045": "G045_sphere_section_radius.pdf"
 }
