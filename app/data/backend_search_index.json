@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T20:12:48+08:00",
+  "generatedAt": "2026-06-27T20:25:57+08:00",
   "stats": {
-    "documents": 429,
+    "documents": 430,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14872,6 +14872,40 @@
       "hotScore": 85.0,
       "examFrequency": 1.0,
       "examScore": 7.0
+    },
+    "L031": {
+      "id": "L031",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "等差数列等比数列求和公式与自然数幂和公式",
+      "summary": "将数列的累加直接转化为关于项数n的多项式或分式，代入首项、公差/公比即可快速求和。",
+      "category": "数列",
+      "tags": [
+        "L031",
+        "等差数列求和",
+        "等比数列求和",
+        "自然数幂和",
+        "公式法求和",
+        "数列基础"
+      ],
+      "coreFormula": {
+        "latex": "等差数列：$S_n = \\frac{n(a_1+a_n)}{2} = na_1 + \\frac{n(n-1)}{2}d$；等比数列：$S_n = \\begin{cases} na_1 & q=1 \\\\\\\\ \\frac{a_1(1-q^n)}{1-q} & q\\neq 1 \\end{cases}$",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L031/e7f0f1a672147e15@3x.png",
+          "width_px": 1632,
+          "height_px": 184,
+          "display_width_px": 544,
+          "display_height_px": 61,
+          "scale": 3
+        }
+      },
+      "rank": 202,
+      "difficulty": 2.0,
+      "searchBoost": 0.77,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -16531,6 +16565,11 @@
       322
     ],
     [
+      "等差数列等比数列求和公式与自然数幂和公式",
+      "L031",
+      322
+    ],
+    [
       "轴定区间动最值",
       "F032",
       322
@@ -17367,11 +17406,6 @@
     ],
     [
       "公比",
-      "L008",
-      316
-    ],
-    [
-      "公比非零",
       "L008",
       316
     ]
