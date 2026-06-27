@@ -437,5 +437,6 @@
   "G014": "G014_plane_parallel_criterion.pdf",
   "G015": "G015_parallel_planes_intersection_parallel.pdf",
   "G016": "G016_line_plane_perpendicular_criterion.pdf",
-  "G017": "G017_lines_perpendicular_same_plane_parallel.pdf"
+  "G017": "G017_lines_perpendicular_same_plane_parallel.pdf",
+  "G018": "G018_plane_perpendicular_via_line_in_plane.pdf"
 }

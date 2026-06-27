@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T22:41:10+08:00",
+  "generatedAt": "2026-06-27T22:56:00+08:00",
   "stats": {
-    "documents": 439,
+    "documents": 440,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15212,6 +15212,40 @@
       "hotScore": 85.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "G018": {
+      "id": "G018",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "面面垂直判定定理（线面垂直推面面垂直）",
+      "summary": "若一条直线垂直于一个平面且在该平面内，则这两个平面互相垂直。",
+      "category": "立体几何",
+      "tags": [
+        "G018",
+        "面面垂直",
+        "判定定理",
+        "线面垂直",
+        "立体几何",
+        "垂直关系"
+      ],
+      "coreFormula": {
+        "latex": "\\left.\\begin{aligned}l &\\subset \\beta \\\\\\\\ l &\\perp \\alpha\\end{aligned}\\right\\\\} \\Rightarrow \\alpha \\perp \\beta",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G018/dab11ab8c550bd67@3x.png",
+          "width_px": 1099,
+          "height_px": 63,
+          "display_width_px": 366,
+          "display_height_px": 21,
+          "scale": 3
+        }
+      },
+      "rank": 205,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
