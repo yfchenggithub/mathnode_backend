@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T00:41:29+08:00",
+  "generatedAt": "2026-06-28T01:11:55+08:00",
   "stats": {
-    "documents": 446,
+    "documents": 447,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15449,6 +15449,42 @@
       "difficulty": 2.0,
       "searchBoost": 0.9,
       "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
+    },
+    "G026": {
+      "id": "G026",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "异面直线所成角公式（平移法）",
+      "summary": "将异面直线平移至相交，构造三角形，利用余弦定理取绝对值计算所成角的余弦。",
+      "category": "立体几何",
+      "tags": [
+        "G026",
+        "异面直线所成角",
+        "平移法",
+        "余弦定理",
+        "立体几何",
+        "空间角",
+        "角度计算",
+        "几何构造"
+      ],
+      "coreFormula": {
+        "latex": "\\cos\\theta = \\frac{|m^2+n^2-d^2|}{2mn}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G026/5ef8a4c2a7a6956e@3x.png",
+          "width_px": 434,
+          "height_px": 115,
+          "display_width_px": 145,
+          "display_height_px": 38,
+          "scale": 3
+        }
+      },
+      "rank": 187,
+      "difficulty": 2.0,
+      "searchBoost": 0.67,
+      "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 6.0
     }

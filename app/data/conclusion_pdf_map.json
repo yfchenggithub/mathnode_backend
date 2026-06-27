@@ -444,5 +444,6 @@
   "G021": "G021_line_plane_angle_sine.pdf",
   "G022": "G022_parallel_transfer_chain.pdf",
   "G023": "G023_perpendicular_conversion_chain.pdf",
-  "G024": "G024_point_plane_distance_vector.pdf"
+  "G024": "G024_point_plane_distance_vector.pdf",
+  "G026": "G026_skew_lines_angle_cosine.pdf"
 }
