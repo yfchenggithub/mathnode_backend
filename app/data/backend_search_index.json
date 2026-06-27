@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T05:01:59+08:00",
+  "generatedAt": "2026-06-28T05:15:59+08:00",
   "stats": {
-    "documents": 458,
+    "documents": 459,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15868,6 +15868,42 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 8.0
+    },
+    "G041": {
+      "id": "G041",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "球内接正方体、长方体、正四面体的外接球直径公式",
+      "summary": "三种常见几何体的外接球直径等于其体对角线或特定倍数，可直接用于求半径或体积。",
+      "category": "立体几何",
+      "tags": [
+        "G041",
+        "立体几何",
+        "外接球",
+        "正方体",
+        "长方体",
+        "正四面体",
+        "外接球直径",
+        "体对角线"
+      ],
+      "coreFormula": {
+        "latex": "\\begin{aligned} \\text{正方体: } &2R = a\\sqrt{3} \\\\ \\text{长方体: } &2R = \\sqrt{a^2+b^2+c^2} \\\\ \\text{正四面体: } &2R = \\frac{\\sqrt{6}}{2}a \\end{aligned}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G041/45a00ce45cf0de6f@3x.png",
+          "width_px": 568,
+          "height_px": 249,
+          "display_width_px": 189,
+          "display_height_px": 83,
+          "scale": 3
+        }
+      },
+      "rank": 207,
+      "difficulty": 2.0,
+      "searchBoost": 0.78,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -17167,6 +17203,11 @@
       327
     ],
     [
+      "球内接正方体、长方体、正四面体的外接球直径公式",
+      "G041",
+      327
+    ],
+    [
       "等比数列下标和性质:乘积相等",
       "L005",
       327
@@ -18365,11 +18406,6 @@
       "齐次换元",
       "F072",
       318
-    ],
-    [
-      "2sinxcosx",
-      "T006",
-      317
     ]
   ]
 }
