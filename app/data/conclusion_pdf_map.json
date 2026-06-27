@@ -451,5 +451,6 @@
   "G032": "G032_skew_lines_distance_cross_product.pdf",
   "G033": "G033_parallel_case_point_plane_distance.pdf",
   "G034": "G034_tetrahedron_volume_to_height.pdf",
-  "G035": "G035_right_tetrahedron_circumradius.pdf"
+  "G035": "G035_right_tetrahedron_circumradius.pdf",
+  "G036": "G036_disphenoid_cuboid_volume_radius.pdf"
 }
