@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T19:33:28+08:00",
+  "generatedAt": "2026-06-27T20:06:05+08:00",
   "stats": {
-    "documents": 427,
+    "documents": 428,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14804,6 +14804,38 @@
       "searchBoost": 0.35,
       "hotScore": 70.0,
       "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "L011": {
+      "id": "L011",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "等差数列任意两项关系",
+      "summary": "等差数列中任意一项可由另一项加上公差乘以项数差得到。",
+      "category": "数列",
+      "tags": [
+        "L011",
+        "等差数列",
+        "通项公式",
+        "基础"
+      ],
+      "coreFormula": {
+        "latex": "a_n = a_m + (n-m)d",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L011/1ffb214f5910459c@3x.png",
+          "width_px": 383,
+          "height_px": 65,
+          "display_width_px": 128,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 191,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 70.0,
+      "examFrequency": 0.6,
       "examScore": 5.0
     }
   },
