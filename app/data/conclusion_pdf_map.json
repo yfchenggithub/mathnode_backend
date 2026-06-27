@@ -455,5 +455,6 @@
   "G036": "G036_disphenoid_cuboid_volume_radius.pdf",
   "G037": "G037_pyramid_perpendicular_edge_circumradius.pdf",
   "G038": "G038_right_prism_circumsphere_radius.pdf",
-  "G039": "G039_regular_tetrahedron_height.pdf"
+  "G039": "G039_regular_tetrahedron_height.pdf",
+  "G040": "G040_cuboid_supplement_circumradius.pdf"
 }

@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T04:42:06+08:00",
+  "generatedAt": "2026-06-28T05:01:59+08:00",
   "stats": {
-    "documents": 457,
+    "documents": 458,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15833,6 +15833,41 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "G040": {
+      "id": "G040",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "补形法求外接球半径公式",
+      "summary": "将几何体补成长方体，外接球半径等于长方体体对角线的一半。",
+      "category": "立体几何",
+      "tags": [
+        "G040",
+        "立体几何",
+        "外接球",
+        "补形法",
+        "墙角模型",
+        "对棱相等",
+        "正四面体"
+      ],
+      "coreFormula": {
+        "latex": "R=\\frac{\\sqrt{a^{2}+b^{2}+c^{2}}}{2}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G040/369348513c569327@3x.png",
+          "width_px": 371,
+          "height_px": 119,
+          "display_width_px": 124,
+          "display_height_px": 40,
+          "scale": 3
+        }
+      },
+      "rank": 230,
+      "difficulty": 3.0,
+      "searchBoost": 0.84,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -15929,6 +15964,11 @@
     [
       "指数对数切线放缩不等式",
       "F075",
+      350
+    ],
+    [
+      "补形法求外接球半径公式",
+      "G040",
       350
     ],
     [
@@ -17157,6 +17197,11 @@
       326
     ],
     [
+      "墙角模型外接球",
+      "G040",
+      326
+    ],
+    [
       "定义法求二面角",
       "G028",
       326
@@ -17169,6 +17214,11 @@
     [
       "对数放缩",
       "F075",
+      326
+    ],
+    [
+      "对棱相等外接球",
+      "G040",
       326
     ],
     [
@@ -17194,6 +17244,16 @@
     [
       "耐克函数",
       "I013",
+      326
+    ],
+    [
+      "补形法",
+      "G040",
+      326
+    ],
+    [
+      "长方体模型外接球",
+      "G040",
       326
     ],
     [
@@ -18308,31 +18368,6 @@
     ],
     [
       "2sinxcosx",
-      "T006",
-      317
-    ],
-    [
-      "cos2x",
-      "T006",
-      317
-    ],
-    [
-      "sin2x",
-      "T006",
-      317
-    ],
-    [
-      "tan2x",
-      "T006",
-      317
-    ],
-    [
-      "三角形面积公式",
-      "T032",
-      317
-    ],
-    [
-      "三角恒等变换",
       "T006",
       317
     ]
