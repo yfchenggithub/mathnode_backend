@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T06:13:14+08:00",
+  "generatedAt": "2026-06-28T06:26:49+08:00",
   "stats": {
-    "documents": 463,
+    "documents": 464,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16041,6 +16041,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.6,
       "examScore": 6.0
+    },
+    "G047": {
+      "id": "G047",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "直圆锥内切球半径公式（轴截面法）",
+      "summary": "直圆锥内切球半径等于轴截面等腰三角形内切圆半径，公式为 $R=\\dfrac{rh}{r+l}$，其中 $l=\\sqrt{r^2+h^2}$。",
+      "category": "立体几何",
+      "tags": [
+        "G047",
+        "直圆锥",
+        "内切球半径",
+        "轴截面法",
+        "切接问题",
+        "立体几何"
+      ],
+      "coreFormula": {
+        "latex": "R=\\frac{rh}{r+l}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G047/734c33406961e816@3x.png",
+          "width_px": 207,
+          "height_px": 111,
+          "display_width_px": 69,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 192,
+      "difficulty": 3.0,
+      "searchBoost": 0.7,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
