@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T13:35:18+08:00",
+  "generatedAt": "2026-06-27T13:59:48+08:00",
   "stats": {
-    "documents": 413,
+    "documents": 414,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14326,6 +14326,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.7,
       "examScore": 5.0
+    },
+    "L024": {
+      "id": "L024",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "递推 =+ 的同除变换构造法",
+      "summary": "对形如 a_{n+1}=p a_n+q^n 的递推，两边同除以 q^{n+1} 或 p^{n+1}，可转化为标准线性递推或累加形式，进而求得通项。",
+      "category": "数列",
+      "tags": [
+        "L024",
+        "递推数列",
+        "构造法",
+        "同除变换",
+        "一阶线性递推",
+        "累加求和"
+      ],
+      "coreFormula": {
+        "latex": "\\displaystyle \\frac{a_{n+1}}{q^{n+1}}=\\frac{p}{q}\\cdot\\frac{a_n}{q^n}+\\frac{1}{q}\\quad\\text{或}\\quad \\frac{a_{n+1}}{p^{n+1}}=\\frac{a_n}{p^n}+\\frac{1}{p}\\left(\\frac{q}{p}\\right)^n",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L024/dd603fe99929101c@3x.png",
+          "width_px": 926,
+          "height_px": 116,
+          "display_width_px": 309,
+          "display_height_px": 39,
+          "scale": 3
+        }
+      },
+      "rank": 185,
+      "difficulty": 3.0,
+      "searchBoost": 0.67,
+      "hotScore": 70.0,
+      "examFrequency": 0.6,
+      "examScore": 6.0
     }
   },
   "suggestions": [
