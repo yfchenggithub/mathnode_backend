@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T09:41:23+08:00",
+  "generatedAt": "2026-06-27T10:03:35+08:00",
   "stats": {
-    "documents": 401,
+    "documents": 402,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -13914,6 +13914,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "L012": {
+      "id": "L012",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "等比数列任意两项关系",
+      "summary": "等比数列中，任意两项可以通过公比的整数次幂相互表示。",
+      "category": "数列",
+      "tags": [
+        "L012",
+        "等比数列",
+        "通项公式",
+        "两项关系",
+        "基础结论",
+        "公比"
+      ],
+      "coreFormula": {
+        "latex": "a_n = a_m \\cdot q^{\\,n-m}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L012/db1a31d0e70dc1ac@3x.png",
+          "width_px": 296,
+          "height_px": 66,
+          "display_width_px": 99,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 207,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -15085,6 +15119,11 @@
     [
       "等比数列下标和性质:乘积相等",
       "L005",
+      327
+    ],
+    [
+      "等比数列任意两项关系",
+      "L012",
       327
     ],
     [
@@ -16410,11 +16449,6 @@
     [
       "指数型构造函数",
       "F068",
-      316
-    ],
-    [
-      "数列求值",
-      "L008",
       316
     ]
   ]
