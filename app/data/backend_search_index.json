@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T17:36:13+08:00",
+  "generatedAt": "2026-06-27T18:01:13+08:00",
   "stats": {
-    "documents": 423,
+    "documents": 424,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14670,6 +14670,39 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "L036": {
+      "id": "L036",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "等差乘等比前n项和公式",
+      "summary": "直接计算等差数列与等比数列对应项乘积的前n项和，无需逐步错位相减。",
+      "category": "数列",
+      "tags": [
+        "L036",
+        "数列求和",
+        "错位相减",
+        "等差数列",
+        "等比数列"
+      ],
+      "coreFormula": {
+        "latex": "S_n = \\frac{a_1 b_1 - a_n b_n q}{1-q} + \\frac{d\\,b_1 q\\,(1-q^{n-1})}{(1-q)^2}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L036/265d25a13444362f@3x.png",
+          "width_px": 701,
+          "height_px": 126,
+          "display_width_px": 234,
+          "display_height_px": 42,
+          "scale": 3
+        }
+      },
+      "rank": 197,
+      "difficulty": 3.0,
+      "searchBoost": 0.7,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -16929,6 +16962,11 @@
       317
     ],
     [
+      "等差乘等比前n项和公式",
+      "L036",
+      317
+    ],
+    [
       "等差数列前n项平均值构成等差数列",
       "L017",
       317
@@ -17166,11 +17204,6 @@
     [
       "基本事件",
       "R005",
-      316
-    ],
-    [
-      "大于取两边小于取中间",
-      "I043",
       316
     ]
   ]
