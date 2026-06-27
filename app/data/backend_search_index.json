@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T05:54:44+08:00",
+  "generatedAt": "2026-06-28T06:13:14+08:00",
   "stats": {
-    "documents": 462,
+    "documents": 463,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16007,6 +16007,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.3,
       "examScore": 4.0
+    },
+    "G046": {
+      "id": "G046",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "球面距离公式",
+      "summary": "球面上两点沿大圆的劣弧长度等于球半径乘以球心角，球心角的余弦由两点的纬度正弦余弦乘积与经度差余弦决定。",
+      "category": "立体几何",
+      "tags": [
+        "G046",
+        "球面距离",
+        "大圆劣弧",
+        "立体几何",
+        "经纬度",
+        "球心角"
+      ],
+      "coreFormula": {
+        "latex": "l = R\\arccos\\!\\bigl( \\sin\\varphi_1\\sin\\varphi_2 + \\cos\\varphi_1\\cos\\varphi_2\\cos(\\Delta\\lambda) \\bigr)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G046/7a7bc05d6d7be0bc@3x.png",
+          "width_px": 901,
+          "height_px": 83,
+          "display_width_px": 300,
+          "display_height_px": 28,
+          "scale": 3
+        }
+      },
+      "rank": 184,
+      "difficulty": 3.0,
+      "searchBoost": 0.66,
+      "hotScore": 70.0,
+      "examFrequency": 0.6,
+      "examScore": 6.0
     }
   },
   "suggestions": [
