@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T23:35:30+08:00",
+  "generatedAt": "2026-06-27T23:51:28+08:00",
   "stats": {
-    "documents": 442,
+    "documents": 443,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15313,6 +15313,41 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 5.0
+    },
+    "G021": {
+      "id": "G021",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "线面角正弦公式：垂线段长度比斜线段长度",
+      "summary": "斜线与平面所成角的正弦等于垂线段长与斜线段长的比值。",
+      "category": "立体几何",
+      "tags": [
+        "G021",
+        "线面角",
+        "正弦公式",
+        "射影",
+        "直线与平面",
+        "垂线段",
+        "斜线段"
+      ],
+      "coreFormula": {
+        "latex": "\\sin\\theta = \\frac{QH}{PQ}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G021/ca8d5f8e08f2f307@3x.png",
+          "width_px": 240,
+          "height_px": 116,
+          "display_width_px": 80,
+          "display_height_px": 39,
+          "scale": 3
+        }
+      },
+      "rank": 199,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 70.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -17532,6 +17567,11 @@
       319
     ],
     [
+      "线面角正弦公式:垂线段长度比斜线段长度",
+      "G021",
+      319
+    ],
+    [
       "经典不等式",
       "I036",
       319
@@ -17808,11 +17848,6 @@
     ],
     [
       "a⊂α",
-      "G016",
-      316
-    ],
-    [
-      "b⊂α",
       "G016",
       316
     ]
