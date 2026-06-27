@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T13:59:48+08:00",
+  "generatedAt": "2026-06-27T14:22:16+08:00",
   "stats": {
-    "documents": 414,
+    "documents": 415,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14360,6 +14360,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.6,
       "examScore": 6.0
+    },
+    "L025": {
+      "id": "L025",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "分式递推倒数变换化线性",
+      "summary": "对于分子无常数项的分式线性递推，取倒数后变成一阶线性递推，进而可用累加或构造法求通项。",
+      "category": "数列",
+      "tags": [
+        "L025",
+        "数列递推",
+        "倒数变换",
+        "线性化",
+        "分式递推",
+        "通项公式"
+      ],
+      "coreFormula": {
+        "latex": "b_{n+1} = \\frac{h(n)}{f(n)} b_n + \\frac{g(n)}{f(n)}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L025/7bb155626624c4c5@3x.png",
+          "width_px": 435,
+          "height_px": 122,
+          "display_width_px": 145,
+          "display_height_px": 41,
+          "scale": 3
+        }
+      },
+      "rank": 201,
+      "difficulty": 3.0,
+      "searchBoost": 0.79,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -15969,6 +16003,11 @@
       321
     ],
     [
+      "分式递推倒数变换化线性",
+      "L025",
+      321
+    ],
+    [
       "切线长定理",
       "P026",
       321
@@ -16856,11 +16895,6 @@
     [
       "抛物线焦点分弦定理",
       "C058",
-      316
-    ],
-    [
-      "抛物线焦点弦",
-      "C053",
       316
     ]
   ]
