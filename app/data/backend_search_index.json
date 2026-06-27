@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T07:14:09+08:00",
+  "generatedAt": "2026-06-28T07:41:19+08:00",
   "stats": {
-    "documents": 467,
+    "documents": 468,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16178,6 +16178,40 @@
       "searchBoost": 0.74,
       "hotScore": 70.0,
       "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "G052": {
+      "id": "G052",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "球体积公式",
+      "summary": "球的体积等于四分之三乘以π乘以半径的立方。",
+      "category": "立体几何",
+      "tags": [
+        "G052",
+        "球体",
+        "体积",
+        "球",
+        "立体几何",
+        "基础公式"
+      ],
+      "coreFormula": {
+        "latex": "V = \\frac{4}{3}\\pi R^3",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G052/7331de21421ee1a6@3x.png",
+          "width_px": 220,
+          "height_px": 108,
+          "display_width_px": 73,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 186,
+      "difficulty": 1.0,
+      "searchBoost": 0.69,
+      "hotScore": 70.0,
+      "examFrequency": 1.0,
       "examScore": 5.0
     }
   },
