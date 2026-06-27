@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T14:55:46+08:00",
+  "generatedAt": "2026-06-27T15:18:17+08:00",
   "stats": {
-    "documents": 416,
+    "documents": 417,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14429,6 +14429,41 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 6.0
+    },
+    "L028": {
+      "id": "L028",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "隔项线性递推数列奇偶项通项公式",
+      "summary": "将隔项递推拆成奇偶子列，分别化为等比或等差数列，直接写出通项公式。",
+      "category": "数列",
+      "tags": [
+        "L028",
+        "数列",
+        "隔项递推",
+        "奇偶项",
+        "通项公式",
+        "等比型",
+        "等差数列"
+      ],
+      "coreFormula": {
+        "latex": "a_{2k-1}=p^{k-1}a_1+q\\frac{p^{k-1}-1}{p-1},\\quad a_{2k}=p^{k-1}a_2+q\\frac{p^{k-1}-1}{p-1}\\quad(p\\neq 1)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L028/557928576248abfd@3x.png",
+          "width_px": 1198,
+          "height_px": 122,
+          "display_width_px": 399,
+          "display_height_px": 41,
+          "scale": 3
+        }
+      },
+      "rank": 189,
+      "difficulty": 3.0,
+      "searchBoost": 0.71,
+      "hotScore": 75.0,
+      "examFrequency": 0.6,
+      "examScore": 5.0
     }
   },
   "suggestions": [
