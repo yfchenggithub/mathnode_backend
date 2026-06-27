@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T11:22:17+08:00",
+  "generatedAt": "2026-06-27T11:43:16+08:00",
   "stats": {
-    "documents": 406,
+    "documents": 407,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14086,6 +14086,41 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "L017": {
+      "id": "L017",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "等差数列前n项平均值构成等差数列",
+      "summary": "等差数列前n项的平均值（Sn/n）也构成等差数列，公差为原公差的一半。",
+      "category": "数列",
+      "tags": [
+        "L017",
+        "等差数列",
+        "前n项和",
+        "平均值",
+        "公差d/2",
+        "二级结论",
+        "Sn/n"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{S_n}{n}=a_1+\\frac{n-1}{2}d",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L017/90d85f39f5112200@3x.png",
+          "width_px": 365,
+          "height_px": 109,
+          "display_width_px": 122,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 197,
+      "difficulty": 2.0,
+      "searchBoost": 0.72,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -16280,6 +16315,11 @@
       317
     ],
     [
+      "等差数列前n项平均值构成等差数列",
+      "L017",
+      317
+    ],
+    [
       "连续函数",
       "F056",
       317
@@ -16582,11 +16622,6 @@
     [
       "指数",
       "L008",
-      316
-    ],
-    [
-      "指数函数",
-      "F077",
       316
     ]
   ]
