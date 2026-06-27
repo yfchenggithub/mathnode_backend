@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T21:58:24+08:00",
+  "generatedAt": "2026-06-27T22:10:55+08:00",
   "stats": {
-    "documents": 436,
+    "documents": 437,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15111,6 +15111,40 @@
       "hotScore": 70.0,
       "examFrequency": 1.0,
       "examScore": 6.0
+    },
+    "G015": {
+      "id": "G015",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "面面平行性质定理（交线平行）",
+      "summary": "两个平行平面被第三个平面所截，所得的两条交线互相平行。",
+      "category": "立体几何",
+      "tags": [
+        "G015",
+        "立体几何",
+        "面面平行",
+        "性质定理",
+        "线线平行",
+        "交线平行"
+      ],
+      "coreFormula": {
+        "latex": "a\\parallel b",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G015/d1d5300384af0d1d@3x.png",
+          "width_px": 106,
+          "height_px": 65,
+          "display_width_px": 35,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 229,
+      "difficulty": 3.0,
+      "searchBoost": 1.0,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -16430,6 +16464,11 @@
       325
     ],
     [
+      "平行平面截交线平行",
+      "G015",
+      325
+    ],
+    [
       "平面向量基本定理",
       "V024",
       325
@@ -16462,6 +16501,16 @@
     [
       "累加法求通项公式",
       "L020",
+      325
+    ],
+    [
+      "面面平行→线线平行",
+      "G015",
+      325
+    ],
+    [
+      "面面平行性质",
+      "G015",
       325
     ],
     [
@@ -17597,21 +17646,6 @@
     [
       "三边求角公式",
       "T027",
-      316
-    ],
-    [
-      "事件并集",
-      "R005",
-      316
-    ],
-    [
-      "互斥",
-      "R005",
-      316
-    ],
-    [
-      "互斥事件",
-      "R005",
       316
     ]
   ]
