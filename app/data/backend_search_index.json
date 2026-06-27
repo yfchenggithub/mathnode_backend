@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T03:16:35+08:00",
+  "generatedAt": "2026-06-28T03:30:08+08:00",
   "stats": {
-    "documents": 451,
+    "documents": 452,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15624,6 +15624,41 @@
       "difficulty": 2.0,
       "searchBoost": 0.6,
       "hotScore": 60.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "G034": {
+      "id": "G034",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "等体积法求高",
+      "summary": "已知三棱锥体积和底面积，直接用公式 h = 3V / S 求出高。",
+      "category": "立体几何",
+      "tags": [
+        "G034",
+        "立体几何",
+        "等体积法",
+        "三棱锥",
+        "体积公式",
+        "高",
+        "点面距离"
+      ],
+      "coreFormula": {
+        "latex": "h=\\frac{3V}{S}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G034/e9de18b9fdde8b23@3x.png",
+          "width_px": 171,
+          "height_px": 108,
+          "display_width_px": 57,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 180,
+      "difficulty": 2.0,
+      "searchBoost": 0.65,
+      "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
     }
