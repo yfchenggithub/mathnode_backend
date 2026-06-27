@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T23:17:31+08:00",
+  "generatedAt": "2026-06-27T23:35:30+08:00",
   "stats": {
-    "documents": 441,
+    "documents": 442,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15279,6 +15279,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "G020": {
+      "id": "G020",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "三垂线定理及其逆定理",
+      "summary": "平面外一点引垂线和斜线，平面内直线垂直于斜线的充要条件是它垂直于斜线在平面内的射影。",
+      "category": "立体几何",
+      "tags": [
+        "G020",
+        "立体几何",
+        "线面垂直",
+        "三垂线定理",
+        "射影",
+        "垂直判定"
+      ],
+      "coreFormula": {
+        "latex": "l\\perp OA \\iff l\\perp PA",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G020/23ec62e578dd6c6d@3x.png",
+          "width_px": 387,
+          "height_px": 54,
+          "display_width_px": 129,
+          "display_height_px": 18,
+          "scale": 3
+        }
+      },
+      "rank": 213,
+      "difficulty": 3.0,
+      "searchBoost": 0.84,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -15800,6 +15834,11 @@
     [
       "x≥-1",
       "I028",
+      333
+    ],
+    [
+      "三垂线定理及其逆定理",
+      "G020",
       333
     ],
     [
@@ -17775,11 +17814,6 @@
     [
       "b⊂α",
       "G016",
-      316
-    ],
-    [
-      "d与r比较",
-      "P021",
       316
     ]
   ]
