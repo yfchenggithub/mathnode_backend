@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T21:15:58+08:00",
+  "generatedAt": "2026-06-27T21:33:32+08:00",
   "stats": {
-    "documents": 434,
+    "documents": 435,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15043,6 +15043,39 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "G013": {
+      "id": "G013",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "线面平行性质定理：由线面平行推出与交线平行",
+      "summary": "过平行于平面的直线的平面与该平面的交线与原直线平行。",
+      "category": "立体几何",
+      "tags": [
+        "G013",
+        "立体几何",
+        "线面平行",
+        "性质定理",
+        "平行关系"
+      ],
+      "coreFormula": {
+        "latex": "\\left.\\begin{array}{c} a\\parallel\\alpha \\\\ a\\subset\\beta \\\\ \\alpha\\cap\\beta=l \\end{array}\\right\\} \\Rightarrow a\\parallel l",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G013/9400c7cbcc2af26b@3x.png",
+          "width_px": 408,
+          "height_px": 189,
+          "display_width_px": 136,
+          "display_height_px": 63,
+          "scale": 3
+        }
+      },
+      "rank": 212,
+      "difficulty": 3.0,
+      "searchBoost": 0.8,
+      "hotScore": 85.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -15724,6 +15757,11 @@
     [
       "算术平均数",
       "I002",
+      332
+    ],
+    [
+      "线面平行性质定理:由线面平行推出与交线平行",
+      "G013",
       332
     ],
     [
@@ -17539,11 +17577,6 @@
     [
       "倒数和公式",
       "C058",
-      316
-    ],
-    [
-      "倾斜角",
-      "C053",
       316
     ]
   ]
