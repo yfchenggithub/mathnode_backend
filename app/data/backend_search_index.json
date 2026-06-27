@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T22:10:55+08:00",
+  "generatedAt": "2026-06-27T22:23:50+08:00",
   "stats": {
-    "documents": 437,
+    "documents": 438,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15145,6 +15145,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 5.0
+    },
+    "G016": {
+      "id": "G016",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "线面垂直判定定理",
+      "summary": "若一条直线垂直于一个平面内的两条相交直线，则该直线垂直于这个平面。",
+      "category": "立体几何",
+      "tags": [
+        "G016",
+        "立体几何",
+        "线面垂直",
+        "判定定理",
+        "相交直线",
+        "垂直关系"
+      ],
+      "coreFormula": {
+        "latex": "$l \\perp a,\\; l \\perp b,\\; a \\cap b = P,\\; a \\subset \\alpha,\\; b \\subset \\alpha \\Rightarrow l \\perp \\alpha$",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G016/d20d9a5d2bfb228f@3x.png",
+          "width_px": 879,
+          "height_px": 62,
+          "display_width_px": 293,
+          "display_height_px": 21,
+          "scale": 3
+        }
+      },
+      "rank": 232,
+      "difficulty": 3.0,
+      "searchBoost": 0.88,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -15216,6 +15250,11 @@
     [
       "等比数列通项公式",
       "L008",
+      352
+    ],
+    [
+      "线面垂直判定定理",
+      "G016",
       352
     ],
     [
@@ -16174,6 +16213,11 @@
       328
     ],
     [
+      "判定定理",
+      "G016",
+      328
+    ],
+    [
       "双曲线",
       "C037",
       328
@@ -16269,6 +16313,11 @@
       328
     ],
     [
+      "直线与平面垂直的判定",
+      "G016",
+      328
+    ],
+    [
       "第一定义",
       "C037",
       328
@@ -16286,6 +16335,11 @@
     [
       "糖水不等式",
       "I003",
+      328
+    ],
+    [
+      "线面垂直",
+      "G016",
       328
     ],
     [
@@ -17604,48 +17658,28 @@
       316
     ],
     [
+      "a⊂α",
+      "G016",
+      316
+    ],
+    [
+      "b⊂α",
+      "G016",
+      316
+    ],
+    [
       "d与r比较",
       "P021",
       316
     ],
     [
-      "n-1",
-      "L008",
+      "l⊥a",
+      "G016",
       316
     ],
     [
-      "x≥e ln x",
-      "F077",
-      316
-    ],
-    [
-      "|a+b|≤|a|+|b|",
-      "I007",
-      316
-    ],
-    [
-      "||a|-|b||≤|a+b|",
-      "I007",
-      316
-    ],
-    [
-      "∀∃转最值",
-      "S024",
-      316
-    ],
-    [
-      "一元二次不等式解法",
-      "I043",
-      316
-    ],
-    [
-      "三角形重心到三顶点距离平方和最小值",
-      "P030",
-      316
-    ],
-    [
-      "三边求角公式",
-      "T027",
+      "l⊥b",
+      "G016",
       316
     ]
   ]
