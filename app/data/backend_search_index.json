@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T07:33:18+08:00",
+  "generatedAt": "2026-06-27T08:28:18+08:00",
   "stats": {
-    "documents": 392,
+    "documents": 393,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -13608,6 +13608,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "F047": {
+      "id": "F047",
+      "module": "function",
+      "moduleDir": "01_function",
+      "title": "翻折变换：去左留右，右侧翻到左侧",
+      "summary": "将 f(x) 在 x≥0 的部分保留，并关于 y 轴对称翻折到 x<0，得到偶函数 y=f(|x|)。",
+      "category": "函数图像变换",
+      "tags": [
+        "F047",
+        "函数图像变换",
+        "偶函数",
+        "对称性",
+        "翻折变换",
+        "绝对值函数"
+      ],
+      "coreFormula": {
+        "latex": "\\boxed{f(|x|) = \\begin{cases} f(x), & x \\ge 0,\\\\ f(-x), & x < 0. \\end{cases}}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/F047/fcdb98f3c78de6cd@3x.png",
+          "width_px": 504,
+          "height_px": 135,
+          "display_width_px": 168,
+          "display_height_px": 45,
+          "scale": 3
+        }
+      },
+      "rank": 192,
+      "difficulty": 2.0,
+      "searchBoost": 0.77,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
