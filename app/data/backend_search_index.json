@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T10:36:57+08:00",
+  "generatedAt": "2026-06-27T11:01:53+08:00",
   "stats": {
-    "documents": 404,
+    "documents": 405,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14015,6 +14015,41 @@
       "difficulty": 2.0,
       "searchBoost": 0.86,
       "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "L015": {
+      "id": "L015",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "等差数列等距分段求和性质",
+      "summary": "等差数列每m项取一段求和，各段和仍成等差数列，公差为m²d。",
+      "category": "数列",
+      "tags": [
+        "L015",
+        "等差数列",
+        "片段和",
+        "等距分组",
+        "公差",
+        "前n项和",
+        "数列求和"
+      ],
+      "coreFormula": {
+        "latex": "T_{k+1} - T_k = m^2 d",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L015/c3fc6c73f70807ea@3x.png",
+          "width_px": 324,
+          "height_px": 68,
+          "display_width_px": 108,
+          "display_height_px": 23,
+          "scale": 3
+        }
+      },
+      "rank": 196,
+      "difficulty": 3.0,
+      "searchBoost": 0.74,
+      "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
     }
