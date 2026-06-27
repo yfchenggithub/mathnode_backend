@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T09:26:43+08:00",
+  "generatedAt": "2026-06-27T09:41:23+08:00",
   "stats": {
-    "documents": 400,
+    "documents": 401,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -13880,6 +13880,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 4.0
+    },
+    "L010": {
+      "id": "L010",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "等比中项公式：平方等于两端积，符号需取舍",
+      "summary": "在各项非零的等比数列中，任意连续三项的中间项平方等于两端之积，且等比中项可取正负两个值，解题时需根据题设符号条件取舍。",
+      "category": "数列",
+      "tags": [
+        "L010",
+        "等比数列",
+        "等比中项",
+        "数列性质",
+        "必修五",
+        "基础性质"
+      ],
+      "coreFormula": {
+        "latex": "a_n^2 = a_{n-1} a_{n+1}, \\quad n\\ge 2.",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L010/982236b67e87890e@3x.png",
+          "width_px": 448,
+          "height_px": 70,
+          "display_width_px": 149,
+          "display_height_px": 23,
+          "scale": 3
+        }
+      },
+      "rank": 180,
+      "difficulty": 2.0,
+      "searchBoost": 0.65,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
