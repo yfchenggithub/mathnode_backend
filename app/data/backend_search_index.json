@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T05:15:59+08:00",
+  "generatedAt": "2026-06-28T05:28:21+08:00",
   "stats": {
-    "documents": 459,
+    "documents": 460,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15904,6 +15904,41 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 5.0
+    },
+    "G042": {
+      "id": "G042",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "正方体内切球、棱切球、外接球半径公式",
+      "summary": "正方体内切球半径 $a/2$，棱切球半径 $\\sqrt{2}a/2$，外接球半径 $\\sqrt{3}a/2$，直接套用快速求解。",
+      "category": "立体几何",
+      "tags": [
+        "G042",
+        "正方体",
+        "内切球",
+        "外接球",
+        "棱切球",
+        "球半径",
+        "立体几何"
+      ],
+      "coreFormula": {
+        "latex": "r_{\\text{内}} = \\frac{a}{2},\\\\; r_{\\text{棱}} = \\frac{\\sqrt{2}}{2}a,\\\\; r_{\\text{外}} = \\frac{\\sqrt{3}}{2}a",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G042/9126ec9212c7f881@3x.png",
+          "width_px": 253,
+          "height_px": 302,
+          "display_width_px": 84,
+          "display_height_px": 101,
+          "scale": 3
+        }
+      },
+      "rank": 220,
+      "difficulty": 2.0,
+      "searchBoost": 0.76,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -16220,6 +16255,11 @@
     [
       "椭圆焦半径公式",
       "C029",
+      340
+    ],
+    [
+      "正方体内切球、棱切球、外接球半径公式",
+      "G042",
       340
     ],
     [
@@ -18399,11 +18439,6 @@
     ],
     [
       "齐次函数",
-      "F072",
-      318
-    ],
-    [
-      "齐次换元",
       "F072",
       318
     ]

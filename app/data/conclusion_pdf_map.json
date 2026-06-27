@@ -457,5 +457,6 @@
   "G038": "G038_right_prism_circumsphere_radius.pdf",
   "G039": "G039_regular_tetrahedron_height.pdf",
   "G040": "G040_cuboid_supplement_circumradius.pdf",
-  "G041": "G041_polyhedra_circumsphere_diameter.pdf"
+  "G041": "G041_polyhedra_circumsphere_diameter.pdf",
+  "G042": "G042_cube_sphere_radii.pdf"
 }
