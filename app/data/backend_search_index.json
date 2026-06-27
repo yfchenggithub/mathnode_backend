@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T22:23:50+08:00",
+  "generatedAt": "2026-06-27T22:41:10+08:00",
   "stats": {
-    "documents": 438,
+    "documents": 439,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15179,6 +15179,39 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 8.0
+    },
+    "G017": {
+      "id": "G017",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "线面垂直的性质定理",
+      "summary": "垂直于同一平面的两条直线互相平行。",
+      "category": "立体几何",
+      "tags": [
+        "G017",
+        "线面垂直",
+        "线线平行",
+        "立体几何",
+        "性质定理"
+      ],
+      "coreFormula": {
+        "latex": "a\\perp\\alpha,\\ b\\perp\\alpha \\Rightarrow a\\parallel b",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G017/7c52889d4ec1e036@3x.png",
+          "width_px": 401,
+          "height_px": 65,
+          "display_width_px": 134,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 212,
+      "difficulty": 2.0,
+      "searchBoost": 0.82,
+      "hotScore": 85.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -15870,6 +15903,11 @@
     [
       "算术平均数",
       "I002",
+      332
+    ],
+    [
+      "线面垂直的性质定理",
+      "G017",
       332
     ],
     [
@@ -17674,11 +17712,6 @@
     ],
     [
       "l⊥a",
-      "G016",
-      316
-    ],
-    [
-      "l⊥b",
       "G016",
       316
     ]
