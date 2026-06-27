@@ -464,5 +464,6 @@
   "G046": "G046_spherical_distance.pdf",
   "G047": "G047_right_cone_inscribed_radius.pdf",
   "G048": "G048_cylinder_inscribed_sphere_condition.pdf",
-  "G049": "G049_prism_cylinder_volume.pdf"
+  "G049": "G049_prism_cylinder_volume.pdf",
+  "G050": "G050_cone_pyramid_volume.pdf"
 }
