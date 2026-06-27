@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T00:27:11+08:00",
+  "generatedAt": "2026-06-28T00:41:29+08:00",
   "stats": {
-    "documents": 445,
+    "documents": 446,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15417,6 +15417,40 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 8.0
+    },
+    "G024": {
+      "id": "G024",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "点到平面的距离（向量法）",
+      "summary": "空间一点到平面的距离等于该点与平面上任一点所成向量在法向量方向上的投影的绝对值。",
+      "category": "立体几何",
+      "tags": [
+        "G024",
+        "空间距离",
+        "向量法",
+        "点到平面距离",
+        "立体几何",
+        "法向量"
+      ],
+      "coreFormula": {
+        "latex": "d = \\frac{|\\vec{AP} \\cdot \\mathbf{n}|}{|\\mathbf{n}|}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G024/cc72f314eb9af043@3x.png",
+          "width_px": 257,
+          "height_px": 137,
+          "display_width_px": 86,
+          "display_height_px": 46,
+          "scale": 3
+        }
+      },
+      "rank": 215,
+      "difficulty": 2.0,
+      "searchBoost": 0.9,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
