@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T03:02:00+08:00",
+  "generatedAt": "2026-06-28T03:16:35+08:00",
   "stats": {
-    "documents": 450,
+    "documents": 451,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -15592,6 +15592,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "G033": {
+      "id": "G033",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "线面距与面面距转化为点面距",
+      "summary": "当直线或平面与目标平面平行时，距离转化为点到平面的距离，用点面距公式计算。",
+      "category": "立体几何",
+      "tags": [
+        "G033",
+        "立体几何",
+        "点面距",
+        "线面距",
+        "面面距",
+        "平行关系"
+      ],
+      "coreFormula": {
+        "latex": "$d=\\frac{|Ax_0+By_0+Cz_0+D|}{\\sqrt{A^2+B^2+C^2}}$",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G033/d36df1e6ac9f3076@3x.png",
+          "width_px": 572,
+          "height_px": 125,
+          "display_width_px": 191,
+          "display_height_px": 42,
+          "scale": 3
+        }
+      },
+      "rank": 165,
+      "difficulty": 2.0,
+      "searchBoost": 0.6,
+      "hotScore": 60.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [

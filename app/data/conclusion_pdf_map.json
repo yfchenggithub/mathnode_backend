@@ -448,5 +448,6 @@
   "G026": "G026_skew_lines_angle_cosine.pdf",
   "G028": "G028_dihedral_angle_definition.pdf",
   "G031": "G031_three_cosine_rule.pdf",
-  "G032": "G032_skew_lines_distance_cross_product.pdf"
+  "G032": "G032_skew_lines_distance_cross_product.pdf",
+  "G033": "G033_parallel_case_point_plane_distance.pdf"
 }
