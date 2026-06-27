@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T10:03:35+08:00",
+  "generatedAt": "2026-06-27T10:17:13+08:00",
   "stats": {
-    "documents": 402,
+    "documents": 403,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -13948,6 +13948,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 5.0
+    },
+    "L013": {
+      "id": "L013",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "等差数列前n项和二次函数性质",
+      "summary": "等差数列前n项和可表示为常数项为零的二次函数，图象是过原点的抛物线。",
+      "category": "数列",
+      "tags": [
+        "L013",
+        "等差数列",
+        "前n项和",
+        "二次函数",
+        "抛物线",
+        "图象过原点"
+      ],
+      "coreFormula": {
+        "latex": "S_n = \\frac{d}{2}n^2 + \\left(a_1 - \\frac{d}{2}\\right)n",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L013/b7c13a8ca2e2ce90@3x.png",
+          "width_px": 468,
+          "height_px": 112,
+          "display_width_px": 156,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 210,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -14754,6 +14788,11 @@
     [
       "积定和最小",
       "I009",
+      330
+    ],
+    [
+      "等差数列前n项和二次函数性质",
+      "L013",
       330
     ],
     [
@@ -16444,11 +16483,6 @@
     [
       "指数函数",
       "F077",
-      316
-    ],
-    [
-      "指数型构造函数",
-      "F068",
       316
     ]
   ]
