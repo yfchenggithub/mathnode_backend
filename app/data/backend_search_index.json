@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-27T18:20:21+08:00",
+  "generatedAt": "2026-06-27T18:58:41+08:00",
   "stats": {
-    "documents": 425,
+    "documents": 426,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -14737,6 +14737,41 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 8.0
+    },
+    "L039": {
+      "id": "L039",
+      "module": "sequence",
+      "moduleDir": "02_sequence",
+      "title": "差比法与商比法判定数列单调性",
+      "summary": "通过相邻两项的差（a_{n+1}-a_n）的符号，或正项时的比值与1比较，直接判断数列是严格递增、递减还是常数列。",
+      "category": "数列",
+      "tags": [
+        "L039",
+        "数列单调性",
+        "差比法",
+        "商比法",
+        "基础定义",
+        "作差法",
+        "作商法"
+      ],
+      "coreFormula": {
+        "latex": "a_{n+1}-a_n \\begin{cases} >0 &\\iff \\{a_n\\} \\text{ 严格递增}, \\\\ =0 &\\iff \\{a_n\\} \\text{ 为常数列}, \\\\ <0 &\\iff \\{a_n\\} \\text{ 严格递减}. \\end{cases} \\quad (\\text{差比法}) \\qquad \\frac{a_{n+1}}{a_n} \\begin{cases} >1 &\\iff \\{a_n\\} \\text{ 严格递增}, \\\\ =1 &\\iff \\{a_n\\} \\text{ 为常数列}, \\\\ <1 &\\iff \\{a_n\\} \\text{ 严格递减}. \\end{cases} \\quad (\\text{商比法, 需 } a_n>0)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/L039/d3c6012665a7e6c2@3x.png",
+          "width_px": 2004,
+          "height_px": 162,
+          "display_width_px": 668,
+          "display_height_px": 54,
+          "scale": 3
+        }
+      },
+      "rank": 121,
+      "difficulty": 2.0,
+      "searchBoost": 0.3,
+      "hotScore": 50.0,
+      "examFrequency": 0.6,
+      "examScore": 5.0
     }
   },
   "suggestions": [
