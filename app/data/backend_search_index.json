@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T07:41:19+08:00",
+  "generatedAt": "2026-06-28T07:54:04+08:00",
   "stats": {
-    "documents": 468,
+    "documents": 469,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16213,6 +16213,40 @@
       "hotScore": 70.0,
       "examFrequency": 1.0,
       "examScore": 5.0
+    },
+    "G053": {
+      "id": "G053",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "祖暅原理（幂势既同则积不容异）",
+      "summary": "两个几何体若夹在两平行平面之间且等高，任意平行截面面积处处相等，则体积相等。",
+      "category": "立体几何",
+      "tags": [
+        "G053",
+        "祖暅原理",
+        "体积相等",
+        "截面面积",
+        "立体几何",
+        "等积转化"
+      ],
+      "coreFormula": {
+        "latex": "\\text{若 }S_A(h)=S_B(h)\\ (\\forall h\\in[0,H])，\\text{则 }V_A=V_B。",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G053/828756699ecbd263@3x.png",
+          "width_px": 873,
+          "height_px": 65,
+          "display_width_px": 291,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 229,
+      "difficulty": 2.0,
+      "searchBoost": 0.85,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -17622,6 +17656,11 @@
       325
     ],
     [
+      "卡瓦列里原理",
+      "G053",
+      325
+    ],
+    [
       "参数分离法",
       "F061",
       325
@@ -17679,6 +17718,16 @@
     [
       "直线方程的五个公式",
       "P011",
+      325
+    ],
+    [
+      "祖暅定理",
+      "G053",
+      325
+    ],
+    [
+      "等积原理",
+      "G053",
       325
     ],
     [
@@ -18699,21 +18748,6 @@
     [
       "面积外接圆公式",
       "P045",
-      318
-    ],
-    [
-      "面面垂直",
-      "G023",
-      318
-    ],
-    [
-      "面面垂直判定",
-      "G023",
-      318
-    ],
-    [
-      "齐次函数",
-      "F072",
       318
     ]
   ]
