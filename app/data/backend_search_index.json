@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T12:44:49+08:00",
+  "generatedAt": "2026-06-28T12:58:45+08:00",
   "stats": {
-    "documents": 489,
+    "documents": 490,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16931,6 +16931,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "R025": {
+      "id": "R025",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "条件概率定义与公式",
+      "summary": "在事件A发生的条件下，事件B发生的概率等于AB同时发生的概率除以A的概率，即$P(B\\mid A)=\\dfrac{P(AB)}{P(A)}$。",
+      "category": "概率统计",
+      "tags": [
+        "R025",
+        "条件概率",
+        "概率定义",
+        "基础概念",
+        "条件概率公式",
+        "乘法公式"
+      ],
+      "coreFormula": {
+        "latex": "P(B \\mid A) = \\frac{P(AB)}{P(A)}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R025/a898affc65ef47e9@3x.png",
+          "width_px": 378,
+          "height_px": 122,
+          "display_width_px": 126,
+          "display_height_px": 41,
+          "scale": 3
+        }
+      },
+      "rank": 215,
+      "difficulty": 1.0,
+      "searchBoost": 0.88,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -17382,6 +17416,11 @@
     [
       "导数不等式",
       "I033",
+      335
+    ],
+    [
+      "条件概率定义与公式",
+      "R025",
       335
     ],
     [
@@ -19427,11 +19466,6 @@
     [
       "反号型",
       "F022",
-      318
-    ],
-    [
-      "变量替换",
-      "F072",
       318
     ]
   ]
