@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T01:07:29+08:00",
+  "generatedAt": "2026-06-29T01:38:22+08:00",
   "stats": {
-    "documents": 527,
+    "documents": 528,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18237,6 +18237,42 @@
       "hotScore": 50.0,
       "examFrequency": 0.6,
       "examScore": 6.0
+    },
+    "J027": {
+      "id": "J027",
+      "module": "function",
+      "moduleDir": "10_junior_basics",
+      "title": "一次函数的斜率与纵截距",
+      "summary": "一次函数 $y=kx+b$ 中，斜率 $k$ 由两点坐标差确定，纵截距 $b$ 是 $y$ 轴交点，$k$ 的正负决定函数的增减性。",
+      "category": "函数",
+      "tags": [
+        "J027",
+        "一次函数",
+        "斜率",
+        "截距",
+        "单调性",
+        "递增",
+        "递减",
+        "常函数"
+      ],
+      "coreFormula": {
+        "latex": "k = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{\\Delta y}{\\Delta x}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J027/482d31216eda4cde@3x.png",
+          "width_px": 379,
+          "height_px": 115,
+          "display_width_px": 126,
+          "display_height_px": 38,
+          "scale": 3
+        }
+      },
+      "rank": 200,
+      "difficulty": 1.0,
+      "searchBoost": 0.77,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -20406,6 +20442,11 @@
       320
     ],
     [
+      "一次函数的斜率与纵截距",
+      "J027",
+      320
+    ],
+    [
       "三次函数零点个数判定",
       "F060",
       320
@@ -20733,11 +20774,6 @@
     [
       "奇穿偶不穿",
       "I045",
-      319
-    ],
-    [
-      "子集个数公式",
-      "S017",
       319
     ]
   ]
