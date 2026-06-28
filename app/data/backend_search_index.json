@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T02:34:34+08:00",
+  "generatedAt": "2026-06-29T02:47:44+08:00",
   "stats": {
-    "documents": 531,
+    "documents": 532,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18375,6 +18375,41 @@
       "hotScore": 65.0,
       "examFrequency": 0.6,
       "examScore": 5.0
+    },
+    "J032": {
+      "id": "J032",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "将军饮马模型（对称点法求距离和最小值）",
+      "summary": "通过作一个定点的对称点，将直线同侧两定点到动点的距离和最小值转化为两点间线段长度。",
+      "category": "平面几何最值",
+      "tags": [
+        "J032",
+        "对称性",
+        "最短路径",
+        "将军饮马",
+        "距离和最小",
+        "对称变换",
+        "线段最值"
+      ],
+      "coreFormula": {
+        "latex": "\\boxed{(PA+PB)_{\\min}=A'B}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J032/939e1b4a25ee7177@3x.png",
+          "width_px": 432,
+          "height_px": 88,
+          "display_width_px": 144,
+          "display_height_px": 29,
+          "scale": 3
+        }
+      },
+      "rank": 195,
+      "difficulty": 2.0,
+      "searchBoost": 0.75,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
