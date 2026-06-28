@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T23:11:17+08:00",
+  "generatedAt": "2026-06-28T23:29:17+08:00",
   "stats": {
-    "documents": 521,
+    "documents": 522,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18030,6 +18030,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "J019": {
+      "id": "J019",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "切线长定理",
+      "summary": "从圆外一点引两条切线，切线长相等，且圆心与该点连线平分两条切线的夹角。",
+      "category": "平面几何",
+      "tags": [
+        "J019",
+        "切线长定理",
+        "圆",
+        "切线",
+        "等长",
+        "角平分线"
+      ],
+      "coreFormula": {
+        "latex": "PA=PB, \\quad \\angle APO = \\angle BPO",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J019/2f1b0ab9bceb6585@3x.png",
+          "width_px": 563,
+          "height_px": 61,
+          "display_width_px": 188,
+          "display_height_px": 20,
+          "scale": 3
+        }
+      },
+      "rank": 205,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -19584,6 +19618,11 @@
       325
     ],
     [
+      "切线长定理",
+      "J019",
+      325
+    ],
+    [
       "卡瓦列里原理",
       "G053",
       325
@@ -20086,11 +20125,6 @@
     [
       "分式递推倒数变换化线性",
       "L025",
-      321
-    ],
-    [
-      "切线长定理",
-      "P026",
       321
     ],
     [
