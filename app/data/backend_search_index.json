@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T09:17:42+08:00",
+  "generatedAt": "2026-06-28T09:35:12+08:00",
   "stats": {
-    "documents": 477,
+    "documents": 478,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16523,6 +16523,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 8.0
+    },
+    "G043": {
+      "id": "G043",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "正四面体高、内切球半径及球心位置",
+      "summary": "正四面体的高等于棱长的√6/3倍，内切球半径等于高的1/4，球心在高上离顶点1/4高处。",
+      "category": "立体几何",
+      "tags": [
+        "G043",
+        "正四面体",
+        "内切球半径",
+        "高",
+        "球心位置",
+        "立体几何性质"
+      ],
+      "coreFormula": {
+        "latex": "r = \\frac{\\sqrt{6}}{12}a",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G043/a7b0c0aff1c472c1@3x.png",
+          "width_px": 191,
+          "height_px": 118,
+          "display_width_px": 64,
+          "display_height_px": 39,
+          "scale": 3
+        }
+      },
+      "rank": 190,
+      "difficulty": 3.0,
+      "searchBoost": 0.68,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
