@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T06:56:04+08:00",
+  "generatedAt": "2026-06-29T07:09:32+08:00",
   "stats": {
-    "documents": 545,
+    "documents": 546,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18856,6 +18856,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.6,
       "examScore": 5.0
+    },
+    "J047": {
+      "id": "J047",
+      "module": "vector",
+      "moduleDir": "10_junior_basics",
+      "title": "两线一圆法：直角三角形动点轨迹",
+      "summary": "动点C与两定点A,B构成直角三角形时，C的轨迹是两条垂线和一条圆（除去A,B）。",
+      "category": "解析几何",
+      "tags": [
+        "J047",
+        "直角三角形存在性",
+        "两线一圆",
+        "向量点积",
+        "轨迹问题",
+        "充要条件"
+      ],
+      "coreFormula": {
+        "latex": "\\overrightarrow{CA}\\cdot\\overrightarrow{CB}=0",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J047/83f429009f163ffe@3x.png",
+          "width_px": 251,
+          "height_px": 84,
+          "display_width_px": 84,
+          "display_height_px": 28,
+          "scale": 3
+        }
+      },
+      "rank": 205,
+      "difficulty": 2.0,
+      "searchBoost": 0.75,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -20420,6 +20454,11 @@
       326
     ],
     [
+      "两线一圆法:直角三角形动点轨迹",
+      "J047",
+      325
+    ],
+    [
       "两角和与差的正弦、余弦、正切公式",
       "T010",
       325
@@ -21352,11 +21391,6 @@
     [
       "加权平均",
       "I014",
-      319
-    ],
-    [
-      "半代换切线",
-      "C066",
       319
     ]
   ]
