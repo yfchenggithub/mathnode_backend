@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T19:58:03+08:00",
+  "generatedAt": "2026-06-28T20:21:18+08:00",
   "stats": {
-    "documents": 511,
+    "documents": 512,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17690,6 +17690,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "J007": {
+      "id": "J007",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "相似三角形面积比等于相似比的平方",
+      "summary": "对于相似图形，面积比等于相似比的平方。",
+      "category": "平面几何",
+      "tags": [
+        "J007",
+        "相似三角形",
+        "面积比",
+        "比例",
+        "平面几何",
+        "相似比"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{S_1}{S_2}=k^2",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J007/41401e4280e5c8e5@3x.png",
+          "width_px": 178,
+          "height_px": 114,
+          "display_width_px": 59,
+          "display_height_px": 38,
+          "scale": 3
+        }
+      },
+      "rank": 222,
+      "difficulty": 2.0,
+      "searchBoost": 0.95,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -17986,6 +18020,11 @@
     [
       "三角形面积与外接圆半径公式",
       "P045",
+      342
+    ],
+    [
+      "相似三角形面积比等于相似比的平方",
+      "J007",
       342
     ],
     [
@@ -20186,11 +20225,6 @@
     [
       "正弦定理的边角互化",
       "T026",
-      319
-    ],
-    [
-      "点切线公式",
-      "C066",
       319
     ]
   ]
