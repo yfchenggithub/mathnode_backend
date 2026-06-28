@@ -505,5 +505,6 @@
   "R040": "R040_pearson_r_range.pdf",
   "R041": "R041_chi_square_independence_test.pdf",
   "R042": "R042_chi_square_independence_test.pdf",
-  "R018": "R018_binomial_general_term.pdf"
+  "R018": "R018_binomial_general_term.pdf",
+  "R037": "R037_sd_linear_scaling.pdf"
 }
