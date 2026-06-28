@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T21:28:17+08:00",
+  "generatedAt": "2026-06-28T21:42:04+08:00",
   "stats": {
-    "documents": 516,
+    "documents": 517,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17859,6 +17859,40 @@
       "searchBoost": 0.8,
       "hotScore": 75.0,
       "examFrequency": 1.0,
+      "examScore": 5.0
+    },
+    "J012": {
+      "id": "J012",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "圆心角定理：圆心角等于所对弧的度数",
+      "summary": "在同圆或等圆中，圆心角的度数等于它所对弧的度数。",
+      "category": "平面几何",
+      "tags": [
+        "J012",
+        "圆心角",
+        "弧",
+        "度数",
+        "同圆等圆",
+        "基础定理"
+      ],
+      "coreFormula": {
+        "latex": "\\deg(\\angle AOB) = \\deg(\\overset{\\frown}{AB})",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J012/992938bc13cc6bc8@3x.png",
+          "width_px": 450,
+          "height_px": 83,
+          "display_width_px": 150,
+          "display_height_px": 28,
+          "scale": 3
+        }
+      },
+      "rank": 146,
+      "difficulty": 1.0,
+      "searchBoost": 0.47,
+      "hotScore": 60.0,
+      "examFrequency": 0.6,
       "examScore": 5.0
     }
   },
