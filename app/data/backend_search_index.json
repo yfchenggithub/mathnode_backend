@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T22:40:35+08:00",
+  "generatedAt": "2026-06-28T22:55:11+08:00",
   "stats": {
-    "documents": 519,
+    "documents": 520,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17962,6 +17962,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "J017": {
+      "id": "J017",
+      "module": "conic",
+      "moduleDir": "10_junior_basics",
+      "title": "圆的切线性质定理",
+      "summary": "圆的切线与过切点的半径互相垂直；反之，过半径外端且垂直于半径的直线是切线。",
+      "category": "解析几何",
+      "tags": [
+        "J017",
+        "圆",
+        "切线",
+        "垂直",
+        "几何性质",
+        "判定定理"
+      ],
+      "coreFormula": {
+        "latex": "$OP \\perp l$",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J017/48a70693fafd9b1f@3x.png",
+          "width_px": 193,
+          "height_px": 57,
+          "display_width_px": 64,
+          "display_height_px": 19,
+          "scale": 3
+        }
+      },
+      "rank": 203,
+      "difficulty": 1.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -19766,6 +19800,11 @@
       323
     ],
     [
+      "圆的切线性质定理",
+      "J017",
+      323
+    ],
+    [
       "圆锥曲线",
       "C075",
       323
@@ -20458,11 +20497,6 @@
     [
       "抛物线中点弦",
       "C062",
-      319
-    ],
-    [
-      "数轴标根法",
-      "I045",
       319
     ]
   ]
