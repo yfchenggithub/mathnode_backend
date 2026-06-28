@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T11:40:14+08:00",
+  "generatedAt": "2026-06-28T11:59:28+08:00",
   "stats": {
-    "documents": 485,
+    "documents": 486,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16796,6 +16796,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 8.0
+    },
+    "R021": {
+      "id": "R021",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "二项式系数最大项",
+      "summary": "二项式系数先增后减，最大值位于中间一项（n偶）或中间两项相等（n奇）。",
+      "category": "计数原理 / 二项式定理",
+      "tags": [
+        "R021",
+        "二项式系数",
+        "最大项",
+        "对称性",
+        "组合数",
+        "展开式系数"
+      ],
+      "coreFormula": {
+        "latex": "\\max\\limits_{0\\le k\\le n}\\binom{n}{k}=\\begin{cases}\\binom{n}{n/2},&n\\text{为偶数}\\\\ \\binom{n}{(n-1)/2}=\\binom{n}{(n+1)/2},&n\\text{为奇数}\\end{cases}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R021/a73c9a7e9b0dda9f@3x.png",
+          "width_px": 845,
+          "height_px": 154,
+          "display_width_px": 282,
+          "display_height_px": 51,
+          "scale": 3
+        }
+      },
+      "rank": 194,
+      "difficulty": 2.0,
+      "searchBoost": 0.74,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
