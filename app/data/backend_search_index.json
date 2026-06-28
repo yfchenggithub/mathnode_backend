@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T11:24:12+08:00",
+  "generatedAt": "2026-06-28T11:40:14+08:00",
   "stats": {
-    "documents": 484,
+    "documents": 485,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16762,6 +16762,40 @@
       "hotScore": 85.0,
       "examFrequency": 1.0,
       "examScore": 5.0
+    },
+    "R020": {
+      "id": "R020",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "二项式系数奇偶项和定理",
+      "summary": "二项式展开中，所有偶数下标系数之和等于所有奇数下标系数之和，且均为2的n-1次方。",
+      "category": "二项式定理",
+      "tags": [
+        "R020",
+        "二项式定理",
+        "组合恒等式",
+        "奇偶项和",
+        "赋值法",
+        "组合数求和"
+      ],
+      "coreFormula": {
+        "latex": "\\boxed{\\binom{n}{0}+\\binom{n}{2}+\\cdots = \\binom{n}{1}+\\binom{n}{3}+\\cdots = 2^{n-1}}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R020/c94b504c88888a22@3x.png",
+          "width_px": 808,
+          "height_px": 131,
+          "display_width_px": 269,
+          "display_height_px": 44,
+          "scale": 3
+        }
+      },
+      "rank": 232,
+      "difficulty": 2.0,
+      "searchBoost": 0.9,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -16824,6 +16858,11 @@
       "闭区间上连续函数最值定理",
       "F056",
       353
+    ],
+    [
+      "二项式系数奇偶项和定理",
+      "R020",
+      352
     ],
     [
       "互斥事件的加法公式",
@@ -17856,6 +17895,11 @@
       328
     ],
     [
+      "二项式系数和的一半",
+      "R020",
+      328
+    ],
+    [
       "互斥事件并集概率",
       "R005",
       328
@@ -17881,6 +17925,11 @@
       328
     ],
     [
+      "偶奇相等",
+      "R020",
+      328
+    ],
+    [
       "切线放缩不等式",
       "F077",
       328
@@ -17898,6 +17947,11 @@
     [
       "圆幂定理",
       "P051",
+      328
+    ],
+    [
+      "奇偶项和定理",
+      "R020",
       328
     ],
     [
@@ -19243,26 +19297,6 @@
     [
       "同除",
       "F072",
-      318
-    ],
-    [
-      "向量法",
-      "G029",
-      318
-    ],
-    [
-      "周期函数",
-      "F022",
-      318
-    ],
-    [
-      "周期性",
-      "F022",
-      318
-    ],
-    [
-      "垂直关系转化",
-      "G023",
       318
     ]
   ]
