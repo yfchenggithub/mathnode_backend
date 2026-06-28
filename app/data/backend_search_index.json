@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T09:08:13+08:00",
+  "generatedAt": "2026-06-28T09:12:25+08:00",
   "stats": {
-    "documents": 475,
+    "documents": 476,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16454,6 +16454,41 @@
       "hotScore": 84.0,
       "examFrequency": 1.0,
       "examScore": 8.0
+    },
+    "G030": {
+      "id": "G030",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "射影面积法求二面角",
+      "summary": "二面角的余弦绝对值等于图形在另一平面上的正投影面积与原面积之比。",
+      "category": "立体几何",
+      "tags": [
+        "G030",
+        "立体几何",
+        "二面角",
+        "射影面积法",
+        "正投影",
+        "面积比",
+        "余弦"
+      ],
+      "coreFormula": {
+        "latex": "|\\cos\\theta| = \\frac{S_{\\text{投影}}}{S_{\\text{原}}}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G030/ce9f1b886949e90c@3x.png",
+          "width_px": 292,
+          "height_px": 125,
+          "display_width_px": 97,
+          "display_height_px": 42,
+          "scale": 3
+        }
+      },
+      "rank": 189,
+      "difficulty": 3.0,
+      "searchBoost": 0.72,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
