@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T22:23:13+08:00",
+  "generatedAt": "2026-06-28T22:40:35+08:00",
   "stats": {
-    "documents": 518,
+    "documents": 519,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17928,6 +17928,40 @@
       "hotScore": 70.0,
       "examFrequency": 1.0,
       "examScore": 6.0
+    },
+    "J016": {
+      "id": "J016",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "切线判定定理",
+      "summary": "若直线过圆上一点且垂直于该点半径，则该直线是圆的切线。",
+      "category": "平面几何",
+      "tags": [
+        "J016",
+        "圆的切线",
+        "切线判定",
+        "垂直关系",
+        "基础定理",
+        "圆"
+      ],
+      "coreFormula": {
+        "latex": "l \\perp OA,\\ A \\in \\odot O \\implies l \\cap \\odot O = \\{A\\}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J016/8dd5819f9dcb7708@3x.png",
+          "width_px": 677,
+          "height_px": 65,
+          "display_width_px": 226,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 193,
+      "difficulty": 1.0,
+      "searchBoost": 0.8,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
