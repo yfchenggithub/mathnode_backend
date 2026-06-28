@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T19:23:51+08:00",
+  "generatedAt": "2026-06-28T19:58:03+08:00",
   "stats": {
-    "documents": 510,
+    "documents": 511,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17655,6 +17655,40 @@
       "searchBoost": 1.0,
       "hotScore": 65.0,
       "examFrequency": 1.0,
+      "examScore": 5.0
+    },
+    "J005": {
+      "id": "J005",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "一线三等角模型",
+      "summary": "三点共线且三个角相等，则两个三角形相似，对应边成比例；若有一组对应边相等则全等。",
+      "category": "平面几何",
+      "tags": [
+        "J005",
+        "一线三等角",
+        "K型相似",
+        "一线三垂直",
+        "相似模型",
+        "全等模型"
+      ],
+      "coreFormula": {
+        "latex": "\\triangle ABD\\sim\\triangle BCE, \\quad \\frac{AB}{BC}=\\frac{BD}{CE}=\\frac{AD}{BE}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J005/9d0faa6809c57161@3x.png",
+          "width_px": 757,
+          "height_px": 110,
+          "display_width_px": 252,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 193,
+      "difficulty": 2.0,
+      "searchBoost": 0.73,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
       "examScore": 5.0
     }
   },
