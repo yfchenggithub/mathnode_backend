@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T10:11:39+08:00",
+  "generatedAt": "2026-06-28T10:28:05+08:00",
   "stats": {
-    "documents": 480,
+    "documents": 481,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16624,6 +16624,40 @@
       "hotScore": 50.0,
       "examFrequency": 0.6,
       "examScore": 4.0
+    },
+    "R015": {
+      "id": "R015",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "组合数的对称性",
+      "summary": "选 m 个与选 n-m 个的方法数相同",
+      "category": "排列组合",
+      "tags": [
+        "R015",
+        "组合数",
+        "对称性",
+        "排列组合",
+        "基础结论",
+        "组合恒等式"
+      ],
+      "coreFormula": {
+        "latex": "\\binom{n}{m}=\\binom{n}{n-m}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R015/344d57beca86bf63@3x.png",
+          "width_px": 332,
+          "height_px": 109,
+          "display_width_px": 111,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 120,
+      "difficulty": 1.0,
+      "searchBoost": 0.4,
+      "hotScore": 55.0,
+      "examFrequency": 0.4,
+      "examScore": 3.0
     }
   },
   "suggestions": [
