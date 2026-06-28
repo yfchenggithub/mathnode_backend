@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T02:07:45+08:00",
+  "generatedAt": "2026-06-29T02:21:18+08:00",
   "stats": {
-    "documents": 529,
+    "documents": 530,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18306,6 +18306,40 @@
       "searchBoost": 0.9,
       "hotScore": 80.0,
       "examFrequency": 0.9,
+      "examScore": 5.0
+    },
+    "J030": {
+      "id": "J030",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "点关于直线对称的垂直平分线性质",
+      "summary": "若两点关于一条直线对称，则这条直线是它们连线的垂直平分线；反之，若一条直线垂直平分一条线段，则两端点关于该直线对称。",
+      "category": "平面几何",
+      "tags": [
+        "J030",
+        "轴对称",
+        "垂直平分线",
+        "对称点",
+        "中点",
+        "垂直条件"
+      ],
+      "coreFormula": {
+        "latex": "P\\text{与}P'\\text{关于}l\\text{对称}\\iff\\begin{cases}PP'\\perp l\\\\ \\text{线段}PP'\\text{的中点在}l\\text{上}\\end{cases}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J030/b49c1e751ce0cdf0@3x.png",
+          "width_px": 836,
+          "height_px": 114,
+          "display_width_px": 279,
+          "display_height_px": 38,
+          "scale": 3
+        }
+      },
+      "rank": 117,
+      "difficulty": 2.0,
+      "searchBoost": 0.3,
+      "hotScore": 50.0,
+      "examFrequency": 0.4,
       "examScore": 5.0
     }
   },
