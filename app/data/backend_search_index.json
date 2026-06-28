@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T14:33:27+08:00",
+  "generatedAt": "2026-06-28T14:55:22+08:00",
   "stats": {
-    "documents": 496,
+    "documents": 497,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17170,6 +17170,41 @@
       "hotScore": 50.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "R032": {
+      "id": "R032",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "正态分布的3σ原则",
+      "summary": "正态变量落在均值附近k倍标准差区间内的概率仅与k有关，k=1,2,3时分别约为68.27%、95.45%、99.73%。",
+      "category": "概率与统计",
+      "tags": [
+        "R032",
+        "正态分布",
+        "3σ原则",
+        "概率",
+        "区间估计",
+        "近似概率",
+        "标准差"
+      ],
+      "coreFormula": {
+        "latex": "P(\\mu-\\sigma<X<\\mu+\\sigma)\\approx0.6827",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R032/29beed7ff9b3c800@3x.png",
+          "width_px": 592,
+          "height_px": 65,
+          "display_width_px": 197,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 205,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -18749,6 +18784,11 @@
       325
     ],
     [
+      "正态分布的3σ原则",
+      "R032",
+      325
+    ],
+    [
       "点斜式斜截式两点式截距式一般式",
       "P011",
       325
@@ -19667,11 +19707,6 @@
       "高次不等式穿根",
       "I045",
       319
-    ],
-    [
-      "二面角",
-      "G029",
-      318
     ]
   ]
 }
