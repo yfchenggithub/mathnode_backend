@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T07:25:29+08:00",
+  "generatedAt": "2026-06-29T07:45:53+08:00",
   "stats": {
-    "documents": 547,
+    "documents": 548,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18923,6 +18923,40 @@
       "searchBoost": 0.76,
       "hotScore": 70.0,
       "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "J049": {
+      "id": "J049",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "相似三角形比例式分类（D在AB上E在AC上）",
+      "summary": "当点D在边AB上、点E在边AC上且△ADE∽△ABC时，对应关系有两种，比例式也有两种。",
+      "category": "平面几何",
+      "tags": [
+        "J049",
+        "三角形相似",
+        "分类讨论",
+        "比例线段",
+        "平面几何",
+        "相似三角形"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{AD}{AB}=\\frac{AE}{AC} \\quad\\text{或}\\quad \\frac{AD}{AC}=\\frac{AE}{AB}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J049/bf4b04b798538937@3x.png",
+          "width_px": 578,
+          "height_px": 110,
+          "display_width_px": 193,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 172,
+      "difficulty": 3.0,
+      "searchBoost": 0.69,
+      "hotScore": 60.0,
+      "examFrequency": 0.6,
       "examScore": 5.0
     }
   },
