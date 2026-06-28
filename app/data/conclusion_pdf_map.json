@@ -472,5 +472,6 @@
   "G055": "G055_cube_section_polygon_range_acute_triangle.pdf",
   "G056": "G056_tetrahedron_volume_scalar_triple.pdf",
   "G025": "G025_point_plane_distance_volume.pdf",
-  "G027": "G027_line_plane_angle_vector.pdf"
+  "G027": "G027_line_plane_angle_vector.pdf",
+  "G029": "G029_dihedral_angle_normal_cosine.pdf"
 }
