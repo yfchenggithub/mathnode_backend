@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T15:26:45+08:00",
+  "generatedAt": "2026-06-28T15:46:59+08:00",
   "stats": {
-    "documents": 499,
+    "documents": 500,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17275,6 +17275,40 @@
       "searchBoost": 0.8,
       "hotScore": 70.0,
       "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "R035": {
+      "id": "R035",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "频率分布直方图的众数与中位数估计",
+      "summary": "众数取最高矩形底边中点，中位数用面积等分加线性插值公式估计。",
+      "category": "统计与概率",
+      "tags": [
+        "R035",
+        "频率分布直方图",
+        "众数估计",
+        "中位数估计",
+        "线性插值",
+        "直方图"
+      ],
+      "coreFormula": {
+        "latex": "m \\approx L + \\frac{0.5 - F}{p_j} \\cdot d",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R035/ea1e32ecb6354aee@3x.png",
+          "width_px": 392,
+          "height_px": 119,
+          "display_width_px": 131,
+          "display_height_px": 40,
+          "scale": 3
+        }
+      },
+      "rank": 151,
+      "difficulty": 2.0,
+      "searchBoost": 0.5,
+      "hotScore": 60.0,
+      "examFrequency": 0.6,
       "examScore": 5.0
     }
   },
