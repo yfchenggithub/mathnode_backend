@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T02:21:18+08:00",
+  "generatedAt": "2026-06-29T02:34:34+08:00",
   "stats": {
-    "documents": 530,
+    "documents": 531,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18340,6 +18340,40 @@
       "searchBoost": 0.3,
       "hotScore": 50.0,
       "examFrequency": 0.4,
+      "examScore": 5.0
+    },
+    "J031": {
+      "id": "J031",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "旋转中的全等（保距保角）",
+      "summary": "平面图形绕定点旋转一定角度后，与原图形全等，对应边、对应角、对应点到旋转中心的距离均相等，对应点与旋转中心连线夹角等于旋转角。",
+      "category": "平面几何",
+      "tags": [
+        "J031",
+        "旋转",
+        "全等",
+        "几何变换",
+        "对应点",
+        "旋转角"
+      ],
+      "coreFormula": {
+        "latex": "\\triangle ABC \\cong \\triangle A'B'C'",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J031/c1e01fb8b384c693@3x.png",
+          "width_px": 389,
+          "height_px": 58,
+          "display_width_px": 130,
+          "display_height_px": 19,
+          "scale": 3
+        }
+      },
+      "rank": 166,
+      "difficulty": 2.0,
+      "searchBoost": 0.6,
+      "hotScore": 65.0,
+      "examFrequency": 0.6,
       "examScore": 5.0
     }
   },
