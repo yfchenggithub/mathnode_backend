@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T05:06:12+08:00",
+  "generatedAt": "2026-06-29T05:19:52+08:00",
   "stats": {
-    "documents": 538,
+    "documents": 539,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18616,6 +18616,39 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "J040": {
+      "id": "J040",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "截长补短辅助线法",
+      "summary": "通过截长或补短构造全等三角形，将线段和差关系转化为等量关系并完成证明。",
+      "category": "平面几何",
+      "tags": [
+        "J040",
+        "几何辅助线",
+        "全等三角形",
+        "线段和差",
+        "截长补短"
+      ],
+      "coreFormula": {
+        "latex": "a+b=L",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J040/fee38e3e6760bef5@3x.png",
+          "width_px": 195,
+          "height_px": 56,
+          "display_width_px": 65,
+          "display_height_px": 19,
+          "scale": 3
+        }
+      },
+      "rank": 170,
+      "difficulty": 3.0,
+      "searchBoost": 0.62,
+      "hotScore": 65.0,
+      "examFrequency": 0.6,
+      "examScore": 5.0
     }
   },
   "suggestions": [
