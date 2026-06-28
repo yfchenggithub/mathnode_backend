@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T06:37:52+08:00",
+  "generatedAt": "2026-06-29T06:56:04+08:00",
   "stats": {
-    "documents": 544,
+    "documents": 545,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18821,6 +18821,41 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 8.0
+    },
+    "J046": {
+      "id": "J046",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "等腰三角形存在性的两圆一线法",
+      "summary": "将等腰三角形存在性问题转化为动点轨迹与中垂线、两个圆的交点问题，并剔除共线点。",
+      "category": "解析几何",
+      "tags": [
+        "J046",
+        "等腰三角形",
+        "两圆一线",
+        "轨迹方程",
+        "存在性问题",
+        "解析几何",
+        "动点"
+      ],
+      "coreFormula": {
+        "latex": "\\left\\{P\\in\\mathbb{R}^2 \\mid f(P)=0,\\ (|PA|=|PB|\\lor|PA|=|AB|\\lor|PB|=|AB|)\\right\\}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J046/1c468e71afad1d09@3x.png",
+          "width_px": 1214,
+          "height_px": 74,
+          "display_width_px": 405,
+          "display_height_px": 25,
+          "scale": 3
+        }
+      },
+      "rank": 173,
+      "difficulty": 3.0,
+      "searchBoost": 0.6,
+      "hotScore": 70.0,
+      "examFrequency": 0.6,
+      "examScore": 5.0
     }
   },
   "suggestions": [
