@@ -533,5 +533,6 @@
   "J032": "J032_reflection_min_distance_sum.pdf",
   "J033": "J033_weighted_distance_minimum.pdf",
   "J035": "J035_rotation_scaling_locus.pdf",
-  "J036": "J036_fermat_point_min_distance.pdf"
+  "J036": "J036_fermat_point_min_distance.pdf",
+  "J037": "J037_bridge_crossing_translation.pdf"
 }
