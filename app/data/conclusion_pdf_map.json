@@ -504,5 +504,6 @@
   "R039": "R039_regression_line_through_centroid.pdf",
   "R040": "R040_pearson_r_range.pdf",
   "R041": "R041_chi_square_independence_test.pdf",
-  "R042": "R042_chi_square_independence_test.pdf"
+  "R042": "R042_chi_square_independence_test.pdf",
+  "R018": "R018_binomial_general_term.pdf"
 }
