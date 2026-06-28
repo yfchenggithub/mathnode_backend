@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T07:54:04+08:00",
+  "generatedAt": "2026-06-28T08:10:17+08:00",
   "stats": {
-    "documents": 469,
+    "documents": 470,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16247,6 +16247,41 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 8.0
+    },
+    "G054": {
+      "id": "G054",
+      "module": "vector",
+      "moduleDir": "05_geometry-solid",
+      "title": "向量法求截面与棱的交点参数公式",
+      "summary": "用向量点积比值直接求出直线与平面交点在线段上的位置参数。",
+      "category": "立体几何",
+      "tags": [
+        "G054",
+        "空间向量",
+        "截面问题",
+        "交点坐标",
+        "立体几何",
+        "向量法",
+        "参数t"
+      ],
+      "coreFormula": {
+        "latex": "t = \\frac{\\vec{n}\\cdot(\\vec{p}-\\vec{a})}{\\vec{n}\\cdot\\vec{v}}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G054/4fde11c4e1c8f7ef@3x.png",
+          "width_px": 293,
+          "height_px": 120,
+          "display_width_px": 98,
+          "display_height_px": 40,
+          "scale": 3
+        }
+      },
+      "rank": 207,
+      "difficulty": 4.0,
+      "searchBoost": 0.73,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -17506,6 +17541,11 @@
       327
     ],
     [
+      "向量法求截面与棱的交点参数公式",
+      "G054",
+      327
+    ],
+    [
       "奇函数在原点处函数值为零",
       "F016",
       327
@@ -18743,11 +18783,6 @@
     [
       "零次齐次",
       "F072",
-      318
-    ],
-    [
-      "面积外接圆公式",
-      "P045",
       318
     ]
   ]
