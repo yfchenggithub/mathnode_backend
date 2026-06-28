@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T15:46:59+08:00",
+  "generatedAt": "2026-06-28T16:03:01+08:00",
   "stats": {
-    "documents": 500,
+    "documents": 501,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17309,6 +17309,40 @@
       "searchBoost": 0.5,
       "hotScore": 60.0,
       "examFrequency": 0.6,
+      "examScore": 5.0
+    },
+    "R036": {
+      "id": "R036",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "第p百分位数（向上取整法）",
+      "summary": "将数据排序后，用位置 $k=\\lceil\\frac{p}{100}n\\rceil$ 确定第 $p$ 百分位数 $P_p=x_{(k)}$，即至少 $p\\%$ 的数据不超过该值。",
+      "category": "统计",
+      "tags": [
+        "R036",
+        "百分位数",
+        "统计概念",
+        "基础定义",
+        "数据排序",
+        "顺序统计量"
+      ],
+      "coreFormula": {
+        "latex": "P_p = x_{(k)},\\quad k = \\left\\lceil \\frac{p}{100}\\cdot n \\right\\rceil",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R036/8391f831472bcf97@3x.png",
+          "width_px": 497,
+          "height_px": 100,
+          "display_width_px": 166,
+          "display_height_px": 33,
+          "scale": 3
+        }
+      },
+      "rank": 206,
+      "difficulty": 2.0,
+      "searchBoost": 0.81,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
       "examScore": 5.0
     }
   },

@@ -498,5 +498,6 @@
   "R032": "R032_normal_3sigma_rule.pdf",
   "R033": "R033_mean_variance_median_mode.pdf",
   "R034": "R034_stratified_proportional_allocation.pdf",
-  "R035": "R035_histogram_mode_median_estimate.pdf"
+  "R035": "R035_histogram_mode_median_estimate.pdf",
+  "R036": "R036_percentile_ceiling.pdf"
 }
