@@ -495,5 +495,6 @@
   "R029": "R029_binomial_expectation_variance.pdf",
   "R030": "R030_hypergeometric_expectation.pdf",
   "R031": "R031_bernoulli_expectation_variance.pdf",
-  "R032": "R032_normal_3sigma_rule.pdf"
+  "R032": "R032_normal_3sigma_rule.pdf",
+  "R033": "R033_mean_variance_median_mode.pdf"
 }
