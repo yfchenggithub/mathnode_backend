@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T06:22:09+08:00",
+  "generatedAt": "2026-06-29T06:37:52+08:00",
   "stats": {
-    "documents": 543,
+    "documents": 544,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18786,6 +18786,41 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "J045": {
+      "id": "J045",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "三角形中点、中线、重心性质汇总",
+      "summary": "三角形中点、中线、重心提供了长度关系（中线长公式）、平行关系（中位线）和向量关系（重心向量和为零），是平面几何的对称核心。",
+      "category": "平面几何",
+      "tags": [
+        "J045",
+        "平面几何",
+        "向量",
+        "中线",
+        "重心",
+        "中位线",
+        "直角三角形"
+      ],
+      "coreFormula": {
+        "latex": "m_a^2 = \\frac12(b^2+c^2) - \\frac14 a^2",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J045/4aa9d4c967a91ab4@3x.png",
+          "width_px": 450,
+          "height_px": 107,
+          "display_width_px": 150,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 221,
+      "difficulty": 3.0,
+      "searchBoost": 0.75,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -19098,6 +19133,11 @@
       "算术平均大于等于几何平均",
       "I009",
       342
+    ],
+    [
+      "三角形中点、中线、重心性质汇总",
+      "J045",
+      341
     ],
     [
       "卡方独立性检验",
@@ -21281,11 +21321,6 @@
     ],
     [
       "半代换切线",
-      "C066",
-      319
-    ],
-    [
-      "双曲线切线公式",
       "C066",
       319
     ]
