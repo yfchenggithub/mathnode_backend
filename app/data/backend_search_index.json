@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T09:56:33+08:00",
+  "generatedAt": "2026-06-28T10:11:39+08:00",
   "stats": {
-    "documents": 479,
+    "documents": 480,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16591,6 +16591,39 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 5.0
+    },
+    "R014": {
+      "id": "R014",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "组合数公式",
+      "summary": "从 $n$ 个不同元素中无序选取 $m$ 个元素的方案总数。",
+      "category": "排列组合",
+      "tags": [
+        "R014",
+        "组合数",
+        "阶乘",
+        "基础公式",
+        "组合计数"
+      ],
+      "coreFormula": {
+        "latex": "C(n,m)=\\frac{n!}{m!\\,(n-m)!}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R014/4f7f61244efe05cd@3x.png",
+          "width_px": 444,
+          "height_px": 120,
+          "display_width_px": 148,
+          "display_height_px": 40,
+          "scale": 3
+        }
+      },
+      "rank": 124,
+      "difficulty": 1.0,
+      "searchBoost": 0.4,
+      "hotScore": 50.0,
+      "examFrequency": 0.6,
+      "examScore": 4.0
     }
   },
   "suggestions": [
