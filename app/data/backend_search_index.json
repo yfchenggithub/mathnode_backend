@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T16:03:01+08:00",
+  "generatedAt": "2026-06-28T16:37:39+08:00",
   "stats": {
-    "documents": 501,
+    "documents": 502,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17344,6 +17344,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "R038": {
+      "id": "R038",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "线性回归的最小二乘估计公式",
+      "summary": "通过样本数据计算回归直线的斜率和截距，且直线必过均值点。",
+      "category": "概率统计",
+      "tags": [
+        "R038",
+        "线性回归",
+        "最小二乘",
+        "样本中心点",
+        "回归系数",
+        "统计估计"
+      ],
+      "coreFormula": {
+        "latex": "\\hat{b} = \\frac{\\sum_{i=1}^{n} (x_i - \\bar{x})(y_i - \\bar{y})}{\\sum_{i=1}^{n} (x_i - \\bar{x})^2}, \\quad \\hat{a} = \\bar{y} - \\hat{b}\\bar{x}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R038/f6d7ed07089d16d6@3x.png",
+          "width_px": 728,
+          "height_px": 129,
+          "display_width_px": 243,
+          "display_height_px": 43,
+          "scale": 3
+        }
+      },
+      "rank": 211,
+      "difficulty": 3.0,
+      "searchBoost": 0.79,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -18205,6 +18239,11 @@
     [
       "正实数",
       "I008",
+      331
+    ],
+    [
+      "线性回归的最小二乘估计公式",
+      "R038",
       331
     ],
     [
@@ -19840,11 +19879,6 @@
     [
       "等号成立条件",
       "I036",
-      319
-    ],
-    [
-      "线面角正弦公式:垂线段长度比斜线段长度",
-      "G021",
       319
     ]
   ]
