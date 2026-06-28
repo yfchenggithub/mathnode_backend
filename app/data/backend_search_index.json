@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T02:47:44+08:00",
+  "generatedAt": "2026-06-29T03:11:03+08:00",
   "stats": {
-    "documents": 532,
+    "documents": 533,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18410,6 +18410,41 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "J033": {
+      "id": "J033",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "胡不归模型（ 型最值）",
+      "summary": "构造角$\\alpha$满足$\\sin\\alpha=k$，将$k\\cdot PA$转化为垂线段，则$k\\cdot PA+PB$的最小值为$B$到射线$AN$的距离$BH$。",
+      "category": "平面几何最值",
+      "tags": [
+        "J033",
+        "胡不归模型",
+        "几何最值",
+        "k·PA+PB",
+        "垂线段最短",
+        "三角函数转化",
+        "系数化归"
+      ],
+      "coreFormula": {
+        "latex": "\\min_{P\\in l}\\bigl(k\\cdot PA+PB\\bigr)=BH",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J033/1b7b5721cdd95f9c@3x.png",
+          "width_px": 479,
+          "height_px": 96,
+          "display_width_px": 160,
+          "display_height_px": 32,
+          "scale": 3
+        }
+      },
+      "rank": 200,
+      "difficulty": 3.0,
+      "searchBoost": 0.73,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
     }
   },
   "suggestions": [
