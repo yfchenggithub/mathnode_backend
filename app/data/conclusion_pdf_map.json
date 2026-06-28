@@ -474,5 +474,6 @@
   "G025": "G025_point_plane_distance_volume.pdf",
   "G027": "G027_line_plane_angle_vector.pdf",
   "G029": "G029_dihedral_angle_normal_cosine.pdf",
-  "G030": "G030_projection_area_dihedral_angle.pdf"
+  "G030": "G030_projection_area_dihedral_angle.pdf",
+  "G051": "G051_frustum_volume.pdf"
 }

@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T09:12:25+08:00",
+  "generatedAt": "2026-06-28T09:17:42+08:00",
   "stats": {
-    "documents": 476,
+    "documents": 477,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16489,6 +16489,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "G051": {
+      "id": "G051",
+      "module": "geometry-solid",
+      "moduleDir": "05_geometry-solid",
+      "title": "台体体积公式",
+      "summary": "体积等于高乘以上底面积、下底面积与两者几何平均数之和的三分之一。",
+      "category": "立体几何",
+      "tags": [
+        "G051",
+        "台体体积",
+        "棱台",
+        "圆台",
+        "体积公式",
+        "立体几何"
+      ],
+      "coreFormula": {
+        "latex": "V = \\frac{h}{3}(S_1 + S_2 + \\sqrt{S_1 S_2})",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/G051/b58a2b57a66564f1@3x.png",
+          "width_px": 495,
+          "height_px": 109,
+          "display_width_px": 165,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 213,
+      "difficulty": 2.0,
+      "searchBoost": 0.78,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -17070,6 +17104,11 @@
     [
       "取等条件",
       "I005",
+      333
+    ],
+    [
+      "台体体积公式",
+      "G051",
       333
     ],
     [
@@ -18985,11 +19024,6 @@
     [
       "差值型",
       "F022",
-      318
-    ],
-    [
-      "平面角",
-      "G029",
       318
     ]
   ]
