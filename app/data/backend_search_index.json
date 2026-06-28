@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T05:36:01+08:00",
+  "generatedAt": "2026-06-29T05:55:36+08:00",
   "stats": {
-    "documents": 540,
+    "documents": 541,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18681,6 +18681,40 @@
       "difficulty": 3.0,
       "searchBoost": 0.77,
       "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
+    },
+    "J042": {
+      "id": "J042",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "对角互补模型（四点共圆与旋转全等）",
+      "summary": "四边形一组对角和为180°则四点共圆；若还有一组邻边相等，可通过旋转实现全等。",
+      "category": "平面几何",
+      "tags": [
+        "J042",
+        "四点共圆",
+        "旋转全等",
+        "对角互补",
+        "几何变换",
+        "四边形"
+      ],
+      "coreFormula": {
+        "latex": "\\angle A+\\angle C=180^\\circ \\Rightarrow A,B,C,D \\text{ 四点共圆}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J042/e60ab787fb171508@3x.png",
+          "width_px": 749,
+          "height_px": 63,
+          "display_width_px": 250,
+          "display_height_px": 21,
+          "scale": 3
+        }
+      },
+      "rank": 207,
+      "difficulty": 3.0,
+      "searchBoost": 0.8,
+      "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 6.0
     }
