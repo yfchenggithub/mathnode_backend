@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T12:58:45+08:00",
+  "generatedAt": "2026-06-28T13:11:36+08:00",
   "stats": {
-    "documents": 490,
+    "documents": 491,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16965,6 +16965,41 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 5.0
+    },
+    "R026": {
+      "id": "R026",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "概率乘法公式",
+      "summary": "将多个事件同时发生的概率分解为一系列条件概率的连乘积。",
+      "category": "概率与统计",
+      "tags": [
+        "R026",
+        "概率",
+        "条件概率",
+        "乘法公式",
+        "积事件",
+        "不放回抽样",
+        "闯关问题"
+      ],
+      "coreFormula": {
+        "latex": "P(AB)=P(A)P(B|A)\\quad (P(A)>0)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R026/e3db3c29403a1f73@3x.png",
+          "width_px": 670,
+          "height_px": 65,
+          "display_width_px": 223,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 200,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -19144,6 +19179,11 @@
       320
     ],
     [
+      "概率乘法公式",
+      "R026",
+      320
+    ],
+    [
       "正四面体外接球半径公式",
       "G010",
       320
@@ -19461,11 +19501,6 @@
     [
       "双变量不等式",
       "F072",
-      318
-    ],
-    [
-      "反号型",
-      "F022",
       318
     ]
   ]
