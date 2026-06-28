@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T00:21:10+08:00",
+  "generatedAt": "2026-06-29T00:39:58+08:00",
   "stats": {
-    "documents": 525,
+    "documents": 526,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18168,6 +18168,40 @@
       "hotScore": 60.0,
       "examFrequency": 0.6,
       "examScore": 3.0
+    },
+    "J023": {
+      "id": "J023",
+      "module": "function",
+      "moduleDir": "10_junior_basics",
+      "title": "二次函数顶点坐标公式",
+      "summary": "直接给出二次函数抛物线的顶点坐标和对称轴，是求最值、图像平移的基础。",
+      "category": "二次函数",
+      "tags": [
+        "J023",
+        "二次函数",
+        "顶点坐标",
+        "对称轴",
+        "配方法",
+        "一般式"
+      ],
+      "coreFormula": {
+        "latex": "\\left(-\\frac{b}{2a},\\frac{4ac-b^2}{4a}\\right)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J023/d8c733dbc2b06528@3x.png",
+          "width_px": 356,
+          "height_px": 124,
+          "display_width_px": 119,
+          "display_height_px": 41,
+          "scale": 3
+        }
+      },
+      "rank": 207,
+      "difficulty": 1.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -19547,6 +19581,11 @@
       327
     ],
     [
+      "二次函数顶点坐标公式",
+      "J023",
+      327
+    ],
+    [
       "二项式展开通项公式",
       "R018",
       327
@@ -20664,11 +20703,6 @@
     [
       "子集个数公式",
       "S017",
-      319
-    ],
-    [
-      "恒成立问题",
-      "I036",
       319
     ]
   ]
