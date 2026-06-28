@@ -491,5 +491,6 @@
   "R025": "R025_conditional_probability_definition.pdf",
   "R026": "R026_probability_multiplication_rule.pdf",
   "R027": "R027_total_probability_formula.pdf",
-  "R028": "R028_bayes_formula.pdf"
+  "R028": "R028_bayes_formula.pdf",
+  "R029": "R029_binomial_expectation_variance.pdf"
 }

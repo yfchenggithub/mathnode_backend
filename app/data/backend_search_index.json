@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T13:45:34+08:00",
+  "generatedAt": "2026-06-28T14:01:24+08:00",
   "stats": {
-    "documents": 493,
+    "documents": 494,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17068,6 +17068,40 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 8.0
+    },
+    "R029": {
+      "id": "R029",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "二项分布的期望与方差公式",
+      "summary": "二项分布成功次数的期望是np，方差是np(1-p)。",
+      "category": "概率与统计",
+      "tags": [
+        "R029",
+        "二项分布",
+        "期望",
+        "方差",
+        "数字特征",
+        "随机变量"
+      ],
+      "coreFormula": {
+        "latex": "E(X)=np,\\quad D(X)=np(1-p)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R029/422bafed76851678@3x.png",
+          "width_px": 601,
+          "height_px": 65,
+          "display_width_px": 200,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 229,
+      "difficulty": 2.0,
+      "searchBoost": 0.9,
+      "hotScore": 85.0,
+      "examFrequency": 1.0,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -17185,6 +17219,11 @@
       "补形法求外接球半径公式",
       "G040",
       350
+    ],
+    [
+      "二项分布的期望与方差公式",
+      "R029",
+      349
     ],
     [
       "直线方程的五种形式",
@@ -18567,6 +18606,16 @@
       325
     ],
     [
+      "二项分布方差",
+      "R029",
+      325
+    ],
+    [
+      "二项分布期望",
+      "R029",
+      325
+    ],
+    [
       "倒数和不等式",
       "I039",
       325
@@ -19554,21 +19603,6 @@
     [
       "余弦",
       "G029",
-      318
-    ],
-    [
-      "倒数型",
-      "F022",
-      318
-    ],
-    [
-      "公式",
-      "G029",
-      318
-    ],
-    [
-      "函数周期",
-      "F022",
       318
     ]
   ]
