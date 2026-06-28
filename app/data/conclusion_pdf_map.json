@@ -493,5 +493,6 @@
   "R027": "R027_total_probability_formula.pdf",
   "R028": "R028_bayes_formula.pdf",
   "R029": "R029_binomial_expectation_variance.pdf",
-  "R030": "R030_hypergeometric_expectation.pdf"
+  "R030": "R030_hypergeometric_expectation.pdf",
+  "R031": "R031_bernoulli_expectation_variance.pdf"
 }
