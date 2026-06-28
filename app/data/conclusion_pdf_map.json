@@ -534,5 +534,6 @@
   "J033": "J033_weighted_distance_minimum.pdf",
   "J035": "J035_rotation_scaling_locus.pdf",
   "J036": "J036_fermat_point_min_distance.pdf",
-  "J037": "J037_bridge_crossing_translation.pdf"
+  "J037": "J037_bridge_crossing_translation.pdf",
+  "J038": "J038_isosceles_rotation_congruence.pdf"
 }

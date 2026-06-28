@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T04:29:07+08:00",
+  "generatedAt": "2026-06-29T04:47:30+08:00",
   "stats": {
-    "documents": 536,
+    "documents": 537,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18548,6 +18548,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.9,
       "examScore": 5.0
+    },
+    "J038": {
+      "id": "J038",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "手拉手模型（旋转全等）",
+      "summary": "两个等腰三角形共顶点且顶角相等，旋转一个后对应边构成全等三角形，且对应边夹角等于顶角或其补角。",
+      "category": "平面几何",
+      "tags": [
+        "J038",
+        "旋转全等",
+        "手拉手模型",
+        "等腰三角形",
+        "全等证明",
+        "对应边夹角"
+      ],
+      "coreFormula": {
+        "latex": "\\triangle ABD \\cong \\triangle ACE\\ (\\text{SAS})",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J038/79598550b175823d@3x.png",
+          "width_px": 466,
+          "height_px": 65,
+          "display_width_px": 155,
+          "display_height_px": 22,
+          "scale": 3
+        }
+      },
+      "rank": 204,
+      "difficulty": 3.0,
+      "searchBoost": 0.72,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 7.0
     }
   },
   "suggestions": [
