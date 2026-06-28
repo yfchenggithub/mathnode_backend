@@ -476,5 +476,6 @@
   "G029": "G029_dihedral_angle_normal_cosine.pdf",
   "G030": "G030_projection_area_dihedral_angle.pdf",
   "G051": "G051_frustum_volume.pdf",
-  "G043": "G043_regular_tetrahedron_height_insphere_ratio.pdf"
+  "G043": "G043_regular_tetrahedron_height_insphere_ratio.pdf",
+  "R013": "R013_permutation_formula.pdf"
 }

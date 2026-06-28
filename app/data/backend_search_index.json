@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T09:35:12+08:00",
+  "generatedAt": "2026-06-28T09:56:33+08:00",
   "stats": {
-    "documents": 478,
+    "documents": 479,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16557,6 +16557,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "R013": {
+      "id": "R013",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "排列数公式",
+      "summary": "从n个不同元素中取出m个排成一列的方法数，等于n的阶乘除以(n-m)的阶乘。",
+      "category": "计数原理",
+      "tags": [
+        "R013",
+        "排列数",
+        "计数原理",
+        "阶乘",
+        "有序排列",
+        "A_n^m"
+      ],
+      "coreFormula": {
+        "latex": "A_n^m = \\frac{n!}{(n-m)!}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R013/98061d43c994f4d4@3x.png",
+          "width_px": 308,
+          "height_px": 120,
+          "display_width_px": 103,
+          "display_height_px": 40,
+          "scale": 3
+        }
+      },
+      "rank": 207,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 80.0,
+      "examFrequency": 0.9,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -17876,6 +17910,11 @@
       327
     ],
     [
+      "排列数公式",
+      "R013",
+      327
+    ],
+    [
       "权方和",
       "I006",
       327
@@ -19053,11 +19092,6 @@
     [
       "导数压轴题",
       "F072",
-      318
-    ],
-    [
-      "差值型",
-      "F022",
       318
     ]
   ]
