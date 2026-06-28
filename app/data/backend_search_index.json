@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T17:17:57+08:00",
+  "generatedAt": "2026-06-28T17:35:30+08:00",
   "stats": {
-    "documents": 504,
+    "documents": 505,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17448,6 +17448,41 @@
       "hotScore": 85.0,
       "examFrequency": 0.8,
       "examScore": 8.0
+    },
+    "R041": {
+      "id": "R041",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "独立性检验卡方统计量公式",
+      "summary": "卡方统计量通过观测频数与期望频数的差异衡量两个分类变量的关联程度，值越大越倾向于拒绝独立假设。",
+      "category": "统计与概率",
+      "tags": [
+        "R041",
+        "独立性检验",
+        "卡方统计量",
+        "列联表",
+        "分类变量",
+        "假设检验",
+        "期望频数"
+      ],
+      "coreFormula": {
+        "latex": "\\chi^2 = \\frac{n(ad-bc)^2}{(a+b)(c+d)(a+c)(b+d)}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R041/aec09e2d3ccda37a@3x.png",
+          "width_px": 621,
+          "height_px": 126,
+          "display_width_px": 207,
+          "display_height_px": 42,
+          "scale": 3
+        }
+      },
+      "rank": 220,
+      "difficulty": 3.0,
+      "searchBoost": 0.83,
+      "hotScore": 85.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -17794,6 +17829,11 @@
     [
       "正方体内切球、棱切球、外接球半径公式",
       "G042",
+      340
+    ],
+    [
+      "独立性检验卡方统计量公式",
+      "R041",
       340
     ],
     [
@@ -19944,11 +19984,6 @@
     [
       "穿根法",
       "I045",
-      319
-    ],
-    [
-      "等号成立条件",
-      "I036",
       319
     ]
   ]

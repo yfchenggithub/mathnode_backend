@@ -502,5 +502,6 @@
   "R036": "R036_percentile_ceiling.pdf",
   "R038": "R038_least_squares_regression.pdf",
   "R039": "R039_regression_line_through_centroid.pdf",
-  "R040": "R040_pearson_r_range.pdf"
+  "R040": "R040_pearson_r_range.pdf",
+  "R041": "R041_chi_square_independence_test.pdf"
 }
