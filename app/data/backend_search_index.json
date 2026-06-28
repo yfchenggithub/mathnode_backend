@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T11:59:28+08:00",
+  "generatedAt": "2026-06-28T12:15:53+08:00",
   "stats": {
-    "documents": 486,
+    "documents": 487,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16830,6 +16830,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "R022": {
+      "id": "R022",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "组合数递推公式与对称性",
+      "summary": "组合数递推公式 $\\binom{n}{k}=\\binom{n-1}{k-1}+\\binom{n-1}{k}$ 与对称性 $\\binom{n}{k}=\\binom{n}{n-k}$ 是组合计算的基础，用于化简和求和。",
+      "category": "概率统计",
+      "tags": [
+        "R022",
+        "组合数",
+        "递推公式",
+        "对称性",
+        "杨辉三角",
+        "组合恒等式"
+      ],
+      "coreFormula": {
+        "latex": "\\binom{n}{k}=\\binom{n-1}{k-1}+\\binom{n-1}{k}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R022/541eaff980e990fc@3x.png",
+          "width_px": 504,
+          "height_px": 111,
+          "display_width_px": 168,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 199,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 70.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -19254,6 +19288,11 @@
       319
     ],
     [
+      "组合数递推公式与对称性",
+      "R022",
+      319
+    ],
+    [
       "经典不等式",
       "I036",
       319
@@ -19325,11 +19364,6 @@
     ],
     [
       "变量替换",
-      "F072",
-      318
-    ],
-    [
-      "同除",
       "F072",
       318
     ]
