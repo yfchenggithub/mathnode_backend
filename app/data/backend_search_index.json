@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T16:53:22+08:00",
+  "generatedAt": "2026-06-28T17:17:57+08:00",
   "stats": {
-    "documents": 503,
+    "documents": 504,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17412,6 +17412,42 @@
       "hotScore": 70.0,
       "examFrequency": 0.6,
       "examScore": 5.0
+    },
+    "R040": {
+      "id": "R040",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "样本相关系数（Pearson r）",
+      "summary": "衡量两个定量变量线性相关方向和强度的指标，取值范围[-1,1]。",
+      "category": "统计",
+      "tags": [
+        "R040",
+        "相关系数",
+        "线性相关",
+        "统计",
+        "Pearson相关",
+        "样本相关系数",
+        "正相关",
+        "负相关"
+      ],
+      "coreFormula": {
+        "latex": "r = \\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})}{\\sqrt{\\sum_{i=1}^{n}(x_i-\\bar{x})^2\\sum_{i=1}^{n}(y_i-\\bar{y})^2}},\\quad r\\in[-1,1]",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R040/95666da4baee3e4c@3x.png",
+          "width_px": 901,
+          "height_px": 161,
+          "display_width_px": 300,
+          "display_height_px": 54,
+          "scale": 3
+        }
+      },
+      "rank": 218,
+      "difficulty": 2.0,
+      "searchBoost": 0.73,
+      "hotScore": 85.0,
+      "examFrequency": 0.8,
+      "examScore": 8.0
     }
   },
   "suggestions": [
