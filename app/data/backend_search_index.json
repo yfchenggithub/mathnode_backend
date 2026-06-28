@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T00:39:58+08:00",
+  "generatedAt": "2026-06-29T01:07:29+08:00",
   "stats": {
-    "documents": 526,
+    "documents": 527,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18202,6 +18202,41 @@
       "hotScore": 80.0,
       "examFrequency": 1.0,
       "examScore": 5.0
+    },
+    "J025": {
+      "id": "J025",
+      "module": "function",
+      "moduleDir": "10_junior_basics",
+      "title": "二次函数闭区间面积最值（顶点法）",
+      "summary": "面积转化为二次函数后，利用顶点公式结合区间端点求最值。",
+      "category": "函数与几何综合",
+      "tags": [
+        "J025",
+        "二次函数",
+        "面积最值",
+        "闭区间最值",
+        "顶点法",
+        "对称轴",
+        "区间端点"
+      ],
+      "coreFormula": {
+        "latex": "x_0=-\\frac{B}{2A},\\qquad S_{\\text{最值}}=\\frac{4AC-B^{2}}{4A}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J025/6de104e29d509d5b@3x.png",
+          "width_px": 658,
+          "height_px": 113,
+          "display_width_px": 219,
+          "display_height_px": 38,
+          "scale": 3
+        }
+      },
+      "rank": 160,
+      "difficulty": 4.0,
+      "searchBoost": 0.6,
+      "hotScore": 50.0,
+      "examFrequency": 0.6,
+      "examScore": 6.0
     }
   },
   "suggestions": [
