@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T15:14:51+08:00",
+  "generatedAt": "2026-06-28T15:26:45+08:00",
   "stats": {
-    "documents": 498,
+    "documents": 499,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17239,6 +17239,42 @@
       "searchBoost": 1.0,
       "hotScore": 80.0,
       "examFrequency": 1.0,
+      "examScore": 5.0
+    },
+    "R034": {
+      "id": "R034",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "分层抽样比例分配样本量公式",
+      "summary": "按各层人数比例分配样本，使样本结构与总体一致，每个个体入样概率相同。",
+      "category": "统计与概率",
+      "tags": [
+        "R034",
+        "分层抽样",
+        "比例分配",
+        "样本容量",
+        "统计",
+        "按比例分配",
+        "入样概率",
+        "抽样比"
+      ],
+      "coreFormula": {
+        "latex": "n_i = n \\cdot \\frac{N_i}{N}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R034/d8181332be15d69e@3x.png",
+          "width_px": 234,
+          "height_px": 107,
+          "display_width_px": 78,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 195,
+      "difficulty": 2.0,
+      "searchBoost": 0.8,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
       "examScore": 5.0
     }
   },
