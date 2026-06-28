@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T10:28:05+08:00",
+  "generatedAt": "2026-06-28T10:41:27+08:00",
   "stats": {
-    "documents": 481,
+    "documents": 482,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16658,6 +16658,40 @@
       "hotScore": 55.0,
       "examFrequency": 0.4,
       "examScore": 3.0
+    },
+    "R016": {
+      "id": "R016",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "组合数递推公式（杨辉三角恒等式）",
+      "summary": "杨辉三角中每个数等于它左上方和右上方两数之和，是组合数计算与化简的核心工具。",
+      "category": "计数原理",
+      "tags": [
+        "R016",
+        "组合恒等式",
+        "递推公式",
+        "杨辉三角",
+        "基础结论",
+        "组合数"
+      ],
+      "coreFormula": {
+        "latex": "\\binom{n}{m}+\\binom{n}{m-1}=\\binom{n+1}{m}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R016/69dec3c92f6f48fa@3x.png",
+          "width_px": 526,
+          "height_px": 111,
+          "display_width_px": 175,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 229,
+      "difficulty": 2.0,
+      "searchBoost": 1.0,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -18132,6 +18166,11 @@
       325
     ],
     [
+      "帕斯卡公式",
+      "R016",
+      325
+    ],
+    [
       "幂函数凸性不等式",
       "I021",
       325
@@ -18154,6 +18193,11 @@
     [
       "排序不等式",
       "I055",
+      325
+    ],
+    [
+      "杨辉三角递推",
+      "R016",
       325
     ],
     [
@@ -18184,6 +18228,11 @@
     [
       "累加法求通项公式",
       "L020",
+      325
+    ],
+    [
+      "组合数加法公式",
+      "R016",
       325
     ],
     [
@@ -19144,21 +19193,6 @@
     [
       "垂直判断",
       "G023",
-      318
-    ],
-    [
-      "垂直转化链",
-      "G023",
-      318
-    ],
-    [
-      "夹角",
-      "G029",
-      318
-    ],
-    [
-      "导数压轴题",
-      "F072",
       318
     ]
   ]

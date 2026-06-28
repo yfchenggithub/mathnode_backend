@@ -479,5 +479,6 @@
   "G043": "G043_regular_tetrahedron_height_insphere_ratio.pdf",
   "R013": "R013_permutation_formula.pdf",
   "R014": "R014_n_choose_m_formula.pdf",
-  "R015": "R015_binomial_symmetry.pdf"
+  "R015": "R015_binomial_symmetry.pdf",
+  "R016": "R016_pascal_identity.pdf"
 }
