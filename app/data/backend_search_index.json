@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T13:27:01+08:00",
+  "generatedAt": "2026-06-28T13:45:34+08:00",
   "stats": {
-    "documents": 492,
+    "documents": 493,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17034,6 +17034,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 6.0
+    },
+    "R028": {
+      "id": "R028",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "贝叶斯公式",
+      "summary": "已知结果发生，反推原因的概率，实现从先验到后验的更新。",
+      "category": "概率与统计",
+      "tags": [
+        "R028",
+        "贝叶斯公式",
+        "条件概率",
+        "后验概率",
+        "全概率公式",
+        "原因推断"
+      ],
+      "coreFormula": {
+        "latex": "P(A_i \\mid B) = \\frac{P(A_i)P(B \\mid A_i)}{\\sum_{j=1}^{n} P(A_j)P(B \\mid A_j)}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R028/f39755c09012790c@3x.png",
+          "width_px": 650,
+          "height_px": 132,
+          "display_width_px": 217,
+          "display_height_px": 44,
+          "scale": 3
+        }
+      },
+      "rank": 232,
+      "difficulty": 3.0,
+      "searchBoost": 0.86,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -17130,6 +17164,11 @@
     [
       "绝对值三角不等式",
       "I007",
+      352
+    ],
+    [
+      "贝叶斯公式",
+      "R028",
       352
     ],
     [
@@ -18193,6 +18232,11 @@
       328
     ],
     [
+      "后验概率公式",
+      "R028",
+      328
+    ],
+    [
       "圆幂定理",
       "P051",
       328
@@ -18333,6 +18377,11 @@
       328
     ],
     [
+      "贝叶斯定理",
+      "R028",
+      328
+    ],
+    [
       "距离差绝对值",
       "C037",
       328
@@ -18340,6 +18389,11 @@
     [
       "轨迹方程",
       "C037",
+      328
+    ],
+    [
+      "逆概率公式",
+      "R028",
       328
     ],
     [
@@ -19515,26 +19569,6 @@
     [
       "函数周期",
       "F022",
-      318
-    ],
-    [
-      "加常数型",
-      "F022",
-      318
-    ],
-    [
-      "化为一元不等式",
-      "F072",
-      318
-    ],
-    [
-      "化归思想",
-      "F072",
-      318
-    ],
-    [
-      "单变量转化",
-      "F072",
       318
     ]
   ]
