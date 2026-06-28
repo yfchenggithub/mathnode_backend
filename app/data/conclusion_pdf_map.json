@@ -500,5 +500,6 @@
   "R034": "R034_stratified_proportional_allocation.pdf",
   "R035": "R035_histogram_mode_median_estimate.pdf",
   "R036": "R036_percentile_ceiling.pdf",
-  "R038": "R038_least_squares_regression.pdf"
+  "R038": "R038_least_squares_regression.pdf",
+  "R039": "R039_regression_line_through_centroid.pdf"
 }
