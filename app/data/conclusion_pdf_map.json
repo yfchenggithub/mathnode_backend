@@ -470,5 +470,6 @@
   "G053": "G053_cavalieri_principle.pdf",
   "G054": "G054_edge_plane_intersection_parameter.pdf",
   "G055": "G055_cube_section_polygon_range_acute_triangle.pdf",
-  "G056": "G056_tetrahedron_volume_scalar_triple.pdf"
+  "G056": "G056_tetrahedron_volume_scalar_triple.pdf",
+  "G025": "G025_point_plane_distance_volume.pdf"
 }
