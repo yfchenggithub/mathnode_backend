@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T10:56:32+08:00",
+  "generatedAt": "2026-06-28T11:24:12+08:00",
   "stats": {
-    "documents": 483,
+    "documents": 484,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -16727,6 +16727,41 @@
       "hotScore": 80.0,
       "examFrequency": 0.9,
       "examScore": 6.0
+    },
+    "R019": {
+      "id": "R019",
+      "module": "probability-stat",
+      "moduleDir": "06_probability-stat",
+      "title": "二项式系数和公式：∑",
+      "summary": "二项式展开式中所有二项式系数之和等于2的n次方。",
+      "category": "二项式定理",
+      "tags": [
+        "R019",
+        "二项式系数",
+        "组合数",
+        "恒等式",
+        "系数和",
+        "展开式",
+        "二项式定理"
+      ],
+      "coreFormula": {
+        "latex": "\\sum_{k=0}^{n} \\binom{n}{k} = 2^n",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/R019/1cc3b3c9c873716f@3x.png",
+          "width_px": 263,
+          "height_px": 137,
+          "display_width_px": 88,
+          "display_height_px": 46,
+          "scale": 3
+        }
+      },
+      "rank": 212,
+      "difficulty": 1.0,
+      "searchBoost": 0.8,
+      "hotScore": 85.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -17413,6 +17448,11 @@
     [
       "二阶递推通项公式",
       "L026",
+      332
+    ],
+    [
+      "二项式系数和公式:∑",
+      "R019",
       332
     ],
     [
@@ -19222,11 +19262,6 @@
     ],
     [
       "垂直关系转化",
-      "G023",
-      318
-    ],
-    [
-      "垂直判断",
       "G023",
       318
     ]
