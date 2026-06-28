@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-28T20:53:09+08:00",
+  "generatedAt": "2026-06-28T21:16:10+08:00",
   "stats": {
-    "documents": 514,
+    "documents": 515,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -17793,6 +17793,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "J010": {
+      "id": "J010",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "等弧对等角，等角对等弧（圆周角定理推论）",
+      "summary": "在同圆或等圆中，等弧和等圆周角可以互相推出。",
+      "category": "平面几何",
+      "tags": [
+        "J010",
+        "圆周角定理",
+        "等弧等角",
+        "圆的性质",
+        "基础定理",
+        "等角对等弧"
+      ],
+      "coreFormula": {
+        "latex": "\\overset{\\frown}{AB} = \\overset{\\frown}{CD} \\iff \\angle APB = \\angle CQD",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J010/6224cea4e3c1c269@3x.png",
+          "width_px": 619,
+          "height_px": 81,
+          "display_width_px": 206,
+          "display_height_px": 27,
+          "scale": 3
+        }
+      },
+      "rank": 198,
+      "difficulty": 2.0,
+      "searchBoost": 0.73,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
