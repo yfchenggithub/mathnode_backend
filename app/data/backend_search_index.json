@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T03:48:44+08:00",
+  "generatedAt": "2026-06-29T04:06:51+08:00",
   "stats": {
-    "documents": 534,
+    "documents": 535,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18480,6 +18480,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "J036": {
+      "id": "J036",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "费马点定理",
+      "summary": "三角形内到三个顶点距离之和最小的点：所有角小于120°时在形内且三连线夹角120°；有角≥120°时该顶点即为最小点。",
+      "category": "平面几何",
+      "tags": [
+        "J036",
+        "费马点",
+        "三角形最值",
+        "几何最值",
+        "夹角120°",
+        "距离和最小"
+      ],
+      "coreFormula": {
+        "latex": "\\angle APB = \\angle BPC = \\angle CPA = 120^\\circ; \\text{when all angles}<120^\\circ, \\text{min of }PA+PB+PC \\text{ occurs at }P; \\text{when }\\angle A\\ge120^\\circ, \\text{min}=AB+AC.",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J036/813a9d6e0418e13b@3x.png",
+          "width_px": 2346,
+          "height_px": 62,
+          "display_width_px": 782,
+          "display_height_px": 21,
+          "scale": 3
+        }
+      },
+      "rank": 213,
+      "difficulty": 3.0,
+      "searchBoost": 0.76,
+      "hotScore": 75.0,
+      "examFrequency": 0.8,
+      "examScore": 8.0
     }
   },
   "suggestions": [
@@ -19186,6 +19220,11 @@
     [
       "等号成立",
       "I028",
+      333
+    ],
+    [
+      "费马点定理",
+      "J036",
       333
     ],
     [
@@ -20976,11 +21015,6 @@
     [
       "圆锥曲线中点弦斜率",
       "C059",
-      319
-    ],
-    [
-      "墙角模型",
-      "G035",
       319
     ]
   ]

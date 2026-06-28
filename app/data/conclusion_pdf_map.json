@@ -532,5 +532,6 @@
   "J031": "J031_rotation_congruence.pdf",
   "J032": "J032_reflection_min_distance_sum.pdf",
   "J033": "J033_weighted_distance_minimum.pdf",
-  "J035": "J035_rotation_scaling_locus.pdf"
+  "J035": "J035_rotation_scaling_locus.pdf",
+  "J036": "J036_fermat_point_min_distance.pdf"
 }
