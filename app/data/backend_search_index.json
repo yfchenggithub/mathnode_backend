@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T12:02:30+08:00",
+  "generatedAt": "2026-06-29T14:29:06+08:00",
   "stats": {
-    "documents": 561,
+    "documents": 562,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -19405,6 +19405,41 @@
       "hotScore": 65.0,
       "examFrequency": 0.6,
       "examScore": 5.0
+    },
+    "J054": {
+      "id": "J054",
+      "module": "inequality",
+      "moduleDir": "10_junior_basics",
+      "title": "非负数之和为零则每项为零",
+      "summary": "几个非负数加起来等于0，它们每个都必须是0。",
+      "category": "代数与方程",
+      "tags": [
+        "J054",
+        "非负性",
+        "绝对值",
+        "偶次幂",
+        "算术平方根",
+        "方程求解",
+        "等价转化"
+      ],
+      "coreFormula": {
+        "latex": "\\sum_{i=1}^n a_i = 0 \\Rightarrow a_1 = a_2 = \\dots = a_n = 0",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J054/ee821090df0d5169@3x.png",
+          "width_px": 653,
+          "height_px": 136,
+          "display_width_px": 218,
+          "display_height_px": 45,
+          "scale": 3
+        }
+      },
+      "rank": 216,
+      "difficulty": 2.0,
+      "searchBoost": 0.86,
+      "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -19856,6 +19891,11 @@
     [
       "对数切线放缩",
       "I011",
+      336
+    ],
+    [
+      "非负数之和为零则每项为零",
+      "J054",
       336
     ],
     [
@@ -21900,11 +21940,6 @@
     ],
     [
       "三次函数单调性判定",
-      "F058",
-      319
-    ],
-    [
-      "三次函数图像形状",
       "F058",
       319
     ]
