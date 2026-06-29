@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T09:39:41+08:00",
+  "generatedAt": "2026-06-29T10:00:54+08:00",
   "stats": {
-    "documents": 553,
+    "documents": 554,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -19131,6 +19131,40 @@
       "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "J006": {
+      "id": "J006",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "弦图模型",
+      "summary": "用四个全等直角三角形拼成大正方形，通过面积相等得到勾股定理的几何构造。",
+      "category": "几何",
+      "tags": [
+        "J006",
+        "弦图",
+        "勾股定理",
+        "面积法",
+        "几何构造",
+        "平面几何"
+      ],
+      "coreFormula": {
+        "latex": "a^2 + b^2 = c^2",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J006/7815fae5f495333a@3x.png",
+          "width_px": 238,
+          "height_px": 63,
+          "display_width_px": 79,
+          "display_height_px": 21,
+          "scale": 3
+        }
+      },
+      "rank": 103,
+      "difficulty": 2.0,
+      "searchBoost": 0.3,
+      "hotScore": 50.0,
+      "examFrequency": 0.2,
+      "examScore": 3.0
     }
   },
   "suggestions": [
