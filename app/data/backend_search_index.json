@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T09:06:47+08:00",
+  "generatedAt": "2026-06-29T09:39:41+08:00",
   "stats": {
-    "documents": 552,
+    "documents": 553,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -19095,6 +19095,40 @@
       "difficulty": 2.0,
       "searchBoost": 0.7,
       "hotScore": 80.0,
+      "examFrequency": 0.8,
+      "examScore": 5.0
+    },
+    "J002": {
+      "id": "J002",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "8字型相似模型（平行线夹相交线）",
+      "summary": "当两条平行线被两条相交直线所截时，形成的两个三角形相似，对应边成比例。",
+      "category": "平面几何",
+      "tags": [
+        "J002",
+        "相似三角形",
+        "8字模型",
+        "平行线",
+        "比例线段",
+        "几何模型"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{OA}{OC}=\\frac{OB}{OD}=\\frac{AB}{CD}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J002/7d1ffd331fb78717@3x.png",
+          "width_px": 378,
+          "height_px": 110,
+          "display_width_px": 126,
+          "display_height_px": 37,
+          "scale": 3
+        }
+      },
+      "rank": 197,
+      "difficulty": 3.0,
+      "searchBoost": 0.75,
+      "hotScore": 75.0,
       "examFrequency": 0.8,
       "examScore": 5.0
     }
