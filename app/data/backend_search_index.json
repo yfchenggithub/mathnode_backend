@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T10:00:54+08:00",
+  "generatedAt": "2026-06-29T10:40:45+08:00",
   "stats": {
-    "documents": 554,
+    "documents": 555,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -19165,6 +19165,41 @@
       "hotScore": 50.0,
       "examFrequency": 0.2,
       "examScore": 3.0
+    },
+    "J013": {
+      "id": "J013",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "弦切角定理",
+      "summary": "弦切角等于它所夹弧所对的圆周角。",
+      "category": "平面几何（圆）",
+      "tags": [
+        "J013",
+        "弦切角定理",
+        "圆",
+        "切线",
+        "圆周角",
+        "平面几何",
+        "角度计算"
+      ],
+      "coreFormula": {
+        "latex": "\\angle APT = \\angle PBA",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J013/806e61472d762dc8@3x.png",
+          "width_px": 324,
+          "height_px": 53,
+          "display_width_px": 108,
+          "display_height_px": 18,
+          "scale": 3
+        }
+      },
+      "rank": 196,
+      "difficulty": 2.0,
+      "searchBoost": 0.76,
+      "hotScore": 70.0,
+      "examFrequency": 0.8,
+      "examScore": 6.0
     }
   },
   "suggestions": [
