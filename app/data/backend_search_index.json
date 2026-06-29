@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T11:41:09+08:00",
+  "generatedAt": "2026-06-29T12:02:30+08:00",
   "stats": {
-    "documents": 560,
+    "documents": 561,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -19371,6 +19371,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "J050": {
+      "id": "J050",
+      "module": "geometry-plane",
+      "moduleDir": "10_junior_basics",
+      "title": "面积等分与重心法",
+      "summary": "中心对称图形过对称中心的直线平分面积；三角形中线平分面积，过重心非中线不一定平分。",
+      "category": "平面几何",
+      "tags": [
+        "J050",
+        "面积等分",
+        "重心",
+        "对称中心",
+        "平面几何",
+        "中线"
+      ],
+      "coreFormula": {
+        "latex": "\\operatorname{Area}(\\Omega\\cap H_1)=\\operatorname{Area}(\\Omega\\cap H_2)=\\frac12\\operatorname{Area}(\\Omega)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J050/2c7a2c8608ad8ddc@3x.png",
+          "width_px": 803,
+          "height_px": 107,
+          "display_width_px": 268,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 180,
+      "difficulty": 3.0,
+      "searchBoost": 0.72,
+      "hotScore": 65.0,
+      "examFrequency": 0.6,
+      "examScore": 5.0
     }
   },
   "suggestions": [
