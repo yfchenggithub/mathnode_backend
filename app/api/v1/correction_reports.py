@@ -9,7 +9,10 @@ from app.api.deps import get_current_user_id, get_db, get_optional_user_id
 from app.core.logging_helpers import mask_sensitive, summarize_text
 from app.core.request_context import get_request_id
 from app.core.response import success_response
-from app.schemas.correction_report import CorrectionReportCreateRequest
+from app.schemas.correction_report import (
+    CorrectionReportCreateRequest,
+    CorrectionReportUpdateRequest,
+)
 from app.services.correction_report_service import CorrectionReportService
 
 router = APIRouter()
@@ -51,7 +54,7 @@ def list_correction_reports(
     status_filter: str | None = Query(
         default=None,
         alias="status",
-        pattern="^(pending|reviewed|ignored)$",
+        pattern="^(pending|fixed|ignored)$",
     ),
     keyword: str | None = Query(default=None, max_length=80),
     page: int = Query(default=1, ge=1),
@@ -87,3 +90,38 @@ def list_correction_reports(
         data.get("total"),
     )
     return success_response(data=data)
+
+
+@router.put("/admin/correction-reports/{report_id}")
+def update_correction_report_status(
+    report_id: int,
+    payload: CorrectionReportUpdateRequest,
+    user_id: str = Depends(get_current_user_id),
+    db: Session = Depends(get_db),
+):
+    LOGGER.info(
+        (
+            "correction report admin update api received | request_id=%s "
+            "user_id=%s target_id=%s status=%s"
+        ),
+        get_request_id(),
+        mask_sensitive(user_id, left=2, right=2),
+        report_id,
+        payload.status,
+    )
+    data = CorrectionReportService.update_status(
+        db=db,
+        report_id=report_id,
+        status=payload.status,
+    )
+    LOGGER.info(
+        (
+            "correction report admin update api success | request_id=%s "
+            "user_id=%s target_id=%s status=%s"
+        ),
+        get_request_id(),
+        mask_sensitive(user_id, left=2, right=2),
+        report_id,
+        data.get("status"),
+    )
+    return success_response(data=data, message="status updated")

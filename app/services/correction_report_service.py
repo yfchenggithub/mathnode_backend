@@ -1,15 +1,18 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import logging
 
 from sqlalchemy.orm import Session
 
-from app.core.exceptions import BizException
+from app.core.exceptions import BizException, NotFoundError
 from app.core.logging_helpers import mask_sensitive, summarize_text
 from app.core.request_context import get_request_id
 from app.models.correction_report import CorrectionReport
 from app.repositories.correction_report_repo import CorrectionReportRepository
-from app.schemas.correction_report import CorrectionReportCreateRequest
+from app.schemas.correction_report import (
+    CorrectionReportCreateRequest,
+    CorrectionReportStatus,
+)
 
 LOGGER = logging.getLogger(__name__)
 
@@ -22,7 +25,7 @@ VALID_LOCATIONS: set[str] = {
     "other",
 }
 VALID_TYPES: set[str] = {"formula", "text", "layout", "other"}
-VALID_STATUSES: set[str] = {"pending", "reviewed", "ignored"}
+VALID_STATUSES: set[str] = {"pending", "fixed", "ignored"}
 
 
 def _mask_optional_user_id(user_id: str | None) -> str:
@@ -72,6 +75,11 @@ class CorrectionReportService:
         return normalized
 
     @staticmethod
+    def _serialize_status(status: str) -> str:
+        # Treat the retired reviewed state as fixed for older persisted rows.
+        return "fixed" if status == "reviewed" else status
+
+    @staticmethod
     def serialize(row: CorrectionReport) -> dict:
         return {
             "id": row.id,
@@ -81,7 +89,7 @@ class CorrectionReportService:
             "error_location": row.error_location,
             "error_type": row.error_type,
             "description": row.description,
-            "status": row.status,
+            "status": CorrectionReportService._serialize_status(row.status),
             "created_at": row.created_at.isoformat(),
             "updated_at": row.updated_at.isoformat(),
         }
@@ -179,3 +187,25 @@ class CorrectionReportService:
             "page_size": page_size,
             "items": [CorrectionReportService.serialize(row) for row in rows],
         }
+
+    @staticmethod
+    def update_status(
+        db: Session,
+        *,
+        report_id: int,
+        status: CorrectionReportStatus,
+    ) -> dict:
+        normalized_status = CorrectionReportService._normalize_status(status)
+        if normalized_status is None:
+            raise BizException(
+                code=4233,
+                message="invalid correction report status",
+                status_code=422,
+            )
+
+        row = CorrectionReportRepository.get_by_id(db, report_id)
+        if row is None:
+            raise NotFoundError(message="correction report not found")
+
+        updated = CorrectionReportRepository.update_status(db, row, normalized_status)
+        return CorrectionReportService.serialize(updated)

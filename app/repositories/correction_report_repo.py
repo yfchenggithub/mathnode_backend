@@ -1,4 +1,6 @@
-from __future__ import annotations
+﻿from __future__ import annotations
+
+from datetime import datetime
 
 from sqlalchemy import desc, func, or_, select
 from sqlalchemy.orm import Session
@@ -16,6 +18,11 @@ class CorrectionReportRepository:
         return obj
 
     @staticmethod
+    def get_by_id(db: Session, report_id: int) -> CorrectionReport | None:
+        stmt = select(CorrectionReport).where(CorrectionReport.id == report_id)
+        return db.execute(stmt).scalar_one_or_none()
+
+    @staticmethod
     def list_reports(
         db: Session,
         *,
@@ -27,7 +34,10 @@ class CorrectionReportRepository:
         conditions = []
 
         if status:
-            conditions.append(CorrectionReport.status == status)
+            if status == "fixed":
+                conditions.append(CorrectionReport.status.in_(("fixed", "reviewed")))
+            else:
+                conditions.append(CorrectionReport.status == status)
 
         normalized_keyword = (keyword or "").strip()
         if normalized_keyword:
@@ -62,3 +72,15 @@ class CorrectionReportRepository:
             .all()
         )
         return list(rows), total
+
+    @staticmethod
+    def update_status(
+        db: Session,
+        report: CorrectionReport,
+        status: str,
+    ) -> CorrectionReport:
+        report.status = status
+        report.updated_at = datetime.utcnow()
+        db.commit()
+        db.refresh(report)
+        return report

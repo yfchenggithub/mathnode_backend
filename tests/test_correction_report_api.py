@@ -100,6 +100,28 @@ class CorrectionReportApiTests(unittest.TestCase):
         self.assertEqual(list_payload["data"]["total"], 1)
         self.assertEqual(list_payload["data"]["items"][0]["id"], created["id"])
 
+    def test_admin_update_report_status(self) -> None:
+        created = self._create_report()
+
+        update_response = self.client.put(
+            f"/api/v1/admin/correction-reports/{created['id']}",
+            json={"status": "fixed"},
+            headers=self._auth_headers,
+        )
+        self.assertEqual(update_response.status_code, 200)
+        update_payload = update_response.json()
+        self.assertEqual(update_payload["code"], 0)
+        self.assertEqual(update_payload["data"]["status"], "fixed")
+
+        list_response = self.client.get(
+            "/api/v1/admin/correction-reports?status=fixed",
+            headers=self._auth_headers,
+        )
+        self.assertEqual(list_response.status_code, 200)
+        list_payload = list_response.json()
+        self.assertEqual(list_payload["data"]["total"], 1)
+        self.assertEqual(list_payload["data"]["items"][0]["status"], "fixed")
+
     def test_admin_list_requires_login(self) -> None:
         response = self.client.get("/api/v1/admin/correction-reports")
 
