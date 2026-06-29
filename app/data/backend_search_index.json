@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T08:16:56+08:00",
+  "generatedAt": "2026-06-29T08:32:27+08:00",
   "stats": {
-    "documents": 550,
+    "documents": 551,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -19026,6 +19026,41 @@
       "difficulty": 1.0,
       "searchBoost": 0.9,
       "hotScore": 60.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
+    },
+    "J053": {
+      "id": "J053",
+      "module": "inequality",
+      "moduleDir": "10_junior_basics",
+      "title": "韦达定理（根与系数关系）",
+      "summary": "对于实系数一元二次方程，两根之和等于一次项系数相反数除以二次项系数，两根之积等于常数项除以二次项系数。",
+      "category": "方程与不等式",
+      "tags": [
+        "J053",
+        "韦达定理",
+        "根与系数",
+        "一元二次方程",
+        "判别式",
+        "实根",
+        "对称式"
+      ],
+      "coreFormula": {
+        "latex": "x_1+x_2=-\\frac{b}{a},\\quad x_1x_2=\\frac{c}{a}",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J053/a93c6945e2523a2a@3x.png",
+          "width_px": 516,
+          "height_px": 108,
+          "display_width_px": 172,
+          "display_height_px": 36,
+          "scale": 3
+        }
+      },
+      "rank": 197,
+      "difficulty": 1.0,
+      "searchBoost": 0.8,
+      "hotScore": 70.0,
       "examFrequency": 1.0,
       "examScore": 5.0
     }
