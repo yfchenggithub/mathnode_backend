@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T11:11:32+08:00",
+  "generatedAt": "2026-06-29T11:25:05+08:00",
   "stats": {
-    "documents": 557,
+    "documents": 558,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -19268,6 +19268,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 5.0
+    },
+    "J024": {
+      "id": "J024",
+      "module": "function",
+      "moduleDir": "10_junior_basics",
+      "title": "二次函数区间最值分类公式",
+      "summary": "二次函数在闭区间上的最值由开口方向和对称轴到区间的位置共同决定，分类讨论即可。",
+      "category": "函数",
+      "tags": [
+        "J024",
+        "二次函数",
+        "最值",
+        "分类讨论",
+        "对称轴",
+        "闭区间"
+      ],
+      "coreFormula": {
+        "latex": "y_{\\min}=\\begin{cases} f(m), & h\\le m,\\\\ f(h), & m<h<n,\\\\ f(n), & h\\ge n, \\end{cases}\\qquad y_{\\max}=\\max\\{f(m),f(n)\\}.\\quad (a>0)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J024/a78cdbb2e520f7c1@3x.png",
+          "width_px": 1239,
+          "height_px": 162,
+          "display_width_px": 413,
+          "display_height_px": 54,
+          "scale": 3
+        }
+      },
+      "rank": 227,
+      "difficulty": 2.0,
+      "searchBoost": 0.9,
+      "hotScore": 85.0,
+      "examFrequency": 0.9,
+      "examScore": 6.0
     }
   },
   "suggestions": [
@@ -19414,6 +19448,11 @@
     [
       "三元权方和不等式",
       "I040",
+      347
+    ],
+    [
+      "二次函数区间最值分类公式",
+      "J024",
       347
     ],
     [
@@ -21077,6 +21116,16 @@
       323
     ],
     [
+      "二次函数最值",
+      "J024",
+      323
+    ],
+    [
+      "二次函数顶点最值",
+      "J024",
+      323
+    ],
+    [
       "切点弦",
       "C075",
       323
@@ -21089,6 +21138,11 @@
     [
       "判别式法求二次分式函数值域",
       "F008",
+      323
+    ],
+    [
+      "区间最值",
+      "J024",
       323
     ],
     [
@@ -21124,6 +21178,11 @@
     [
       "圆锥曲线",
       "C075",
+      323
+    ],
+    [
+      "对称轴最值",
+      "J024",
       323
     ],
     [
@@ -21744,31 +21803,6 @@
     [
       "二阶导数",
       "I014",
-      319
-    ],
-    [
-      "体对角线一半公式",
-      "G035",
-      319
-    ],
-    [
-      "凸凹性",
-      "I014",
-      319
-    ],
-    [
-      "凸函数",
-      "I014",
-      319
-    ],
-    [
-      "凹函数",
-      "I014",
-      319
-    ],
-    [
-      "函数夹逼",
-      "I036",
       319
     ]
   ]
