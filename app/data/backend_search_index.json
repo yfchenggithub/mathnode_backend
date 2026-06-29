@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T08:02:33+08:00",
+  "generatedAt": "2026-06-29T08:16:56+08:00",
   "stats": {
-    "documents": 549,
+    "documents": 550,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -18991,6 +18991,41 @@
       "difficulty": 1.0,
       "searchBoost": 0.77,
       "hotScore": 65.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
+    },
+    "J052": {
+      "id": "J052",
+      "module": "function",
+      "moduleDir": "10_junior_basics",
+      "title": "十字相乘法（首项系数为1）",
+      "summary": "找到两个实数，和为一次项系数、积为常数项，则二次三项式可写成 (x + 这两个数) 的乘积。",
+      "category": "代数",
+      "tags": [
+        "J052",
+        "二次三项式",
+        "因式分解",
+        "十字相乘法",
+        "韦达定理",
+        "整数分解",
+        "符号配对"
+      ],
+      "coreFormula": {
+        "latex": "x^2+px+q=(x+a)(x+b)",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J052/0175355124a5c3e6@3x.png",
+          "width_px": 530,
+          "height_px": 70,
+          "display_width_px": 177,
+          "display_height_px": 23,
+          "scale": 3
+        }
+      },
+      "rank": 197,
+      "difficulty": 1.0,
+      "searchBoost": 0.9,
+      "hotScore": 60.0,
       "examFrequency": 1.0,
       "examScore": 5.0
     }
