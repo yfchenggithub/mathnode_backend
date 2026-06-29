@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-06-29T14:29:06+08:00",
+  "generatedAt": "2026-06-29T14:30:54+08:00",
   "stats": {
-    "documents": 562,
+    "documents": 563,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -19440,6 +19440,40 @@
       "hotScore": 80.0,
       "examFrequency": 0.8,
       "examScore": 6.0
+    },
+    "J055": {
+      "id": "J055",
+      "module": "function",
+      "moduleDir": "10_junior_basics",
+      "title": "判别式Δ与二次函数交点个数及最值",
+      "summary": "Δ的正负决定二次函数与x轴的交点个数，且与a共同决定最值。",
+      "category": "二次函数",
+      "tags": [
+        "J055",
+        "二次函数",
+        "判别式",
+        "交点个数",
+        "最值",
+        "顶点坐标"
+      ],
+      "coreFormula": {
+        "latex": "\\Delta = b^2-4ac",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/J055/b1a3072be780d63e@3x.png",
+          "width_px": 257,
+          "height_px": 63,
+          "display_width_px": 86,
+          "display_height_px": 21,
+          "scale": 3
+        }
+      },
+      "rank": 219,
+      "difficulty": 2.0,
+      "searchBoost": 0.9,
+      "hotScore": 80.0,
+      "examFrequency": 1.0,
+      "examScore": 5.0
     }
   },
   "suggestions": [
@@ -19827,6 +19861,11 @@
       "等比数列前n项和公式",
       "L003",
       340
+    ],
+    [
+      "判别式Δ与二次函数交点个数及最值",
+      "J055",
+      339
     ],
     [
       "两平行直线间的距离公式",
@@ -21936,11 +21975,6 @@
     [
       "三棱锥外接球补形法",
       "G035",
-      319
-    ],
-    [
-      "三次函数单调性判定",
-      "F058",
       319
     ]
   ]
