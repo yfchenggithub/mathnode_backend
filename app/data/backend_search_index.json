@@ -5,7 +5,7 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-07-13T19:33:42+08:00",
+  "generatedAt": "2026-07-13T19:46:59+08:00",
   "stats": {
     "documents": 566,
     "suggestions": 500,
@@ -19515,7 +19515,7 @@
       "module": "set",
       "moduleDir": "00_set",
       "title": "集合的基本运算",
-      "summary": "集合运算就是根据元素是否满足条件（或、且、非）来构造新集合。",
+      "summary": "集合运算的核心是把元素归属翻译成“或、且、全集内取非”：并集对应或，交集对应且，补集依赖全集，差集具有方向性。",
       "category": "集合",
       "tags": [
         "S025",
@@ -19528,10 +19528,10 @@
         "子集"
       ],
       "coreFormula": {
-        "latex": "A\\cup B = \\{ x \\mid x\\in A \\text{ 或 } x\\in B \\},\\quad A\\cap B = \\{ x \\mid x\\in A \\text{ 且 } x\\in B \\},\\quad \\complement_U A = \\{ x\\in U \\mid x\\notin A \\},\\quad A\\setminus B = \\{ x \\mid x\\in A \\text{ 且 } x\\notin B \\}.",
+        "latex": "A\\cup B=\\{x\\mid x\\in A\\text{ 或 }x\\in B\\},\\quad A\\cap B=\\{x\\mid x\\in A\\text{ 且 }x\\in B\\},\\quad \\complement_U A=\\{x\\in U\\mid x\\notin A\\},\\quad A\\setminus B=\\{x\\mid x\\in A\\text{ 且 }x\\notin B\\}.",
         "type": "math_image",
         "asset": {
-          "png": "/static/formulas/S025/ab54e29660276097@3x.png",
+          "png": "/static/formulas/S025/12226bee0ec06bc5@3x.png",
           "width_px": 2226,
           "height_px": 65,
           "display_width_px": 742,
