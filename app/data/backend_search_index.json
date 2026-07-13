@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-07-13T19:18:47+08:00",
+  "generatedAt": "2026-07-13T19:28:40+08:00",
   "stats": {
-    "documents": 565,
+    "documents": 566,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -19544,6 +19544,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.95,
       "examScore": 5.0
+    },
+    "I063": {
+      "id": "I063",
+      "module": "inequality",
+      "moduleDir": "07_inequality",
+      "title": "对数糖水不等式",
+      "summary": "给两个大于1的真数加上相同的正数c，它们的自然对数比值变大但小于1。",
+      "category": "不等式",
+      "tags": [
+        "I063",
+        "对数不等式",
+        "糖水不等式",
+        "比值比较",
+        "放缩技巧",
+        "函数单调性"
+      ],
+      "coreFormula": {
+        "latex": "\\frac{\\ln a}{\\ln b} < \\frac{\\ln(a+c)}{\\ln(b+c)} < 1",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/I063/9cd76c6b37ae21d6@3x.png",
+          "width_px": 406,
+          "height_px": 122,
+          "display_width_px": 135,
+          "display_height_px": 41,
+          "scale": 3
+        }
+      },
+      "rank": 183,
+      "difficulty": 2.0,
+      "searchBoost": 0.67,
+      "hotScore": 70.0,
+      "examFrequency": 0.6,
+      "examScore": 6.0
     }
   },
   "suggestions": [
