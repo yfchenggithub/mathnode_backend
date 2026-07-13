@@ -5,7 +5,7 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-07-13T20:23:14+08:00",
+  "generatedAt": "2026-07-13T20:30:21+08:00",
   "stats": {
     "documents": 566,
     "suggestions": 500,
@@ -12026,14 +12026,14 @@
         "最小正周期"
       ],
       "coreFormula": {
-        "latex": "\\begin{aligned}x&=a+\\frac{kT}{2}\\quad(k\\in\\mathbb{Z}),\\\\\\left(b+\\frac{kT}{2},\\,c\\right)&\\quad(k\\in\\mathbb{Z}),\\\\P&=2|a_1-a_2|.\\end{aligned}",
+        "latex": "\\begin{array}{@{}l@{}}\\displaystyle x=a+\\frac{kT}{2}\\quad(k\\in\\mathbb{Z}),\\\\\\displaystyle \\left(b+\\frac{kT}{2},\\,c\\right)\\quad(k\\in\\mathbb{Z}),\\\\\\displaystyle P=2|a_1-a_2|.\\end{array}",
         "type": "math_image",
         "asset": {
-          "png": "/static/formulas/F028/e2c94ec2c2b4e1cb@3x.png",
-          "width_px": 631,
-          "height_px": 261,
-          "display_width_px": 210,
-          "display_height_px": 87,
+          "png": "/static/formulas/F028/69448d27bc4f6a0a@3x.png",
+          "width_px": 444,
+          "height_px": 279,
+          "display_width_px": 148,
+          "display_height_px": 93,
           "scale": 3
         }
       },
