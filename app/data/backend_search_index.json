@@ -5,9 +5,9 @@
     "extractor_version": "1.0.0"
   },
   "version": 1,
-  "generatedAt": "2026-07-13T20:30:21+08:00",
+  "generatedAt": "2026-07-14T15:08:39+08:00",
   "stats": {
-    "documents": 566,
+    "documents": 567,
     "suggestions": 500,
     "prefixGovernance": {
       "expandedPrefixCandidates": 23966,
@@ -19590,6 +19590,40 @@
       "hotScore": 70.0,
       "examFrequency": 0.6,
       "examScore": 6.0
+    },
+    "I064": {
+      "id": "I064",
+      "module": "inequality",
+      "moduleDir": "07_inequality",
+      "title": "反向柯西不等式（二维）",
+      "summary": "两个平方差的乘积不超过交叉乘积差的平方，本质是完全平方$(ad-bc)^2\\ge0$的代数变形。",
+      "category": "不等式",
+      "tags": [
+        "I064",
+        "反向柯西不等式",
+        "平方差结构",
+        "代数恒等式",
+        "不等式证明",
+        "柯西变式"
+      ],
+      "coreFormula": {
+        "latex": "(a^2-b^2)(c^2-d^2)\\leqslant(ac-bd)^2",
+        "type": "math_image",
+        "asset": {
+          "png": "/static/formulas/I064/6513dc9467dc903a@3x.png",
+          "width_px": 567,
+          "height_px": 70,
+          "display_width_px": 189,
+          "display_height_px": 23,
+          "scale": 3
+        }
+      },
+      "rank": 151,
+      "difficulty": 3.0,
+      "searchBoost": 0.57,
+      "hotScore": 60.0,
+      "examFrequency": 0.4,
+      "examScore": 4.0
     }
   },
   "suggestions": [
