@@ -53,6 +53,32 @@ def _resolve_runtime_path(raw_path: str) -> Path:
     return _resolve_project_path(raw_path)
 
 
+def _extract_content_title(raw_record: object) -> str:
+    if not isinstance(raw_record, dict):
+        return ""
+
+    meta = raw_record.get("meta")
+    if isinstance(meta, dict):
+        title = str(meta.get("title") or "").strip()
+        if title:
+            return title
+
+    return str(raw_record.get("title") or "").strip()
+
+
+def _build_content_title_by_id(raw_records_by_id: dict[str, object]) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for raw_id, raw_record in raw_records_by_id.items():
+        conclusion_id = str(raw_id or "").strip()
+        if not conclusion_id:
+            continue
+
+        title = _extract_content_title(raw_record)
+        if title:
+            result[conclusion_id] = title
+    return result
+
+
 def _check_handout_cjk_font_startup() -> dict[str, str | bool | int | None]:
     """
     Startup self-check for handout CJK font availability.
@@ -281,6 +307,8 @@ async def app_lifespan(app: FastAPI):
         if settings.WECHAT_WEEKLY_UPDATE_AUTO_NOTIFY_ON_COUNT_INCREASE:
             WeeklyUpdateContentChangeService.schedule_count_check(
                 observed_count=int(bootstrap_status["pdf_mapping_count"] or 0),
+                observed_ids=list(pdf_mapping_result.mapping.keys()),
+                title_by_id=_build_content_title_by_id(content_result.raw_records_by_id),
                 metric_name="pdf_mapping_count",
             )
             LOGGER.info(

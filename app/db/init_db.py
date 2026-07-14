@@ -65,6 +65,33 @@ def ensure_search_keyword_no_result_count_column() -> None:
     LOGGER.info("db migration complete | table=search_keywords add_column=no_result_count")
 
 
+def ensure_weekly_update_content_snapshot_observed_ids_column() -> None:
+    inspector = inspect(engine)
+    if "weekly_update_content_snapshots" not in inspector.get_table_names():
+        return
+
+    columns = {
+        column["name"]
+        for column in inspector.get_columns("weekly_update_content_snapshots")
+    }
+    if "observed_ids_json" in columns:
+        return
+
+    LOGGER.info(
+        "db migration start | table=weekly_update_content_snapshots add_column=observed_ids_json"
+    )
+    with engine.begin() as connection:
+        connection.execute(
+            text(
+                "ALTER TABLE weekly_update_content_snapshots "
+                "ADD COLUMN observed_ids_json TEXT NOT NULL DEFAULT '[]'"
+            )
+        )
+    LOGGER.info(
+        "db migration complete | table=weekly_update_content_snapshots add_column=observed_ids_json"
+    )
+
+
 def seed_conclusions_if_empty(db: Session) -> None:
     stmt = select(Conclusion).limit(1)
     exists = db.execute(stmt).scalar_one_or_none()
@@ -84,6 +111,7 @@ def init_db() -> None:
     Base.metadata.create_all(bind=engine)
     ensure_user_status_column()
     ensure_search_keyword_no_result_count_column()
+    ensure_weekly_update_content_snapshot_observed_ids_column()
 
     db = SessionLocal()
     try:
