@@ -25,6 +25,9 @@ from app.db.session import DATABASE_PATH
 from app.loaders.content_loader import load_content
 from app.loaders.index_loader import load_index_records
 from app.loaders.pdf_mapping_loader import load_pdf_mapping
+from app.services.weekly_update_content_change_service import (
+    WeeklyUpdateContentChangeService,
+)
 from app.stores.memory_content_store import MemoryContentStore
 from app.stores.memory_index_store import MemoryIndexStore
 from app.stores.memory_pdf_mapping_store import MemoryPdfMappingStore
@@ -274,6 +277,21 @@ async def app_lifespan(app: FastAPI):
             "bootstrap complete | memory_mode_enabled=%s",
             bootstrap_status["memory_mode_enabled"],
         )
+
+        if settings.WECHAT_WEEKLY_UPDATE_AUTO_NOTIFY_ON_COUNT_INCREASE:
+            WeeklyUpdateContentChangeService.schedule_count_check(
+                observed_count=int(bootstrap_status["pdf_mapping_count"] or 0),
+                metric_name="pdf_mapping_count",
+            )
+            LOGGER.info(
+                (
+                    "bootstrap weekly update count check scheduled | "
+                    "metric=pdf_mapping_count observed_count=%s"
+                ),
+                bootstrap_status["pdf_mapping_count"],
+            )
+        else:
+            LOGGER.info("bootstrap weekly update count check disabled")
 
         if settings.BOOTSTRAP_LOG_VERBOSE:
             LOGGER.info("bootstrap complete | bootstrap_status=%s", bootstrap_status)

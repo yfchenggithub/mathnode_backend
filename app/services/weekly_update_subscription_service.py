@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 import time
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from typing import Any
 from zoneinfo import ZoneInfo
 
@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session
 
 from app.core.config import settings
 from app.core.exceptions import BizException
-from app.core.logging_helpers import mask_sensitive
+from app.core.logging_helpers import mask_sensitive, summarize_text
 from app.core.request_context import get_request_id
 from app.models.weekly_update_subscription import WeeklyUpdateSubscription
 from app.repositories.user_auth_identity_repo import UserAuthIdentityRepository
@@ -129,6 +129,25 @@ class WeeklyUpdateSubscriptionService:
             template_id=template_id,
             limit=payload.limit,
         )
+        page = payload.page or settings.WECHAT_WEEKLY_UPDATE_PAGE
+        updated_at = payload.updated_at or WeeklyUpdateSubscriptionService._format_beijing_now()
+
+        LOGGER.info(
+            (
+                "weekly update notification candidates selected | request_id=%s "
+                "template_id=%s candidate_count=%s limit=%s page=%r fields=%s "
+                "project_name=%r project_progress=%r updated_at=%r"
+            ),
+            get_request_id(),
+            mask_sensitive(template_id, left=4, right=4),
+            len(candidates),
+            payload.limit,
+            page,
+            WeeklyUpdateSubscriptionService._format_template_fields_for_log(),
+            summarize_text(payload.project_name, max_length=40),
+            summarize_text(payload.project_progress, max_length=40),
+            updated_at,
+        )
 
         sent_count = 0
         failed_count = 0
@@ -144,6 +163,18 @@ class WeeklyUpdateSubscriptionService:
             openid = str(identity.provider_user_id if identity else "").strip()
             if not openid:
                 skipped_missing_openid_count += 1
+                LOGGER.warning(
+                    (
+                        "weekly update notification skipped missing openid | "
+                        "request_id=%s user_id=%s template_id=%s "
+                        "available_count=%s identity_found=%s"
+                    ),
+                    get_request_id(),
+                    mask_sensitive(record.user_id, left=2, right=2),
+                    mask_sensitive(template_id, left=4, right=4),
+                    record.available_count,
+                    bool(identity),
+                )
                 continue
 
             try:
@@ -152,9 +183,8 @@ class WeeklyUpdateSubscriptionService:
                     template_id=template_id,
                     project_name=payload.project_name,
                     project_progress=payload.project_progress,
-                    updated_at=payload.updated_at
-                    or WeeklyUpdateSubscriptionService._format_beijing_now(),
-                    page=payload.page or settings.WECHAT_WEEKLY_UPDATE_PAGE,
+                    updated_at=updated_at,
+                    page=page,
                 )
             except Exception as exc:
                 failed_count += 1
@@ -177,8 +207,37 @@ class WeeklyUpdateSubscriptionService:
                 )
                 continue
 
+            available_count_before = int(record.available_count or 0)
             WeeklyUpdateSubscriptionRepository.consume_one_send(db=db, record=record)
             sent_count += 1
+            LOGGER.info(
+                (
+                    "weekly update notification sent | request_id=%s user_id=%s "
+                    "openid=%s template_id=%s available_count_before=%s "
+                    "available_count_after=%s total_sent_count=%s"
+                ),
+                get_request_id(),
+                mask_sensitive(record.user_id, left=2, right=2),
+                mask_sensitive(openid, left=4, right=4),
+                mask_sensitive(template_id, left=4, right=4),
+                available_count_before,
+                record.available_count,
+                record.total_sent_count,
+            )
+
+        LOGGER.info(
+            (
+                "weekly update notification send complete | request_id=%s "
+                "template_id=%s candidate_count=%s sent_count=%s failed_count=%s "
+                "skipped_missing_openid_count=%s"
+            ),
+            get_request_id(),
+            mask_sensitive(template_id, left=4, right=4),
+            len(candidates),
+            sent_count,
+            failed_count,
+            skipped_missing_openid_count,
+        )
 
         return {
             "template_id": template_id,
@@ -200,6 +259,7 @@ class WeeklyUpdateSubscriptionService:
         page: str,
     ) -> dict:
         access_token = WeeklyUpdateSubscriptionService.get_access_token()
+        template_fields = WeeklyUpdateSubscriptionService._template_fields()
         request_payload = {
             "touser": openid,
             "template_id": template_id,
@@ -207,17 +267,42 @@ class WeeklyUpdateSubscriptionService:
             "miniprogram_state": "formal",
             "lang": "zh_CN",
             "data": {
-                settings.WECHAT_WEEKLY_UPDATE_PROJECT_FIELD: {
+                template_fields["project"]: {
                     "value": project_name,
                 },
-                settings.WECHAT_WEEKLY_UPDATE_PROGRESS_FIELD: {
+                template_fields["progress"]: {
                     "value": project_progress,
                 },
-                settings.WECHAT_WEEKLY_UPDATE_TIME_FIELD: {
+                template_fields["time"]: {
                     "value": updated_at,
                 },
             },
         }
+        LOGGER.info(
+            (
+                "wechat subscribe message request | request_id=%s openid=%s "
+                "template_id=%s page=%r miniprogram_state=%s fields=%s"
+            ),
+            get_request_id(),
+            mask_sensitive(openid, left=4, right=4),
+            mask_sensitive(template_id, left=4, right=4),
+            page,
+            request_payload["miniprogram_state"],
+            WeeklyUpdateSubscriptionService._format_template_fields_for_log(),
+        )
+        LOGGER.debug(
+            (
+                "wechat subscribe message request data | request_id=%s openid=%s "
+                "template_id=%s data=%s"
+            ),
+            get_request_id(),
+            mask_sensitive(openid, left=4, right=4),
+            mask_sensitive(template_id, left=4, right=4),
+            {
+                key: summarize_text(value.get("value", ""), max_length=60)
+                for key, value in request_payload["data"].items()
+            },
+        )
         with httpx.Client(timeout=WeeklyUpdateSubscriptionService.WECHAT_TIMEOUT_SECONDS) as client:
             response = client.post(
                 WeeklyUpdateSubscriptionService.SUBSCRIBE_MESSAGE_SEND_URL,
@@ -227,8 +312,19 @@ class WeeklyUpdateSubscriptionService:
         response.raise_for_status()
         response_payload = response.json()
         errcode = response_payload.get("errcode")
+        errmsg = str(response_payload.get("errmsg", ""))
+        LOGGER.info(
+            (
+                "wechat subscribe message response | request_id=%s openid=%s "
+                "template_id=%s errcode=%s errmsg=%r"
+            ),
+            get_request_id(),
+            mask_sensitive(openid, left=4, right=4),
+            mask_sensitive(template_id, left=4, right=4),
+            errcode,
+            summarize_text(errmsg, max_length=120),
+        )
         if errcode not in (None, 0, "0"):
-            errmsg = str(response_payload.get("errmsg", ""))
             raise RuntimeError(f"wechat subscribe message failed: {errcode} {errmsg}")
         return response_payload
 
@@ -239,9 +335,19 @@ class WeeklyUpdateSubscriptionService:
             WeeklyUpdateSubscriptionService._access_token
             and WeeklyUpdateSubscriptionService._access_token_expires_at - now > 60
         ):
+            LOGGER.debug(
+                "wechat access token cache hit | request_id=%s expires_in_seconds=%s",
+                get_request_id(),
+                int(WeeklyUpdateSubscriptionService._access_token_expires_at - now),
+            )
             return WeeklyUpdateSubscriptionService._access_token
 
         appid, secret = AuthService._get_wechat_credentials()
+        LOGGER.info(
+            "wechat access token request | request_id=%s appid=%s",
+            get_request_id(),
+            mask_sensitive(appid, left=4, right=4),
+        )
         with httpx.Client(timeout=WeeklyUpdateSubscriptionService.WECHAT_TIMEOUT_SECONDS) as client:
             response = client.get(
                 WeeklyUpdateSubscriptionService.ACCESS_TOKEN_URL,
@@ -265,6 +371,11 @@ class WeeklyUpdateSubscriptionService:
 
         WeeklyUpdateSubscriptionService._access_token = token
         WeeklyUpdateSubscriptionService._access_token_expires_at = now + max(60, expires_in)
+        LOGGER.info(
+            "wechat access token received | request_id=%s expires_in_seconds=%s",
+            get_request_id(),
+            expires_in,
+        )
         return token
 
     @staticmethod
@@ -300,5 +411,32 @@ class WeeklyUpdateSubscriptionService:
 
     @staticmethod
     def _format_beijing_now() -> str:
-        now = datetime.now(ZoneInfo("Asia/Shanghai"))
+        try:
+            beijing_timezone = ZoneInfo("Asia/Shanghai")
+        except Exception as exc:
+            LOGGER.warning(
+                "beijing timezone fallback to fixed offset | request_id=%s error=%s",
+                get_request_id(),
+                exc,
+            )
+            beijing_timezone = timezone(timedelta(hours=8))
+
+        now = datetime.now(beijing_timezone)
         return now.strftime("%Y年%m月%d日 %H:%M")
+
+    @staticmethod
+    def _template_fields() -> dict[str, str]:
+        return {
+            "project": settings.WECHAT_WEEKLY_UPDATE_PROJECT_FIELD,
+            "progress": settings.WECHAT_WEEKLY_UPDATE_PROGRESS_FIELD,
+            "time": settings.WECHAT_WEEKLY_UPDATE_TIME_FIELD,
+        }
+
+    @staticmethod
+    def _format_template_fields_for_log() -> str:
+        fields = WeeklyUpdateSubscriptionService._template_fields()
+        return (
+            f"project={fields['project']},"
+            f"progress={fields['progress']},"
+            f"time={fields['time']}"
+        )

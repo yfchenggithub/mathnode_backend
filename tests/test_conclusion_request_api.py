@@ -111,6 +111,7 @@ class ConclusionRequestApiTests(unittest.TestCase):
         self.assertEqual(update_response.status_code, 200)
         update_payload = update_response.json()
         self.assertEqual(update_payload["data"]["status"], "updated")
+        self.assertNotIn("weekly_update_notification", update_payload["data"])
 
     def test_admin_list_requires_login(self) -> None:
         response = self.client.get("/api/v1/admin/conclusion-requests")

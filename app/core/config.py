@@ -212,10 +212,19 @@ class Settings(BaseModel):
         default_factory=lambda: _env_str("WECHAT_WEEKLY_UPDATE_PROJECT_FIELD", "thing1")
     )
     WECHAT_WEEKLY_UPDATE_PROGRESS_FIELD: str = Field(
-        default_factory=lambda: _env_str("WECHAT_WEEKLY_UPDATE_PROGRESS_FIELD", "thing2")
+        default_factory=lambda: _env_str("WECHAT_WEEKLY_UPDATE_PROGRESS_FIELD", "phrase2")
     )
     WECHAT_WEEKLY_UPDATE_TIME_FIELD: str = Field(
         default_factory=lambda: _env_str("WECHAT_WEEKLY_UPDATE_TIME_FIELD", "time3")
+    )
+    WECHAT_WEEKLY_UPDATE_AUTO_NOTIFY_ON_COUNT_INCREASE: bool = Field(
+        default_factory=lambda: _env_bool(
+            "WECHAT_WEEKLY_UPDATE_AUTO_NOTIFY_ON_COUNT_INCREASE",
+            True,
+        )
+    )
+    WECHAT_WEEKLY_UPDATE_AUTO_NOTIFY_LIMIT: int = Field(
+        default_factory=lambda: _env_int("WECHAT_WEEKLY_UPDATE_AUTO_NOTIFY_LIMIT", 2000)
     )
 
 

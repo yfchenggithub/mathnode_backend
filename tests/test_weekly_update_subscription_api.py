@@ -25,8 +25,14 @@ class WeeklyUpdateSubscriptionApiTests(unittest.TestCase):
     def setUp(self) -> None:
         self._old_template_id = settings.WECHAT_WEEKLY_UPDATE_TEMPLATE_ID
         self._old_page = settings.WECHAT_WEEKLY_UPDATE_PAGE
+        self._old_project_field = settings.WECHAT_WEEKLY_UPDATE_PROJECT_FIELD
+        self._old_progress_field = settings.WECHAT_WEEKLY_UPDATE_PROGRESS_FIELD
+        self._old_time_field = settings.WECHAT_WEEKLY_UPDATE_TIME_FIELD
         settings.WECHAT_WEEKLY_UPDATE_TEMPLATE_ID = "tpl-weekly-test"
         settings.WECHAT_WEEKLY_UPDATE_PAGE = "pages/search/search"
+        settings.WECHAT_WEEKLY_UPDATE_PROJECT_FIELD = "thing1"
+        settings.WECHAT_WEEKLY_UPDATE_PROGRESS_FIELD = "phrase2"
+        settings.WECHAT_WEEKLY_UPDATE_TIME_FIELD = "time3"
 
         self._engine = create_engine(
             "sqlite://",
@@ -62,6 +68,9 @@ class WeeklyUpdateSubscriptionApiTests(unittest.TestCase):
         self._engine.dispose()
         settings.WECHAT_WEEKLY_UPDATE_TEMPLATE_ID = self._old_template_id
         settings.WECHAT_WEEKLY_UPDATE_PAGE = self._old_page
+        settings.WECHAT_WEEKLY_UPDATE_PROJECT_FIELD = self._old_project_field
+        settings.WECHAT_WEEKLY_UPDATE_PROGRESS_FIELD = self._old_progress_field
+        settings.WECHAT_WEEKLY_UPDATE_TIME_FIELD = self._old_time_field
 
     def _insert_user(self, user_id: str) -> None:
         with self._session_factory() as db:
@@ -150,7 +159,7 @@ class WeeklyUpdateSubscriptionApiTests(unittest.TestCase):
                 headers=self._headers,
                 json={
                     "project_name": "数学结论周更",
-                    "project_progress": "本周新增 8 条结论",
+                    "project_progress": "已更新",
                     "updated_at": "2026年06月23日 20:00",
                 },
             )
@@ -166,3 +175,46 @@ class WeeklyUpdateSubscriptionApiTests(unittest.TestCase):
         subscription = self._get_subscription()
         self.assertEqual(subscription.available_count, 0)
         self.assertEqual(subscription.total_sent_count, 1)
+
+    def test_send_subscribe_message_uses_configured_template_keywords(self) -> None:
+        mocked_response = mock.Mock()
+        mocked_response.json.return_value = {"errcode": 0, "errmsg": "ok"}
+
+        mocked_client = mock.Mock()
+        mocked_client.post.return_value = mocked_response
+
+        mocked_client_factory = mock.MagicMock()
+        mocked_client_factory.return_value.__enter__.return_value = mocked_client
+
+        with (
+            mock.patch.object(
+                WeeklyUpdateSubscriptionService,
+                "get_access_token",
+                return_value="access-token-test",
+            ),
+            mock.patch(
+                "app.services.weekly_update_subscription_service.httpx.Client",
+                mocked_client_factory,
+            ),
+        ):
+            WeeklyUpdateSubscriptionService.send_subscribe_message(
+                openid="openid-u1001",
+                template_id="tpl-weekly-test",
+                project_name="数学结论周更",
+                project_progress="即将开始",
+                updated_at="2026年05月25日 16:09",
+                page="pages/weekly-updates/weekly-updates",
+            )
+
+        mocked_response.raise_for_status.assert_called_once()
+        _, kwargs = mocked_client.post.call_args
+        self.assertEqual(kwargs["params"], {"access_token": "access-token-test"})
+
+        sent_payload = kwargs["json"]
+        self.assertEqual(sent_payload["template_id"], "tpl-weekly-test")
+        self.assertEqual(sent_payload["touser"], "openid-u1001")
+        self.assertEqual(sent_payload["page"], "pages/weekly-updates/weekly-updates")
+        self.assertEqual(set(sent_payload["data"].keys()), {"thing1", "phrase2", "time3"})
+        self.assertEqual(sent_payload["data"]["thing1"]["value"], "数学结论周更")
+        self.assertEqual(sent_payload["data"]["phrase2"]["value"], "即将开始")
+        self.assertEqual(sent_payload["data"]["time3"]["value"], "2026年05月25日 16:09")
